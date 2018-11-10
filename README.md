@@ -19,16 +19,11 @@ make it into `date-fns` or at least contribute to the conversation and that this
 
 - [Overview](#overview)
 - [Time Zone Helpers](#time-zone-helpers)
-    - [`localTimeToUtc` - Get the UTC date/time from a date representing local time in a given time zone](#localtimetoutc)
-    - [`utcToLocalTime` - Get a date/time representing local time in a given time zone from the UTC date](#utctolocaltime)
+    - [`localTimeToUtc`](#localtimetoutc) - Get the UTC date/time from a date representing local time in a given time zone
+    - [`utcToLocalTime`](#utctolocaltime) - Get a date/time representing local time in a given time zone from the UTC date
 - [Time Zone Formatting](#time-zone-formatting)
-    - [`format`](#format)
-    - [`toDate`](#todate)
-
-
-Caveat: Formatting to zzzz full tz name is not perfect, because if the language default is to use the short name for 'long' it will always be short
-Caveat: Full time zone names cannot be parsed with this technique.
-
+    - [`format`](#format) - Extends `date-fns/format` with full time zone support
+    - [`toDate`](#todate) - Can be used to create a zoned Date from a string containing an offset or IANA time zone
 
 ## Overview
 
@@ -55,8 +50,8 @@ shown when accessing the site from anywhere in the world.
 
 **Get a date with the correct UTC time for the date/time in a specific time zone**
 
-```flow js
-localTimeToUtc(date: Date|Number|String, timeZone: String) : Date
+```js
+localTimeToUtc(date: Date|Number|String, timeZone: String): Date
 ```
 
 Say a user is asked to input the date/time and time zone of an event. A date/time picker will typically 
@@ -79,6 +74,10 @@ postToServer(utcDate.toISOString(), timeZone) // post 2014-06-25T17:00:00.000Z, 
 ### `utcToLocalTime`
 
 **Get a date/time in the local time of any time zone from UTC time**
+
+```js
+utcToLocalTime(date: Date|Number|String, timeZone: String): Date
+```
 
 Say the server provided a UTC date/time and a time zone which should be used as initial values for the above form.
 The date/time picker will take a Date input which will be in the user's local time zone, but the date value 
@@ -136,8 +135,8 @@ this can be added to each locale natively.
 
 ### `toDate`
 
-A zoned Date can be created using the `toDate` function by providing the `timeZone` option or including 
-an IANA time zone or offset in the date string.
+The `toDate` function can be used to create a zoned Date from a string containing an offset or IANA 
+time zone, or by providing the `timeZone` option.
 
 ```javascript
 import { toDate, format } from 'date-fns-tz'
@@ -172,7 +171,7 @@ The initial port of the idea into date-fns was done by [@benmccan](https://githu
 
 ## Alternatives
 
-The `[date-fns-timezone](https://github.com/prantlf/date-fns-timezone)` library provides similar functionality
+The [`date-fns-timezone`](https://github.com/prantlf/date-fns-timezone) library provides similar functionality
 for `date-fns` version 1 by bundling time zone data. This does have the advantage of making parsing time zone 
 long and short names possible.
 
