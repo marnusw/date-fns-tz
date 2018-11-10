@@ -54,7 +54,7 @@ describe('toDate', function () {
     })
 
     describe('calendar dates', function () {
-      it('parses YYYY-MM-DD', function () {
+      it('parses yyyy-MM-dd', function () {
         var result = toDate('2014-02-11')
         assert.deepEqual(result, new Date(2014, 1, /* Feb */ 11))
       })
@@ -95,12 +95,12 @@ describe('toDate', function () {
     })
 
     describe('date and time combined', function () {
-      it('parses YYYY-MM-DDThh:mm', function () {
+      it('parses yyyy-MM-ddThh:mm', function () {
         var result = toDate('2014-02-11T11:30')
         assert.deepEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
       })
 
-      it('parses YYYY-MM-DDThhmm', function () {
+      it('parses yyyy-MM-ddThhmm', function () {
         var result = toDate('2014-02-11T1130')
         assert.deepEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
       })
@@ -236,7 +236,6 @@ describe('toDate', function () {
         assert.deepEqual(result, new Date('2014-10-25T13:46:20Z'))
       })
       it('accepts IANA zone in the date string', function () {
-        console.log('accepts IANA zone in the date string')
         var result = toDate('2014-10-25T13:46:20 Asia/Bangkok')
         assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
       })

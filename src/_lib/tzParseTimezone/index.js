@@ -11,7 +11,8 @@ var patterns = {
   timezoneIANA: /(UTC|(?:[a-zA-Z]+\/[a-zA-Z_]+(?:\/[a-zA-Z_]+)?))$/
 }
 
-export default function parseTimezone (timezoneString, date) {
+// Parse various time zone offset formats to an offset in milliseconds
+export default function tzParseTimezone (timezoneString, date) {
   var token
   var absoluteOffset
 
@@ -50,6 +51,7 @@ export default function parseTimezone (timezoneString, date) {
     return (token[1] === '+') ? -absoluteOffset : absoluteOffset
   }
 
+  // IANA time zone
   token = patterns.timezoneIANA.exec(timezoneString)
   if (token) {
     var [fYear, fMonth, fDay, fHour, fMinute, fSecond] = tzTokenizeDate(date, timezoneString)

@@ -1,6 +1,6 @@
 import toInteger from 'date-fns/_lib/toInteger/index.js'
 import getTimezoneOffsetInMilliseconds from 'date-fns/_lib/getTimezoneOffsetInMilliseconds/index.js'
-import parseTimezone from '../_lib/parseTimezone'
+import tzParseTimezone from '../_lib/tzParseTimezone'
 
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
@@ -134,7 +134,7 @@ export default function toDate (argument, dirtyOptions) {
     }
 
     if (dateStrings.timezone || options.timeZone) {
-      offset = parseTimezone(dateStrings.timezone || options.timeZone, new Date(timestamp + time))
+      offset = tzParseTimezone(dateStrings.timezone || options.timeZone, new Date(timestamp + time))
       if (isNaN(offset)) {
         return new Date(NaN)
       }
@@ -259,7 +259,7 @@ function parseDate (dateString, year) {
     return date
   }
 
-  // YYYY-MM-DD or YYYYMMDD
+  // yyyy-MM-dd or YYYYMMDD
   token = patterns.MMDD.exec(dateString)
   if (token) {
     date = new Date(0)
