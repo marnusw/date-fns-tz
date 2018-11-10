@@ -12,7 +12,7 @@ var patterns = {
 }
 
 // Parse various time zone offset formats to an offset in milliseconds
-export default function tzParseTimezone (timezoneString, date) {
+export default function tzParseTimezone(timezoneString, date) {
   var token
   var absoluteOffset
 
@@ -34,7 +34,7 @@ export default function tzParseTimezone (timezoneString, date) {
     }
 
     absoluteOffset = hours * MILLISECONDS_IN_HOUR
-    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
+    return token[1] === '+' ? -absoluteOffset : absoluteOffset
   }
 
   // ±hh:mm or ±hhmm
@@ -47,14 +47,18 @@ export default function tzParseTimezone (timezoneString, date) {
       return NaN
     }
 
-    absoluteOffset = hours * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
-    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
+    absoluteOffset =
+      hours * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
+    return token[1] === '+' ? -absoluteOffset : absoluteOffset
   }
 
   // IANA time zone
   token = patterns.timezoneIANA.exec(timezoneString)
   if (token) {
-    var [fYear, fMonth, fDay, fHour, fMinute, fSecond] = tzTokenizeDate(date, timezoneString)
+    var [fYear, fMonth, fDay, fHour, fMinute, fSecond] = tzTokenizeDate(
+      date,
+      timezoneString
+    )
     var asUTC = Date.UTC(fYear, fMonth - 1, fDay, fHour, fMinute, fSecond)
     var timestampWithMsZeroed = date.getTime() - (date.getTime() % 1000)
     return -(asUTC - timestampWithMsZeroed)
@@ -63,7 +67,7 @@ export default function tzParseTimezone (timezoneString, date) {
   return 0
 }
 
-function validateTimezone (hours, minutes) {
+function validateTimezone(hours, minutes) {
   if (minutes != null && (minutes < 0 || minutes > 59)) {
     return false
   }

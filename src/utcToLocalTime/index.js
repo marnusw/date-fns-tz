@@ -26,16 +26,22 @@ import toDate from '../toDate'
  * const result = utcToLocalTime('2014-06-25T10:00:00.000Z', 'America/New_York')
  * //=> Jun 25 2014 06:00:00
  */
-export default function utcToLocalTime (dirtyDate, timeZone, options) {
+export default function utcToLocalTime(dirtyDate, timeZone, options) {
   const date = toDate(dirtyDate, options)
 
   // This date has the UTC time values of the input date at the system time zone
   const utcDate = new Date(
-    date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),
-    date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()
+    date.getUTCFullYear(),
+    date.getUTCMonth(),
+    date.getUTCDate(),
+    date.getUTCHours(),
+    date.getUTCMinutes(),
+    date.getUTCSeconds()
   )
   // We just need to apply the offset indicated by the time zone to this localized date
   const offsetMilliseconds = tzParseTimezone(timeZone, date)
 
-  return offsetMilliseconds ? subMilliseconds(utcDate, offsetMilliseconds) : utcDate
+  return offsetMilliseconds
+    ? subMilliseconds(utcDate, offsetMilliseconds)
+    : utcDate
 }

@@ -25,9 +25,9 @@ import toDate from '../toDate'
  * const result = localTimeToUtc(new Date(2014, 5, 25, 10, 0, 0), 'America/Los_Angeles')
  * //=> 2014-06-25T17:00:00.000Z
  */
-export default function localTimeToUtc (date, timeZone, options) {
+export default function localTimeToUtc(date, timeZone, options) {
   if (date instanceof Date) {
-    date = format(date, 'yyyy-MM-dd\'T\'HH:mm:ss')
+    date = format(date, "yyyy-MM-dd'T'HH:mm:ss")
   }
-  return toDate(date, Object.assign({timeZone}, options))
+  return toDate(date, Object.assign({ timeZone }, options))
 }
