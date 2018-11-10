@@ -19,8 +19,8 @@ make it into `date-fns` or at least contribute to the conversation and that this
 
 - [Overview](#overview)
 - [Time Zone Helpers](#time-zone-helpers)
-    - [`localTimeToUtc`](#localtimetoutc) - Get the UTC date/time from a date representing local time in a given time zone
-    - [`utcToLocalTime`](#utctolocaltime) - Get a date/time representing local time in a given time zone from the UTC date
+    - [`zonedTimeToUtc`](#localtimetoutc) - Get the UTC date/time from a date representing local time in a given time zone
+    - [`utcToZonedTime`](#utctolocaltime) - Get a date/time representing local time in a given time zone from the UTC date
 - [Time Zone Formatting](#time-zone-formatting)
     - [`format`](#format) - Extends `date-fns/format` with full time zone support
     - [`toDate`](#todate) - Can be used to create a zoned Date from a string containing an offset or IANA time zone
@@ -46,12 +46,12 @@ To discuss the usage of the time zone helpers let's assume we're writing a syste
 up events which will be start at a specific time in the venue's local time, and this local time should be 
 shown when accessing the site from anywhere in the world.
 
-### `localTimeToUtc`
+### `zonedTimeToUtc`
 
 **Get a date with the correct UTC time for the date/time in a specific time zone**
 
 ```js
-localTimeToUtc(date: Date|Number|String, timeZone: String): Date
+zonedTimeToUtc(date: Date|Number|String, timeZone: String): Date
 ```
 
 Say a user is asked to input the date/time and time zone of an event. A date/time picker will typically 
@@ -61,22 +61,22 @@ provide the actual IANA time zone name.
 In order to work with this info effectively it is necessary to find the equivalent UTC time:
 
 ```javascript
-import { localTimeToUtc } from 'date-fns-tz'
+import { zonedTimeToUtc } from 'date-fns-tz'
 
 const date = getDatePickerValue()     // e.g. 2014-06-25 10:00:00 (picked in any time zone) 
 const timeZone = getTimeZoneValue()   // e.g. America/Los_Angeles
 
-const utcDate = localTimeToUtc(date, timeZone)  // In June 10am in Los Angeles is 5pm UTC
+const utcDate = zonedTimeToUtc(date, timeZone)  // In June 10am in Los Angeles is 5pm UTC
 
 postToServer(utcDate.toISOString(), timeZone) // post 2014-06-25T17:00:00.000Z, America/Los_Angeles
 ```
 
-### `utcToLocalTime`
+### `utcToZonedTime`
 
 **Get a date/time in the local time of any time zone from UTC time**
 
 ```js
-utcToLocalTime(date: Date|Number|String, timeZone: String): Date
+utcToZonedTime(date: Date|Number|String, timeZone: String): Date
 ```
 
 Say the server provided a UTC date/time and a time zone which should be used as initial values for the above form.
@@ -84,11 +84,11 @@ The date/time picker will take a Date input which will be in the user's local ti
 must be that of the target time zone.
 
 ```javascript
-import { utcToLocalTime } from 'date-fns-tz'
+import { utcToZonedTime } from 'date-fns-tz'
 
 const { isoDate, timeZone } = fetchInitialValues()  // 2014-06-25T10:00:00.000Z, America/New_York
 
-const date = utcToLocalTime(isoDate, timeZone)    // In June 10am UTC is 6am in New York (-04:00)
+const date = utcToZonedTime(isoDate, timeZone)    // In June 10am UTC is 6am in New York (-04:00)
 
 renderDatePicker(date)          // 2014-06-25 06:00:00 (in the system time zone)
 renderTimeZoneSelect(timeZone)  // America/New_York
@@ -107,14 +107,14 @@ The `format` function exported from this library extends `date-fns/format` with 
   time zone rather than the system time zone.
 
 ```javascript
-import { format, utcToLocalTime } from 'date-fns-tz'
+import { format, utcToZonedTime } from 'date-fns-tz'
 
 const date = new Date('2014-10-25T10:46:20Z')
 const nyTimeZone = 'America/New_York'
 const parisTimeZone = 'Europe/Paris'
 
-const nyDate = utcToLocalTime(date, nyTimeZone)
-const parisDate = utcToLocalTime(date, parisTimeZone)
+const nyDate = utcToZonedTime(date, nyTimeZone)
+const parisDate = utcToZonedTime(date, parisTimeZone)
 
 format(nyDate, 'YYYY-MM-DD HH:mm:ssXXX', { timeZone: 'America/New_York' })  // 2014-10-25 06:46:20-04:00
 format(nyDate, 'YYYY-MM-DD HH:mm:ss zzz', { timeZone: 'America/New_York' }) // 2014-10-25 06:46:20 EST

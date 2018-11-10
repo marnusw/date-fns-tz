@@ -2,7 +2,7 @@ import format from 'date-fns/format'
 import toDate from '../toDate'
 
 /**
- * @name localTimeToUtc
+ * @name zonedTimeToUtc
  * @category Time Zone Helpers
  * @summary Get the UTC date/time from a date representing local time in a given time zone
  *
@@ -22,10 +22,10 @@ import toDate from '../toDate'
  *
  * @example
  * // In June 10am in Los Angeles is 5pm UTC
- * const result = localTimeToUtc(new Date(2014, 5, 25, 10, 0, 0), 'America/Los_Angeles')
+ * const result = zonedTimeToUtc(new Date(2014, 5, 25, 10, 0, 0), 'America/Los_Angeles')
  * //=> 2014-06-25T17:00:00.000Z
  */
-export default function localTimeToUtc(date, timeZone, options) {
+export default function zonedTimeToUtc(date, timeZone, options) {
   if (date instanceof Date) {
     date = format(date, "yyyy-MM-dd'T'HH:mm:ss")
   }

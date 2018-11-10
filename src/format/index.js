@@ -1,5 +1,5 @@
 import dateFnsFormat from 'date-fns/format'
-import utcToLocalTime from '../utcToLocalTime'
+import utcToZonedTime from '../utcToZonedTime'
 import formatters from './formatters'
 import toDate from '../toDate'
 

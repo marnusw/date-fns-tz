@@ -3,7 +3,7 @@ import subMilliseconds from 'date-fns/subMilliseconds'
 import toDate from '../toDate'
 
 /**
- * @name utcToLocalTime
+ * @name utcToZonedTime
  * @category Time Zone Helpers
  * @summary Get a date/time representing local time in a given time zone from the UTC date
  *
@@ -23,10 +23,10 @@ import toDate from '../toDate'
  *
  * @example
  * // In June 10am UTC is 6am in New York (-04:00)
- * const result = utcToLocalTime('2014-06-25T10:00:00.000Z', 'America/New_York')
+ * const result = utcToZonedTime('2014-06-25T10:00:00.000Z', 'America/New_York')
  * //=> Jun 25 2014 06:00:00
  */
-export default function utcToLocalTime(dirtyDate, timeZone, options) {
+export default function utcToZonedTime(dirtyDate, timeZone, options) {
   const date = toDate(dirtyDate, options)
 
   // This date has the UTC time values of the input date at the system time zone
