@@ -1,3 +1,4 @@
+import cloneObject from 'date-fns/_lib/cloneObject'
 import format from 'date-fns/format'
 import toDate from '../toDate'
 
@@ -29,5 +30,7 @@ export default function zonedTimeToUtc(date, timeZone, options) {
   if (date instanceof Date) {
     date = format(date, "yyyy-MM-dd'T'HH:mm:ss")
   }
-  return toDate(date, Object.assign({ timeZone }, options))
+  const extendedOptions = cloneObject(options)
+  extendedOptions.timeZone = timeZone
+  return toDate(date, extendedOptions)
 }
