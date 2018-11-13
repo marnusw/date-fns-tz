@@ -1,8 +1,11 @@
 .idea
+.vscode
 .DS_Store
 
+dist
+docs.json
+
 node_modules
-coverage
 
 npm-debug.log*
 yarn-debug.log*
