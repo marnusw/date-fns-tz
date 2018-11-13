@@ -286,6 +286,7 @@ const tzFormattingTokensRegExp = /([xXOz]+)|''|'(''|[^'])+('|$)/g
  *   - Some of the day of year tokens (`D`, `DD`) that are confused with the day of month tokens (`d`, `dd`).
  *   - Some of the local week-numbering year tokens (`YY`, `YYYY`) that are confused with the calendar year tokens
  *   (`yy`, `yyyy`). See: https://git.io/fxCyr
+ * @param {String} [options.timeZone=''] - used to specify the IANA time zone offset of a date String.
  * @returns {String} the formatted date string
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2

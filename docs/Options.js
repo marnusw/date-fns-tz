@@ -17,6 +17,8 @@
  *   Used by all functions that take String as Date-like argument.
  *   Internally, passed to `toDate` to specify which way to convert extended year formatted String to Date.
  *   See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @property {String} [timeZone=''] - used to specify the IANA time zone offset of a date String.
+ *   Used by all functions that take String as Date-like argument.
  * @property {Locale} [locale=defaultLocale] - the locale object.
  *   Used by `formatDistance`, `formatDistanceStrict`, `format` and `parse`.
  *   See [Locale]{@link https://date-fns.org/docs/Locale}
