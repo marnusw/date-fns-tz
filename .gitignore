@@ -4,6 +4,7 @@
 
 dist
 docs.json
+tmp/package
 
 node_modules
 
