@@ -1,6 +1,6 @@
 {
   "name": "date-fns-tz",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "sideEffects": false,
   "description": "Time zone support for date-fns v2 with the browser Intl API",
   "author": "Marnus Weststrate <marnusw@gmail.com>",
