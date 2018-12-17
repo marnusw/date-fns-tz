@@ -11,6 +11,7 @@
   },
   "main": "index.js",
   "module": "esm/index.js",
+  "types": "typings.d.ts",
   "scripts": {
     "build": "./scripts/build/build.sh",
     "package": "./scripts/build/package.sh",
