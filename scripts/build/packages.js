@@ -12,7 +12,6 @@ const { writeFile } = require('mz/fs')
 const path = require('path')
 const listFns = require('../_lib/listFns')
 const listFPFns = require('../_lib/listFPFns')
-const listLocales = require('../_lib/listLocales')
 const rootPath =
   process.env.PACKAGE_OUTPUT_PATH || path.resolve(process.cwd(), 'tmp/package')
 
@@ -70,7 +69,6 @@ function getModulePackage(fullPath) {
 function listAll() {
   return listFns()
     .concat(listFPFns())
-    .concat(listLocales())
     .concat(extraModules)
     .reduce((acc, module) => {
       const esmModule = Object.assign({}, module, {

@@ -108,46 +108,15 @@ function generateFlowFPFnIndexTyping(fns, aliasDeclarations) {
   writeFile(`src/fp/index.js.flow`, typingFile)
 }
 
-function generateFlowLocaleTyping(locale, localeAliasDeclaration) {
-  const { fullPath } = locale
-
-  const typingFile = formatFlowFile`
-    ${localeAliasDeclaration}
-
-    declare module.exports: Locale
-  `
-
-  writeFile(`${fullPath}.flow`, typingFile)
-}
-
-function generateFlowLocaleIndexTyping(locales, localeAliasDeclaration) {
-  const typingFile = formatFlowFile`
-    ${localeAliasDeclaration}
-
-    declare module.exports: {
-      ${addSeparator(locales.map(({ name }) => `${name}: Locale`), ',')}
-    }
-  `
-
-  writeFile('src/locale/index.js.flow', typingFile)
-}
-
-function generateFlowTypings(fns, aliases, locales) {
+function generateFlowTypings(fns, aliases) {
   const aliasDeclarations = aliases.map(getFlowTypeAlias)
-  const localeAliasDeclaration = getFlowTypeAlias(
-    aliases.find(alias => alias.title === 'Locale')
-  )
 
-  fns.forEach((fn, index) => {
+  fns.forEach(fn => {
     if (fn.isFPFn) {
       generateFlowFPFnTyping(fn, aliasDeclarations)
     } else {
       generateFlowFnTyping(fn, aliasDeclarations)
     }
-  })
-
-  locales.forEach(locale => {
-    generateFlowLocaleTyping(locale, localeAliasDeclaration)
   })
 
   generateFlowFnIndexTyping(
@@ -158,7 +127,6 @@ function generateFlowTypings(fns, aliases, locales) {
     fns.filter(({ isFPFn }) => isFPFn),
     aliasDeclarations
   )
-  generateFlowLocaleIndexTyping(locales, localeAliasDeclaration)
 }
 
 function writeFile(relativePath, content) {

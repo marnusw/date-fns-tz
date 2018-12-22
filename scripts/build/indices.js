@@ -12,21 +12,17 @@ const path = require('path')
 const prettier = require('./_lib/prettier')
 const listFns = require('../_lib/listFns')
 const listFPFns = require('../_lib/listFPFns')
-const listLocales = require('../_lib/listLocales')
 
 const generatedAutomaticallyMessage =
   "// This file is generated automatically by `scripts/build/indices.js`. Please, don't change it."
 
 const fns = listFns()
 const fpFns = listFPFns()
-const locales = listLocales()
 
 writeFile('src/index.js', generateIndex(fns))
 writeFile('src/fp/index.js', generateIndex(fpFns))
-writeFile('src/locale/index.js', generateIndex(locales))
 writeFile('src/esm/index.js', generateESMIndex(fns))
 writeFile('src/esm/fp/index.js', generateESMIndex(fpFns))
-writeFile('src/esm/locale/index.js', generateESMIndex(locales))
 
 function writeFile(relativePath, content) {
   return fs.writeFileSync(

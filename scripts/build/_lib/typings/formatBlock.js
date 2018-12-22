@@ -122,6 +122,8 @@ const formatFlowFile = (...args) =>
   '\n' +
   generatedAutomaticallyMessage +
   '\n\n' +
+  "import type {Locale} from 'date-fns'\n" +
+  '\n\n' +
   formatBlock(...args) +
   '\n'
 

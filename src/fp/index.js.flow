@@ -1,7 +1,9 @@
 // @flow
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-type Options = {
+import type { Locale } from 'date-fns'
+
+type OptionsWithTZ = {
   weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
   firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
   additionalDigits?: 0 | 1 | 2,
@@ -12,35 +14,6 @@ type Options = {
   unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
   roundingMethod?: 'floor' | 'ceil' | 'round',
   awareOfUnicodeTokens?: boolean
-}
-
-type Locale = {
-  formatDistance: Function,
-  formatRelative: Function,
-  localize: {
-    ordinalNumber: Function,
-    era: Function,
-    quarter: Function,
-    month: Function,
-    day: Function,
-    dayPeriod: Function
-  },
-  formatLong: Object,
-  date: Function,
-  time: Function,
-  dateTime: Function,
-  match: {
-    ordinalNumber: Function,
-    era: Function,
-    quarter: Function,
-    month: Function,
-    day: Function,
-    dayPeriod: Function
-  },
-  options?: {
-    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
-  }
 }
 
 type CurriedFn1<A, R> = <A>(a: A) => R
@@ -76,23 +49,23 @@ type CurriedFn4<A, B, C, D, R> = <A>(
 declare module.exports: {
   format: CurriedFn2<string, Date | string | number, string>,
   formatWithOptions: CurriedFn3<
-    Options,
+    OptionsWithTZ,
     string,
     Date | string | number,
     string
   >,
   toDate: CurriedFn1<Date | string | number, Date>,
-  toDateWithOptions: CurriedFn2<Options, Date | string | number, Date>,
+  toDateWithOptions: CurriedFn2<OptionsWithTZ, Date | string | number, Date>,
   utcToZonedTime: CurriedFn2<string, Date | string | number, Date>,
   utcToZonedTimeWithOptions: CurriedFn3<
-    Options,
+    OptionsWithTZ,
     string,
     Date | string | number,
     Date
   >,
   zonedTimeToUtc: CurriedFn2<string, Date | string | number, Date>,
   zonedTimeToUtcWithOptions: CurriedFn3<
-    Options,
+    OptionsWithTZ,
     string,
     Date | string | number,
     Date

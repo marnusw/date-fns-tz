@@ -15,7 +15,7 @@ import toDate from '../toDate'
  *
  * @param {Date|String|Number} date - the date with the relevant UTC time
  * @param {String} timeZone - the time zone to get local time for, can be an offset or IANA time zone
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {OptionsWithTZ} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Date} the new date with the equivalent time in the time zone
  * @throws {TypeError} 2 arguments required

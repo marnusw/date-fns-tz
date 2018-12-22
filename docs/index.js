@@ -26,10 +26,7 @@ module.exports = {
 
   sharedDocs: [
     {
-      fullPath: path.join(__dirname, 'Options.js')
-    },
-    {
-      fullPath: path.join(__dirname, 'Locale.js')
+      fullPath: path.join(__dirname, 'OptionsWithTZ.js')
     }
   ]
 }
