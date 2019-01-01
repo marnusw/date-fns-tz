@@ -15,10 +15,7 @@ const listFPFns = require('../_lib/listFPFns')
 const rootPath =
   process.env.PACKAGE_OUTPUT_PATH || path.resolve(process.cwd(), 'tmp/package')
 
-const extraModules = [
-  { fullPath: './src/fp/index.js' },
-  { fullPath: './src/locale/index.js' }
-]
+const extraModules = [{ fullPath: './src/fp/index.js' }]
 
 const initialPackages = getInitialPackages()
 
