@@ -1,7 +1,5 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-import { Locale } from 'date-fns'
-
 // FP Interfaces
 
 interface CurriedFn1<A, R> {
@@ -33,7 +31,7 @@ type OptionsWithTZ = {
   firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
   additionalDigits?: 0 | 1 | 2
   timeZone?: string
-  locale?: Locale
+  locale?: import('date-fns').Locale
   includeSeconds?: boolean
   addSuffix?: boolean
   unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'

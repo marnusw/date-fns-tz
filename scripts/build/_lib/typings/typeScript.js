@@ -371,8 +371,6 @@ function generateTypeScriptTypings(fns, aliases, locales) {
   `
 
   const typingFile = formatTypeScriptFile`
-    import {Locale} from 'date-fns'
-  
     // FP Interfaces
 
     ${addSeparator(getTypeScriptFPInterfaces(), '\n')}
@@ -414,7 +412,10 @@ function generateTypeScriptTypings(fns, aliases, locales) {
     ${globalInterfaceDefinition}
   `
 
-  writeFile('typings.d.ts', typingFile)
+  writeFile(
+    'typings.d.ts',
+    typingFile.replace('Locale', 'import("date-fns").Locale')
+  )
 
   fns.forEach(fn => {
     if (fn.isFPFn) {
