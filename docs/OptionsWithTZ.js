@@ -5,7 +5,7 @@
  * @description
  * An object passed as the last optional argument to all functions.
  *
- * @typedef {Object} Options
+ * @typedef {Object} OptionsWithTZ
  * @property {0|1|2|3|4|5|6} [weekStartsOn=0] - the index of the first day of the week (0 - Sunday).
  *   Used by `differenceInCalendarWeeks`, `endOfWeek`, `format`, `getWeek`, `getWeekOfMonth`,
  *   `getWeeksInMonth`, `isSameWeek`, `isSameWeek`, `lastDayOfWeek`, `parse`, `setDay`,
@@ -73,6 +73,6 @@
  * var result = format(startOfWeek('+12345-12-15', options), 'EEEE, d MMMM yyyy', options)
  * //=> 'lundo, 10 decembro 12345'
  */
-var Options = {}
+var OptionsWithTZ = {}
 
-module.exports = Options
+module.exports = OptionsWithTZ

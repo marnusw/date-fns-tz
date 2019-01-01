@@ -8,13 +8,10 @@
  */
 
 const path = require('path')
-const listLocales = require('../_lib/listLocales')
 const jsDocs = require(path.resolve(process.cwd(), 'tmp/docs.json'))
 
 const { generateTypeScriptTypings } = require('./_lib/typings/typeScript')
 const { generateFlowTypings } = require('./_lib/typings/flow')
-
-const locales = listLocales()
 
 const fns = Object.keys(jsDocs)
   .map(category => jsDocs[category])
@@ -24,5 +21,5 @@ const fns = Object.keys(jsDocs)
 
 const aliases = jsDocs['Types']
 
-generateTypeScriptTypings(fns, aliases, locales)
-generateFlowTypings(fns, aliases, locales)
+generateTypeScriptTypings(fns, aliases, [])
+generateFlowTypings(fns, aliases)
