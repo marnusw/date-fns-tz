@@ -19,8 +19,8 @@ make it into `date-fns` or at least contribute to the conversation and that this
 
 - [Overview](#overview)
 - [Time Zone Helpers](#time-zone-helpers)
-    - [`zonedTimeToUtc`](#localtimetoutc) - Get the UTC date/time from a date representing local time in a given time zone
-    - [`utcToZonedTime`](#utctolocaltime) - Get a date/time representing local time in a given time zone from the UTC date
+    - [`zonedTimeToUtc`](#zonedtimetoutc) - Get the UTC date/time from a date representing local time in a given time zone
+    - [`utcToZonedTime`](#utctozonedtime) - Get a date/time representing local time in a given time zone from the UTC date
 - [Time Zone Formatting](#time-zone-formatting)
     - [`format`](#format) - Extends `date-fns/format` with full time zone support
     - [`toDate`](#todate) - Can be used to create a zoned Date from a string containing an offset or IANA time zone
