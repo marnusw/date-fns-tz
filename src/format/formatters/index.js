@@ -1,7 +1,7 @@
 import tzIntlTimeZoneName from '../../_lib/tzIntlTimeZoneName'
 import tzParseTimezone from '../../_lib/tzParseTimezone'
 
-const MILLISECONDS_IN_MINUTE = 60 * 1000
+var MILLISECONDS_IN_MINUTE = 60 * 1000
 
 var formatters = {
   // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)

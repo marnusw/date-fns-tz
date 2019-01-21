@@ -30,7 +30,7 @@ export default function zonedTimeToUtc(date, timeZone, options) {
   if (date instanceof Date) {
     date = format(date, "yyyy-MM-dd'T'HH:mm:ss")
   }
-  const extendedOptions = cloneObject(options)
+  var extendedOptions = cloneObject(options)
   extendedOptions.timeZone = timeZone
   return toDate(date, extendedOptions)
 }

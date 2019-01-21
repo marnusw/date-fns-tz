@@ -4,18 +4,18 @@
  * the date.
  */
 export default function tzIntlTimeZoneName(length, date, options) {
-  const dtf = getDTF(length, options.timeZone, options.locale)
+  var dtf = getDTF(length, options.timeZone, options.locale)
   return dtf.formatToParts ? partsTimeZone(dtf, date) : hackyTimeZone(dtf, date)
 }
 
 function partsTimeZone(dtf, date) {
-  const formatted = dtf.formatToParts(date)
+  var formatted = dtf.formatToParts(date)
   return formatted[formatted.length - 1].value
 }
 
 function hackyTimeZone(dtf, date) {
-  const formatted = dtf.format(date).replace(/\u200E/g, '')
-  const tzNameMatch = / [\w-+ ]+$/.exec(formatted)
+  var formatted = dtf.format(date).replace(/\u200E/g, '')
+  var tzNameMatch = / [\w-+ ]+$/.exec(formatted)
   return tzNameMatch ? tzNameMatch[0].substr(1) : ''
 }
 

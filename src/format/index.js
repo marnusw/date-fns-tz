@@ -3,7 +3,7 @@ import utcToZonedTime from '../utcToZonedTime'
 import formatters from './formatters'
 import toDate from '../toDate'
 
-const tzFormattingTokensRegExp = /([xXOz]+)|''|'(''|[^'])+('|$)/g
+var tzFormattingTokensRegExp = /([xXOz]+)|''|'(''|[^'])+('|$)/g
 
 /**
  * @name format
@@ -317,11 +317,11 @@ const tzFormattingTokensRegExp = /([xXOz]+)|''|'(''|[^'])+('|$)/g
  */
 export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
   let formatStr = String(dirtyFormatStr)
-  const options = dirtyOptions || {}
+  var options = dirtyOptions || {}
 
-  const matches = formatStr.match(tzFormattingTokensRegExp)
+  var matches = formatStr.match(tzFormattingTokensRegExp)
   if (matches) {
-    const date = toDate(dirtyDate, options)
+    var date = toDate(dirtyDate, options)
     formatStr = matches.reduce(
       (result, token) =>
         token[0] === "'"
