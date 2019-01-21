@@ -316,22 +316,20 @@ var tzFormattingTokensRegExp = /([xXOz]+)|''|'(''|[^'])+('|$)/g
  * //=> "3 o'clock"
  */
 export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
-  let formatStr = String(dirtyFormatStr)
+  var formatStr = String(dirtyFormatStr)
   var options = dirtyOptions || {}
 
   var matches = formatStr.match(tzFormattingTokensRegExp)
   if (matches) {
     var date = toDate(dirtyDate, options)
-    formatStr = matches.reduce(
-      (result, token) =>
-        token[0] === "'"
-          ? result
-          : result.replace(
-              token,
-              `'${formatters[token[0]](date, token, null, options)}'`
-            ),
-      formatStr
-    )
+    formatStr = matches.reduce(function(result, token) {
+      return token[0] === "'"
+        ? result
+        : result.replace(
+            token,
+            "'" + formatters[token[0]](date, token, null, options) + "'"
+          )
+    }, formatStr)
   }
 
   return dateFnsFormat(dirtyDate, formatStr, options)

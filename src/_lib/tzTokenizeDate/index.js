@@ -19,7 +19,7 @@ var typeToPos = {
 function partsOffset(dtf, date) {
   var formatted = dtf.formatToParts(date)
   var filled = []
-  for (let i = 0; i < formatted.length; i++) {
+  for (var i = 0; i < formatted.length; i++) {
     var { type, value } = formatted[i]
     var pos = typeToPos[type]
 
