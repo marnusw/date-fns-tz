@@ -20,11 +20,10 @@ function partsOffset(dtf, date) {
   var formatted = dtf.formatToParts(date)
   var filled = []
   for (var i = 0; i < formatted.length; i++) {
-    var { type, value } = formatted[i]
-    var pos = typeToPos[type]
+    var pos = typeToPos[formatted[i].type]
 
     if (pos >= 0) {
-      filled[pos] = parseInt(value, 10)
+      filled[pos] = parseInt(formatted[i].value, 10)
     }
   }
   return filled
