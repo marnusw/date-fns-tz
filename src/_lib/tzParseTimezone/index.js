@@ -55,11 +55,16 @@ export default function tzParseTimezone(timezoneString, date) {
   // IANA time zone
   token = patterns.timezoneIANA.exec(timezoneString)
   if (token) {
-    var [fYear, fMonth, fDay, fHour, fMinute, fSecond] = tzTokenizeDate(
-      date,
-      timezoneString
+    // var [fYear, fMonth, fDay, fHour, fMinute, fSecond] = tzTokenizeDate(date, timezoneString)
+    var tokens = tzTokenizeDate(date, timezoneString)
+    var asUTC = Date.UTC(
+      tokens[0],
+      tokens[1] - 1,
+      tokens[2],
+      tokens[3],
+      tokens[4],
+      tokens[5]
     )
-    var asUTC = Date.UTC(fYear, fMonth - 1, fDay, fHour, fMinute, fSecond)
     var timestampWithMsZeroed = date.getTime() - (date.getTime() % 1000)
     return -(asUTC - timestampWithMsZeroed)
   }
