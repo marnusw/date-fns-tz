@@ -62,4 +62,10 @@ find "$dir" -type f -name "benchmark.js" -delete
 # Clean up package.json pointing to the modules
 find "$dir/esm" -type f -name "package.json" -delete
 
+# Rewrite import paths to use esm version of date-fns
+for fnFile in $(find $dir/esm -maxdepth 2 -mindepth 2 -type f -name index.js)
+do
+  sed -i "s/from 'date-fns/from 'date-fns\/esm/" "$fnFile"
+done
+
 ./scripts/build/packages.js
