@@ -52,8 +52,7 @@ function getTypeScriptTypeAlias(type) {
   const { title, properties } = type
 
   return formatBlock`
-    type ${title} = ${getParams(properties)}
-    type ${title}Aliased = ${title}
+    export type ${title} = ${getParams(properties)}
   `
 }
 
@@ -78,6 +77,8 @@ function getTypeScriptDateFnsModuleDefinition(submodule, fns) {
 
   const definition = formatBlock`
     declare module '${moduleName}' {
+      import { OptionsWithTZ } from "date-fns-tz"
+
       ${addSeparator(fns.map(getTypeScriptFnDefinition), '\n')}
     }
   `
@@ -95,6 +96,8 @@ function getTypeScriptDateFnsFPModuleDefinition(submodule, fns) {
 
   const definition = formatBlock`
     declare module '${moduleName}' {
+      import { OptionsWithTZ } from "date-fns-tz"
+
       ${addSeparator(fnDefinitions, '\n')}
     }
   `
@@ -375,13 +378,11 @@ function generateTypeScriptTypings(fns, aliases, locales) {
 
     ${addSeparator(getTypeScriptFPInterfaces(), '\n')}
 
-    // Type Aliases
+    declare module 'date-fns-tz' {
+      import { Locale } from "date-fns"
 
-    ${addSeparator(aliasDefinitions, '\n')}
-
-    // Exported Type Aliases
-
-    ${addSeparator(exportedAliasDefinitions, '\n')}
+      ${addSeparator(aliasDefinitions, '\n')}
+    }
 
     // Regular Functions
 
@@ -398,24 +399,9 @@ function generateTypeScriptTypings(fns, aliases, locales) {
     // ECMAScript Module FP Functions
 
     ${addSeparator(esmFPModuleDefinitions, '\n')}
-
-    // Regular Locales
-
-    ${addSeparator(localeModuleDefinitions, '\n')}
-
-    // ECMAScript Module Locales
-
-    ${addSeparator(esmLocaleModuleDefinitions, '\n')}
-
-    // dateFns Global Interface
-
-    ${globalInterfaceDefinition}
   `
 
-  writeFile(
-    'typings.d.ts',
-    typingFile.replace('Locale', 'import("date-fns").Locale')
-  )
+  writeFile('typings.d.ts', typingFile)
 
   fns.forEach(fn => {
     if (fn.isFPFn) {
