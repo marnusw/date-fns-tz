@@ -51,35 +51,33 @@ declare module 'date-fns-tz' {
     format: string,
     options?: OptionsWithTZ
   ): string
-  namespace format {
-
-  }
+  namespace format {}
 
   function toDate(
     argument: Date | string | number,
     options?: OptionsWithTZ
   ): Date
-  namespace toDate {
-
-  }
+  namespace toDate {}
 
   function utcToZonedTime(
     date: Date | string | number,
     timeZone: string,
     options?: OptionsWithTZ
   ): Date
-  namespace utcToZonedTime {
+  namespace utcToZonedTime {}
 
-  }
+  function zonedTimeToLocal(
+    dirtyDate: Date | string | number,
+    timeZone: string
+  ): Date
+  namespace zonedTimeToLocal {}
 
   function zonedTimeToUtc(
     date: Date | string | number,
     timeZone: string,
     options?: OptionsWithTZ
   ): Date
-  namespace zonedTimeToUtc {
-
-  }
+  namespace zonedTimeToUtc {}
 }
 
 declare module 'date-fns-tz/format' {
@@ -95,6 +93,11 @@ declare module 'date-fns-tz/toDate' {
 declare module 'date-fns-tz/utcToZonedTime' {
   import { utcToZonedTime } from 'date-fns-tz'
   export = utcToZonedTime
+}
+
+declare module 'date-fns-tz/zonedTimeToLocal' {
+  import { zonedTimeToLocal } from 'date-fns-tz'
+  export = zonedTimeToLocal
 }
 
 declare module 'date-fns-tz/zonedTimeToUtc' {
@@ -117,6 +120,11 @@ declare module 'date-fns-tz/utcToZonedTime/index' {
   export = utcToZonedTime
 }
 
+declare module 'date-fns-tz/zonedTimeToLocal/index' {
+  import { zonedTimeToLocal } from 'date-fns-tz'
+  export = zonedTimeToLocal
+}
+
 declare module 'date-fns-tz/zonedTimeToUtc/index' {
   import { zonedTimeToUtc } from 'date-fns-tz'
   export = zonedTimeToUtc
@@ -137,6 +145,11 @@ declare module 'date-fns-tz/utcToZonedTime/index.js' {
   export = utcToZonedTime
 }
 
+declare module 'date-fns-tz/zonedTimeToLocal/index.js' {
+  import { zonedTimeToLocal } from 'date-fns-tz'
+  export = zonedTimeToLocal
+}
+
 declare module 'date-fns-tz/zonedTimeToUtc/index.js' {
   import { zonedTimeToUtc } from 'date-fns-tz'
   export = zonedTimeToUtc
@@ -148,9 +161,7 @@ declare module 'date-fns-tz/fp' {
   import { OptionsWithTZ } from 'date-fns-tz'
 
   const format: CurriedFn2<string, Date | string | number, string>
-  namespace format {
-
-  }
+  namespace format {}
 
   const formatWithOptions: CurriedFn3<
     OptionsWithTZ,
@@ -158,28 +169,20 @@ declare module 'date-fns-tz/fp' {
     Date | string | number,
     string
   >
-  namespace formatWithOptions {
-
-  }
+  namespace formatWithOptions {}
 
   const toDate: CurriedFn1<Date | string | number, Date>
-  namespace toDate {
-
-  }
+  namespace toDate {}
 
   const toDateWithOptions: CurriedFn2<
     OptionsWithTZ,
     Date | string | number,
     Date
   >
-  namespace toDateWithOptions {
-
-  }
+  namespace toDateWithOptions {}
 
   const utcToZonedTime: CurriedFn2<string, Date | string | number, Date>
-  namespace utcToZonedTime {
-
-  }
+  namespace utcToZonedTime {}
 
   const utcToZonedTimeWithOptions: CurriedFn3<
     OptionsWithTZ,
@@ -187,14 +190,20 @@ declare module 'date-fns-tz/fp' {
     Date | string | number,
     Date
   >
-  namespace utcToZonedTimeWithOptions {
+  namespace utcToZonedTimeWithOptions {}
 
-  }
+  const zonedTimeToLocal: CurriedFn2<string, Date | string | number, Date>
+  namespace zonedTimeToLocal {}
+
+  const zonedTimeToLocalWithOptions: CurriedFn2<
+    string,
+    Date | string | number,
+    Date
+  >
+  namespace zonedTimeToLocalWithOptions {}
 
   const zonedTimeToUtc: CurriedFn2<string, Date | string | number, Date>
-  namespace zonedTimeToUtc {
-
-  }
+  namespace zonedTimeToUtc {}
 
   const zonedTimeToUtcWithOptions: CurriedFn3<
     OptionsWithTZ,
@@ -202,9 +211,7 @@ declare module 'date-fns-tz/fp' {
     Date | string | number,
     Date
   >
-  namespace zonedTimeToUtcWithOptions {
-
-  }
+  namespace zonedTimeToUtcWithOptions {}
 }
 
 declare module 'date-fns-tz/fp/format' {
@@ -235,6 +242,16 @@ declare module 'date-fns-tz/fp/utcToZonedTime' {
 declare module 'date-fns-tz/fp/utcToZonedTimeWithOptions' {
   import { utcToZonedTimeWithOptions } from 'date-fns-tz/fp'
   export = utcToZonedTimeWithOptions
+}
+
+declare module 'date-fns-tz/fp/zonedTimeToLocal' {
+  import { zonedTimeToLocal } from 'date-fns-tz/fp'
+  export = zonedTimeToLocal
+}
+
+declare module 'date-fns-tz/fp/zonedTimeToLocalWithOptions' {
+  import { zonedTimeToLocalWithOptions } from 'date-fns-tz/fp'
+  export = zonedTimeToLocalWithOptions
 }
 
 declare module 'date-fns-tz/fp/zonedTimeToUtc' {
@@ -277,6 +294,16 @@ declare module 'date-fns-tz/fp/utcToZonedTimeWithOptions/index' {
   export = utcToZonedTimeWithOptions
 }
 
+declare module 'date-fns-tz/fp/zonedTimeToLocal/index' {
+  import { zonedTimeToLocal } from 'date-fns-tz/fp'
+  export = zonedTimeToLocal
+}
+
+declare module 'date-fns-tz/fp/zonedTimeToLocalWithOptions/index' {
+  import { zonedTimeToLocalWithOptions } from 'date-fns-tz/fp'
+  export = zonedTimeToLocalWithOptions
+}
+
 declare module 'date-fns-tz/fp/zonedTimeToUtc/index' {
   import { zonedTimeToUtc } from 'date-fns-tz/fp'
   export = zonedTimeToUtc
@@ -317,6 +344,16 @@ declare module 'date-fns-tz/fp/utcToZonedTimeWithOptions/index.js' {
   export = utcToZonedTimeWithOptions
 }
 
+declare module 'date-fns-tz/fp/zonedTimeToLocal/index.js' {
+  import { zonedTimeToLocal } from 'date-fns-tz/fp'
+  export = zonedTimeToLocal
+}
+
+declare module 'date-fns-tz/fp/zonedTimeToLocalWithOptions/index.js' {
+  import { zonedTimeToLocalWithOptions } from 'date-fns-tz/fp'
+  export = zonedTimeToLocalWithOptions
+}
+
 declare module 'date-fns-tz/fp/zonedTimeToUtc/index.js' {
   import { zonedTimeToUtc } from 'date-fns-tz/fp'
   export = zonedTimeToUtc
@@ -337,35 +374,33 @@ declare module 'date-fns-tz/esm' {
     format: string,
     options?: OptionsWithTZ
   ): string
-  namespace format {
-
-  }
+  namespace format {}
 
   function toDate(
     argument: Date | string | number,
     options?: OptionsWithTZ
   ): Date
-  namespace toDate {
-
-  }
+  namespace toDate {}
 
   function utcToZonedTime(
     date: Date | string | number,
     timeZone: string,
     options?: OptionsWithTZ
   ): Date
-  namespace utcToZonedTime {
+  namespace utcToZonedTime {}
 
-  }
+  function zonedTimeToLocal(
+    dirtyDate: Date | string | number,
+    timeZone: string
+  ): Date
+  namespace zonedTimeToLocal {}
 
   function zonedTimeToUtc(
     date: Date | string | number,
     timeZone: string,
     options?: OptionsWithTZ
   ): Date
-  namespace zonedTimeToUtc {
-
-  }
+  namespace zonedTimeToUtc {}
 }
 
 declare module 'date-fns-tz/esm/format' {
@@ -381,6 +416,11 @@ declare module 'date-fns-tz/esm/toDate' {
 declare module 'date-fns-tz/esm/utcToZonedTime' {
   import { utcToZonedTime } from 'date-fns-tz/esm'
   export default utcToZonedTime
+}
+
+declare module 'date-fns-tz/esm/zonedTimeToLocal' {
+  import { zonedTimeToLocal } from 'date-fns-tz/esm'
+  export default zonedTimeToLocal
 }
 
 declare module 'date-fns-tz/esm/zonedTimeToUtc' {
@@ -403,6 +443,11 @@ declare module 'date-fns-tz/esm/utcToZonedTime/index' {
   export default utcToZonedTime
 }
 
+declare module 'date-fns-tz/esm/zonedTimeToLocal/index' {
+  import { zonedTimeToLocal } from 'date-fns-tz/esm'
+  export default zonedTimeToLocal
+}
+
 declare module 'date-fns-tz/esm/zonedTimeToUtc/index' {
   import { zonedTimeToUtc } from 'date-fns-tz/esm'
   export default zonedTimeToUtc
@@ -423,6 +468,11 @@ declare module 'date-fns-tz/esm/utcToZonedTime/index.js' {
   export default utcToZonedTime
 }
 
+declare module 'date-fns-tz/esm/zonedTimeToLocal/index.js' {
+  import { zonedTimeToLocal } from 'date-fns-tz/esm'
+  export default zonedTimeToLocal
+}
+
 declare module 'date-fns-tz/esm/zonedTimeToUtc/index.js' {
   import { zonedTimeToUtc } from 'date-fns-tz/esm'
   export default zonedTimeToUtc
@@ -434,9 +484,7 @@ declare module 'date-fns-tz/esm/fp' {
   import { OptionsWithTZ } from 'date-fns-tz'
 
   const format: CurriedFn2<string, Date | string | number, string>
-  namespace format {
-
-  }
+  namespace format {}
 
   const formatWithOptions: CurriedFn3<
     OptionsWithTZ,
@@ -444,28 +492,20 @@ declare module 'date-fns-tz/esm/fp' {
     Date | string | number,
     string
   >
-  namespace formatWithOptions {
-
-  }
+  namespace formatWithOptions {}
 
   const toDate: CurriedFn1<Date | string | number, Date>
-  namespace toDate {
-
-  }
+  namespace toDate {}
 
   const toDateWithOptions: CurriedFn2<
     OptionsWithTZ,
     Date | string | number,
     Date
   >
-  namespace toDateWithOptions {
-
-  }
+  namespace toDateWithOptions {}
 
   const utcToZonedTime: CurriedFn2<string, Date | string | number, Date>
-  namespace utcToZonedTime {
-
-  }
+  namespace utcToZonedTime {}
 
   const utcToZonedTimeWithOptions: CurriedFn3<
     OptionsWithTZ,
@@ -473,14 +513,20 @@ declare module 'date-fns-tz/esm/fp' {
     Date | string | number,
     Date
   >
-  namespace utcToZonedTimeWithOptions {
+  namespace utcToZonedTimeWithOptions {}
 
-  }
+  const zonedTimeToLocal: CurriedFn2<string, Date | string | number, Date>
+  namespace zonedTimeToLocal {}
+
+  const zonedTimeToLocalWithOptions: CurriedFn2<
+    string,
+    Date | string | number,
+    Date
+  >
+  namespace zonedTimeToLocalWithOptions {}
 
   const zonedTimeToUtc: CurriedFn2<string, Date | string | number, Date>
-  namespace zonedTimeToUtc {
-
-  }
+  namespace zonedTimeToUtc {}
 
   const zonedTimeToUtcWithOptions: CurriedFn3<
     OptionsWithTZ,
@@ -488,9 +534,7 @@ declare module 'date-fns-tz/esm/fp' {
     Date | string | number,
     Date
   >
-  namespace zonedTimeToUtcWithOptions {
-
-  }
+  namespace zonedTimeToUtcWithOptions {}
 }
 
 declare module 'date-fns-tz/esm/fp/format' {
@@ -521,6 +565,16 @@ declare module 'date-fns-tz/esm/fp/utcToZonedTime' {
 declare module 'date-fns-tz/esm/fp/utcToZonedTimeWithOptions' {
   import { utcToZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
   export default utcToZonedTimeWithOptions
+}
+
+declare module 'date-fns-tz/esm/fp/zonedTimeToLocal' {
+  import { zonedTimeToLocal } from 'date-fns-tz/esm/fp'
+  export default zonedTimeToLocal
+}
+
+declare module 'date-fns-tz/esm/fp/zonedTimeToLocalWithOptions' {
+  import { zonedTimeToLocalWithOptions } from 'date-fns-tz/esm/fp'
+  export default zonedTimeToLocalWithOptions
 }
 
 declare module 'date-fns-tz/esm/fp/zonedTimeToUtc' {
@@ -563,6 +617,16 @@ declare module 'date-fns-tz/esm/fp/utcToZonedTimeWithOptions/index' {
   export default utcToZonedTimeWithOptions
 }
 
+declare module 'date-fns-tz/esm/fp/zonedTimeToLocal/index' {
+  import { zonedTimeToLocal } from 'date-fns-tz/esm/fp'
+  export default zonedTimeToLocal
+}
+
+declare module 'date-fns-tz/esm/fp/zonedTimeToLocalWithOptions/index' {
+  import { zonedTimeToLocalWithOptions } from 'date-fns-tz/esm/fp'
+  export default zonedTimeToLocalWithOptions
+}
+
 declare module 'date-fns-tz/esm/fp/zonedTimeToUtc/index' {
   import { zonedTimeToUtc } from 'date-fns-tz/esm/fp'
   export default zonedTimeToUtc
@@ -601,6 +665,16 @@ declare module 'date-fns-tz/esm/fp/utcToZonedTime/index.js' {
 declare module 'date-fns-tz/esm/fp/utcToZonedTimeWithOptions/index.js' {
   import { utcToZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
   export default utcToZonedTimeWithOptions
+}
+
+declare module 'date-fns-tz/esm/fp/zonedTimeToLocal/index.js' {
+  import { zonedTimeToLocal } from 'date-fns-tz/esm/fp'
+  export default zonedTimeToLocal
+}
+
+declare module 'date-fns-tz/esm/fp/zonedTimeToLocalWithOptions/index.js' {
+  import { zonedTimeToLocalWithOptions } from 'date-fns-tz/esm/fp'
+  export default zonedTimeToLocalWithOptions
 }
 
 declare module 'date-fns-tz/esm/fp/zonedTimeToUtc/index.js' {

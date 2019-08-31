@@ -8,6 +8,10 @@ export { default as utcToZonedTime } from './utcToZonedTime/index.js'
 export {
   default as utcToZonedTimeWithOptions
 } from './utcToZonedTimeWithOptions/index.js'
+export { default as zonedTimeToLocal } from './zonedTimeToLocal/index.js'
+export {
+  default as zonedTimeToLocalWithOptions
+} from './zonedTimeToLocalWithOptions/index.js'
 export { default as zonedTimeToUtc } from './zonedTimeToUtc/index.js'
 export {
   default as zonedTimeToUtcWithOptions
