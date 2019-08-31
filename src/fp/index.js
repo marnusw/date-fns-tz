@@ -7,6 +7,8 @@ module.exports = {
   toDateWithOptions: require('./toDateWithOptions/index.js'),
   utcToZonedTime: require('./utcToZonedTime/index.js'),
   utcToZonedTimeWithOptions: require('./utcToZonedTimeWithOptions/index.js'),
+  zonedTimeToLocal: require('./zonedTimeToLocal/index.js'),
+  zonedTimeToLocalWithOptions: require('./zonedTimeToLocalWithOptions/index.js'),
   zonedTimeToUtc: require('./zonedTimeToUtc/index.js'),
   zonedTimeToUtcWithOptions: require('./zonedTimeToUtcWithOptions/index.js')
 }

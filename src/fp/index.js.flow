@@ -63,6 +63,8 @@ declare module.exports: {
     Date | string | number,
     Date
   >,
+  zonedTimeToLocal: CurriedFn2<string, Date | string | number, Date>,
+  zonedTimeToLocalWithOptions: CurriedFn2<string, Date | string | number, Date>,
   zonedTimeToUtc: CurriedFn2<string, Date | string | number, Date>,
   zonedTimeToUtcWithOptions: CurriedFn3<
     OptionsWithTZ,

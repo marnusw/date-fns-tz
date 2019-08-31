@@ -21,6 +21,7 @@ make it into `date-fns` or at least contribute to the conversation and that this
 - [Time Zone Helpers](#time-zone-helpers)
     - [`zonedTimeToUtc`](#zonedtimetoutc) - Get the UTC date/time from a date representing local time in a given time zone
     - [`utcToZonedTime`](#utctozonedtime) - Get a date/time representing local time in a given time zone from the UTC date
+    - [`zonedTimeToLocal`](#zonedtimetolocal) - Get a local date/time from the given date with given time zone 
 - [Time Zone Formatting](#time-zone-formatting)
     - [`format`](#format) - Extends `date-fns/format` with full time zone support
     - [`toDate`](#todate) - Can be used to create a zoned Date from a string containing an offset or IANA time zone
@@ -92,6 +93,27 @@ const date = utcToZonedTime(isoDate, timeZone)    // In June 10am UTC is 6am in 
 
 renderDatePicker(date)          // 2014-06-25 06:00:00 (in the system time zone)
 renderTimeZoneSelect(timeZone)  // America/New_York
+```
+
+### `zonedTimeToLocal`
+
+**Get a date with the correct local time for the date/time in a specific time zone**
+
+```js
+zonedTimeToLocal(date: Date|Number|String, timeZone: String): Date
+```
+
+Say the server provided a Abidjan (UTC) date/time and a time zone which should be used to inform user, where user has timezone Asia/Makassar.
+
+```javascript
+import { zonedTimeToLocal } from 'date-fns-tz'
+
+const date = dateFromServer()   // e.g. 2019-08-30 08:00:00 
+const timeZone = timeZoneFromServer()   // e.g.Africa/Abidjan
+
+const localDate = zonedTimeToLocal(date, timeZone)   // In August 10am in Abidjan is 4pm Asia/Makassar
+
+viewDateTime(date)   // 2019-08-30 16:00:00
 ```
 
 ## Time Zone Formatting
