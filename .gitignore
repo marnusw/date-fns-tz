@@ -2,9 +2,10 @@
 .vscode
 .DS_Store
 
+tmp
 dist
 docs.json
-tmp/package
+coverage
 
 node_modules
 

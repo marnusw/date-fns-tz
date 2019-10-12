@@ -51,35 +51,27 @@ declare module 'date-fns-tz' {
     format: string,
     options?: OptionsWithTZ
   ): string
-  namespace format {
-
-  }
+  namespace format {}
 
   function toDate(
     argument: Date | string | number,
     options?: OptionsWithTZ
   ): Date
-  namespace toDate {
-
-  }
+  namespace toDate {}
 
   function utcToZonedTime(
     date: Date | string | number,
     timeZone: string,
     options?: OptionsWithTZ
   ): Date
-  namespace utcToZonedTime {
-
-  }
+  namespace utcToZonedTime {}
 
   function zonedTimeToUtc(
     date: Date | string | number,
     timeZone: string,
     options?: OptionsWithTZ
   ): Date
-  namespace zonedTimeToUtc {
-
-  }
+  namespace zonedTimeToUtc {}
 }
 
 declare module 'date-fns-tz/format' {
@@ -148,9 +140,7 @@ declare module 'date-fns-tz/fp' {
   import { OptionsWithTZ } from 'date-fns-tz'
 
   const format: CurriedFn2<string, Date | string | number, string>
-  namespace format {
-
-  }
+  namespace format {}
 
   const formatWithOptions: CurriedFn3<
     OptionsWithTZ,
@@ -158,28 +148,20 @@ declare module 'date-fns-tz/fp' {
     Date | string | number,
     string
   >
-  namespace formatWithOptions {
-
-  }
+  namespace formatWithOptions {}
 
   const toDate: CurriedFn1<Date | string | number, Date>
-  namespace toDate {
-
-  }
+  namespace toDate {}
 
   const toDateWithOptions: CurriedFn2<
     OptionsWithTZ,
     Date | string | number,
     Date
   >
-  namespace toDateWithOptions {
-
-  }
+  namespace toDateWithOptions {}
 
   const utcToZonedTime: CurriedFn2<string, Date | string | number, Date>
-  namespace utcToZonedTime {
-
-  }
+  namespace utcToZonedTime {}
 
   const utcToZonedTimeWithOptions: CurriedFn3<
     OptionsWithTZ,
@@ -187,14 +169,10 @@ declare module 'date-fns-tz/fp' {
     Date | string | number,
     Date
   >
-  namespace utcToZonedTimeWithOptions {
-
-  }
+  namespace utcToZonedTimeWithOptions {}
 
   const zonedTimeToUtc: CurriedFn2<string, Date | string | number, Date>
-  namespace zonedTimeToUtc {
-
-  }
+  namespace zonedTimeToUtc {}
 
   const zonedTimeToUtcWithOptions: CurriedFn3<
     OptionsWithTZ,
@@ -202,9 +180,7 @@ declare module 'date-fns-tz/fp' {
     Date | string | number,
     Date
   >
-  namespace zonedTimeToUtcWithOptions {
-
-  }
+  namespace zonedTimeToUtcWithOptions {}
 }
 
 declare module 'date-fns-tz/fp/format' {
@@ -337,35 +313,27 @@ declare module 'date-fns-tz/esm' {
     format: string,
     options?: OptionsWithTZ
   ): string
-  namespace format {
-
-  }
+  namespace format {}
 
   function toDate(
     argument: Date | string | number,
     options?: OptionsWithTZ
   ): Date
-  namespace toDate {
-
-  }
+  namespace toDate {}
 
   function utcToZonedTime(
     date: Date | string | number,
     timeZone: string,
     options?: OptionsWithTZ
   ): Date
-  namespace utcToZonedTime {
-
-  }
+  namespace utcToZonedTime {}
 
   function zonedTimeToUtc(
     date: Date | string | number,
     timeZone: string,
     options?: OptionsWithTZ
   ): Date
-  namespace zonedTimeToUtc {
-
-  }
+  namespace zonedTimeToUtc {}
 }
 
 declare module 'date-fns-tz/esm/format' {
@@ -434,9 +402,7 @@ declare module 'date-fns-tz/esm/fp' {
   import { OptionsWithTZ } from 'date-fns-tz'
 
   const format: CurriedFn2<string, Date | string | number, string>
-  namespace format {
-
-  }
+  namespace format {}
 
   const formatWithOptions: CurriedFn3<
     OptionsWithTZ,
@@ -444,28 +410,20 @@ declare module 'date-fns-tz/esm/fp' {
     Date | string | number,
     string
   >
-  namespace formatWithOptions {
-
-  }
+  namespace formatWithOptions {}
 
   const toDate: CurriedFn1<Date | string | number, Date>
-  namespace toDate {
-
-  }
+  namespace toDate {}
 
   const toDateWithOptions: CurriedFn2<
     OptionsWithTZ,
     Date | string | number,
     Date
   >
-  namespace toDateWithOptions {
-
-  }
+  namespace toDateWithOptions {}
 
   const utcToZonedTime: CurriedFn2<string, Date | string | number, Date>
-  namespace utcToZonedTime {
-
-  }
+  namespace utcToZonedTime {}
 
   const utcToZonedTimeWithOptions: CurriedFn3<
     OptionsWithTZ,
@@ -473,14 +431,10 @@ declare module 'date-fns-tz/esm/fp' {
     Date | string | number,
     Date
   >
-  namespace utcToZonedTimeWithOptions {
-
-  }
+  namespace utcToZonedTimeWithOptions {}
 
   const zonedTimeToUtc: CurriedFn2<string, Date | string | number, Date>
-  namespace zonedTimeToUtc {
-
-  }
+  namespace zonedTimeToUtc {}
 
   const zonedTimeToUtcWithOptions: CurriedFn3<
     OptionsWithTZ,
@@ -488,9 +442,7 @@ declare module 'date-fns-tz/esm/fp' {
     Date | string | number,
     Date
   >
-  namespace zonedTimeToUtcWithOptions {
-
-  }
+  namespace zonedTimeToUtcWithOptions {}
 }
 
 declare module 'date-fns-tz/esm/fp/format' {
