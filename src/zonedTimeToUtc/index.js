@@ -28,7 +28,7 @@ import toDate from '../toDate'
  */
 export default function zonedTimeToUtc(date, timeZone, options) {
   if (date instanceof Date) {
-    date = format(date, "yyyy-MM-dd'T'HH:mm:ss")
+    date = format(date, "yyyy-MM-dd'T'HH:mm:ss.SSS")
   }
   var extendedOptions = cloneObject(options)
   extendedOptions.timeZone = timeZone
