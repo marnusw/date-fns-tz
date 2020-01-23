@@ -4,6 +4,7 @@
 import assert from 'power-assert'
 import format from '.'
 import enGB from 'date-fns/locale/en-GB'
+import enUS from 'date-fns/locale/en-US'
 
 describe('format', function() {
   var date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123)
@@ -696,8 +697,10 @@ describe('format', function() {
     })
 
     it('Local date with specific non-location time zone', function() {
+      enUS.code = 'en-US'
       var result = format(date, 'yyyy-MM-dd HH:mm:ss zzz', {
-        timeZone: 'America/New_York'
+        timeZone: 'America/New_York',
+        locale: enUS
       })
       assert(result === dateAndTimeZoneAmericaNY)
     })
