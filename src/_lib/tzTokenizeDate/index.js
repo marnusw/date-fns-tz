@@ -43,16 +43,32 @@ function hackyOffset(dtf, date) {
 var dtfCache = {}
 function getDateTimeFormat(timeZone) {
   if (!dtfCache[timeZone]) {
-    dtfCache[timeZone] = new Intl.DateTimeFormat('en-US', {
-      hour12: false,
-      timeZone: timeZone,
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
-    })
+    // @see https://github.com/marnusw/date-fns-tz/issues/38
+    var isIE11 = !!window.MSInputMethodContext && !!document.documentMode
+    if (isIE11) {
+      dtfCache[timeZone] = new Intl.DateTimeFormat('en-US', {
+        hour12: false,
+        timeZone: timeZone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      })
+    } else {
+      dtfCache[timeZone] = new Intl.DateTimeFormat('en-US', {
+        // hour12: false,
+        hourCycle: 'h23',
+        timeZone: timeZone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      })
+    }
   }
   return dtfCache[timeZone]
 }
