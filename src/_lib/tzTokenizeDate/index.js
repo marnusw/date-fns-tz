@@ -44,8 +44,19 @@ var dtfCache = {}
 function getDateTimeFormat(timeZone) {
   if (!dtfCache[timeZone]) {
     // @see https://github.com/marnusw/date-fns-tz/issues/38
-    var isIE11 = !!window.MSInputMethodContext && !!document.documentMode
-    if (isIE11) {
+    var testDateTime = new Intl.DateTimeFormat('en-US', {
+      hour12: false,
+      timeZone: 'America/New_York',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    });
+
+    var testDateTimeFormatted = testDateTime.format(new Date("2014-06-25T04:00:00.123Z"))
+    if(testDateTimeFormatted === '06/25/2014, 00:00:00' || testDateTimeFormatted === '‎06‎/‎25‎/‎2014‎ ‎00‎:‎00‎:‎00') {
       dtfCache[timeZone] = new Intl.DateTimeFormat('en-US', {
         hour12: false,
         timeZone: timeZone,
@@ -59,7 +70,7 @@ function getDateTimeFormat(timeZone) {
     } else {
       dtfCache[timeZone] = new Intl.DateTimeFormat('en-US', {
         // hour12: false,
-        hourCycle: 'h23',
+        hourCycle: "h23",
         timeZone: timeZone,
         year: 'numeric',
         month: '2-digit',
