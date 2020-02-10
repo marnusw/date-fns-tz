@@ -1,3 +1,7 @@
+### v1.0.10 (10 February 2020)
+
+- [BUGFIX] Fix day wrapping when the result is midnight in new browsers supporting DTF `hourCycle` (#38, #41, #43).
+
 ### v1.0.9 (28 December 2019)
 
 - [DOCS] Improve the documentation, particularly on the usage of `format`.
