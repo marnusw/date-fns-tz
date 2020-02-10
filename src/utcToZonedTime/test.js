@@ -53,4 +53,15 @@ describe('utcToZonedTime', function() {
       '2014-06-25T10:00:00.123'
     )
   })
+
+  it('does not wrap to the following day when the result is midnight', function() {
+    var result = utcToZonedTime(
+      new Date('Thu Jan 23 2020 05:00:00 GMT+0000 (Greenwich Mean Time)'),
+      'America/New_York' // -5 hours
+    )
+    assert.equal(
+      format(result, "yyyy-MM-dd'T'HH:mm:ss.SSS"),
+      '2020-01-23T00:00:00.000'
+    )
+  })
 })
