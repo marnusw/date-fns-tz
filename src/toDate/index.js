@@ -156,7 +156,7 @@ export default function toDate(argument, dirtyOptions) {
     if (dateStrings.timezone || options.timeZone) {
       offset = tzParseTimezone(
         dateStrings.timezone || options.timeZone,
-        new Date(timestamp + time)
+        date
       )
       if (isNaN(offset)) {
         return new Date(NaN)

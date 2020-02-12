@@ -246,6 +246,13 @@ describe('toDate', function() {
         var result = toDate('2014-10-25T13:46:20 UTC')
         assert.deepEqual(result, new Date('2014-10-25T13:46:20Z'))
       })
+
+      it('uses the argument Date when determining offset', function() {
+        var result = toDate('2019-04-06T23:45:00', {
+          timeZone: 'Australia/Sydney'
+        })
+        assert.deepEqual(result, new Date('2019-04-06T12:45:00.000Z'))
+      })
     })
 
     describe('failure', function() {
