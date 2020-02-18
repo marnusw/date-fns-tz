@@ -64,4 +64,47 @@ describe('utcToZonedTime', function() {
       '2020-01-23T00:00:00.000'
     )
   })
+
+  it('conversion between DST dates should have no impact', function() {
+    var result = utcToZonedTime(
+      new Date('2019-10-27T06:00:00+00:00'),
+      'America/New_York' // -5 hours
+      );
+
+    assert.equal(
+      format(result, "yyyy-MM-dd'T'HH:mm:ss.SSS"),
+      '2019-10-27T02:00:00.000'
+    );
+
+
+    result = utcToZonedTime(
+      new Date('2019-10-27T03:00:00+00:00'),
+      'America/New_York' // -5 hours
+      );
+
+    assert.equal(
+      format(result, "yyyy-MM-dd'T'HH:mm:ss.SSS"),
+      '2019-10-26T23:00:00.000'
+    );
+
+    result = utcToZonedTime(
+      new Date('2020-10-25T03:00:00+00:00'),
+      'America/New_York' // -5 hours
+    );
+
+    assert.equal(
+      format(result, "yyyy-MM-dd'T'HH:mm:ss.SSS"),
+      '2020-10-24T23:00:00.000'
+    );
+
+    result = utcToZonedTime(
+      new Date('2020-03-29T03:00:00+00:00'),
+      'America/New_York' // -5 hours
+    );
+
+    assert.equal(
+      format(result, "yyyy-MM-dd'T'HH:mm:ss.SSS"),
+      '2020-03-28T23:00:00.000'
+    );
+  })
 })
