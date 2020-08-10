@@ -35,6 +35,13 @@ Libraries like Moment and Luxon, which provide their own date time classes, mana
 zone values internally. Sine `date-fns` always returns a plain JS Date, which implicitly has the current
 system's time zone, helper functions are provided for handling common time zone related use cases.
 
+<div align="center">
+  <i>date-fns-tz is sponsored by the following partner, please help to support us by taking a look.</i>
+  <a href="https://tracking.gitads.io/?repo=date-fns-tz">
+    <img src="https://images.gitads.io/date-fns-tz" alt="" />
+  </a>
+</div>
+
 ## Time Zone Helpers
 
 To discuss the usage of the time zone helpers let's assume we're writing a system where administrators set
