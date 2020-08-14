@@ -64,4 +64,39 @@ describe('utcToZonedTime', function() {
       '2020-01-23T00:00:00.000'
     )
   })
+
+  it('retuns the correct date/time during time change', function() {
+    // zoned time one day behind
+    var resultPDT = utcToZonedTime(
+      new Date('Sun Nov 1 2020 06:45:00 GMT-0000 (Greenwich Mean Time)'),
+      'America/Los_Angeles' // -7 hours
+    )
+
+    assert.equal(
+      format(resultPDT, "yyyy-MM-dd'T'HH:mm:ss.SSS"),
+      '2020-10-31T23:45:00.000'
+    )
+
+    // 15 mins before time switch
+    resultPDT = utcToZonedTime(
+      new Date('Sun Nov 1 2020 08:45:00 GMT-0000 (Greenwich Mean Time)'),
+      'America/Los_Angeles' // -7 hours
+    )
+
+    assert.equal(
+      format(resultPDT, "yyyy-MM-dd'T'HH:mm:ss.SSS"),
+      '2020-11-01T01:45:00.000'
+    )
+
+    // 15 mins after time switch
+    var resultPST = utcToZonedTime(
+      new Date('Sun Nov 1 2020 09:45:00 GMT-0000 (Greenwich Mean Time)'),
+      'America/Los_Angeles' // -8 hours
+    )
+
+    assert.equal(
+      format(resultPST, "yyyy-MM-dd'T'HH:mm:ss.SSS"),
+      '2020-11-01T01:45:00.000'
+    )
+  })
 })
