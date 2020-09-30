@@ -159,7 +159,8 @@ function config(config) {
       ? travisLaunchers
       : localLaunchers,
     browsers: getBrowsersConfig(),
-    reporters: getReportersConfig()
+    reporters: getReportersConfig(),
+    singleRun: true
   })
 }
 
