@@ -18,6 +18,14 @@ describe('zonedTimeToUtc', function() {
     assert.deepEqual(result.toISOString(), '2014-06-25T17:00:00.123Z')
   })
 
+  it('returns the UTC time of the date near DST changeover with IANA tz', function() {
+    var result = zonedTimeToUtc(
+      '2020-10-03T17:00:00.000',
+      'Australia/Melbourne'
+    )
+    assert.deepEqual(result.toISOString(), '2020-10-03T07:00:00.000Z')
+  })
+
   it('returns the UTC time of the date for a UTC input', function() {
     var result = zonedTimeToUtc(new Date(2014, 5, 25, 10, 0, 0, 123), 'UTC')
     assert.deepEqual(result.toISOString(), '2014-06-25T10:00:00.123Z')
