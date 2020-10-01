@@ -45,4 +45,90 @@ describe('zonedTimeToUtc', function() {
     var result = zonedTimeToUtc(new Date(2014, 5, 25, 10, 0, 0, 123), 'Z')
     assert.deepEqual(result.toISOString(), '2014-06-25T10:00:00.123Z')
   })
+
+  describe('near DST changeover (AEST to AEDT)', function() {
+    it('zoned time one day before', function() {
+      var result = zonedTimeToUtc(
+        new Date('2020-10-03T17:00:00.000'),
+        'Australia/Melbourne' // +10 hours
+      )
+
+      assert.deepEqual(result.toISOString(), '2020-10-03T07:00:00.000Z')
+    })
+
+    it('zoned time less than one day before', function() {
+      var result = zonedTimeToUtc(
+        new Date('2020-10-03T21:00:00.000'),
+        'Australia/Melbourne' // +10 hours
+      )
+
+      assert.deepEqual(result.toISOString(), '2020-10-03T11:00:00.000Z')
+    })
+
+    it('zoned time some time before', function() {
+      var result = zonedTimeToUtc(
+        new Date('2020-10-03T23:45:00.000'),
+        'Australia/Melbourne' // +10 hours
+      )
+
+      assert.deepEqual(result.toISOString(), '2020-10-03T13:45:00.000Z')
+    })
+
+    // these tests all erroneously apply -11 hours, not -10
+    it.skip('zoned time at the stroke of midnight before', function() {
+      var result = zonedTimeToUtc(
+        new Date('2020-10-04T00:00:00.000'),
+        'Australia/Melbourne' // +10 hours
+      )
+
+      assert.deepEqual(result.toISOString(), '2020-10-03T14:00:00.000Z')
+    })
+
+    // these tests all erroneously apply -11 hours, not -10
+    it.skip('zoned time 1 hour 15 minutes before', function() {
+      var result = zonedTimeToUtc(
+        new Date('2020-10-04T00:45:00.000'),
+        'Australia/Melbourne' // +10 hours
+      )
+
+      assert.deepEqual(result.toISOString(), '2020-10-03T14:45:00.000Z')
+    })
+
+    // these tests all erroneously apply -11 hours, not -10
+    it.skip('zoned time 15 minutes before', function() {
+      var result = zonedTimeToUtc(
+        new Date('2020-10-04T01:45:00.000'),
+        'Australia/Melbourne' // +10 hours
+      )
+
+      assert.deepEqual(result.toISOString(), '2020-10-03T15:45:00.000Z')
+    })
+
+    it('zoned time 15 minutes after', function() {
+      var result = zonedTimeToUtc(
+        new Date('2020-10-04T03:15:00.000'),
+        'Australia/Melbourne' // +11 hours
+      )
+
+      assert.deepEqual(result.toISOString(), '2020-10-03T16:15:00.000Z')
+    })
+
+    it('zoned time 1 hour 15 minutes after', function() {
+      var result = zonedTimeToUtc(
+        new Date('2020-10-04T04:15:00.000'),
+        'Australia/Melbourne' // +11 hours
+      )
+
+      assert.deepEqual(result.toISOString(), '2020-10-03T17:15:00.000Z')
+    })
+
+    it('zoned time one day after', function() {
+      var result = zonedTimeToUtc(
+        new Date('2020-10-04T11:00:00.000'),
+        'Australia/Melbourne' // +11 hours
+      )
+
+      assert.deepEqual(result.toISOString(), '2020-10-04T00:00:00.000Z')
+    })
+  })
 })
