@@ -32,7 +32,7 @@ In this case there are two relevant pieces of information:
  - the time zone descriptor, usually an offset or IANA time zone name (e.g. `America/New_York`).
 
 Libraries like Moment and Luxon, which provide their own date time classes, manage these timestamp and time
-zone values internally. Sine `date-fns` always returns a plain JS Date, which implicitly has the current
+zone values internally. Since `date-fns` always returns a plain JS Date, which implicitly has the current
 system's time zone, helper functions are provided for handling common time zone related use cases.
 
 ## Time Zone Helpers
