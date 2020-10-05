@@ -1,3 +1,8 @@
+### v1.0.11 (5 October 2020)
+
+- [BUGFIX] Fix uctToZonedTime during timezone changes (#80).
+- [BUGFIX] Fix `toDate` using the UTC timestamp for determining offset (#46).
+
 ### v1.0.10 (10 February 2020)
 
 - [BUGFIX] Fix day wrapping when the result is midnight in new browsers supporting DTF `hourCycle` (#38, #41, #43).
