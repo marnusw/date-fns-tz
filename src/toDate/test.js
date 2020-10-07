@@ -287,6 +287,56 @@ describe('toDate', function() {
             'Australia/Sydney',
             '2019-04-06T23:45:00',
             new Date('2019-04-06T12:45:00.000Z')
+          ],
+          [
+            'Australia/Sydney',
+            '2020-04-05T01:00:00',
+            new Date('2020-04-05T01:00:00+11:00')
+          ],
+          [
+            'Australia/Sydney',
+            '2020-04-05T02:00:00',
+            new Date('2020-04-05T02:00:00+10:00')
+          ],
+          [
+            'Australia/Sydney',
+            '2020-04-05T03:00:00',
+            new Date('2020-04-05T03:00:00+10:00')
+          ],
+          [
+            'Australia/Sydney',
+            '2020-10-04T01:00:00',
+            new Date('2020-10-04T01:00:00+10:00')
+          ],
+          [
+            'Australia/Sydney',
+            '2020-10-04T02:00:00',
+            new Date('2020-10-04T02:00:00+10:00')
+          ],
+          [
+            'Australia/Sydney',
+            '2020-10-04T03:00:00',
+            new Date('2020-10-04T03:00:00+11:00')
+          ],
+          [
+            'America/New_York',
+            '2020-03-08T01:00:00',
+            new Date('2020-03-08T01:00:00-05:00')
+          ],
+          [
+            'America/New_York',
+            '2020-03-08T03:00:00',
+            new Date('2020-03-08T03:00:00-04:00')
+          ],
+          [
+            'America/New_York',
+            '2020-11-01T01:00:00',
+            new Date('2020-11-01T01:00:00-04:00')
+          ],
+          [
+            'America/New_York',
+            '2020-11-01T03:00:00',
+            new Date('2020-11-01T03:00:00-05:00')
           ]
         ].forEach(([timeZone, dateStr, expectedDate]) => {
           assert.deepEqual(toDate(dateStr, { timeZone }), expectedDate)
