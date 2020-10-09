@@ -1,3 +1,7 @@
+### v1.0.12 (9 October 2020)
+
+- [BUGFIX] Improve the #46 fix for `toDate` using the UTC timestamp for determining offset (#86).
+
 ### v1.0.11 (5 October 2020)
 
 - [BUGFIX] Fix uctToZonedTime during timezone changes (#80).
