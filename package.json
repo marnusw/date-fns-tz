@@ -27,8 +27,10 @@
   },
   "lint-staged": {
     "*.js": [
-      "prettier --write",
-      "git add"
+      "eslint"
+    ],
+    "*.{js,json,md}": [
+      "prettier --write"
     ]
   },
   "peerDependencies": {
@@ -44,18 +46,18 @@
     "@babel/plugin-transform-modules-commonjs": "^7.5.0",
     "@babel/plugin-transform-parameters": "^7.4.4",
     "@babel/plugin-transform-template-literals": "^7.4.4",
-    "@typescript-eslint/eslint-plugin": "^2.3.3",
-    "@typescript-eslint/parser": "^2.3.3",
+    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "@typescript-eslint/parser": "^4.4.0",
     "babel-eslint": "^10.0.2",
-    "babel-loader": "8.0.6",
+    "babel-loader": "^8.0.6",
     "babel-plugin-add-module-exports": "^1.0.2",
     "babel-preset-power-assert": "^3.0.0",
-    "date-fns": "latest",
-    "eslint": "^6.5.1",
+    "date-fns": "^2.16.1",
+    "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.4.0",
-    "flow-bin": "^0.109.0",
+    "flow-bin": "^0.136.0",
     "fs-promise": "^2.0.3",
-    "husky": "^3.0.8",
+    "husky": "^4.3.0",
     "jsdoc-to-markdown": "leshakoss/jsdoc-to-markdown",
     "json-loader": "^0.5.3",
     "karma": "^3.1.4",
@@ -68,7 +70,7 @@
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-sourcemap-loader": "^0.3.5",
     "karma-webpack": "^4.0.2",
-    "lint-staged": "^9.4.2",
+    "lint-staged": "^10.4.0",
     "lodash": "^4.17.15",
     "lodash.clonedeep": "^4.5.0",
     "mocha": "^6.2.1",
