@@ -30,4 +30,23 @@ describe('tzParseTimezone', function() {
     assert.equal(tzParseTimezone('America/New_York', date), 240 * 60 * 1000)
     assert.equal(tzParseTimezone('Europe/Paris', date), -120 * 60 * 1000)
   })
+
+  describe('near DST changeover (AEST to AEDT)', function() {
+    // these tests erroneously get -11 hours, not -10
+    it.skip('one day before', function() {
+      var date = new Date('2020-10-04T00:45:00.000')
+      assert.equal(tzParseTimezone('Australia/Melbourne', date), -10 * 60 * 60 * 1000)
+    })
+
+    // these tests erroneously get -11 hours, not -10
+    it.skip('15 minutes before', function() {
+      var date = new Date('2020-10-04T01:45:00.000')
+      assert.equal(tzParseTimezone('Australia/Melbourne', date), -10 * 60 * 60 * 1000)
+    })
+
+    it('15 minutes after', function() {
+      var date = new Date('2020-10-04T03:15:00.000')
+      assert.equal(tzParseTimezone('Australia/Melbourne', date), -11 * 60 * 60 * 1000)
+    })
+  })
 })
