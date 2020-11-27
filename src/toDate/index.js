@@ -161,13 +161,6 @@ export default function toDate(argument, dirtyOptions) {
       if (isNaN(offset)) {
         return new Date(NaN)
       }
-      offset = tzParseTimezone(
-        dateStrings.timezone || options.timeZone,
-        new Date(timestamp + time + offset)
-      )
-      if (isNaN(offset)) {
-        return new Date(NaN)
-      }
     } else {
       // get offset accurate to hour in timezones that change offset
       offset = getTimezoneOffsetInMilliseconds(new Date(timestamp + time))

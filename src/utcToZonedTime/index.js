@@ -1,5 +1,4 @@
 import tzParseTimezone from '../_lib/tzParseTimezone'
-import subMilliseconds from 'date-fns/subMilliseconds'
 import toDate from '../toDate'
 
 /**
@@ -29,20 +28,19 @@ import toDate from '../toDate'
 export default function utcToZonedTime(dirtyDate, timeZone, options) {
   var date = toDate(dirtyDate, options)
 
-  // This date has the UTC time values of the input date at the system time zone
-  var utcDate = new Date(
-    date.getUTCFullYear(),
-    date.getUTCMonth(),
-    date.getUTCDate(),
-    date.getUTCHours(),
-    date.getUTCMinutes(),
-    date.getUTCSeconds(),
-    date.getUTCMilliseconds()
-  )
-  // We just need to apply the offset indicated by the time zone to this localized date
-  var offsetMilliseconds = tzParseTimezone(timeZone, utcDate)
+  var offsetMilliseconds = tzParseTimezone(timeZone, date, true) || 0
 
-  return offsetMilliseconds
-    ? subMilliseconds(utcDate, offsetMilliseconds)
-    : utcDate
+  var d = new Date(date.getTime() - offsetMilliseconds)
+
+  var zonedTime = new Date(
+    d.getUTCFullYear(),
+    d.getUTCMonth(),
+    d.getUTCDate(),
+    d.getUTCHours(),
+    d.getUTCMinutes(),
+    d.getUTCSeconds(),
+    d.getUTCMilliseconds()
+  )
+
+  return zonedTime
 }
