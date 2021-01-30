@@ -321,13 +321,10 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
   var matches = formatStr.match(tzFormattingTokensRegExp)
   if (matches) {
     var date = toDate(dirtyDate, options)
-    formatStr = matches.reduce(function(result, token) {
+    formatStr = matches.reduce(function (result, token) {
       return token[0] === "'"
         ? result
-        : result.replace(
-            token,
-            "'" + formatters[token[0]](date, token, null, options) + "'"
-          )
+        : result.replace(token, "'" + formatters[token[0]](date, token, null, options) + "'")
     }, formatStr)
   }
 

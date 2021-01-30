@@ -17,9 +17,9 @@ const generatedAutomaticallyMessage =
 const FP_DIR = './src/fp'
 
 const fpFns = Object.keys(jsDocs)
-  .map(category => jsDocs[category])
+  .map((category) => jsDocs[category])
   .reduce((previousValue, newValue) => [...previousValue, ...newValue], [])
-  .filter(doc => doc.kind === 'function' && doc.isFPFn)
+  .filter((doc) => doc.kind === 'function' && doc.isFPFn)
 
 buildFP(fpFns)
 

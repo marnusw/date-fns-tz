@@ -16,14 +16,8 @@ type OptionsWithTZ = {
   awareOfUnicodeTokens?: boolean,
 }
 
-declare module.exports: {
-  format: (date: Date | string | number, format: string, options?: OptionsWithTZ) => string,
+type CurriedFn1<A, R> = <A>(a: A) => R
 
-  getTimezoneOffset: (timeZone: string, date?: Date | number) => number,
+type CurriedFn2<A, B, R> = <A>(a: A) => CurriedFn1<B, R> | (<A, B>(a: A, b: B) => R)
 
-  toDate: (argument: Date | string | number, options?: OptionsWithTZ) => Date,
-
-  utcToZonedTime: (date: Date | string | number, timeZone: string, options?: OptionsWithTZ) => Date,
-
-  zonedTimeToUtc: (date: Date | string | number, timeZone: string, options?: OptionsWithTZ) => Date,
-}
+declare module.exports: CurriedFn2<Date | number, string, number>

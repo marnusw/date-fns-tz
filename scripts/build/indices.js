@@ -25,15 +25,12 @@ writeFile('src/esm/index.js', generateESMIndex(fns))
 writeFile('src/esm/fp/index.js', generateESMIndex(fpFns))
 
 function writeFile(relativePath, content) {
-  return fs.writeFileSync(
-    path.resolve(process.cwd(), relativePath),
-    prettier(content)
-  )
+  return fs.writeFileSync(path.resolve(process.cwd(), relativePath), prettier(content))
 }
 
 function generateIndex(files) {
   const propertyRequireLines = files.map(
-    fn => `  ${fn.name}: require('${fn.path.replace(/\.js$/, '')}/index.js')`
+    (fn) => `  ${fn.name}: require('${fn.path.replace(/\.js$/, '')}/index.js')`
   )
 
   const indexLines = [generatedAutomaticallyMessage]
@@ -48,17 +45,10 @@ function generateIndex(files) {
 
 function generateESMIndex(files) {
   const fileLines = files.map(
-    fn =>
-      `export { default as ${fn.name} } from '${fn.path.replace(
-        /\.js$/,
-        ''
-      )}/index.js'`
+    (fn) => `export { default as ${fn.name} } from '${fn.path.replace(/\.js$/, '')}/index.js'`
   )
 
-  const indexLines = [generatedAutomaticallyMessage]
-    .concat('')
-    .concat(fileLines)
-    .join('\n')
+  const indexLines = [generatedAutomaticallyMessage].concat('').concat(fileLines).join('\n')
 
   return `${indexLines}\n`
 }

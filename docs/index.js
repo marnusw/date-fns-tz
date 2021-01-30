@@ -19,14 +19,14 @@ module.exports = {
     'Quarter Helpers',
     'Year Helpers',
     'ISO Week-Numbering Year Helpers',
-    'Decade Helpers'
+    'Decade Helpers',
   ],
 
   staticDocs: [],
 
   sharedDocs: [
     {
-      fullPath: path.join(__dirname, 'OptionsWithTZ.js')
-    }
-  ]
+      fullPath: path.join(__dirname, 'OptionsWithTZ.js'),
+    },
+  ],
 }

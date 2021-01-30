@@ -2,20 +2,19 @@ const flowHeader = '// @flow'
 const generatedAutomaticallyMessage =
   "// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it."
 
-const id = x => x
+const id = (x) => x
 
-const trimLeft = string => string.replace(/^\s*/, '')
+const trimLeft = (string) => string.replace(/^\s*/, '')
 
-const trimRight = string => string.replace(/\s*$/, '')
+const trimRight = (string) => string.replace(/\s*$/, '')
 
 const removeIndent = (string, indent) => {
   return trimLeft(string.slice(0, indent)) + string.slice(indent)
 }
 
-const addIndent = (string, indent) =>
-  string.length > 0 ? ' '.repeat(indent) + string : string
+const addIndent = (string, indent) => (string.length > 0 ? ' '.repeat(indent) + string : string)
 
-const detectIndent = string => {
+const detectIndent = (string) => {
   const matchResult = string.match(/^\n*(\s+)/)
   const indent = matchResult ? matchResult[1].length : 0
   return indent
@@ -24,18 +23,12 @@ const detectIndent = string => {
 const addIndentToMultilineString = (string, indent, ignoreFirstLine) =>
   string
     .split('\n')
-    .map((line, index) =>
-      ignoreFirstLine && index === 0 ? line : addIndent(line, indent)
-    )
+    .map((line, index) => (ignoreFirstLine && index === 0 ? line : addIndent(line, indent)))
     .join('\n')
 
 const addIndentToArray = (array, indent, ignoreFirstElement) =>
   array.map((element, index) =>
-    addIndentToMultilineString(
-      element,
-      indent,
-      ignoreFirstElement && index === 0
-    )
+    addIndentToMultilineString(element, indent, ignoreFirstElement && index === 0)
   )
 
 const removeIndentFromArray = (array, indent, ignoreFirstElement) =>
@@ -89,11 +82,7 @@ const formatBlock = (rawStrings, ...substitutions) => {
       const maybeTrimRight = index === substitutions.length ? trimRight : id
       const string = maybeTrimLeft(maybeTrimRight(rawString))
 
-      const lines = removeIndentFromArray(
-        string.split('\n'),
-        firstLineIndent,
-        true
-      )
+      const lines = removeIndentFromArray(string.split('\n'), firstLineIndent, true)
 
       if (lines.length > 1) {
         const lastLine = lines[lines.length - 1]
@@ -140,5 +129,5 @@ module.exports = {
   addSeparator,
   formatBlock,
   formatFlowFile,
-  formatTypeScriptFile
+  formatTypeScriptFile,
 }

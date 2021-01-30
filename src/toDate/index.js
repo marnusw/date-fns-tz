@@ -16,13 +16,13 @@ var patterns = {
   YYY: [
     /^([+-]\d{2})$/, // 0 additional digits
     /^([+-]\d{3})$/, // 1 additional digit
-    /^([+-]\d{4})$/ // 2 additional digits
+    /^([+-]\d{4})$/, // 2 additional digits
   ],
   YYYY: /^(\d{4})/,
   YYYYY: [
     /^([+-]\d{4})/, // 0 additional digits
     /^([+-]\d{5})/, // 1 additional digit
-    /^([+-]\d{6})/ // 2 additional digits
+    /^([+-]\d{6})/, // 2 additional digits
   ],
 
   // date tokens
@@ -37,7 +37,7 @@ var patterns = {
   HHMMSS: /^(\d{2}):?(\d{2}):?(\d{2}([.,]\d*)?)$/,
 
   // timezone tokens (to identify the presence of a tz)
-  timezone: /([Z+-].*| UTC|(?:[a-zA-Z]+\/[a-zA-Z_]+(?:\/[a-zA-Z_]+)?))$/
+  timezone: /([Z+-].*| UTC|(?:[a-zA-Z]+\/[a-zA-Z_]+(?:\/[a-zA-Z_]+)?))$/,
 }
 
 /**
@@ -83,9 +83,7 @@ var patterns = {
  */
 export default function toDate(argument, dirtyOptions) {
   if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
+    throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
   }
 
   if (argument === null) {
@@ -98,19 +96,14 @@ export default function toDate(argument, dirtyOptions) {
     options.additionalDigits == null
       ? DEFAULT_ADDITIONAL_DIGITS
       : toInteger(options.additionalDigits)
-  if (
-    additionalDigits !== 2 &&
-    additionalDigits !== 1 &&
-    additionalDigits !== 0
-  ) {
+  if (additionalDigits !== 2 && additionalDigits !== 1 && additionalDigits !== 0) {
     throw new RangeError('additionalDigits must be 0, 1 or 2')
   }
 
   // Clone the date
   if (
     argument instanceof Date ||
-    (typeof argument === 'object' &&
-      Object.prototype.toString.call(argument) === '[object Date]')
+    (typeof argument === 'object' && Object.prototype.toString.call(argument) === '[object Date]')
   ) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(argument.getTime())
@@ -121,8 +114,7 @@ export default function toDate(argument, dirtyOptions) {
     return new Date(argument)
   } else if (
     !(
-      typeof argument === 'string' ||
-      Object.prototype.toString.call(argument) === '[object String]'
+      typeof argument === 'string' || Object.prototype.toString.call(argument) === '[object String]'
     )
   ) {
     return new Date(NaN)
@@ -154,10 +146,7 @@ export default function toDate(argument, dirtyOptions) {
     }
 
     if (dateStrings.timezone || options.timeZone) {
-      offset = tzParseTimezone(
-        dateStrings.timezone || options.timeZone,
-        new Date(timestamp + time)
-      )
+      offset = tzParseTimezone(dateStrings.timezone || options.timeZone, new Date(timestamp + time))
       if (isNaN(offset)) {
         return new Date(NaN)
       }
@@ -171,9 +160,7 @@ export default function toDate(argument, dirtyOptions) {
     } else {
       // get offset accurate to hour in timezones that change offset
       offset = getTimezoneOffsetInMilliseconds(new Date(timestamp + time))
-      offset = getTimezoneOffsetInMilliseconds(
-        new Date(timestamp + time + offset)
-      )
+      offset = getTimezoneOffsetInMilliseconds(new Date(timestamp + time + offset))
     }
 
     return new Date(timestamp + time + offset)
@@ -225,7 +212,7 @@ function parseYear(dateString, additionalDigits) {
     var yearString = token[1]
     return {
       year: parseInt(yearString, 10),
-      restDateString: dateString.slice(yearString.length)
+      restDateString: dateString.slice(yearString.length),
     }
   }
 
@@ -235,13 +222,13 @@ function parseYear(dateString, additionalDigits) {
     var centuryString = token[1]
     return {
       year: parseInt(centuryString, 10) * 100,
-      restDateString: dateString.slice(centuryString.length)
+      restDateString: dateString.slice(centuryString.length),
     }
   }
 
   // Invalid ISO-formatted year
   return {
-    year: null
+    year: null,
   }
 }
 
@@ -362,9 +349,7 @@ function parseTime(timeString) {
       return NaN
     }
 
-    return (
-      (hours % 24) * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
-    )
+    return (hours % 24) * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
   }
 
   // hh:mm:ss or hhmmss
@@ -378,11 +363,7 @@ function parseTime(timeString) {
       return NaN
     }
 
-    return (
-      (hours % 24) * MILLISECONDS_IN_HOUR +
-      minutes * MILLISECONDS_IN_MINUTE +
-      seconds * 1000
-    )
+    return (hours % 24) * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE + seconds * 1000
   }
 
   // Invalid ISO-formatted time

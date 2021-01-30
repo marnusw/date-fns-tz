@@ -8,7 +8,7 @@ var patterns = {
   timezoneZ: /^(Z)$/,
   timezoneHH: /^([+-])(\d{2})$/,
   timezoneHHMM: /^([+-])(\d{2}):?(\d{2})$/,
-  timezoneIANA: /(UTC|(?:[a-zA-Z]+\/[a-zA-Z_]+(?:\/[a-zA-Z_]+)?))$/
+  timezoneIANA: /(UTC|(?:[a-zA-Z]+\/[a-zA-Z_]+(?:\/[a-zA-Z_]+)?))$/,
 }
 
 // Parse various time zone offset formats to an offset in milliseconds
@@ -47,26 +47,19 @@ export default function tzParseTimezone(timezoneString, date) {
       return NaN
     }
 
-    absoluteOffset =
-      hours * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
+    absoluteOffset = hours * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
     return token[1] === '+' ? -absoluteOffset : absoluteOffset
   }
 
   // IANA time zone
   token = patterns.timezoneIANA.exec(timezoneString)
   if (token) {
+    date = new Date(date || Date.now())
+    date.setMilliseconds(0)
     // var [fYear, fMonth, fDay, fHour, fMinute, fSecond] = tzTokenizeDate(date, timezoneString)
     var tokens = tzTokenizeDate(date, timezoneString)
-    var asUTC = Date.UTC(
-      tokens[0],
-      tokens[1] - 1,
-      tokens[2],
-      tokens[3],
-      tokens[4],
-      tokens[5]
-    )
-    var timestampWithMsZeroed = date.getTime() - (date.getTime() % 1000)
-    return -(asUTC - timestampWithMsZeroed)
+    var asUTC = Date.UTC(tokens[0], tokens[1] - 1, tokens[2], tokens[3], tokens[4], tokens[5])
+    return -(asUTC - date.getTime())
   }
 
   return 0

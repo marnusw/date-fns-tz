@@ -5,7 +5,7 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    es6: true
+    es6: true,
   },
   rules: {
     '@typescript-eslint/indent': ['off'],
@@ -20,12 +20,12 @@ module.exports = {
       'error',
       {
         multiline: {
-          delimiter: 'none'
+          delimiter: 'none',
         },
         singleline: {
-          delimiter: 'semi'
-        }
-      }
-    ]
-  }
+          delimiter: 'semi',
+        },
+      },
+    ],
+  },
 }

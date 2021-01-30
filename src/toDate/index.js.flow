@@ -13,10 +13,7 @@ type OptionsWithTZ = {
   addSuffix?: boolean,
   unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
   roundingMethod?: 'floor' | 'ceil' | 'round',
-  awareOfUnicodeTokens?: boolean
+  awareOfUnicodeTokens?: boolean,
 }
 
-declare module.exports: (
-  argument: Date | string | number,
-  options?: OptionsWithTZ
-) => Date
+declare module.exports: (argument: Date | string | number, options?: OptionsWithTZ) => Date

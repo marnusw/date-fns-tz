@@ -1,8 +1,8 @@
 import assert from 'power-assert'
 import tzIntlTimeZoneName from '.'
 
-describe('tzIntlTimeZoneName', function() {
-  it('returns the short time zone name', function() {
+describe('tzIntlTimeZoneName', function () {
+  it('returns the short time zone name', function () {
     var date = new Date('2014-10-25T13:46:20Z')
     var timeZone = 'Europe/Paris'
     var result = tzIntlTimeZoneName('short', date, { timeZone })
@@ -10,7 +10,7 @@ describe('tzIntlTimeZoneName', function() {
     // When no locale is specified the system locale is used
     var expectedResult = Intl.DateTimeFormat(undefined, {
       timeZone,
-      timeZoneName: 'short'
+      timeZoneName: 'short',
     })
       .format(date)
       .match(/ [\w-+ ]+$/)[0]
@@ -19,7 +19,7 @@ describe('tzIntlTimeZoneName', function() {
     assert.equal(result, expectedResult)
   })
 
-  it('returns year through second tokens of the local date in the time zone', function() {
+  it('returns year through second tokens of the local date in the time zone', function () {
     var date = new Date('2014-10-25T13:46:20Z')
     var timeZone = 'Europe/Paris'
     var result = tzIntlTimeZoneName('long', date, { timeZone })
@@ -27,7 +27,7 @@ describe('tzIntlTimeZoneName', function() {
     // When no locale is specified the system locale is used
     var expectedResult = Intl.DateTimeFormat(undefined, {
       timeZone,
-      timeZoneName: 'long'
+      timeZoneName: 'long',
     })
       .format(date)
       .match(/ [\w-+ ]+$/)[0]
@@ -36,7 +36,7 @@ describe('tzIntlTimeZoneName', function() {
     assert.equal(result, expectedResult)
   })
 
-  it('returns the short time zone name in the specified locale', function() {
+  it('returns the short time zone name in the specified locale', function () {
     var locale = { code: 'en-GB' }
     var date = new Date('2014-10-25T13:46:20Z')
     var timeZone = 'Europe/Paris'
@@ -44,7 +44,7 @@ describe('tzIntlTimeZoneName', function() {
     assert.equal(result, 'CEST')
   })
 
-  it('returns year through second tokens of the local date in the time zone', function() {
+  it('returns year through second tokens of the local date in the time zone', function () {
     var locale = { code: 'en-GB' }
     var date = new Date('2014-10-25T13:46:20Z')
     var timeZone = 'Europe/Paris'

@@ -13,11 +13,11 @@ time zone offsets such as '-0200' or '+04:00' and not IANA time zone names.
 
 - [Overview](#overview)
 - [Time Zone Helpers](#time-zone-helpers)
-    - [`zonedTimeToUtc`](#zonedtimetoutc) - Given a date and any time zone, returns a `Date` with the equivalent UTC time
-    - [`utcToZonedTime`](#utctozonedtime) - Get a date/time representing local time in a given time zone from the UTC date
+  - [`zonedTimeToUtc`](#zonedtimetoutc) - Given a date and any time zone, returns a `Date` with the equivalent UTC time
+  - [`utcToZonedTime`](#utctozonedtime) - Get a date/time representing local time in a given time zone from the UTC date
 - [Time Zone Formatting](#time-zone-formatting)
-    - [`format`](#format) - Extends `date-fns/format` with full time zone support
-    - [`toDate`](#todate) - Can be used to create a zoned Date from a string containing an offset or IANA time zone
+  - [`format`](#format) - Extends `date-fns/format` with full time zone support
+  - [`toDate`](#todate) - Can be used to create a zoned Date from a string containing an offset or IANA time zone
 - [Usage with Node.js](#usage-with-nodejs)
 
 ## Overview
@@ -28,8 +28,9 @@ time zone's local time, other than the current system's, like on a Node server o
 of an event in a specific time zone, like an event in LA at 8pm PST regardless of where a user resides.
 
 In this case there are two relevant pieces of information:
- - a fixed moment in time in the form of a timestamp, UTC or ISO date string, and
- - the time zone descriptor, usually an offset or IANA time zone name (e.g. `America/New_York`).
+
+- a fixed moment in time in the form of a timestamp, UTC or ISO date string, and
+- the time zone descriptor, usually an offset or IANA time zone name (e.g. `America/New_York`).
 
 Libraries like Moment and Luxon, which provide their own date time classes, manage these timestamp and time
 zone values internally. Since `date-fns` always returns a plain JS Date, which implicitly has the current
@@ -58,10 +59,10 @@ In order to work with this info effectively it is necessary to find the equivale
 ```javascript
 import { zonedTimeToUtc } from 'date-fns-tz'
 
-const date = getDatePickerValue()     // e.g. 2014-06-25 10:00:00 (picked in any time zone)
-const timeZone = getTimeZoneValue()   // e.g. America/Los_Angeles
+const date = getDatePickerValue() // e.g. 2014-06-25 10:00:00 (picked in any time zone)
+const timeZone = getTimeZoneValue() // e.g. America/Los_Angeles
 
-const utcDate = zonedTimeToUtc(date, timeZone)  // In June 10am in Los Angeles is 5pm UTC
+const utcDate = zonedTimeToUtc(date, timeZone) // In June 10am in Los Angeles is 5pm UTC
 
 postToServer(utcDate.toISOString(), timeZone) // post 2014-06-25T17:00:00.000Z, America/Los_Angeles
 ```
@@ -81,12 +82,40 @@ must be that of the target time zone.
 ```javascript
 import { utcToZonedTime } from 'date-fns-tz'
 
-const { isoDate, timeZone } = fetchInitialValues()  // 2014-06-25T10:00:00.000Z, America/New_York
+const { isoDate, timeZone } = fetchInitialValues() // 2014-06-25T10:00:00.000Z, America/New_York
 
-const date = utcToZonedTime(isoDate, timeZone)    // In June 10am UTC is 6am in New York (-04:00)
+const date = utcToZonedTime(isoDate, timeZone) // In June 10am UTC is 6am in New York (-04:00)
 
-renderDatePicker(date)          // 2014-06-25 06:00:00 (in the system time zone)
-renderTimeZoneSelect(timeZone)  // America/New_York
+renderDatePicker(date) // 2014-06-25 06:00:00 (in the system time zone)
+renderTimeZoneSelect(timeZone) // America/New_York
+```
+
+### `getTimezoneOffset`
+
+**Gets the offset in milliseconds between the time zone and UTC time**
+
+```js
+getTimezoneOffset(timeZone: String, date: Date|Number): Date
+```
+
+Returns the time zone offset from UTC time in milliseconds for IANA time zones as well
+as other time zone offset string formats.
+
+For time zones where daylight savings time is applicable a `Date` should be passed on
+the second parameter to ensure the offset correctly accounts for DST at that time of
+year. When omitted, the current date is used.
+
+```javascript
+import { getTimezoneOffset } from 'date-fns-tz'
+
+const result = getTimezoneOffset('-07:00')
+//=> -18000000 (-7 * 60 * 60 * 1000)
+const result = getTimezoneOffset('Africa/Johannesburg')
+//=> 7200000 (2 * 60 * 60 * 1000)
+const result = getTimezoneOffset('America/New_York', new Date(2016, 0, 1))
+//=> -18000000 (-5 * 60 * 60 * 1000)
+const result = getTimezoneOffset('America/New_York', new Date(2016, 6, 1))
+//=> -14400000 (-4 * 60 * 60 * 1000)
 ```
 
 ## Time Zone Formatting
@@ -95,17 +124,17 @@ renderTimeZoneSelect(timeZone)  // America/New_York
 
 The `format` function exported from this library extends `date-fns/format` with full time zone support for:
 
-- The `z..zzz` Unicode tokens: *short specific non-location format*
-- The `zzzz` Unicode token: *long specific non-location format*
+- The `z..zzz` Unicode tokens: _short specific non-location format_
+- The `zzzz` Unicode token: _long specific non-location format_
 
 When using those tokens with `date-fns/format` it falls back to GMT timezones, and always uses the local
 system timezone. For example `zzz` in New York would return `GMT-4` instead of the desired `EST`, whereas
 this extended `format` function will return the latter.
 
 To format a date to a string showing time for a specific time zone, which can be different from the system
-time zone, the `format` function can be combined with `utcToZonedTime` as shown in the example below. *To
+time zone, the `format` function can be combined with `utcToZonedTime` as shown in the example below. _To
 clarify, the `format` function will never change the underlying date, it must be changed to a zoned time
-before passing it to `format`.*
+before passing it to `format`._
 
 Since a zoned time `Date` instance cannot convey the time zone information to the `format` function it is
 necessary to pass the same `timeZone` value as an option on the third argument of `format`. When using this
@@ -122,16 +151,22 @@ const parisTimeZone = 'Europe/Paris'
 const nyDate = utcToZonedTime(date, nyTimeZone)
 const parisDate = utcToZonedTime(date, parisTimeZone)
 
-format(nyDate, 'yyyy-MM-dd HH:mm:ssXXX', { timeZone: 'America/New_York' })  // 2014-10-25 06:46:20-04:00
+format(nyDate, 'yyyy-MM-dd HH:mm:ssXXX', { timeZone: 'America/New_York' }) // 2014-10-25 06:46:20-04:00
 format(nyDate, 'yyyy-MM-dd HH:mm:ss zzz', { timeZone: 'America/New_York' }) // 2014-10-25 06:46:20 EST
-format(parisDate, 'yyyy-MM-dd HH:mm:ss zzz', { timeZone: 'Europe/Paris' })  // 2014-10-25 10:46:20 GMT+2
+format(parisDate, 'yyyy-MM-dd HH:mm:ss zzz', { timeZone: 'Europe/Paris' }) // 2014-10-25 10:46:20 GMT+2
 
 // The time zone name is generated by the Intl API which works best when a locale is also provided
 import enGB from 'date-fns/locale/en-GB'
 
-format(parisDate, 'yyyy-MM-dd HH:mm:ss zzz', { timeZone: 'Europe/Paris', locale: enGB })
+format(parisDate, 'yyyy-MM-dd HH:mm:ss zzz', {
+  timeZone: 'Europe/Paris',
+  locale: enGB,
+})
 // 2014-10-25 10:46:20 CEST
-format(parisDate, 'yyyy-MM-dd HH:mm:ss zzzz', { timeZone: 'Europe/Paris', locale: enGB })
+format(parisDate, 'yyyy-MM-dd HH:mm:ss zzzz', {
+  timeZone: 'Europe/Paris',
+  locale: enGB,
+})
 // 2014-10-25 10:46:20 Central European Summer Time
 ```
 

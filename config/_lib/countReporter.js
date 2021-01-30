@@ -2,11 +2,11 @@ var fs = require('fs')
 
 var countFilename = './tmp/tests_count.txt'
 
-function countReporter () {
+function countReporter() {
   this.onRunComplete = function (_, result) {
     var runCount = result.success
 
-    fs.readFile(countFilename, {encoding: 'utf-8', flag: 'a+'}, function (err, data) {
+    fs.readFile(countFilename, { encoding: 'utf-8', flag: 'a+' }, function (err, data) {
       if (err) {
         throw err
       }

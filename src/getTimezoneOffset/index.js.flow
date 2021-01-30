@@ -16,14 +16,4 @@ type OptionsWithTZ = {
   awareOfUnicodeTokens?: boolean,
 }
 
-declare module.exports: {
-  format: (date: Date | string | number, format: string, options?: OptionsWithTZ) => string,
-
-  getTimezoneOffset: (timeZone: string, date?: Date | number) => number,
-
-  toDate: (argument: Date | string | number, options?: OptionsWithTZ) => Date,
-
-  utcToZonedTime: (date: Date | string | number, timeZone: string, options?: OptionsWithTZ) => Date,
-
-  zonedTimeToUtc: (date: Date | string | number, timeZone: string, options?: OptionsWithTZ) => Date,
-}
+declare module.exports: (timeZone: string, date?: Date | number) => number
