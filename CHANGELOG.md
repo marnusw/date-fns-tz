@@ -1,3 +1,8 @@
+### v1.1.0 (9 October 2020)
+
+- [ENHANCEMENT] Add the `getTimezoneOffset` function (#100).
+- [UPGRADE] Upgrade dependencies
+
 ### v1.0.12 (9 October 2020)
 
 - [BUGFIX] Improve the #46 fix for `toDate` using the UTC timestamp for determining offset (#86).
