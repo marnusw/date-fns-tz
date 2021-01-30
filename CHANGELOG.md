@@ -1,4 +1,8 @@
-### v1.1.0 (9 October 2020)
+### v1.1.1 (30 January 2021)
+
+- [DOCS] Add `getTimezoneOffset` to TOC
+
+### v1.1.0 (30 January 2021)
 
 - [ENHANCEMENT] Add the `getTimezoneOffset` function (#100).
 - [UPGRADE] Upgrade dependencies
