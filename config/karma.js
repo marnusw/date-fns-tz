@@ -120,9 +120,7 @@ function config(config) {
     browserNoActivityTimeout: process.env.TEST_CROSS_BROWSER
       ? 60 * 60 * 1000 /* 1 hour */
       : 10 * 1000 /* 10 sec */,
-    captureTimeout: process.env.TEST_CROSS_BROWSER
-      ? 120 * 1000 /* 2 min */
-      : 60 * 1000 /* 1 min */,
+    captureTimeout: process.env.TEST_CROSS_BROWSER ? 120 * 1000 /* 2 min */ : 60 * 1000 /* 1 min */,
 
     sauceLabs: {
       startConnect: false,

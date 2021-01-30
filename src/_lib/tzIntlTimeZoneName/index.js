@@ -29,6 +29,6 @@ function getDTF(length, timeZone, locale) {
   }
   return new Intl.DateTimeFormat(locale ? [locale.code, 'en-US'] : undefined, {
     timeZone: timeZone,
-    timeZoneName: length
+    timeZoneName: length,
   })
 }

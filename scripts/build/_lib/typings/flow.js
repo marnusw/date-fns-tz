@@ -30,7 +30,7 @@ const getFlowFPTypeAliases = (arity = 4) =>
       | <A,B>(a: A, b: B) => CurriedFn2<C, D, R>
       | <A,B,C>(a: A, b: B, c: C) => CurriedFn1<D, R>
       | <A,B,C,D>(a: A, b: B, c: C, d: D) => R
-  `
+  `,
   ].slice(0, arity)
 
 function getFlowTypeAlias(type) {
@@ -91,8 +91,7 @@ function generateFlowFPFnTyping(fn, aliasDeclarations) {
 
 function generateFlowFPFnIndexTyping(fns, aliasDeclarations) {
   const fnsDeclarations = fns.map(
-    ({ title, args, content }) =>
-      `${title}: ${getFPFnType(args, content.returns[0].type.names)}`
+    ({ title, args, content }) => `${title}: ${getFPFnType(args, content.returns[0].type.names)}`
   )
 
   const typingFile = formatFlowFile`
@@ -111,7 +110,7 @@ function generateFlowFPFnIndexTyping(fns, aliasDeclarations) {
 function generateFlowTypings(fns, aliases) {
   const aliasDeclarations = aliases.map(getFlowTypeAlias)
 
-  fns.forEach(fn => {
+  fns.forEach((fn) => {
     if (fn.isFPFn) {
       generateFlowFPFnTyping(fn, aliasDeclarations)
     } else {
@@ -130,12 +129,9 @@ function generateFlowTypings(fns, aliases) {
 }
 
 function writeFile(relativePath, content) {
-  return fs.writeFileSync(
-    path.resolve(process.cwd(), relativePath),
-    prettier(content, 'flow')
-  )
+  return fs.writeFileSync(path.resolve(process.cwd(), relativePath), prettier(content, 'flow'))
 }
 
 module.exports = {
-  generateFlowTypings
+  generateFlowTypings,
 }

@@ -5,7 +5,7 @@ var MILLISECONDS_IN_MINUTE = 60 * 1000
 
 var formatters = {
   // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
-  X: function(date, token, localize, options) {
+  X: function (date, token, localize, options) {
     var originalDate = options._originalDate || date
     var timezoneOffset = options.timeZone
       ? tzParseTimezone(options.timeZone, originalDate) / MILLISECONDS_IN_MINUTE
@@ -38,7 +38,7 @@ var formatters = {
   },
 
   // Timezone (ISO-8601. If offset is 0, output is `'+00:00'` or equivalent)
-  x: function(date, token, localize, options) {
+  x: function (date, token, localize, options) {
     var originalDate = options._originalDate || date
     var timezoneOffset = options.timeZone
       ? tzParseTimezone(options.timeZone, originalDate) / MILLISECONDS_IN_MINUTE
@@ -67,7 +67,7 @@ var formatters = {
   },
 
   // Timezone (GMT)
-  O: function(date, token, localize, options) {
+  O: function (date, token, localize, options) {
     var originalDate = options._originalDate || date
     var timezoneOffset = options.timeZone
       ? tzParseTimezone(options.timeZone, originalDate) / MILLISECONDS_IN_MINUTE
@@ -87,7 +87,7 @@ var formatters = {
   },
 
   // Timezone (specific non-location)
-  z: function(date, token, localize, options) {
+  z: function (date, token, localize, options) {
     var originalDate = options._originalDate || date
 
     switch (token) {
@@ -101,7 +101,7 @@ var formatters = {
       default:
         return tzIntlTimeZoneName('long', originalDate, options)
     }
-  }
+  },
 }
 
 function addLeadingZeros(number, targetLength) {

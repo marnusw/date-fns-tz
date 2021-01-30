@@ -13,7 +13,7 @@ type OptionsWithTZ = {
   addSuffix?: boolean,
   unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
   roundingMethod?: 'floor' | 'ceil' | 'round',
-  awareOfUnicodeTokens?: boolean
+  awareOfUnicodeTokens?: boolean,
 }
 
 type CurriedFn1<A, R> = <A>(a: A) => R

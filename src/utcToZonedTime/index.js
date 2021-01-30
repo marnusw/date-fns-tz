@@ -42,7 +42,5 @@ export default function utcToZonedTime(dirtyDate, timeZone, options) {
   // We just need to apply the offset indicated by the time zone to this localized date
   var offsetMilliseconds = tzParseTimezone(timeZone, utcDate)
 
-  return offsetMilliseconds
-    ? subMilliseconds(utcDate, offsetMilliseconds)
-    : utcDate
+  return offsetMilliseconds ? subMilliseconds(utcDate, offsetMilliseconds) : utcDate
 }

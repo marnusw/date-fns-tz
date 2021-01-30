@@ -8,5 +8,5 @@ module.exports = {
   utcToZonedTime: require('./utcToZonedTime/index.js'),
   utcToZonedTimeWithOptions: require('./utcToZonedTimeWithOptions/index.js'),
   zonedTimeToUtc: require('./zonedTimeToUtc/index.js'),
-  zonedTimeToUtcWithOptions: require('./zonedTimeToUtcWithOptions/index.js')
+  zonedTimeToUtcWithOptions: require('./zonedTimeToUtcWithOptions/index.js'),
 }

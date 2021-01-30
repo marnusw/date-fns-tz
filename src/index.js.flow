@@ -13,27 +13,15 @@ type OptionsWithTZ = {
   addSuffix?: boolean,
   unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
   roundingMethod?: 'floor' | 'ceil' | 'round',
-  awareOfUnicodeTokens?: boolean
+  awareOfUnicodeTokens?: boolean,
 }
 
 declare module.exports: {
-  format: (
-    date: Date | string | number,
-    format: string,
-    options?: OptionsWithTZ
-  ) => string,
+  format: (date: Date | string | number, format: string, options?: OptionsWithTZ) => string,
 
   toDate: (argument: Date | string | number, options?: OptionsWithTZ) => Date,
 
-  utcToZonedTime: (
-    date: Date | string | number,
-    timeZone: string,
-    options?: OptionsWithTZ
-  ) => Date,
+  utcToZonedTime: (date: Date | string | number, timeZone: string, options?: OptionsWithTZ) => Date,
 
-  zonedTimeToUtc: (
-    date: Date | string | number,
-    timeZone: string,
-    options?: OptionsWithTZ
-  ) => Date
+  zonedTimeToUtc: (date: Date | string | number, timeZone: string, options?: OptionsWithTZ) => Date,
 }

@@ -14,9 +14,9 @@ const { generateTypeScriptTypings } = require('./_lib/typings/typeScript')
 const { generateFlowTypings } = require('./_lib/typings/flow')
 
 const fns = Object.keys(jsDocs)
-  .map(category => jsDocs[category])
+  .map((category) => jsDocs[category])
   .reduce((previousValue, newValue) => [...previousValue, ...newValue], [])
-  .filter(doc => doc.kind === 'function')
+  .filter((doc) => doc.kind === 'function')
   .sort((a, b) => a.title.localeCompare(b.title, 'en-US'))
 
 const aliases = jsDocs['Types']

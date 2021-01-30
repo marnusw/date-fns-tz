@@ -5,10 +5,6 @@ export { default as formatWithOptions } from './formatWithOptions/index.js'
 export { default as toDate } from './toDate/index.js'
 export { default as toDateWithOptions } from './toDateWithOptions/index.js'
 export { default as utcToZonedTime } from './utcToZonedTime/index.js'
-export {
-  default as utcToZonedTimeWithOptions
-} from './utcToZonedTimeWithOptions/index.js'
+export { default as utcToZonedTimeWithOptions } from './utcToZonedTimeWithOptions/index.js'
 export { default as zonedTimeToUtc } from './zonedTimeToUtc/index.js'
-export {
-  default as zonedTimeToUtcWithOptions
-} from './zonedTimeToUtcWithOptions/index.js'
+export { default as zonedTimeToUtcWithOptions } from './zonedTimeToUtcWithOptions/index.js'

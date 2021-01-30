@@ -18,6 +18,7 @@
     "clean": "rm -rf tmp/package && rm tmp/docs.json",
     "test": "karma start config/karma.js",
     "test:watch": "cross-env TEST_WATCH=true karma start config/karma.js",
+    "prettier": "prettier . --write",
     "lint": "eslint .",
     "lint-types": "eslint --config=.ts-eslintrc.js typings.d.ts"
   },
@@ -30,7 +31,7 @@
     "*.js": [
       "eslint"
     ],
-    "*.{js,json,md}": [
+    "*.{js,json,md,ts}": [
       "prettier --write"
     ]
   },

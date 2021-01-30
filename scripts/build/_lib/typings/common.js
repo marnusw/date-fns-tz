@@ -15,13 +15,13 @@ function getParams(params, { leftBorder = '{', rightBorder = '}' } = {}) {
   }
 
   const formattedParams = addSeparator(
-    params.map(param => {
+    params.map((param) => {
       const {
         name,
         props,
         optional,
         variable,
-        type: { names: typeNames }
+        type: { names: typeNames },
       } = param
       const type = getType(typeNames, { props, forceArray: variable })
       return `${variable ? '...' : ''}${name}${optional ? '?' : ''}: ${type}`
@@ -37,7 +37,7 @@ function getParams(params, { leftBorder = '{', rightBorder = '}' } = {}) {
 }
 
 function getType(types, { props = [], forceArray = false } = {}) {
-  const typeStrings = types.map(type => {
+  const typeStrings = types.map((type) => {
     if (type === '*') {
       return 'any'
     }
@@ -63,17 +63,16 @@ function getType(types, { props = [], forceArray = false } = {}) {
     return caseCorrectedType
   })
 
-  const allArrayTypes =
-    typeStrings.length > 1 && typeStrings.every(type => type.endsWith('[]'))
+  const allArrayTypes = typeStrings.length > 1 && typeStrings.every((type) => type.endsWith('[]'))
   if (allArrayTypes) {
-    return `(${typeStrings.map(type => type.replace('[]', '')).join(' | ')})[]`
+    return `(${typeStrings.map((type) => type.replace('[]', '')).join(' | ')})[]`
   }
 
   return typeStrings.join(' | ')
 }
 
 function getFPFnType(params, returns) {
-  const fpParams = params.map(param => param.type.names)
+  const fpParams = params.map((param) => param.type.names)
 
   const arity = fpParams.length
 
@@ -86,5 +85,5 @@ module.exports = {
   correctTypeCase,
   getParams,
   getType,
-  getFPFnType
+  getFPFnType,
 }
