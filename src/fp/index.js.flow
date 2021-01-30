@@ -44,6 +44,7 @@ type CurriedFn4<A, B, C, D, R> = <A>(
 declare module.exports: {
   format: CurriedFn2<string, Date | string | number, string>,
   formatWithOptions: CurriedFn3<OptionsWithTZ, string, Date | string | number, string>,
+  getTimezoneOffset: CurriedFn2<Date | number, string, number>,
   toDate: CurriedFn1<Date | string | number, Date>,
   toDateWithOptions: CurriedFn2<OptionsWithTZ, Date | string | number, Date>,
   utcToZonedTime: CurriedFn2<string, Date | string | number, Date>,

@@ -45,16 +45,19 @@ function generateDocsFromSource() {
       description: doc.summary,
       content: doc,
     }))
-    .reduce(
-      (array, doc) =>
-        array
-          .concat(generateFnDoc(doc))
-          .concat(generateFPFnDoc(doc))
-          .concat(generateFPFnWithOptionsDoc(doc)),
-      []
-    )
+    .reduce((array, doc) => {
+      array = array.concat(generateFnDoc(doc)).concat(generateFPFnDoc(doc))
+      if (hasOptionsArg(doc)) {
+        array = array.concat(generateFPFnWithOptionsDoc(doc))
+      }
+      return array
+    }, [])
 
   return Promise.resolve(docs)
+}
+
+function hasOptionsArg(doc) {
+  return !!doc.content.params.find((param) => param.name === 'options')
 }
 
 /**
@@ -178,7 +181,7 @@ function generateFnDoc(dirtyDoc) {
   const { urlId, title } = doc
   const args = paramsToTree(doc.content.params)
 
-  return Object.assign(doc, {
+  Object.assign(doc, {
     isFPFn,
     args,
     relatedDocs: {
@@ -190,6 +193,12 @@ function generateFnDoc(dirtyDoc) {
     usageTabs: generateUsageTabs(isFPFn),
     syntax: generateSyntaxString(title, args, isFPFn),
   })
+
+  if (!hasOptionsArg(doc)) {
+    delete doc.relatedDocs.fpWithOptions
+  }
+
+  return doc
 }
 
 function generateFPFnDoc(dirtyDoc) {
@@ -197,13 +206,14 @@ function generateFPFnDoc(dirtyDoc) {
 
   const isFPFn = true
   const { urlId, title } = doc
-  const exceptions = doc.content.exceptions.filter(
-    (exception) => !exception.description.includes('options.')
-  )
+  const exceptions =
+    (doc.content.exceptions &&
+      doc.content.exceptions.filter((exception) => !exception.description.includes('options.'))) ||
+    []
   const params = doc.content.params.filter((param) => !param.name.startsWith('options')).reverse()
   const args = paramsToTree(params)
 
-  return Object.assign(doc, {
+  Object.assign(doc, {
     isFPFn,
     args,
     generatedFrom: title,
@@ -223,6 +233,12 @@ function generateFPFnDoc(dirtyDoc) {
       examples: 'See [FP Guide](https://date-fns.org/docs/FP-Guide) for more information',
     }),
   })
+
+  if (!hasOptionsArg(doc)) {
+    delete doc.relatedDocs.fpWithOptions
+  }
+
+  return doc
 }
 
 function generateFPFnWithOptionsDoc(dirtyDoc) {

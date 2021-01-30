@@ -2,6 +2,7 @@
 
 export { default as format } from './format/index.js'
 export { default as formatWithOptions } from './formatWithOptions/index.js'
+export { default as getTimezoneOffset } from './getTimezoneOffset/index.js'
 export { default as toDate } from './toDate/index.js'
 export { default as toDateWithOptions } from './toDateWithOptions/index.js'
 export { default as utcToZonedTime } from './utcToZonedTime/index.js'

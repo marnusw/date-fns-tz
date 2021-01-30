@@ -49,6 +49,9 @@ declare module 'date-fns-tz' {
   function format(date: Date | string | number, format: string, options?: OptionsWithTZ): string
   namespace format {}
 
+  function getTimezoneOffset(timeZone: string, date?: Date | number): number
+  namespace getTimezoneOffset {}
+
   function toDate(argument: Date | string | number, options?: OptionsWithTZ): Date
   namespace toDate {}
 
@@ -72,6 +75,11 @@ declare module 'date-fns-tz/format' {
   export = format
 }
 
+declare module 'date-fns-tz/getTimezoneOffset' {
+  import { getTimezoneOffset } from 'date-fns-tz'
+  export = getTimezoneOffset
+}
+
 declare module 'date-fns-tz/toDate' {
   import { toDate } from 'date-fns-tz'
   export = toDate
@@ -92,6 +100,11 @@ declare module 'date-fns-tz/format/index' {
   export = format
 }
 
+declare module 'date-fns-tz/getTimezoneOffset/index' {
+  import { getTimezoneOffset } from 'date-fns-tz'
+  export = getTimezoneOffset
+}
+
 declare module 'date-fns-tz/toDate/index' {
   import { toDate } from 'date-fns-tz'
   export = toDate
@@ -110,6 +123,11 @@ declare module 'date-fns-tz/zonedTimeToUtc/index' {
 declare module 'date-fns-tz/format/index.js' {
   import { format } from 'date-fns-tz'
   export = format
+}
+
+declare module 'date-fns-tz/getTimezoneOffset/index.js' {
+  import { getTimezoneOffset } from 'date-fns-tz'
+  export = getTimezoneOffset
 }
 
 declare module 'date-fns-tz/toDate/index.js' {
@@ -138,6 +156,9 @@ declare module 'date-fns-tz/fp' {
   const formatWithOptions: CurriedFn3<OptionsWithTZ, string, Date | string | number, string>
   namespace formatWithOptions {}
 
+  const getTimezoneOffset: CurriedFn2<Date | number, string, number>
+  namespace getTimezoneOffset {}
+
   const toDate: CurriedFn1<Date | string | number, Date>
   namespace toDate {}
 
@@ -165,6 +186,11 @@ declare module 'date-fns-tz/fp/format' {
 declare module 'date-fns-tz/fp/formatWithOptions' {
   import { formatWithOptions } from 'date-fns-tz/fp'
   export = formatWithOptions
+}
+
+declare module 'date-fns-tz/fp/getTimezoneOffset' {
+  import { getTimezoneOffset } from 'date-fns-tz/fp'
+  export = getTimezoneOffset
 }
 
 declare module 'date-fns-tz/fp/toDate' {
@@ -207,6 +233,11 @@ declare module 'date-fns-tz/fp/formatWithOptions/index' {
   export = formatWithOptions
 }
 
+declare module 'date-fns-tz/fp/getTimezoneOffset/index' {
+  import { getTimezoneOffset } from 'date-fns-tz/fp'
+  export = getTimezoneOffset
+}
+
 declare module 'date-fns-tz/fp/toDate/index' {
   import { toDate } from 'date-fns-tz/fp'
   export = toDate
@@ -247,6 +278,11 @@ declare module 'date-fns-tz/fp/formatWithOptions/index.js' {
   export = formatWithOptions
 }
 
+declare module 'date-fns-tz/fp/getTimezoneOffset/index.js' {
+  import { getTimezoneOffset } from 'date-fns-tz/fp'
+  export = getTimezoneOffset
+}
+
 declare module 'date-fns-tz/fp/toDate/index.js' {
   import { toDate } from 'date-fns-tz/fp'
   export = toDate
@@ -285,6 +321,9 @@ declare module 'date-fns-tz/esm' {
   function format(date: Date | string | number, format: string, options?: OptionsWithTZ): string
   namespace format {}
 
+  function getTimezoneOffset(timeZone: string, date?: Date | number): number
+  namespace getTimezoneOffset {}
+
   function toDate(argument: Date | string | number, options?: OptionsWithTZ): Date
   namespace toDate {}
 
@@ -308,6 +347,11 @@ declare module 'date-fns-tz/esm/format' {
   export default format
 }
 
+declare module 'date-fns-tz/esm/getTimezoneOffset' {
+  import { getTimezoneOffset } from 'date-fns-tz/esm'
+  export default getTimezoneOffset
+}
+
 declare module 'date-fns-tz/esm/toDate' {
   import { toDate } from 'date-fns-tz/esm'
   export default toDate
@@ -328,6 +372,11 @@ declare module 'date-fns-tz/esm/format/index' {
   export default format
 }
 
+declare module 'date-fns-tz/esm/getTimezoneOffset/index' {
+  import { getTimezoneOffset } from 'date-fns-tz/esm'
+  export default getTimezoneOffset
+}
+
 declare module 'date-fns-tz/esm/toDate/index' {
   import { toDate } from 'date-fns-tz/esm'
   export default toDate
@@ -346,6 +395,11 @@ declare module 'date-fns-tz/esm/zonedTimeToUtc/index' {
 declare module 'date-fns-tz/esm/format/index.js' {
   import { format } from 'date-fns-tz/esm'
   export default format
+}
+
+declare module 'date-fns-tz/esm/getTimezoneOffset/index.js' {
+  import { getTimezoneOffset } from 'date-fns-tz/esm'
+  export default getTimezoneOffset
 }
 
 declare module 'date-fns-tz/esm/toDate/index.js' {
@@ -374,6 +428,9 @@ declare module 'date-fns-tz/esm/fp' {
   const formatWithOptions: CurriedFn3<OptionsWithTZ, string, Date | string | number, string>
   namespace formatWithOptions {}
 
+  const getTimezoneOffset: CurriedFn2<Date | number, string, number>
+  namespace getTimezoneOffset {}
+
   const toDate: CurriedFn1<Date | string | number, Date>
   namespace toDate {}
 
@@ -401,6 +458,11 @@ declare module 'date-fns-tz/esm/fp/format' {
 declare module 'date-fns-tz/esm/fp/formatWithOptions' {
   import { formatWithOptions } from 'date-fns-tz/esm/fp'
   export default formatWithOptions
+}
+
+declare module 'date-fns-tz/esm/fp/getTimezoneOffset' {
+  import { getTimezoneOffset } from 'date-fns-tz/esm/fp'
+  export default getTimezoneOffset
 }
 
 declare module 'date-fns-tz/esm/fp/toDate' {
@@ -443,6 +505,11 @@ declare module 'date-fns-tz/esm/fp/formatWithOptions/index' {
   export default formatWithOptions
 }
 
+declare module 'date-fns-tz/esm/fp/getTimezoneOffset/index' {
+  import { getTimezoneOffset } from 'date-fns-tz/esm/fp'
+  export default getTimezoneOffset
+}
+
 declare module 'date-fns-tz/esm/fp/toDate/index' {
   import { toDate } from 'date-fns-tz/esm/fp'
   export default toDate
@@ -481,6 +548,11 @@ declare module 'date-fns-tz/esm/fp/format/index.js' {
 declare module 'date-fns-tz/esm/fp/formatWithOptions/index.js' {
   import { formatWithOptions } from 'date-fns-tz/esm/fp'
   export default formatWithOptions
+}
+
+declare module 'date-fns-tz/esm/fp/getTimezoneOffset/index.js' {
+  import { getTimezoneOffset } from 'date-fns-tz/esm/fp'
+  export default getTimezoneOffset
 }
 
 declare module 'date-fns-tz/esm/fp/toDate/index.js' {
