@@ -15,6 +15,7 @@ time zone offsets such as '-0200' or '+04:00' and not IANA time zone names.
 - [Time Zone Helpers](#time-zone-helpers)
   - [`zonedTimeToUtc`](#zonedtimetoutc) - Given a date and any time zone, returns a `Date` with the equivalent UTC time
   - [`utcToZonedTime`](#utctozonedtime) - Get a date/time representing local time in a given time zone from the UTC date
+  - [`getTimezoneOffset`](#gettimezoneoffset) - Gets the offset in milliseconds between the time zone and UTC time
 - [Time Zone Formatting](#time-zone-formatting)
   - [`format`](#format) - Extends `date-fns/format` with full time zone support
   - [`toDate`](#todate) - Can be used to create a zoned Date from a string containing an offset or IANA time zone
