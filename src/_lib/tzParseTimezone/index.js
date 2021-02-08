@@ -55,7 +55,6 @@ export default function tzParseTimezone(timezoneString, date, isUtcDate) {
   token = patterns.timezoneIANA.exec(timezoneString)
   if (token) {
     date = new Date(date || Date.now())
-    date.setMilliseconds(0)
     var utcDate = isUtcDate ? date : toUtcDate(date)
 
     var offset = calcOffset(utcDate, timezoneString)
