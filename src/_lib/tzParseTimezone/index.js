@@ -12,7 +12,7 @@ var patterns = {
 }
 
 // Parse various time zone offset formats to an offset in milliseconds
-export default function tzParseTimezone(timezoneString, date) {
+export default function tzParseTimezone(timezoneString, date, isUtcDate) {
   var token
   var absoluteOffset
 
@@ -55,14 +55,68 @@ export default function tzParseTimezone(timezoneString, date) {
   token = patterns.timezoneIANA.exec(timezoneString)
   if (token) {
     date = new Date(date || Date.now())
-    date.setMilliseconds(0)
-    // var [fYear, fMonth, fDay, fHour, fMinute, fSecond] = tzTokenizeDate(date, timezoneString)
-    var tokens = tzTokenizeDate(date, timezoneString)
-    var asUTC = Date.UTC(tokens[0], tokens[1] - 1, tokens[2], tokens[3], tokens[4], tokens[5])
-    return -(asUTC - date.getTime())
+    var utcDate = isUtcDate ? date : toUtcDate(date)
+
+    var offset = calcOffset(utcDate, timezoneString)
+
+    var fixedOffset = isUtcDate ? offset : fixOffset(date, offset, timezoneString)
+
+    return -fixedOffset
   }
 
   return 0
+}
+
+function toUtcDate(date) {
+  return new Date(
+    Date.UTC(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate(),
+      date.getHours(),
+      date.getMinutes(),
+      date.getSeconds(),
+      date.getMilliseconds()
+    )
+  )
+}
+
+function calcOffset(date, timezoneString) {
+  var [year, month, day, hour, minute, second] = tzTokenizeDate(date, timezoneString)
+
+  var asUTC = Date.UTC(year, month - 1, day, hour % 24, minute, second)
+
+  var asTS = date.getTime()
+  var over = asTS % 1000
+  asTS -= over >= 0 ? over : 1000 + over
+  return asUTC - asTS
+}
+
+function fixOffset(date, offset, timezoneString) {
+  var localTS = date.getTime()
+
+  // Our UTC time is just a guess because our offset is just a guess
+  var utcGuess = localTS - offset
+
+  // Test whether the zone matches the offset for this ts
+  var o2 = calcOffset(new Date(utcGuess), timezoneString)
+
+  // If so, offset didn't change and we're done
+  if (offset === o2) {
+    return offset
+  }
+
+  // If not, change the ts by the difference in the offset
+  utcGuess -= o2 - offset
+
+  // If that gives us the local time we want, we're done
+  var o3 = calcOffset(new Date(utcGuess), timezoneString)
+  if (o2 === o3) {
+    return o2
+  }
+
+  // If it's different, we're in a hole time. The offset has changed, but the we don't adjust the time
+  return Math.max(o2, o3)
 }
 
 function validateTimezone(hours, minutes) {

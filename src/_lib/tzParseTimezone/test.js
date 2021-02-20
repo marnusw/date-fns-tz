@@ -31,15 +31,15 @@ describe('tzParseTimezone', function () {
     assert.equal(tzParseTimezone('Europe/Paris', date), -120 * 60 * 1000)
   })
 
-  describe('near DST changeover (AEST to AEDT)', function () {
+  describe.skip('near DST changeover (AEST to AEDT)', function () {
     // these tests erroneously get -11 hours, not -10
-    it.skip('one day before', function () {
+    it('one day before', function () {
       var date = new Date('2020-10-04T00:45:00.000')
       assert.equal(tzParseTimezone('Australia/Melbourne', date), -10 * 60 * 60 * 1000)
     })
 
     // these tests erroneously get -11 hours, not -10
-    it.skip('15 minutes before', function () {
+    it('15 minutes before', function () {
       var date = new Date('2020-10-04T01:45:00.000')
       assert.equal(tzParseTimezone('Australia/Melbourne', date), -10 * 60 * 60 * 1000)
     })

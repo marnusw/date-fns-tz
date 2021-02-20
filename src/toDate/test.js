@@ -111,7 +111,7 @@ describe('toDate', function () {
       })
     })
 
-    describe.skip('extended century representation', function () {
+    describe('extended century representation', function () {
       it('parses century 101 BC - 2 BC', function () {
         var result = toDate('-0001')
         var date = new Date(-100, 0 /* Jan */, 1)
@@ -139,7 +139,7 @@ describe('toDate', function () {
       })
     })
 
-    describe.skip('extended year representation', function () {
+    describe('extended year representation', function () {
       it('correctly parses years from 1 AD to 99 AD', function () {
         var result = toDate('0095-07-02')
         var date = new Date(0, 6 /* Jul */, 2)
@@ -257,12 +257,13 @@ describe('toDate', function () {
           ['Australia/Sydney', '2020-04-05T02:00:00', new Date('2020-04-05T02:00:00+10:00')],
           ['Australia/Sydney', '2020-04-05T03:00:00', new Date('2020-04-05T03:00:00+10:00')],
           ['Australia/Sydney', '2020-10-04T01:00:00', new Date('2020-10-04T01:00:00+10:00')],
-          ['Australia/Sydney', '2020-10-04T02:00:00', new Date('2020-10-04T02:00:00+10:00')],
+          ['Australia/Sydney', '2020-10-04T02:00:00', new Date('2020-10-04T02:00:00+11:00')],
           ['Australia/Sydney', '2020-10-04T03:00:00', new Date('2020-10-04T03:00:00+11:00')],
           ['America/New_York', '2020-03-08T01:00:00', new Date('2020-03-08T01:00:00-05:00')],
           ['America/New_York', '2020-03-08T03:00:00', new Date('2020-03-08T03:00:00-04:00')],
           ['America/New_York', '2020-11-01T01:00:00', new Date('2020-11-01T01:00:00-04:00')],
           ['America/New_York', '2020-11-01T03:00:00', new Date('2020-11-01T03:00:00-05:00')],
+          ['Canada/Mountain', '2021-03-14T02:30:00', new Date('2021-03-14T02:30:00-06:00')],
         ].forEach(([timeZone, dateStr, expectedDate]) => {
           assert.deepEqual(toDate(dateStr, { timeZone }), expectedDate)
         })
@@ -446,7 +447,7 @@ describe('toDate', function () {
       assert.deepEqual(result, new Date(2014, 1, /* Feb */ 11))
     })
 
-    it.skip('implicitly converts options', function () {
+    it('implicitly converts options', function () {
       // $ExpectedMistake
       var result = toDate('+12340702', { additionalDigits: '0' })
       assert.deepEqual(result, new Date(1234, 6 /* Jul */, 2))
