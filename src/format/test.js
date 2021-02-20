@@ -661,7 +661,7 @@ describe('format', function () {
     })
 
     // Behaviour differs between chrome 83 linux and chrome 85 macos
-    it.skip('Local date with specific non-location time zone', function () {
+    it('Local date with specific non-location time zone', function () {
       var result = format(date, 'yyyy-MM-dd HH:mm:ss zzz', {
         timeZone: 'America/New_York',
       })
