@@ -1,3 +1,7 @@
+### v1.1.2 (20 February 2021)
+
+- [BUGFIX] Fix time zone offset around DST; thanks @bsvetlik & @yharaskrik! (#108, #99, #93)
+
 ### v1.1.1 (30 January 2021)
 
 - [DOCS] Add `getTimezoneOffset` to TOC
