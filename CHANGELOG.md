@@ -1,3 +1,7 @@
+### v1.1.3 (27 February 2021)
+
+- [BUGFIX] Support IANA timezones with a hyphen in the name! (#110)
+
 ### v1.1.2 (20 February 2021)
 
 - [BUGFIX] Fix time zone offset around DST; thanks @bsvetlik & @yharaskrik! (#108, #99, #93)
