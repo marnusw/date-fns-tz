@@ -29,6 +29,7 @@ describe('tzParseTimezone', function () {
     var date = new Date('2014-10-25T13:46:20Z')
     assert.equal(tzParseTimezone('America/New_York', date), 240 * 60 * 1000)
     assert.equal(tzParseTimezone('Europe/Paris', date), -120 * 60 * 1000)
+    assert.equal(tzParseTimezone('Asia/Ust-Nera', date), -660 * 60 * 1000)
   })
 
   describe('near DST changeover (AEST to AEDT)', function () {

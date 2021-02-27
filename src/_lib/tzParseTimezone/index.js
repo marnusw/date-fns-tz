@@ -8,7 +8,7 @@ var patterns = {
   timezoneZ: /^(Z)$/,
   timezoneHH: /^([+-])(\d{2})$/,
   timezoneHHMM: /^([+-])(\d{2}):?(\d{2})$/,
-  timezoneIANA: /(UTC|(?:[a-zA-Z]+\/[a-zA-Z_]+(?:\/[a-zA-Z_]+)?))$/,
+  timezoneIANA: /(UTC|(?:[a-zA-Z]+\/[a-zA-Z_-]+(?:\/[a-zA-Z_]+)?))$/,
 }
 
 // Parse various time zone offset formats to an offset in milliseconds
