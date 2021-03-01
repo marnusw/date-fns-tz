@@ -96,7 +96,7 @@ renderTimeZoneSelect(timeZone) // America/New_York
 **Gets the offset in milliseconds between the time zone and UTC time**
 
 ```js
-getTimezoneOffset(timeZone: String, date: Date|Number): Date
+getTimezoneOffset(timeZone: String, date: Date|Number): number
 ```
 
 Returns the time zone offset from UTC time in milliseconds for IANA time zones as well
