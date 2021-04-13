@@ -82,9 +82,9 @@ function toUtcDate(date) {
 }
 
 function calcOffset(date, timezoneString) {
-  var [year, month, day, hour, minute, second] = tzTokenizeDate(date, timezoneString)
+  var tokens = tzTokenizeDate(date, timezoneString)
 
-  var asUTC = Date.UTC(year, month - 1, day, hour % 24, minute, second)
+  var asUTC = Date.UTC(tokens[0], tokens[1] - 1, tokens[2], tokens[3] % 24, tokens[4], tokens[5])
 
   var asTS = date.getTime()
   var over = asTS % 1000
