@@ -53,7 +53,7 @@ export default function tzParseTimezone(timezoneString, date, isUtcDate) {
 
   // IANA time zone
   token = patterns.timezoneIANA.exec(timezoneString)
-  if (token) {
+  if (token || isValidTimezoneString(timezoneString)) {
     date = new Date(date || Date.now())
     var utcDate = isUtcDate ? date : toUtcDate(date)
 
@@ -125,4 +125,14 @@ function validateTimezone(hours, minutes) {
   }
 
   return true
+}
+
+function isValidTimezoneString(timeZoneString) {
+  try {
+      Intl.DateTimeFormat(undefined, {timeZone: timeZoneString});
+      return true;
+  }
+  catch {
+      return false;
+  }
 }
