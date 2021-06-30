@@ -12,6 +12,7 @@ time zone offsets such as '-0200' or '+04:00' and not IANA time zone names.
 ## Table of Contents
 
 - [Overview](#overview)
+- [Usage with Node.js](#usage-with-nodejs)
 - [Time Zone Helpers](#time-zone-helpers)
   - [`zonedTimeToUtc`](#zonedtimetoutc) - Given a date and any time zone, returns a `Date` with the equivalent UTC time
   - [`utcToZonedTime`](#utctozonedtime) - Get a date/time representing local time in a given time zone from the UTC date
@@ -19,7 +20,6 @@ time zone offsets such as '-0200' or '+04:00' and not IANA time zone names.
 - [Time Zone Formatting](#time-zone-formatting)
   - [`format`](#format) - Extends `date-fns/format` with full time zone support
   - [`toDate`](#todate) - Can be used to create a zoned Date from a string containing an offset or IANA time zone
-- [Usage with Node.js](#usage-with-nodejs)
 
 ## Overview
 
@@ -36,6 +36,14 @@ In this case there are two relevant pieces of information:
 Libraries like Moment and Luxon, which provide their own date time classes, manage these timestamp and time
 zone values internally. Since `date-fns` always returns a plain JS Date, which implicitly has the current
 system's time zone, helper functions are provided for handling common time zone related use cases.
+
+## Usage with Node.js
+
+Node.js supports the `Intl` API. From v13 Node.js ships with full ICU data included in the binary, however
+the current LTS version 12.14 is still built with the `small-icu` flag and only contains ICU data for the
+`en-US` locale. To use this library with Node.js 12 and any locale other than `en-US` it should be run
+with
+[ICU data provided at runtime](https://nodejs.org/docs/latest-v12.x/api/intl.html#intl_providing_icu_data_at_runtime).
 
 ## Time Zone Helpers
 
@@ -198,14 +206,6 @@ format(nyDate, 'yyyy-MM-dd HH:mm:ssZ', { timeZone: 'America/New_York' }) // 2014
 
 **Note:** Since the Intl API does not provide a way to parse long or short time zone names the `parse`
 function cannot be supported using this approach.
-
-## Usage with Node.js
-
-Node.js supports the `Intl` API. From v13 Node.js ships with full ICU data included in the binary, however
-the current LTS version 12.14 is still built with the `small-icu` flag and only contains ICU data for the
-`en-US` locale. To use this library with Node.js 12 and any locale other than `en-US` it should be run
-with
-[ICU data provided at runtime](https://nodejs.org/docs/latest-v12.x/api/intl.html#intl_providing_icu_data_at_runtime).
 
 ## Credit
 
