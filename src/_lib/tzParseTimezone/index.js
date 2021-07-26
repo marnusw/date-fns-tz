@@ -7,8 +7,7 @@ var patterns = {
   timezone: /([Z+-].*)$/,
   timezoneZ: /^(Z)$/,
   timezoneHH: /^([+-])(\d{2})$/,
-  timezoneHHMM: /^([+-])(\d{2}):?(\d{2})$/,
-  timezoneIANA: /(UTC|(?:[a-zA-Z]+\/[a-zA-Z_-]+(?:\/[a-zA-Z_]+)?))$/,
+  timezoneHHMM: /^([+-])(\d{2}):?(\d{2})$/
 }
 
 // Parse various time zone offset formats to an offset in milliseconds
@@ -52,8 +51,7 @@ export default function tzParseTimezone(timezoneString, date, isUtcDate) {
   }
 
   // IANA time zone
-  token = patterns.timezoneIANA.exec(timezoneString)
-  if (token) {
+  if (isValidTimezoneIANAString(timezoneString)) {
     date = new Date(date || Date.now())
     var utcDate = isUtcDate ? date : toUtcDate(date)
 
@@ -125,4 +123,14 @@ function validateTimezone(hours, minutes) {
   }
 
   return true
+}
+
+function isValidTimezoneIANAString(timeZoneString) {
+  try {
+    Intl.DateTimeFormat(undefined, {timeZone: timeZoneString});
+    return true;
+  }
+  catch {
+    return false;
+  }
 }
