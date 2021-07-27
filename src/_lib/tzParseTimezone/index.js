@@ -130,7 +130,7 @@ function isValidTimezoneIANAString(timeZoneString) {
     Intl.DateTimeFormat(undefined, {timeZone: timeZoneString});
     return true;
   }
-  catch {
+  catch (error) {
     return false;
   }
 }
