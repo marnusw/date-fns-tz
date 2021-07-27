@@ -1,3 +1,7 @@
+### v1.1.5 (27 July 2021)
+
+- [BUGFIX] Fixing parsing IANA strings (#129)
+
 ### v1.1.4 (13 April 2021)
 
 - [UPGRADE] Use Yarn berry
