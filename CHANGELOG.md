@@ -1,3 +1,7 @@
+### v1.1.6 (27 July 2021)
+
+- [BUGFIX] Added an error object to the catch of isValidTimezoneIANAString for older JS (#131)
+
 ### v1.1.5 (27 July 2021)
 
 - [BUGFIX] Fixing parsing IANA strings (#129)
