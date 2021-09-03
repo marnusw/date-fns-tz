@@ -7,7 +7,7 @@ var patterns = {
   timezone: /([Z+-].*)$/,
   timezoneZ: /^(Z)$/,
   timezoneHH: /^([+-])(\d{2})$/,
-  timezoneHHMM: /^([+-])(\d{2}):?(\d{2})$/
+  timezoneHHMM: /^([+-])(\d{2}):?(\d{2})$/,
 }
 
 // Parse various time zone offset formats to an offset in milliseconds
@@ -125,11 +125,15 @@ function validateTimezone(hours, minutes) {
   return true
 }
 
+var validIANATimezoneCache = []
 function isValidTimezoneIANAString(timeZoneString) {
+  if (validIANATimezoneCache.indexOf(timeZoneString) >= 0) return true
+
   try {
-    Intl.DateTimeFormat(undefined, {timeZone: timeZoneString});
-    return true;
+    Intl.DateTimeFormat(undefined, { timeZone: timeZoneString })
+    validIANATimezoneCache.push(timeZoneString)
+    return true
   } catch (error) {
-    return false;
+    return false
   }
 }
