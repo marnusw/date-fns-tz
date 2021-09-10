@@ -459,7 +459,7 @@ describe('format', function () {
     describe('AM, PM', function () {
       it('works as expected', function () {
         var result = format(new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0), 'a aa aaa aaaa aaaaa')
-        assert(result === 'AM AM AM a.m. a')
+        assert(result === 'AM AM am a.m. a')
       })
 
       it('12 PM', function () {
@@ -476,7 +476,7 @@ describe('format', function () {
     describe('AM, PM, noon, midnight', function () {
       it('works as expected', function () {
         var result = format(new Date(1986, 3 /* Apr */, 6, 2, 0, 0, 900), 'b bb bbb bbbb bbbbb')
-        assert(result === 'AM AM AM a.m. a')
+        assert(result === 'AM AM am a.m. a')
       })
 
       it('12 PM', function () {
