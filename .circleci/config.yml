@@ -1,0 +1,45 @@
+version: 2.1
+
+orbs:
+  browser-tools: circleci/browser-tools@1.1.0
+
+jobs:
+  test-time-zone:
+    parameters:
+      timeZone:
+        type: string
+    docker:
+      - image: cimg/node:16.8.0-browsers
+    steps:
+      - browser-tools/install-chrome
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - .yarn/cache
+            - .yarn/build-state.yml
+            - .yarn/install-state.gz
+            - node_modules
+      - run:
+          name: Unit test
+          command: yarn test
+    environment:
+      TZ: << parameters.timeZone >>
+
+workflows:
+  test-multiple-time-zones:
+    jobs:
+      - test-time-zone:
+          timeZone: UTC
+      - test-time-zone:
+          timeZone: America/Los_Angeles
+      - test-time-zone:
+          timeZone: Australia/Melbourne
