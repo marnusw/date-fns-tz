@@ -118,5 +118,12 @@ describe('zonedTimeToUtc', function () {
 
       assert.deepEqual(result.toISOString(), '2020-10-04T00:00:00.000Z')
     })
+
+    it('accepts the Etc/GMT+n time zone format', function () {
+      var result1 = zonedTimeToUtc('2019-11-26T10:00:00', 'America/Chicago')
+      var result2 = zonedTimeToUtc('2019-11-26T10:00:00', 'Etc/GMT+6')
+
+      assert.deepEqual(result1, result2)
+    })
   })
 })
