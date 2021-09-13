@@ -4,6 +4,7 @@
 import assert from 'power-assert'
 import format from '.'
 import enGB from 'date-fns/locale/en-GB'
+import utcToZonedTime from '../utcToZonedTime'
 
 describe('format', function () {
   var date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123)
@@ -666,6 +667,13 @@ describe('format', function () {
         timeZone: 'America/New_York',
       })
       assert(result === dateAndTimeZoneAmericaNY)
+    })
+
+    it('handles quoted text next to a time zone token', function () {
+      var timeZone = 'Europe/Paris'
+      var result = format(utcToZonedTime(date, timeZone), "dd.MM.yyyy HH:mm 'UTC'xxx", { timeZone })
+
+      assert(result === '04.04.1986 11:32 UTC+02:00')
     })
   })
 

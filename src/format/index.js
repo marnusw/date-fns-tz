@@ -321,10 +321,23 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
   var matches = formatStr.match(tzFormattingTokensRegExp)
   if (matches) {
     var date = toDate(dirtyDate, options)
+    // Work through each match and replace the tz token in the format string with the quoted
+    // formatted time zone so the remaining tokens can be filled in by date-fns#format.
     formatStr = matches.reduce(function (result, token) {
-      return token[0] === "'"
-        ? result
-        : result.replace(token, "'" + formatters[token[0]](date, token, null, options) + "'")
+      if (token[0] === "'") {
+        return result // This is a quoted portion, matched only to ensure we don't match inside it
+      }
+      var pos = result.indexOf(token)
+      var precededByQuotedSection = result[pos - 1] === "'"
+      var replaced = result.replace(
+        token,
+        "'" + formatters[token[0]](date, token, null, options) + "'"
+      )
+      // If the replacement results in two adjoining quoted strings, the back to back quotes
+      // are removed so it doesn't look like an escaped quote.
+      return precededByQuotedSection
+        ? replaced.substring(0, pos - 1) + replaced.substring(pos + 1)
+        : replaced
     }, formatStr)
   }
 
