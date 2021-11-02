@@ -239,7 +239,7 @@ describe('toDate', function () {
         var result = toDate('2014-10-25T13:46:20 Asia/Bangkok')
         assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
       })
-      it.only('accepts IANA zone with a T in the date string', function () {
+      it('accepts IANA zone with a T in the date string', function () {
         var result = toDate('2014-10-25T13:46:20 America/Tijuana')
         assert.deepEqual(result, new Date('2014-10-25T13:46:20-07:00'))
       })

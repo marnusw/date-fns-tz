@@ -191,7 +191,6 @@ function splitDateString(dateString) {
     }
   }
 
-  console.log(dateString, dateStrings)
   return dateStrings
 }
 
