@@ -7,9 +7,9 @@ var MILLISECONDS_IN_MINUTE = 60000
 var DEFAULT_ADDITIONAL_DIGITS = 2
 
 var patterns = {
-  dateTimeDelimeter: /[T ]/,
+  dateTimePattern: /^([0-9W+-]+)(T| )(.*)/,
+  datePattern: /^([0-9W+-]+)(.*)/,
   plainTime: /:/,
-  timeZoneDelimeter: /[Z ]/i,
 
   // year tokens
   YY: /^(\d{2})$/,
@@ -37,7 +37,7 @@ var patterns = {
   HHMMSS: /^(\d{2}):?(\d{2}):?(\d{2}([.,]\d*)?)$/,
 
   // timezone tokens (to identify the presence of a tz)
-  timezone: /([Z+-].*| UTC|(?:[a-zA-Z]+\/[a-zA-Z_]+(?:\/[a-zA-Z_]+)?))$/,
+  timezone: /([Z+-].*| UTC| (?:[a-zA-Z]+\/[a-zA-Z_]+(?:\/[a-zA-Z_]+)?))$/,
 }
 
 /**
@@ -164,32 +164,34 @@ export default function toDate(argument, dirtyOptions) {
 
 function splitDateString(dateString) {
   var dateStrings = {}
-  var array = dateString.split(patterns.dateTimeDelimeter)
+  var parts = patterns.dateTimePattern.exec(dateString)
   var timeString
 
-  if (patterns.plainTime.test(array[0])) {
-    dateStrings.date = null
-    timeString = array[0]
-  } else {
-    dateStrings.date = array[0]
-    timeString = array[1]
-    dateStrings.timezone = array[2]
-    if (patterns.timeZoneDelimeter.test(dateStrings.date)) {
-      dateStrings.date = dateString.split(patterns.timeZoneDelimeter)[0]
-      timeString = dateString.substr(dateStrings.date.length, dateString.length)
+  if (!parts) {
+    parts = patterns.datePattern.exec(dateString)
+    if (parts) {
+      dateStrings.date = parts[1]
+      timeString = parts[2]
+    } else {
+      dateStrings.date = null
+      timeString = dateString
     }
+  } else {
+    dateStrings.date = parts[1]
+    timeString = parts[3]
   }
 
   if (timeString) {
     var token = patterns.timezone.exec(timeString)
     if (token) {
       dateStrings.time = timeString.replace(token[1], '')
-      dateStrings.timezone = token[1]
+      dateStrings.timezone = token[1].trim()
     } else {
       dateStrings.time = timeString
     }
   }
 
+  console.log(dateString, dateStrings)
   return dateStrings
 }
 
