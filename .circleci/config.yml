@@ -38,8 +38,11 @@ workflows:
   test-multiple-time-zones:
     jobs:
       - test-time-zone:
+          name: UTC
           timeZone: UTC
       - test-time-zone:
+          name: America/Los_Angeles
           timeZone: America/Los_Angeles
       - test-time-zone:
+          name: Australia/Melbourne
           timeZone: Australia/Melbourne
