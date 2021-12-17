@@ -1,6 +1,7 @@
 import toInteger from 'date-fns/_lib/toInteger/index.js'
 import getTimezoneOffsetInMilliseconds from 'date-fns/_lib/getTimezoneOffsetInMilliseconds/index.js'
 import tzParseTimezone from '../_lib/tzParseTimezone'
+import tzPattern from '../_lib/tzPattern'
 
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
@@ -36,8 +37,8 @@ var patterns = {
   HHMM: /^(\d{2}):?(\d{2}([.,]\d*)?)$/,
   HHMMSS: /^(\d{2}):?(\d{2}):?(\d{2}([.,]\d*)?)$/,
 
-  // timezone tokens (to identify the presence of a tz)
-  timezone: /([Z+-].*| UTC| (?:[a-zA-Z]+\/[a-zA-Z_]+(?:\/[a-zA-Z_]+)?))$/,
+  // time zone tokens (to identify the presence of a tz)
+  timeZone: tzPattern,
 }
 
 /**
@@ -145,13 +146,13 @@ export default function toDate(argument, dirtyOptions) {
       }
     }
 
-    if (dateStrings.timezone || options.timeZone) {
-      offset = tzParseTimezone(dateStrings.timezone || options.timeZone, new Date(timestamp + time))
+    if (dateStrings.timeZone || options.timeZone) {
+      offset = tzParseTimezone(dateStrings.timeZone || options.timeZone, new Date(timestamp + time))
       if (isNaN(offset)) {
         return new Date(NaN)
       }
     } else {
-      // get offset accurate to hour in timezones that change offset
+      // get offset accurate to hour in time zones that change offset
       offset = getTimezoneOffsetInMilliseconds(new Date(timestamp + time))
       offset = getTimezoneOffsetInMilliseconds(new Date(timestamp + time + offset))
     }
@@ -182,10 +183,10 @@ function splitDateString(dateString) {
   }
 
   if (timeString) {
-    var token = patterns.timezone.exec(timeString)
+    var token = patterns.timeZone.exec(timeString)
     if (token) {
       dateStrings.time = timeString.replace(token[1], '')
-      dateStrings.timezone = token[1].trim()
+      dateStrings.timeZone = token[1].trim()
     } else {
       dateStrings.time = timeString
     }

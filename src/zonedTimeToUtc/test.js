@@ -1,4 +1,6 @@
 import assert from 'power-assert'
+import format from '../format'
+import utcToZonedTime from '../utcToZonedTime'
 import zonedTimeToUtc from '.'
 
 describe('zonedTimeToUtc', function () {
@@ -15,6 +17,12 @@ describe('zonedTimeToUtc', function () {
   it('returns the UTC time of the date near DST changeover with IANA tz', function () {
     var result = zonedTimeToUtc('2020-10-03T17:00:00.000', 'Australia/Melbourne')
     assert.deepEqual(result.toISOString(), '2020-10-03T07:00:00.000Z')
+  })
+
+  it('returns the UTC time of an ISO8601 string with an IANA tz', function () {
+    let input = new Date(2021, 11, 4, 15, 0, 15, 0)
+    let result = zonedTimeToUtc(input.toISOString(), 'America/New_York')
+    assert.deepEqual(result.toISOString(), '2021-12-04T20:00:15.000Z')
   })
 
   it('returns the UTC time of the date for a UTC input', function () {
@@ -124,6 +132,43 @@ describe('zonedTimeToUtc', function () {
       var result2 = zonedTimeToUtc('2019-11-26T10:00:00', 'Etc/GMT+6')
 
       assert.deepEqual(result1, result2)
+    })
+  })
+
+  describe('zonedTimeToUtc and utcToZonedTime are inverse functions', function () {
+    it('date strings without a time zone specifier', function () {
+      var timeZone = 'America/Chicago'
+      var input = '2019-11-26T10:00:00'
+      var result = utcToZonedTime(zonedTimeToUtc(input, timeZone), timeZone)
+      assert.deepEqual(format(result, "yyyy-MM-dd'T'HH:mm:ss"), input)
+    })
+
+    it('a Date instance', function () {
+      var timeZone = 'Etc/GMT+6'
+      var input = new Date('2019-11-26T10:00:00Z')
+      var result = utcToZonedTime(zonedTimeToUtc(input, timeZone), timeZone)
+      assert.deepEqual(result, input)
+    })
+
+    it('date string with Z time zone specifier', function () {
+      var timeZone = 'Europe/Paris'
+      var input = '2019-11-26T10:00:00Z'
+      var result = utcToZonedTime(zonedTimeToUtc(input, timeZone), timeZone)
+      assert.deepEqual(result, new Date('2019-11-26T10:00:00Z'))
+    })
+
+    it('date string with a positive time zone offset specifier', function () {
+      var timeZone = 'Australia/Melbourne'
+      var input = '2019-11-26T10:00:00+02:00'
+      var result = utcToZonedTime(zonedTimeToUtc(input, timeZone), timeZone)
+      assert.deepEqual(result, new Date('2019-11-26T10:00:00+02:00'))
+    })
+
+    it('when the time zone is UTC', function () {
+      var timeZone = 'UTC'
+      var input = '2019-11-26T10:00:00Z'
+      var result = utcToZonedTime(zonedTimeToUtc(input, timeZone), timeZone)
+      assert.deepEqual(result, new Date('2019-11-26T10:00:00Z'))
     })
   })
 })

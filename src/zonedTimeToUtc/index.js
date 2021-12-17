@@ -1,6 +1,7 @@
 import cloneObject from 'date-fns/_lib/cloneObject'
 import format from 'date-fns/format'
 import toDate from '../toDate'
+import tzPattern from '../_lib/tzPattern'
 
 /**
  * @name zonedTimeToUtc
@@ -27,6 +28,9 @@ import toDate from '../toDate'
  * //=> 2014-06-25T17:00:00.000Z
  */
 export default function zonedTimeToUtc(date, timeZone, options) {
+  if (typeof date === 'string' && date.match(tzPattern)) {
+    date = toDate(date, options)
+  }
   if (date instanceof Date) {
     date = format(date, "yyyy-MM-dd'T'HH:mm:ss.SSS")
   }
