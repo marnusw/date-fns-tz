@@ -15,6 +15,11 @@ export default function tzParseTimezone(timezoneString, date, isUtcDate) {
   var token
   var absoluteOffset
 
+  // Empty string
+  if (timezoneString === '') {
+    return 0
+  }
+
   // Z
   token = patterns.timezoneZ.exec(timezoneString)
   if (token) {
@@ -62,7 +67,7 @@ export default function tzParseTimezone(timezoneString, date, isUtcDate) {
     return -fixedOffset
   }
 
-  return 0
+  return NaN
 }
 
 function toUtcDate(date) {

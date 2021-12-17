@@ -32,6 +32,12 @@ describe('tzParseTimezone', function () {
     assert.equal(tzParseTimezone('Asia/Ust-Nera', date), -660 * 60 * 1000)
   })
 
+  it('bad time zone', function () {
+    assert.equal(Number.isNaN(tzParseTimezone('+0260')), true)
+    assert.equal(Number.isNaN(tzParseTimezone('+02:60')), true)
+    assert.equal(Number.isNaN(tzParseTimezone('Europe/Non_Existing')), true)
+  })
+
   describe('near DST changeover (AEST to AEDT)', function () {
     it('one day before', function () {
       var date = new Date('2020-10-04T00:45:00.000Z')
