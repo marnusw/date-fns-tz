@@ -245,7 +245,15 @@ describe('toDate', function () {
       })
       it('produces correct offsets around a DST transition', function () {
         ;[
-          ['America/Vancouver', '2020-11-01T01:00:00', new Date('2020-11-01T01:00:00-07:00')],
+          ['America/Vancouver', '2020-11-01T00:59:59', new Date('2020-11-01T00:59:59-07:00')],
+          // When DST ends the same hour occurs twice, and whether that is
+          // the equivalent of when DST is on or off is indeterminate.
+          [
+            'America/Vancouver',
+            '2020-11-01T01:00:00',
+            new Date('2020-11-01T01:00:00-07:00'),
+            new Date('2020-11-01T01:00:00-08:00'),
+          ],
           ['America/Vancouver', '2020-11-01T02:00:00', new Date('2020-11-01T02:00:00-08:00')],
           ['America/Vancouver', '2020-11-01T03:00:00', new Date('2020-11-01T03:00:00-08:00')],
           ['America/Vancouver', '2020-11-01T23:00:00', new Date('2020-11-01T23:00:00-08:00')],
@@ -263,13 +271,27 @@ describe('toDate', function () {
           ['America/New_York', '2020-03-08T02:00:00', new Date('2020-03-08T02:00:00-04:00')],
           ['America/New_York', '2020-03-08T03:00:00', new Date('2020-03-08T03:00:00-04:00')],
           ['America/New_York', '2020-11-01T00:59:59', new Date('2020-11-01T00:59:59-04:00')],
-          // Since 1am occurs twice, whether the returned date is -04:00 or -05:00 is indeterminate
-          ['America/New_York', '2020-11-01T01:00:00', new Date('2020-11-01T01:00:00-05:00')],
+          // When DST ends the same hour occurs twice, and whether that is
+          // the equivalent of when DST is on or off is indeterminate.
+          [
+            'America/New_York',
+            '2020-11-01T01:00:00',
+            new Date('2020-11-01T01:00:00-04:00'),
+            new Date('2020-11-01T01:00:00-05:00'),
+          ],
           ['America/New_York', '2020-11-01T02:00:00', new Date('2020-11-01T02:00:00-05:00')],
           ['America/New_York', '2020-11-01T03:00:00', new Date('2020-11-01T03:00:00-05:00')],
           ['Canada/Mountain', '2021-03-14T02:30:00', new Date('2021-03-14T02:30:00-06:00')],
-        ].forEach(([timeZone, dateStr, expectedDate]) => {
-          assert.deepEqual(toDate(dateStr, { timeZone }), expectedDate)
+        ].forEach(([timeZone, dateStr, expectedDate, alternativeDate]) => {
+          var result = toDate(dateStr, { timeZone })
+          if (alternativeDate) {
+            assert(
+              result.getTime() === expectedDate.getTime() ||
+                result.getTime() === alternativeDate.getTime()
+            )
+          } else {
+            assert.deepEqual(result, expectedDate)
+          }
         })
       })
     })
