@@ -19,6 +19,8 @@ type OptionsWithTZ = {
 declare module.exports: {
   format: (date: Date | string | number, format: string, options?: OptionsWithTZ) => string,
 
+  formatAsZonedTime: (date: Date | number, timeZone: string, options?: OptionsWithTZ) => string,
+
   getTimezoneOffset: (timeZone: string, date?: Date | number) => number,
 
   toDate: (argument: Date | string | number, options?: OptionsWithTZ) => Date,

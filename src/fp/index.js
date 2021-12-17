@@ -2,6 +2,8 @@
 
 module.exports = {
   format: require('./format/index.js'),
+  formatAsZonedTime: require('./formatAsZonedTime/index.js'),
+  formatAsZonedTimeWithOptions: require('./formatAsZonedTimeWithOptions/index.js'),
   formatWithOptions: require('./formatWithOptions/index.js'),
   getTimezoneOffset: require('./getTimezoneOffset/index.js'),
   toDate: require('./toDate/index.js'),
