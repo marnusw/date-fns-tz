@@ -41,7 +41,7 @@ describe('utcToZonedTime', function () {
     assert.equal(format(result, "yyyy-MM-dd'T'HH:mm:ss.SSS"), '2020-01-23T00:00:00.000')
   })
 
-  it('retuns the correct date/time during time change', function () {
+  it('returns the correct date/time during time change', function () {
     // zoned time one day behind
     var resultPDT = utcToZonedTime(
       new Date('Sun Nov 1 2020 06:45:00 GMT-0000 (Greenwich Mean Time)'),
@@ -65,5 +65,11 @@ describe('utcToZonedTime', function () {
     )
 
     assert.equal(format(resultPST, "yyyy-MM-dd'T'HH:mm:ss.SSS"), '2020-11-01T01:45:00.000')
+  })
+
+  it('works in specific time zones', function () {
+    var timeZone = 'America/Vancouver'
+    var result = utcToZonedTime('2020-03-08T19:00:00.000Z', timeZone)
+    assert.equal(format(result, 'yyyy-MM-dd hh:mm:ss.SSS'), '2020-03-08 12:00:00.000')
   })
 })

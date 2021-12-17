@@ -670,10 +670,11 @@ describe('format', function () {
     })
 
     it('handles quoted text next to a time zone token', function () {
+      var date = '1986-04-04T10:32:55.123Z'
       var timeZone = 'Europe/Paris'
       var result = format(utcToZonedTime(date, timeZone), "dd.MM.yyyy HH:mm 'UTC'xxx", { timeZone })
 
-      assert(result === '04.04.1986 11:32 UTC+02:00')
+      assert(result === '04.04.1986 12:32 UTC+02:00')
     })
   })
 

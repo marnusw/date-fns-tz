@@ -260,8 +260,12 @@ describe('toDate', function () {
           ['Australia/Sydney', '2020-10-04T02:00:00', new Date('2020-10-04T02:00:00+11:00')],
           ['Australia/Sydney', '2020-10-04T03:00:00', new Date('2020-10-04T03:00:00+11:00')],
           ['America/New_York', '2020-03-08T01:00:00', new Date('2020-03-08T01:00:00-05:00')],
+          ['America/New_York', '2020-03-08T02:00:00', new Date('2020-03-08T02:00:00-04:00')],
           ['America/New_York', '2020-03-08T03:00:00', new Date('2020-03-08T03:00:00-04:00')],
-          ['America/New_York', '2020-11-01T01:00:00', new Date('2020-11-01T01:00:00-04:00')],
+          ['America/New_York', '2020-11-01T00:59:59', new Date('2020-11-01T00:59:59-04:00')],
+          // Since 1am occurs twice, whether the returned date is -04:00 or -05:00 is indeterminate
+          ['America/New_York', '2020-11-01T01:00:00', new Date('2020-11-01T01:00:00-05:00')],
+          ['America/New_York', '2020-11-01T02:00:00', new Date('2020-11-01T02:00:00-05:00')],
           ['America/New_York', '2020-11-01T03:00:00', new Date('2020-11-01T03:00:00-05:00')],
           ['Canada/Mountain', '2021-03-14T02:30:00', new Date('2021-03-14T02:30:00-06:00')],
         ].forEach(([timeZone, dateStr, expectedDate]) => {
