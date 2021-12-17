@@ -49,6 +49,9 @@ declare module 'date-fns-tz' {
   function format(date: Date | string | number, format: string, options?: OptionsWithTZ): string
   namespace format {}
 
+  function formatAsZonedTime(date: Date | number, timeZone: string, options?: OptionsWithTZ): string
+  namespace formatAsZonedTime {}
+
   function getTimezoneOffset(timeZone: string, date?: Date | number): number
   namespace getTimezoneOffset {}
 
@@ -73,6 +76,11 @@ declare module 'date-fns-tz' {
 declare module 'date-fns-tz/format' {
   import { format } from 'date-fns-tz'
   export = format
+}
+
+declare module 'date-fns-tz/formatAsZonedTime' {
+  import { formatAsZonedTime } from 'date-fns-tz'
+  export = formatAsZonedTime
 }
 
 declare module 'date-fns-tz/getTimezoneOffset' {
@@ -100,6 +108,11 @@ declare module 'date-fns-tz/format/index' {
   export = format
 }
 
+declare module 'date-fns-tz/formatAsZonedTime/index' {
+  import { formatAsZonedTime } from 'date-fns-tz'
+  export = formatAsZonedTime
+}
+
 declare module 'date-fns-tz/getTimezoneOffset/index' {
   import { getTimezoneOffset } from 'date-fns-tz'
   export = getTimezoneOffset
@@ -123,6 +136,11 @@ declare module 'date-fns-tz/zonedTimeToUtc/index' {
 declare module 'date-fns-tz/format/index.js' {
   import { format } from 'date-fns-tz'
   export = format
+}
+
+declare module 'date-fns-tz/formatAsZonedTime/index.js' {
+  import { formatAsZonedTime } from 'date-fns-tz'
+  export = formatAsZonedTime
 }
 
 declare module 'date-fns-tz/getTimezoneOffset/index.js' {
@@ -153,6 +171,12 @@ declare module 'date-fns-tz/fp' {
   const format: CurriedFn2<string, Date | string | number, string>
   namespace format {}
 
+  const formatAsZonedTime: CurriedFn2<string, Date | number, string>
+  namespace formatAsZonedTime {}
+
+  const formatAsZonedTimeWithOptions: CurriedFn3<OptionsWithTZ, string, Date | number, string>
+  namespace formatAsZonedTimeWithOptions {}
+
   const formatWithOptions: CurriedFn3<OptionsWithTZ, string, Date | string | number, string>
   namespace formatWithOptions {}
 
@@ -181,6 +205,16 @@ declare module 'date-fns-tz/fp' {
 declare module 'date-fns-tz/fp/format' {
   import { format } from 'date-fns-tz/fp'
   export = format
+}
+
+declare module 'date-fns-tz/fp/formatAsZonedTime' {
+  import { formatAsZonedTime } from 'date-fns-tz/fp'
+  export = formatAsZonedTime
+}
+
+declare module 'date-fns-tz/fp/formatAsZonedTimeWithOptions' {
+  import { formatAsZonedTimeWithOptions } from 'date-fns-tz/fp'
+  export = formatAsZonedTimeWithOptions
 }
 
 declare module 'date-fns-tz/fp/formatWithOptions' {
@@ -228,6 +262,16 @@ declare module 'date-fns-tz/fp/format/index' {
   export = format
 }
 
+declare module 'date-fns-tz/fp/formatAsZonedTime/index' {
+  import { formatAsZonedTime } from 'date-fns-tz/fp'
+  export = formatAsZonedTime
+}
+
+declare module 'date-fns-tz/fp/formatAsZonedTimeWithOptions/index' {
+  import { formatAsZonedTimeWithOptions } from 'date-fns-tz/fp'
+  export = formatAsZonedTimeWithOptions
+}
+
 declare module 'date-fns-tz/fp/formatWithOptions/index' {
   import { formatWithOptions } from 'date-fns-tz/fp'
   export = formatWithOptions
@@ -271,6 +315,16 @@ declare module 'date-fns-tz/fp/zonedTimeToUtcWithOptions/index' {
 declare module 'date-fns-tz/fp/format/index.js' {
   import { format } from 'date-fns-tz/fp'
   export = format
+}
+
+declare module 'date-fns-tz/fp/formatAsZonedTime/index.js' {
+  import { formatAsZonedTime } from 'date-fns-tz/fp'
+  export = formatAsZonedTime
+}
+
+declare module 'date-fns-tz/fp/formatAsZonedTimeWithOptions/index.js' {
+  import { formatAsZonedTimeWithOptions } from 'date-fns-tz/fp'
+  export = formatAsZonedTimeWithOptions
 }
 
 declare module 'date-fns-tz/fp/formatWithOptions/index.js' {
@@ -321,6 +375,9 @@ declare module 'date-fns-tz/esm' {
   function format(date: Date | string | number, format: string, options?: OptionsWithTZ): string
   namespace format {}
 
+  function formatAsZonedTime(date: Date | number, timeZone: string, options?: OptionsWithTZ): string
+  namespace formatAsZonedTime {}
+
   function getTimezoneOffset(timeZone: string, date?: Date | number): number
   namespace getTimezoneOffset {}
 
@@ -345,6 +402,11 @@ declare module 'date-fns-tz/esm' {
 declare module 'date-fns-tz/esm/format' {
   import { format } from 'date-fns-tz/esm'
   export default format
+}
+
+declare module 'date-fns-tz/esm/formatAsZonedTime' {
+  import { formatAsZonedTime } from 'date-fns-tz/esm'
+  export default formatAsZonedTime
 }
 
 declare module 'date-fns-tz/esm/getTimezoneOffset' {
@@ -372,6 +434,11 @@ declare module 'date-fns-tz/esm/format/index' {
   export default format
 }
 
+declare module 'date-fns-tz/esm/formatAsZonedTime/index' {
+  import { formatAsZonedTime } from 'date-fns-tz/esm'
+  export default formatAsZonedTime
+}
+
 declare module 'date-fns-tz/esm/getTimezoneOffset/index' {
   import { getTimezoneOffset } from 'date-fns-tz/esm'
   export default getTimezoneOffset
@@ -395,6 +462,11 @@ declare module 'date-fns-tz/esm/zonedTimeToUtc/index' {
 declare module 'date-fns-tz/esm/format/index.js' {
   import { format } from 'date-fns-tz/esm'
   export default format
+}
+
+declare module 'date-fns-tz/esm/formatAsZonedTime/index.js' {
+  import { formatAsZonedTime } from 'date-fns-tz/esm'
+  export default formatAsZonedTime
 }
 
 declare module 'date-fns-tz/esm/getTimezoneOffset/index.js' {
@@ -425,6 +497,12 @@ declare module 'date-fns-tz/esm/fp' {
   const format: CurriedFn2<string, Date | string | number, string>
   namespace format {}
 
+  const formatAsZonedTime: CurriedFn2<string, Date | number, string>
+  namespace formatAsZonedTime {}
+
+  const formatAsZonedTimeWithOptions: CurriedFn3<OptionsWithTZ, string, Date | number, string>
+  namespace formatAsZonedTimeWithOptions {}
+
   const formatWithOptions: CurriedFn3<OptionsWithTZ, string, Date | string | number, string>
   namespace formatWithOptions {}
 
@@ -453,6 +531,16 @@ declare module 'date-fns-tz/esm/fp' {
 declare module 'date-fns-tz/esm/fp/format' {
   import { format } from 'date-fns-tz/esm/fp'
   export default format
+}
+
+declare module 'date-fns-tz/esm/fp/formatAsZonedTime' {
+  import { formatAsZonedTime } from 'date-fns-tz/esm/fp'
+  export default formatAsZonedTime
+}
+
+declare module 'date-fns-tz/esm/fp/formatAsZonedTimeWithOptions' {
+  import { formatAsZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
+  export default formatAsZonedTimeWithOptions
 }
 
 declare module 'date-fns-tz/esm/fp/formatWithOptions' {
@@ -500,6 +588,16 @@ declare module 'date-fns-tz/esm/fp/format/index' {
   export default format
 }
 
+declare module 'date-fns-tz/esm/fp/formatAsZonedTime/index' {
+  import { formatAsZonedTime } from 'date-fns-tz/esm/fp'
+  export default formatAsZonedTime
+}
+
+declare module 'date-fns-tz/esm/fp/formatAsZonedTimeWithOptions/index' {
+  import { formatAsZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
+  export default formatAsZonedTimeWithOptions
+}
+
 declare module 'date-fns-tz/esm/fp/formatWithOptions/index' {
   import { formatWithOptions } from 'date-fns-tz/esm/fp'
   export default formatWithOptions
@@ -543,6 +641,16 @@ declare module 'date-fns-tz/esm/fp/zonedTimeToUtcWithOptions/index' {
 declare module 'date-fns-tz/esm/fp/format/index.js' {
   import { format } from 'date-fns-tz/esm/fp'
   export default format
+}
+
+declare module 'date-fns-tz/esm/fp/formatAsZonedTime/index.js' {
+  import { formatAsZonedTime } from 'date-fns-tz/esm/fp'
+  export default formatAsZonedTime
+}
+
+declare module 'date-fns-tz/esm/fp/formatAsZonedTimeWithOptions/index.js' {
+  import { formatAsZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
+  export default formatAsZonedTimeWithOptions
 }
 
 declare module 'date-fns-tz/esm/fp/formatWithOptions/index.js' {
