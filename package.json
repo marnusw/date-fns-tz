@@ -1,10 +1,20 @@
 {
   "name": "date-fns-tz",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "sideEffects": false,
-  "description": "Time zone support for date-fns v2 with the browser Intl API",
+  "description": "Time zone support for date-fns v2 with the Intl API",
   "author": "Marnus Weststrate <marnusw@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "date-fns",
+    "timezone",
+    "time zone",
+    "date",
+    "time",
+    "parse",
+    "format",
+    "immutable"
+  ],
   "repository": "https://github.com/marnusw/date-fns-tz",
   "engine": {
     "node": ">= 0.11"

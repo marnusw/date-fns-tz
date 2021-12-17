@@ -1,3 +1,9 @@
+### v1.1.7 (17 December 2021)
+
+- [PERFORMANCE] Improve performance when validating the same timezones many times through caching; thanks @billthornton (#135)
+- [TESTS] Added a test for #33 which now passes
+- [BUGFIX] Fix `format` handling of quoted text next to a time zone token (#136)
+
 ### v1.1.6 (27 July 2021)
 
 - [BUGFIX] Added an error object to the catch of isValidTimezoneIANAString for older JS (#131)
