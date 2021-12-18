@@ -1,7 +1,7 @@
 import cloneObject from 'date-fns/_lib/cloneObject'
-import format from 'date-fns/format'
 import toDate from '../toDate'
 import tzPattern from '../_lib/tzPattern'
+import tzParseTimezone from '../_lib/tzParseTimezone'
 
 /**
  * @name zonedTimeToUtc
@@ -28,13 +28,25 @@ import tzPattern from '../_lib/tzPattern'
  * //=> 2014-06-25T17:00:00.000Z
  */
 export default function zonedTimeToUtc(date, timeZone, options) {
-  if (typeof date === 'string' && date.match(tzPattern)) {
-    date = toDate(date, options)
+  if (typeof date === 'string' && !date.match(tzPattern)) {
+    var extendedOptions = cloneObject(options)
+    extendedOptions.timeZone = timeZone
+    return toDate(date, extendedOptions)
   }
-  if (date instanceof Date) {
-    date = format(date, "yyyy-MM-dd'T'HH:mm:ss.SSS")
-  }
-  var extendedOptions = cloneObject(options)
-  extendedOptions.timeZone = timeZone
-  return toDate(date, extendedOptions)
+
+  var d = toDate(date, options)
+
+  var utc = Date.UTC(
+    d.getFullYear(),
+    d.getMonth(),
+    d.getDate(),
+    d.getHours(),
+    d.getMinutes(),
+    d.getSeconds(),
+    d.getMilliseconds()
+  )
+
+  var offsetMilliseconds = tzParseTimezone(timeZone, new Date(utc)) || 0
+
+  return new Date(utc + offsetMilliseconds)
 }
