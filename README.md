@@ -10,7 +10,7 @@ and for those that don't a [polyfill](https://github.com/yahoo/date-time-format-
 If you do not wish to use a polyfill the time zones can still be specified as offsets
 such as '-0200' or '+04:00', but not IANA time zone names.
 
-**Note:** `date-fns` is a peer dependency of this library
+**Note:** `date-fns` is a peer dependency of this library.
 
 ## Table of Contents
 

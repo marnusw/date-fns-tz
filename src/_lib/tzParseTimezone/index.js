@@ -104,7 +104,7 @@ function fixOffset(date, offset, timezoneString) {
   // Test whether the zone matches the offset for this ts
   var o2 = calcOffset(new Date(utcGuess), timezoneString)
 
-  // If so, offset didn't change and we're done
+  // If so, offset didn't change, and we're done
   if (offset === o2) {
     return offset
   }
@@ -118,16 +118,12 @@ function fixOffset(date, offset, timezoneString) {
     return o2
   }
 
-  // If it's different, we're in a hole time. The offset has changed, but the we don't adjust the time
+  // If it's different, we're in a hole time. The offset has changed, but we don't adjust the time
   return Math.max(o2, o3)
 }
 
 function validateTimezone(hours, minutes) {
-  if (minutes != null && (minutes < 0 || minutes > 59)) {
-    return false
-  }
-
-  return true
+  return !(minutes != null && (minutes < 0 || minutes > 59))
 }
 
 var validIANATimezoneCache = {}
