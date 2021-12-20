@@ -676,6 +676,14 @@ describe('format', function () {
 
       assert(result === '04.04.1986 12:32 UTC+02:00')
     })
+
+    it('https://github.com/marnusw/date-fns-tz/issues/138', () => {
+      const date = new Date('2020-10-31T21:37:02.233-05:00')
+      const timeZone = 'America/Chicago'
+      const offsetDate = utcToZonedTime(date, timeZone)
+      const result = format(offsetDate, "yyyy-MM-dd h:mmaaaaa'm' xxx", { timeZone })
+      assert.equal(result, '2020-10-31 9:37pm -05:00')
+    })
   })
 
   describe('timestamp', function () {
