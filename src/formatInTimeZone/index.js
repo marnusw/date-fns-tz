@@ -3,7 +3,7 @@ import format from '../format'
 import utcToZonedTime from '../utcToZonedTime'
 
 /**
- * @name formatAsZonedTime
+ * @name formatInTimeZone
  * @category Time Zone Helpers
  * @summary Gets the offset in milliseconds between the time zone and Universal Coordinated Time (UTC)
  *
@@ -23,7 +23,7 @@ import utcToZonedTime from '../utcToZonedTime'
  * @param {String} [options.timeZone=''] - used to specify the IANA time zone offset of a date String.
  * @returns {String} the formatted date string
  */
-export default function formatAsZonedTime(date, timeZone, formatStr, options) {
+export default function formatInTimeZone(date, timeZone, formatStr, options) {
   var extendedOptions = cloneObject(options)
   extendedOptions.timeZone = timeZone
   return format(utcToZonedTime(date, timeZone), formatStr, extendedOptions)
