@@ -771,7 +771,7 @@ describe('format', function () {
     })
 
     it('throws RangeError if the time zone is invalid and included in the output', () => {
-      var result = format(new Date(), 'MMMM d, yyyy', { timeZone: 'bad/timeZone' })
+      var result = format(new Date(2021, 11, 20), 'MMMM d, yyyy', { timeZone: 'bad/timeZone' })
       assert.equal(result, 'December 20, 2021')
       try {
         format(new Date(), 'MMMM d, yyyy zzz', { timeZone: 'bad/timeZone' })
