@@ -1,3 +1,12 @@
+### v1.2.0 (18 December 2021)
+
+- [ENHANCEMENT] Add `formatInTimeZone`
+- [DOCS] Various improvements and corrections
+- [BUGFIX] Fixed `zonedTimeToUtc` parsing of date strings with time zone specifiers
+- [ENHANCEMENT] Functions that return dates will return `Invalid Date` for bad date / time zone
+  inputs, and `format` functions throw a `RangeError`
+- [BUGFIX] Fix `format` returning wrong time zone offset close to DST. (#138)
+
 ### v1.1.7 (17 December 2021)
 
 - [PERFORMANCE] Improve performance when validating the same timezones many times through caching; thanks @billthornton (#135)

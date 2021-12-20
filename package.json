@@ -1,6 +1,6 @@
 {
   "name": "date-fns-tz",
-  "version": "1.1.7",
+  "version": "1.2.0",
   "sideEffects": false,
   "description": "Time zone support for date-fns v2 with the Intl API",
   "author": "Marnus Weststrate <marnusw@gmail.com>",
@@ -46,7 +46,7 @@
     ]
   },
   "peerDependencies": {
-    "date-fns": ">=2.0.0-alpha.13"
+    "date-fns": ">=2.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.4",
