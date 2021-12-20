@@ -8,7 +8,7 @@ var formatters = {
   X: function (date, token, localize, options) {
     var originalDate = options._originalDate || date
     var timezoneOffset = options.timeZone
-      ? tzParseTimezone(options.timeZone, originalDate) / MILLISECONDS_IN_MINUTE
+      ? tzParseTimezone(options.timeZone, originalDate, true) / MILLISECONDS_IN_MINUTE
       : originalDate.getTimezoneOffset()
 
     if (timezoneOffset === 0) {
@@ -41,7 +41,7 @@ var formatters = {
   x: function (date, token, localize, options) {
     var originalDate = options._originalDate || date
     var timezoneOffset = options.timeZone
-      ? tzParseTimezone(options.timeZone, originalDate) / MILLISECONDS_IN_MINUTE
+      ? tzParseTimezone(options.timeZone, originalDate, true) / MILLISECONDS_IN_MINUTE
       : originalDate.getTimezoneOffset()
 
     switch (token) {
@@ -70,7 +70,7 @@ var formatters = {
   O: function (date, token, localize, options) {
     var originalDate = options._originalDate || date
     var timezoneOffset = options.timeZone
-      ? tzParseTimezone(options.timeZone, originalDate) / MILLISECONDS_IN_MINUTE
+      ? tzParseTimezone(options.timeZone, originalDate, true) / MILLISECONDS_IN_MINUTE
       : originalDate.getTimezoneOffset()
 
     switch (token) {
