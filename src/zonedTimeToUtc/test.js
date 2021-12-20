@@ -171,4 +171,12 @@ describe('zonedTimeToUtc', function () {
       assert.deepEqual(result, new Date('2019-11-26T10:00:00Z'))
     })
   })
+
+  describe('invalid time zone handling', function () {
+    it('returns an invalid date when the time zone is invalid', function () {
+      var result = zonedTimeToUtc('2020-01-01T12:00:00.000Z', 'bad/timezone')
+      assert(result instanceof Date)
+      assert(isNaN(result))
+    })
+  })
 })

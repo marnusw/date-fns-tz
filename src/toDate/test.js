@@ -413,6 +413,12 @@ describe('toDate', function () {
   })
 
   describe('invalid argument', function () {
+    it('returns Invalid Date if an invalid time zone is provided', function () {
+      var result = toDate('2020-01-01T12:00:00.000', { timeZone: 'bad/timeZone' })
+      assert(result instanceof Date)
+      assert(isNaN(result))
+    })
+
     it('returns Invalid Date if argument is non-date string', function () {
       var result = toDate('abc')
       assert(result instanceof Date)

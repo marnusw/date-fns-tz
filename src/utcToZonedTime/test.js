@@ -72,4 +72,10 @@ describe('utcToZonedTime', function () {
     var result = utcToZonedTime('2020-03-08T19:00:00.000Z', timeZone)
     assert.equal(format(result, 'yyyy-MM-dd hh:mm:ss.SSS'), '2020-03-08 12:00:00.000')
   })
+
+  it('returns an invalid date when the time zone is invalid', function () {
+    var result = utcToZonedTime('2020-03-08T19:00:00.000Z', 'bad/timeZone')
+    assert(result instanceof Date)
+    assert(isNaN(result))
+  })
 })

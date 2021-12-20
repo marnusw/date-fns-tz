@@ -28,11 +28,11 @@ import toDate from '../toDate'
 export default function utcToZonedTime(dirtyDate, timeZone, options) {
   var date = toDate(dirtyDate, options)
 
-  var offsetMilliseconds = tzParseTimezone(timeZone, date, true) || 0
+  var offsetMilliseconds = tzParseTimezone(timeZone, date, true)
 
   var d = new Date(date.getTime() - offsetMilliseconds)
 
-  var zonedTime = new Date(
+  return new Date(
     d.getUTCFullYear(),
     d.getUTCMonth(),
     d.getUTCDate(),
@@ -41,6 +41,4 @@ export default function utcToZonedTime(dirtyDate, timeZone, options) {
     d.getUTCSeconds(),
     d.getUTCMilliseconds()
   )
-
-  return zonedTime
 }

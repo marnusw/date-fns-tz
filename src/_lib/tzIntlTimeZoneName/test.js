@@ -51,4 +51,11 @@ describe('tzIntlTimeZoneName', function () {
     var result = tzIntlTimeZoneName('long', date, { timeZone, locale })
     assert.equal(result, 'Central European Summer Time')
   })
+
+  it('an invalid time zone throws a range error', function () {
+    var locale = { code: 'en-GB' }
+    var date = new Date('2014-10-25T13:46:20Z')
+    var timeZone = 'bad/timeZone'
+    assert.throws(tzIntlTimeZoneName.bind(null, 'long', date, { timeZone, locale }), RangeError)
+  })
 })

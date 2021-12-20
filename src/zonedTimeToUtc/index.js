@@ -46,7 +46,7 @@ export default function zonedTimeToUtc(date, timeZone, options) {
     d.getMilliseconds()
   )
 
-  var offsetMilliseconds = tzParseTimezone(timeZone, new Date(utc)) || 0
+  var offsetMilliseconds = tzParseTimezone(timeZone, new Date(utc))
 
   return new Date(utc + offsetMilliseconds)
 }
