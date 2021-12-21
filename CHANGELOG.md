@@ -1,3 +1,7 @@
+### v1.2.1 (21 December 2021)
+
+- [DOCS] Fixed a broken link (#148)
+
 ### v1.2.0 (18 December 2021)
 
 - [ENHANCEMENT] Add `formatInTimeZone`

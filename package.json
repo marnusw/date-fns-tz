@@ -1,6 +1,6 @@
 {
   "name": "date-fns-tz",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "sideEffects": false,
   "description": "Time zone support for date-fns v2 with the Intl API",
   "author": "Marnus Weststrate <marnusw@gmail.com>",
