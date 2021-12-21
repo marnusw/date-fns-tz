@@ -20,7 +20,7 @@ If you find this library useful, why not
 
 - [Overview](#overview)
 - [Date and time zone formatting](#date-and-time-zone-formatting)
-  - [`formatInTimeZone`](#formataszonedtime) - Formats a date in the provided time zone,
+  - [`formatInTimeZone`](#formatintimezone) - Formats a date in the provided time zone,
     regardless of the system time zone
 - [Time zone offset helpers](#time-zone-offset-helpers)
   - [`zonedTimeToUtc`](#zonedtimetoutc) - Given a date and any time zone, returns a `Date` with the equivalent UTC time
