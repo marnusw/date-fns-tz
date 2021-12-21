@@ -73,6 +73,14 @@ describe('utcToZonedTime', function () {
     assert.equal(format(result, 'yyyy-MM-dd hh:mm:ss.SSS'), '2020-03-08 12:00:00.000')
   })
 
+  it('https://github.com/marnusw/date-fns-tz/issues/53', function () {
+    const f = (date) => format(utcToZonedTime(new Date(date), 'UTC'), 'yyyy-MM-dd HH:mm:ss.SSS')
+    assert.equal(f('2020-02-19T18:59:59.999-0500'), '2020-02-19 23:59:59.999') //
+    assert.equal(f('2020-02-19T19:00:00.000-0500'), '2020-02-20 00:00:00.000')
+    assert.equal(f('2020-02-19T19:59:59.999-0500'), '2020-02-20 00:59:59.999')
+    assert.equal(f('2020-02-19T20:00:00.000-0500'), '2020-02-20 01:00:00.000')
+  })
+
   it('returns an invalid date when the time zone is invalid', function () {
     var result = utcToZonedTime('2020-03-08T19:00:00.000Z', 'bad/timeZone')
     assert(result instanceof Date)
