@@ -16,4 +16,9 @@ type OptionsWithTZ = {
   awareOfUnicodeTokens?: boolean,
 }
 
-declare module.exports: (date: Date | number, timeZone: string, options?: OptionsWithTZ) => string
+declare module.exports: (
+  date: Date | string | number,
+  timeZone: string,
+  formatStr: string,
+  options?: OptionsWithTZ
+) => string

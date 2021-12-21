@@ -49,7 +49,12 @@ declare module 'date-fns-tz' {
   function format(date: Date | string | number, format: string, options?: OptionsWithTZ): string
   namespace format {}
 
-  function formatInTimeZone(date: Date | number, timeZone: string, options?: OptionsWithTZ): string
+  function formatInTimeZone(
+    date: Date | string | number,
+    timeZone: string,
+    formatStr: string,
+    options?: OptionsWithTZ
+  ): string
   namespace formatInTimeZone {}
 
   function getTimezoneOffset(timeZone: string, date?: Date | number): number
@@ -171,10 +176,16 @@ declare module 'date-fns-tz/fp' {
   const format: CurriedFn2<string, Date | string | number, string>
   namespace format {}
 
-  const formatInTimeZone: CurriedFn2<string, Date | number, string>
+  const formatInTimeZone: CurriedFn3<string, string, Date | string | number, string>
   namespace formatInTimeZone {}
 
-  const formatInTimeZoneWithOptions: CurriedFn3<OptionsWithTZ, string, Date | number, string>
+  const formatInTimeZoneWithOptions: CurriedFn4<
+    OptionsWithTZ,
+    string,
+    string,
+    Date | string | number,
+    string
+  >
   namespace formatInTimeZoneWithOptions {}
 
   const formatWithOptions: CurriedFn3<OptionsWithTZ, string, Date | string | number, string>
@@ -375,7 +386,12 @@ declare module 'date-fns-tz/esm' {
   function format(date: Date | string | number, format: string, options?: OptionsWithTZ): string
   namespace format {}
 
-  function formatInTimeZone(date: Date | number, timeZone: string, options?: OptionsWithTZ): string
+  function formatInTimeZone(
+    date: Date | string | number,
+    timeZone: string,
+    formatStr: string,
+    options?: OptionsWithTZ
+  ): string
   namespace formatInTimeZone {}
 
   function getTimezoneOffset(timeZone: string, date?: Date | number): number
@@ -497,10 +513,16 @@ declare module 'date-fns-tz/esm/fp' {
   const format: CurriedFn2<string, Date | string | number, string>
   namespace format {}
 
-  const formatInTimeZone: CurriedFn2<string, Date | number, string>
+  const formatInTimeZone: CurriedFn3<string, string, Date | string | number, string>
   namespace formatInTimeZone {}
 
-  const formatInTimeZoneWithOptions: CurriedFn3<OptionsWithTZ, string, Date | number, string>
+  const formatInTimeZoneWithOptions: CurriedFn4<
+    OptionsWithTZ,
+    string,
+    string,
+    Date | string | number,
+    string
+  >
   namespace formatInTimeZoneWithOptions {}
 
   const formatWithOptions: CurriedFn3<OptionsWithTZ, string, Date | string | number, string>

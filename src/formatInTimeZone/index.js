@@ -7,8 +7,9 @@ import utcToZonedTime from '../utcToZonedTime'
  * @category Time Zone Helpers
  * @summary Gets the offset in milliseconds between the time zone and Universal Coordinated Time (UTC)
  *
- * @param {Date|Number} date - the date representing the local time / real UTC time
+ * @param {Date|String|Number} date - the date representing the local time / real UTC time
  * @param {String} timeZone - the time zone this date should be formatted for; can be an offset or IANA time zone
+ * @param {String} formatStr - the string of tokens
  * @param {OptionsWithTZ} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link
  *   https://date-fns.org/docs/toDate}
