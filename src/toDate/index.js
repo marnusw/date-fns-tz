@@ -1,7 +1,7 @@
 import toInteger from 'date-fns/_lib/toInteger/index.js'
 import getTimezoneOffsetInMilliseconds from 'date-fns/_lib/getTimezoneOffsetInMilliseconds/index.js'
-import tzParseTimezone from '../_lib/tzParseTimezone'
-import tzPattern from '../_lib/tzPattern'
+import tzParseTimezone from '../_lib/tzParseTimezone/index.js'
+import tzPattern from '../_lib/tzPattern/index.js'
 
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000

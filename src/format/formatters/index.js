@@ -1,5 +1,5 @@
-import tzIntlTimeZoneName from '../../_lib/tzIntlTimeZoneName'
-import tzParseTimezone from '../../_lib/tzParseTimezone'
+import tzIntlTimeZoneName from '../../_lib/tzIntlTimeZoneName/index.js'
+import tzParseTimezone from '../../_lib/tzParseTimezone/index.js'
 
 var MILLISECONDS_IN_MINUTE = 60 * 1000
 

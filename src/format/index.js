@@ -1,6 +1,6 @@
-import dateFnsFormat from 'date-fns/format'
-import formatters from './formatters'
-import toDate from '../toDate'
+import dateFnsFormat from 'date-fns/format/index.js'
+import formatters from './formatters/index.js'
+import toDate from '../toDate/index.js'
 
 var tzFormattingTokensRegExp = /([xXOz]+)|''|'(''|[^'])+('|$)/g
 
