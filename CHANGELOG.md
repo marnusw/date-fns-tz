@@ -1,4 +1,4 @@
-### v1.3.0 (23 February 2022)
+### v1.3.0 (24 February 2022)
 
 - [ENHANCEMENT] Native ESM support via `exports` configuration in `package.json` (#133, #150)
 - [DOCS] Clarify the use of ESM vs CommonJS import paths
