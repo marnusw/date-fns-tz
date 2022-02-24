@@ -6,8 +6,8 @@ var MILLISECONDS_IN_MINUTE = 60000
 var patterns = {
   timezone: /([Z+-].*)$/,
   timezoneZ: /^(Z)$/,
-  timezoneHH: /^([+-])(\d{2})$/,
-  timezoneHHMM: /^([+-])(\d{2}):?(\d{2})$/,
+  timezoneHH: /^([+-]\d{2})$/,
+  timezoneHHMM: /^([+-]\d{2}):?(\d{2})$/,
 }
 
 // Parse various time zone offset formats to an offset in milliseconds
@@ -31,28 +31,27 @@ export default function tzParseTimezone(timezoneString, date, isUtcDate) {
   // ±hh
   token = patterns.timezoneHH.exec(timezoneString)
   if (token) {
-    hours = parseInt(token[2], 10)
+    hours = parseInt(token[1], 10)
 
     if (!validateTimezone(hours)) {
       return NaN
     }
 
-    absoluteOffset = hours * MILLISECONDS_IN_HOUR
-    return token[1] === '+' ? -absoluteOffset : absoluteOffset
+    return -(hours * MILLISECONDS_IN_HOUR)
   }
 
   // ±hh:mm or ±hhmm
   token = patterns.timezoneHHMM.exec(timezoneString)
   if (token) {
-    hours = parseInt(token[2], 10)
-    var minutes = parseInt(token[3], 10)
+    hours = parseInt(token[1], 10)
+    var minutes = parseInt(token[2], 10)
 
     if (!validateTimezone(hours, minutes)) {
       return NaN
     }
 
-    absoluteOffset = hours * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
-    return token[1] === '+' ? -absoluteOffset : absoluteOffset
+    absoluteOffset = Math.abs(hours) * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
+    return hours > 0 ? -absoluteOffset : absoluteOffset
   }
 
   // IANA time zone
@@ -123,7 +122,10 @@ function fixOffset(date, offset, timezoneString) {
 }
 
 function validateTimezone(hours, minutes) {
-  return !(minutes != null && (minutes < 0 || minutes > 59))
+  return (
+    (hours === 12 && (minutes == null || minutes === 0)) ||
+    (-11 <= hours && hours <= 11 && (minutes == null || (0 <= minutes && minutes < 59)))
+  )
 }
 
 var validIANATimezoneCache = {}
