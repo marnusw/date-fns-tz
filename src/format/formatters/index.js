@@ -6,10 +6,7 @@ var MILLISECONDS_IN_MINUTE = 60 * 1000
 var formatters = {
   // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
   X: function (date, token, localize, options) {
-    var originalDate = options._originalDate || date
-    var timezoneOffset = options.timeZone
-      ? tzParseTimezone(options.timeZone, originalDate, true) / MILLISECONDS_IN_MINUTE
-      : originalDate.getTimezoneOffset()
+    var timezoneOffset = getTimeZoneOffset(options.timeZone, options._originalDate || date)
 
     if (timezoneOffset === 0) {
       return 'Z'
@@ -39,10 +36,7 @@ var formatters = {
 
   // Timezone (ISO-8601. If offset is 0, output is `'+00:00'` or equivalent)
   x: function (date, token, localize, options) {
-    var originalDate = options._originalDate || date
-    var timezoneOffset = options.timeZone
-      ? tzParseTimezone(options.timeZone, originalDate, true) / MILLISECONDS_IN_MINUTE
-      : originalDate.getTimezoneOffset()
+    var timezoneOffset = getTimeZoneOffset(options.timeZone, options._originalDate || date)
 
     switch (token) {
       // Hours and optional minutes
@@ -68,10 +62,7 @@ var formatters = {
 
   // Timezone (GMT)
   O: function (date, token, localize, options) {
-    var originalDate = options._originalDate || date
-    var timezoneOffset = options.timeZone
-      ? tzParseTimezone(options.timeZone, originalDate, true) / MILLISECONDS_IN_MINUTE
-      : originalDate.getTimezoneOffset()
+    var timezoneOffset = getTimeZoneOffset(options.timeZone, options._originalDate || date)
 
     switch (token) {
       // Short
@@ -102,6 +93,16 @@ var formatters = {
         return tzIntlTimeZoneName('long', originalDate, options)
     }
   },
+}
+
+function getTimeZoneOffset(timeZone, originalDate) {
+  var timeZoneOffset = timeZone
+    ? tzParseTimezone(timeZone, originalDate, true) / MILLISECONDS_IN_MINUTE
+    : originalDate.getTimezoneOffset()
+  if (Number.isNaN(timeZoneOffset)) {
+    throw new RangeError('Invalid time zone specified: ' + timeZone)
+  }
+  return timeZoneOffset
 }
 
 function addLeadingZeros(number, targetLength) {

@@ -770,12 +770,21 @@ describe('format', function () {
       assert.throws(format.bind(null, new Date(NaN), 'MMMM d, yyyy'), RangeError)
     })
 
-    it('throws RangeError if the time zone is invalid and included in the output', () => {
+    it('throws RangeError if the time zone is invalid and a name included in the output', () => {
       var result = format(new Date(2021, 11, 20), 'MMMM d, yyyy', { timeZone: 'bad/timeZone' })
       assert.equal(result, 'December 20, 2021')
       assert.throws(
         () => format(new Date(), 'MMMM d, yyyy zzz', { timeZone: 'bad/timeZone' }),
         /RangeError: Invalid time zone specified: bad\/timeZone$/
+      )
+    })
+
+    it('throws RangeError if the time zone is invalid and an offset included in the output', () => {
+      var result = format(new Date(2021, 11, 20), 'xxxxx', { timeZone: 'Europe/London' })
+      assert.equal(result, '+00:00')
+      assert.throws(
+        () => format(new Date(2021, 11, 20), 'xxxxx', { timeZone: 'X/Y' }),
+        /RangeError: Invalid time zone specified: X\/Y$/
       )
     })
 
