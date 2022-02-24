@@ -16,6 +16,20 @@ If you find this library useful, why not
 
 <a href="https://www.buymeacoffee.com/marnusw" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
+## ESM and CommonJS
+
+As of `v1.3.0` this library supports native ESM imports in Node.js. It is important to
+use the proper import path for your use case. Set the `type` property in your project's
+`package.json` to either `module`, for ESM, or `commonjs` and
+
+- For **ESM** import from `date-fns-tz/esm` or its sub-paths
+- For **CommonJS** import from `date-fns-tz` or its sub-paths
+
+Even when using ESM some CommonJS imports from `date-fns` will be used until they support
+ESM natively as well [date-fns#1781](https://github.com/date-fns/date-fns/issues/1781).
+This is because an ESM projects cannot use ESM imports from a library that doesn't specify
+`{"type": "module"}`.
+
 ## Table of Contents
 
 - [Overview](#overview)

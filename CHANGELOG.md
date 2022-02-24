@@ -1,3 +1,8 @@
+### v1.3.0 (23 February 2022)
+
+- [ENHANCEMENT] Native ESM support via `exports` configuration in `package.json`
+- [DOCS] Clarify the use of ESM vs CommonJS import paths
+
 ### v1.2.2 (21 December 2021)
 
 - [BUGFIX] Fix `formatInTimeZone` types and fp arguments
