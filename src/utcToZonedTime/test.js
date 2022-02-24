@@ -81,9 +81,23 @@ describe('utcToZonedTime', function () {
     assert.equal(f('2020-02-19T20:00:00.000-0500'), '2020-02-20 01:00:00.000')
   })
 
-  it('returns an invalid date when the time zone is invalid', function () {
-    var result = utcToZonedTime('2020-03-08T19:00:00.000Z', 'bad/timeZone')
-    assert(result instanceof Date)
-    assert(isNaN(result))
+  describe('invalid date and time zone handling', function () {
+    it('returns an invalid date when the date string is invalid without tz info', function () {
+      var result = utcToZonedTime('2020-03-08T25:00:00.000', 'bad/timeZone')
+      assert(result instanceof Date)
+      assert(isNaN(result))
+    })
+
+    it('returns an invalid date when the date string is invalid with tz info', function () {
+      var result = utcToZonedTime('2020-03-08T25:00:00.000Z', 'bad/timeZone')
+      assert(result instanceof Date)
+      assert(isNaN(result))
+    })
+
+    it('returns an invalid date when the time zone is invalid', function () {
+      var result = utcToZonedTime('2020-03-08T19:00:00.000Z', 'bad/timeZone')
+      assert(result instanceof Date)
+      assert(isNaN(result))
+    })
   })
 })

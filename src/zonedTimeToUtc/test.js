@@ -172,7 +172,19 @@ describe('zonedTimeToUtc', function () {
     })
   })
 
-  describe('invalid time zone handling', function () {
+  describe('invalid date and time zone handling', function () {
+    it('returns an invalid date when the date string is invalid without tz info', function () {
+      var result = zonedTimeToUtc('2020-01-01T25:00:00.000', 'Europe/London')
+      assert(result instanceof Date)
+      assert(isNaN(result))
+    })
+
+    it('returns an invalid date when the date string is invalid with tz info', function () {
+      var result = zonedTimeToUtc('2020-01-01T25:00:00.000Z', 'Europe/London')
+      assert(result instanceof Date)
+      assert(isNaN(result))
+    })
+
     it('returns an invalid date when the time zone is invalid', function () {
       var result = zonedTimeToUtc('2020-01-01T12:00:00.000Z', 'bad/timezone')
       assert(result instanceof Date)

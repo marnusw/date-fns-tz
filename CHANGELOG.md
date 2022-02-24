@@ -2,8 +2,9 @@
 
 - [ENHANCEMENT] Native ESM support via `exports` configuration in `package.json` (#133, #150)
 - [DOCS] Clarify the use of ESM vs CommonJS import paths
-- [DOCS] Clarify when `format` throws a `RangeError` and fix the test for it (#152)
+- [DOCS] Clarify when `format` throws a `RangeError` and fix the test for it
 - [ENHANCEMENT] More extensive validation of numeric time zone offsets
+- [BUGFIX] Fixed `zonedTimeToUtc` throwing `RangeError` instead of returning an Invalid Date (#151)
 
 ### v1.2.2 (21 December 2021)
 
