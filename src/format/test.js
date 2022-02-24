@@ -773,11 +773,10 @@ describe('format', function () {
     it('throws RangeError if the time zone is invalid and included in the output', () => {
       var result = format(new Date(2021, 11, 20), 'MMMM d, yyyy', { timeZone: 'bad/timeZone' })
       assert.equal(result, 'December 20, 2021')
-      try {
-        format(new Date(), 'MMMM d, yyyy zzz', { timeZone: 'bad/timeZone' })
-      } catch (error) {
-        assert.deepEqual(error, new Error('Invalid time zone specified: bad/timeZone'))
-      }
+      assert.throws(
+        () => format(new Date(), 'MMMM d, yyyy zzz', { timeZone: 'bad/timeZone' }),
+        /RangeError: Invalid time zone specified: bad\/timeZone$/
+      )
     })
 
     it('handles dates before 100 AD', function () {

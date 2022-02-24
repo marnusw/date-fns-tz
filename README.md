@@ -213,7 +213,9 @@ zone (if provided, see below) rather than the system time zone.
 Since a JavaScript `Date` instance cannot convey the time zone information to the `format` function
 it is necessary to pass the `timeZone` value as an option on the third argument of `format`.
 
-Similar to `date-fns/format`, when an invalid date or time zone is used a `RangeError` is thrown.
+Similar to `date-fns/format`, when an invalid date is used a `RangeError` is thrown. When an invalid
+time zone is provided _and included in the output_, i.e. with time zone tokens in the format
+string, it will also throw a `RangeError`.
 
 To format a date showing time for a specific time zone other than the system time zone, the
 `format` function can be combined with `utcToZonedTime`. This is what `formatInTimeZone` does

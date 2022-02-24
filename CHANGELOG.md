@@ -1,7 +1,8 @@
 ### v1.3.0 (23 February 2022)
 
-- [ENHANCEMENT] Native ESM support via `exports` configuration in `package.json`
+- [ENHANCEMENT] Native ESM support via `exports` configuration in `package.json` (#133, #150)
 - [DOCS] Clarify the use of ESM vs CommonJS import paths
+- [DOCS] Clarify when `format` throws a `RangeError` and fix the test for it (#152)
 
 ### v1.2.2 (21 December 2021)
 
@@ -32,7 +33,7 @@
 
 ### v1.1.5 (27 July 2021)
 
-- [BUGFIX] Fixing parsing IANA strings (#129)
+- [BUGFIX] Fixed parsing IANA strings (#129)
 
 ### v1.1.4 (13 April 2021)
 
