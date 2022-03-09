@@ -70,23 +70,32 @@ export default function tzParseTimezone(timezoneString, date, isUtcDate) {
 }
 
 function toUtcDate(date) {
-  return new Date(
-    Date.UTC(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate(),
-      date.getHours(),
-      date.getMinutes(),
-      date.getSeconds(),
-      date.getMilliseconds()
-    )
+  return newDateDateUTC(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate(),
+    date.getHours(),
+    date.getMinutes(),
+    date.getSeconds(),
+    date.getMilliseconds()
   )
+}
+
+function newDateDateUTC(fullYear, month, day, hour, minute, second, millisecond) {
+  var utcDate = new Date(0)
+  utcDate.setUTCFullYear(fullYear, month, day)
+  utcDate.setUTCHours(hour, minute, second, millisecond)
+  return utcDate
+}
+
+function DateUTC(fullYear, month, day, hour, minute, second, millisecond) {
+  return newDateDateUTC(fullYear, month, day, hour, minute, second, millisecond).getTime()
 }
 
 function calcOffset(date, timezoneString) {
   var tokens = tzTokenizeDate(date, timezoneString)
 
-  var asUTC = Date.UTC(tokens[0], tokens[1] - 1, tokens[2], tokens[3] % 24, tokens[4], tokens[5])
+  var asUTC = DateUTC(tokens[0], tokens[1] - 1, tokens[2], tokens[3] % 24, tokens[4], tokens[5], 0)
 
   var asTS = date.getTime()
   var over = asTS % 1000
