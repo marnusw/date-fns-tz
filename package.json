@@ -25,6 +25,7 @@
   "types": "typings.d.ts",
   "exports": {
     ".": "./index.js",
+    "./package.json": "./package.json",
     "./format": "./format/index.js",
     "./formatInTimeZone": "./formatInTimeZone/index.js",
     "./getTimezoneOffset": "./getTimezoneOffset/index.js",
