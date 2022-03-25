@@ -684,6 +684,13 @@ describe('format', function () {
       const result = format(offsetDate, "yyyy-MM-dd h:mmaaaaa'm' xxx XXX OOO zzz", { timeZone })
       assert.equal(result, '2020-10-31 9:37pm -05:00 -05:00 GMT-5 CDT')
     })
+
+    it('https://github.com/marnusw/date-fns-tz/issues/168', () => {
+      const timeZone = 'Europe/Stockholm'
+      const dateInUTC = Date.UTC(1888, 11, 1)
+      const result = format(dateInUTC, "yyyy-MM-dd'T'HH:mm:ss.SSSxxx", { timeZone })
+      assert.equal(result, '1888-12-01T01:00:14.000+01:00')
+    })
   })
 
   describe('timestamp', function () {
