@@ -121,11 +121,8 @@ function fixOffset(date, offset, timezoneString) {
   return Math.max(o2, o3)
 }
 
-function validateTimezone(hours, minutes) {
-  return (
-    (hours === 12 && (minutes == null || minutes === 0)) ||
-    (-11 <= hours && hours <= 11 && (minutes == null || (0 <= minutes && minutes < 59)))
-  )
+function validateTimezone(hours, minutes = 0) {
+  return hours <= 23 && minutes <= 59
 }
 
 var validIANATimezoneCache = {}

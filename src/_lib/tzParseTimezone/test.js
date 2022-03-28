@@ -16,11 +16,14 @@ describe('tzParseTimezone', function () {
     assert.equal(tzParseTimezone('+02'), -120 * 60 * 1000)
     assert.equal(tzParseTimezone('+11'), -660 * 60 * 1000)
     assert.equal(tzParseTimezone('+12'), -720 * 60 * 1000)
+    assert.equal(tzParseTimezone('-12'), 720 * 60 * 1000)
+    assert.equal(tzParseTimezone('+13'), -780 * 60 * 1000)
   })
 
   it('±hhmm time zone format', function () {
     assert.equal(tzParseTimezone('-0430'), 270 * 60 * 1000)
     assert.equal(tzParseTimezone('+0230'), -150 * 60 * 1000)
+    assert.equal(tzParseTimezone('+1345'), -825 * 60 * 1000)
   })
 
   it('±hh:mm time zone format', function () {
@@ -29,6 +32,9 @@ describe('tzParseTimezone', function () {
     assert.equal(tzParseTimezone('+03:00'), -180 * 60 * 1000)
     assert.equal(tzParseTimezone('+11:30'), -690 * 60 * 1000)
     assert.equal(tzParseTimezone('+12:00'), -720 * 60 * 1000)
+    assert.equal(tzParseTimezone('-12:00'), 720 * 60 * 1000)
+    assert.equal(tzParseTimezone('+12:45'), -765 * 60 * 1000)
+    assert.equal(tzParseTimezone('+14:00'), -840 * 60 * 1000)
   })
 
   it('IANA time zone', function () {
@@ -39,12 +45,11 @@ describe('tzParseTimezone', function () {
   })
 
   it('bad time zone', function () {
-    assert.equal(Number.isNaN(tzParseTimezone('-12')), true)
-    assert.equal(Number.isNaN(tzParseTimezone('-12:00')), true)
-    assert.equal(Number.isNaN(tzParseTimezone('+13')), true)
+    assert.equal(Number.isNaN(tzParseTimezone('-24')), true)
+    assert.equal(Number.isNaN(tzParseTimezone('-24:00')), true)
+    assert.equal(Number.isNaN(tzParseTimezone('+25')), true)
     assert.equal(Number.isNaN(tzParseTimezone('+0260')), true)
     assert.equal(Number.isNaN(tzParseTimezone('+02:60')), true)
-    assert.equal(Number.isNaN(tzParseTimezone('+12:30')), true)
     assert.equal(Number.isNaN(tzParseTimezone('Europe/Non_Existing')), true)
   })
 
