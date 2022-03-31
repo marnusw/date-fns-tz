@@ -1,3 +1,8 @@
+### v1.3.2 (31 March 2022)
+
+- [BUGFIX] Support tz offsets up to +/-23:59 (#171)
+- [BUGFIX] Fixed zonedTimeToUtc not working with year < 100 (#87, #170)
+
 ### v1.3.1 (25 March 2022)
 
 - [BUGFIX] ESM export of package.json (#173)
