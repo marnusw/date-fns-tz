@@ -48,8 +48,9 @@ describe('zonedTimeToUtc', function () {
   it('works with years < 100 (Date input)', function () {
     var input = new Date(0)
     input.setFullYear(99, 0, 1)
+    input.setHours(10, 0, 0, 0)
     var result = zonedTimeToUtc(input, 'Europe/Berlin')
-    assert.deepEqual(result.toISOString(), '0099-01-01T00:06:32.000Z')
+    assert.deepEqual(result.toISOString(), '0099-01-01T09:06:32.000Z')
   })
 
   it('works with years < 100 (string input)', function () {
