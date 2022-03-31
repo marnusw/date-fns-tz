@@ -122,10 +122,7 @@ function fixOffset(date, offset, timezoneString) {
 }
 
 function validateTimezone(hours, minutes) {
-  return (
-    (hours === 12 && (minutes == null || minutes === 0)) ||
-    (-11 <= hours && hours <= 11 && (minutes == null || (0 <= minutes && minutes < 59)))
-  )
+  return -23 <= hours && hours <= 23 && (minutes == null || (0 <= minutes && minutes <= 59))
 }
 
 var validIANATimezoneCache = {}
