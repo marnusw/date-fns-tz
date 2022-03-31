@@ -20,6 +20,11 @@ describe('tzTokenizeDate', function () {
     assert.deepEqual(result, [2020, 1, 23, 0, 0, 0])
   })
 
+  it('works with year < 100', function () {
+    var result = tzTokenizeDate(new Date('0099-01-01T00:00:00.000Z'), 'UTC')
+    assert.deepEqual(result, [99, 1, 1, 0, 0, 0])
+  })
+
   it('returns NaN when the date string is invalid', function () {
     var result = tzTokenizeDate(new Date('2014-10-25T25:46:20Z'), 'UTC')
     assert(Number.isNaN(result[0]))

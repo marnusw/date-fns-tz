@@ -36,15 +36,11 @@ export default function zonedTimeToUtc(date, timeZone, options) {
 
   var d = toDate(date, options)
 
-  var utc = Date.UTC(
-    d.getFullYear(),
-    d.getMonth(),
-    d.getDate(),
-    d.getHours(),
-    d.getMinutes(),
-    d.getSeconds(),
-    d.getMilliseconds()
-  )
+  var tmp = new Date(0)
+  tmp.setUTCFullYear(d.getFullYear(), d.getMonth(), d.getDate())
+  tmp.setUTCHours(d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds())
+
+  var utc = tmp.getTime()
 
   var offsetMilliseconds = tzParseTimezone(timeZone, new Date(utc))
 

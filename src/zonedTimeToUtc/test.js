@@ -45,6 +45,18 @@ describe('zonedTimeToUtc', function () {
     assert.deepEqual(result.toISOString(), '2014-06-25T10:00:00.123Z')
   })
 
+  it('works with years < 100 (Date input)', function () {
+    var input = new Date(0)
+    input.setFullYear(99, 0, 1)
+    var result = zonedTimeToUtc(input, 'Europe/Berlin')
+    assert.deepEqual(result.toISOString(), '0099-01-01T00:06:32.000Z')
+  })
+
+  it('works with years < 100 (string input)', function () {
+    var result = zonedTimeToUtc('0099-01-01', 'Europe/Berlin')
+    assert.deepEqual(result.toISOString(), '0098-12-31T23:06:32.000Z')
+  })
+
   describe('near DST changeover (AEST to AEDT)', function () {
     it('zoned time one day before', function () {
       var result = zonedTimeToUtc(
