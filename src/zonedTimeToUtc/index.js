@@ -2,6 +2,7 @@ import cloneObject from 'date-fns/_lib/cloneObject/index.js'
 import toDate from '../toDate/index.js'
 import tzPattern from '../_lib/tzPattern/index.js'
 import tzParseTimezone from '../_lib/tzParseTimezone/index.js'
+import newDateUTC from '../_lib/newDateUTC'
 
 /**
  * @name zonedTimeToUtc
@@ -36,11 +37,15 @@ export default function zonedTimeToUtc(date, timeZone, options) {
 
   var d = toDate(date, options)
 
-  var tmp = new Date(0)
-  tmp.setUTCFullYear(d.getFullYear(), d.getMonth(), d.getDate())
-  tmp.setUTCHours(d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds())
-
-  var utc = tmp.getTime()
+  var utc = newDateUTC(
+    d.getFullYear(),
+    d.getMonth(),
+    d.getDate(),
+    d.getHours(),
+    d.getMinutes(),
+    d.getSeconds(),
+    d.getMilliseconds()
+  ).getTime()
 
   var offsetMilliseconds = tzParseTimezone(timeZone, new Date(utc))
 

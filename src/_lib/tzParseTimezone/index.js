@@ -1,4 +1,5 @@
 import tzTokenizeDate from '../tzTokenizeDate/index.js'
+import newDateUTC from '../newDateUTC/index.js'
 
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
@@ -70,7 +71,7 @@ export default function tzParseTimezone(timezoneString, date, isUtcDate) {
 }
 
 function toUtcDate(date) {
-  return newDateDateUTC(
+  return newDateUTC(
     date.getFullYear(),
     date.getMonth(),
     date.getDate(),
@@ -81,21 +82,19 @@ function toUtcDate(date) {
   )
 }
 
-function newDateDateUTC(fullYear, month, day, hour, minute, second, millisecond) {
-  var utcDate = new Date(0)
-  utcDate.setUTCFullYear(fullYear, month, day)
-  utcDate.setUTCHours(hour, minute, second, millisecond)
-  return utcDate
-}
-
-function DateUTC(fullYear, month, day, hour, minute, second, millisecond) {
-  return newDateDateUTC(fullYear, month, day, hour, minute, second, millisecond).getTime()
-}
-
 function calcOffset(date, timezoneString) {
   var tokens = tzTokenizeDate(date, timezoneString)
 
-  var asUTC = DateUTC(tokens[0], tokens[1] - 1, tokens[2], tokens[3] % 24, tokens[4], tokens[5], 0)
+  // ms dropped because it's not provided by tzTokenizeDate
+  var asUTC = newDateUTC(
+    tokens[0],
+    tokens[1] - 1,
+    tokens[2],
+    tokens[3] % 24,
+    tokens[4],
+    tokens[5],
+    0
+  ).getTime()
 
   var asTS = date.getTime()
   var over = asTS % 1000
