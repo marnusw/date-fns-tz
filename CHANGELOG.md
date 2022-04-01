@@ -1,3 +1,7 @@
+### v1.3.3 (1 April 2022)
+
+- [BUGFIX] Fix broken ESM import (#177)
+
 ### v1.3.2 (31 March 2022)
 
 - [BUGFIX] Support tz offsets up to +/-23:59 (#171)
