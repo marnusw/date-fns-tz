@@ -5,7 +5,7 @@ Time zone support for [date-fns](https://date-fns.org/) v2.0.0 using the
 By using the browser API no time zone data needs to be included in code bundles. Modern browsers
 and Node.js all support the
 [necessary features](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat#Browser_compatibility),
-and for those that don't a [polyfill](https://github.com/yahoo/date-time-format-timezone) can be used.
+and for those that don't a [polyfill](https://formatjs.io/docs/polyfills/intl-datetimeformat) can be used.
 
 If you do not wish to use a polyfill the time zones can still be specified as offsets
 such as '-0200' or '+04:00', but not IANA time zone names.
@@ -45,6 +45,7 @@ This is because an ESM projects cannot use ESM imports from a library that doesn
     including `z..zzzz`
   - [`toDate`](#todate) - Can be used to parse a `Date` from a date string representing time in
     any time zone
+- [Usage with Android](#usage-with-android)
 
 ## Overview
 
@@ -279,10 +280,26 @@ const bangkokDate = utcToZonedTime(parsedDate, 'Asia/Bangkok')
 format(bangkokDate, 'yyyy-MM-dd HH:mm:ssxxx', { timeZone: 'Asia/Bangkok' }) // 2014-10-25 13:46:20+07:00
 ```
 
+## Usage with Android
+
+This library works with React Native, however the `Intl` API is not available by default on Android.
+
+In projects that do not use Hermes, make this change to `android/app/build.gradle`:
+
+```diff
+- def jscFlavor = 'org.webkit:android-jsc:+'
++ def jscFlavor = 'org.webkit:android-jsc-intl:+'
+```
+
+React Native does not currently support `Intl` on Android with
+Hermes ([facebook/hermes#23](https://github.com/facebook/hermes/issues/23)). The best bet
+seems to be using the [polyfills by Format.JS](https://formatjs.io/docs/polyfills/intl-datetimeformat).
+
 ## Usage with Node.js
 
 Node.js supports the `Intl` API and ships with full ICU data included in the binary from v13,
 i.e. this library will just work.
+
 Node.js v12, which reaches end of life on 30 April 2022, requires running with
 [full ICU data provided at runtime](https://nodejs.org/docs/latest-v12.x/api/intl.html#intl_providing_icu_data_at_runtime).
 
