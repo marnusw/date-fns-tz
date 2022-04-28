@@ -137,7 +137,7 @@ var validIANATimezoneCache = {}
 function isValidTimezoneIANAString(timeZoneString) {
   if (validIANATimezoneCache[timeZoneString]) return true
   try {
-    Intl.DateTimeFormat(undefined, { timeZone: timeZoneString })
+    new Intl.DateTimeFormat(undefined, { timeZone: timeZoneString })
     validIANATimezoneCache[timeZoneString] = true
     return true
   } catch (error) {
