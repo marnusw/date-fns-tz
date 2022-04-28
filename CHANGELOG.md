@@ -1,3 +1,8 @@
+### v1.3.4 (28 April 2022)
+
+- [BUGFIX] Add new to `DateTimeFormat` invocation to fix mocking it in tests (#181)
+- [DOCS] Add notes on usage with Android
+
 ### v1.3.3 (1 April 2022)
 
 - [BUGFIX] Fix broken ESM import (#177)
