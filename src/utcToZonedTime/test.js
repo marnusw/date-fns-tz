@@ -81,6 +81,12 @@ describe('utcToZonedTime', function () {
     assert.equal(f('2020-02-19T20:00:00.000-0500'), '2020-02-20 01:00:00.000')
   })
 
+  it('works with year < 100', () => {
+    var timeZone = 'Europe/Berlin'
+    var result = utcToZonedTime('0021-03-08T19:00:00.000Z', timeZone)
+    assert.equal(format(result, 'yyyy-MM-dd hh:mm:ss.SSS'), '0021-03-08 12:00:00.000')
+  })
+
   describe('invalid date and time zone handling', function () {
     it('returns an invalid date when the date string is invalid without tz info', function () {
       var result = utcToZonedTime('2020-03-08T25:00:00.000', 'bad/timeZone')
