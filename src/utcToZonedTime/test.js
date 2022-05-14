@@ -1,6 +1,7 @@
 import assert from 'power-assert'
 import format from 'date-fns/format'
 import utcToZonedTime from '.'
+import newDateUTC from '../_lib/newDateUTC'
 
 describe('utcToZonedTime', function () {
   it('returns the equivalent date at the time zone for a date string and IANA tz', function () {
@@ -81,14 +82,28 @@ describe('utcToZonedTime', function () {
     assert.equal(f('2020-02-19T20:00:00.000-0500'), '2020-02-20 01:00:00.000')
   })
 
-  it.only('works with year < 100', () => {
-    var timeZone = 'Europe/Berlin'
-    var result = utcToZonedTime('0021-03-08T19:00:00.000Z', timeZone)
-    /*
-     time zone for Europe/Berlin is UTC +0:53:28 for dates before 1800
-     see https://www.timeanddate.com/time/zone/germany/berlin?syear=1800
-    */
-    assert.equal(format(result, 'yyyy-MM-dd HH:mm:ss.SSS'), '0021-03-08 19:53:28.000')
+  describe('year < 100', () => {
+    it('works with string input', () => {
+      var timeZone = 'Europe/Berlin'
+      var result = utcToZonedTime('0021-03-08T19:00:00.000Z', timeZone)
+      /*
+       time zone for Europe/Berlin is UTC +0:53:28 for dates before 1800
+       see https://www.timeanddate.com/time/zone/germany/berlin?syear=1800
+      */
+      assert.equal(format(result, 'yyyy-MM-dd HH:mm:ss.SSS'), '0021-03-08 19:53:28.000')
+    })
+
+    it('works with date input', () => {
+      var input = newDateUTC(21, 2, 8, 19, 0, 0, 0, 0)
+
+      var timeZone = 'Europe/Berlin'
+      var result = utcToZonedTime(input, timeZone)
+      /*
+       time zone for Europe/Berlin is UTC +0:53:28 for dates before 1800
+       see https://www.timeanddate.com/time/zone/germany/berlin?syear=1800
+      */
+      assert.equal(format(result, 'yyyy-MM-dd HH:mm:ss.SSS'), '0021-03-08 19:53:28.000')
+    })
   })
 
   describe('invalid date and time zone handling', function () {
