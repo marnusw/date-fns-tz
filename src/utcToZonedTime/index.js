@@ -32,13 +32,11 @@ export default function utcToZonedTime(dirtyDate, timeZone, options) {
 
   var d = new Date(date.getTime() - offsetMilliseconds)
 
-  return new Date(
-    d.getUTCFullYear(),
-    d.getUTCMonth(),
-    d.getUTCDate(),
-    d.getUTCHours(),
-    d.getUTCMinutes(),
-    d.getUTCSeconds(),
-    d.getUTCMilliseconds()
-  )
+  const resultDate = new Date(0)
+
+  resultDate.setFullYear(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate())
+
+  resultDate.setHours(d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds(), d.getUTCMilliseconds())
+
+  return resultDate
 }
