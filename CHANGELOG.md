@@ -1,3 +1,7 @@
+### v1.3.5 (18 June 2022)
+
+- [BUGFIX] Fixed `utcToZonedTime` not working with year < 100; thanks @healqq (#185)
+
 ### v1.3.4 (28 April 2022)
 
 - [BUGFIX] Add new to `DateTimeFormat` invocation to fix mocking it in tests (#181)
