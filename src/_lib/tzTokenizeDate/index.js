@@ -23,8 +23,10 @@ function partsOffset(dtf, date) {
     for (var i = 0; i < formatted.length; i++) {
       var pos = typeToPos[formatted[i].type]
 
-      if (pos >= 0) {
-        filled[pos] = parseInt(formatted[i].value, 10)
+      if (formatted[i].type === 'month' && typeof formatted[i].value === 'string' && "JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(formatted[i].value.substr(0, 3)) > -1) {
+        filled[pos] = "JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(formatted[i].value.substr(0, 3)) / 3 + 1
+      } else if (pos >= 0) {
+        filled[pos] = parseInt(formatted[i].value, 10);
       }
     }
     return filled
