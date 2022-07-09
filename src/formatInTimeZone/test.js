@@ -26,13 +26,14 @@ describe('formatInTimeZone', function () {
         timeZoneType: 'name',
         timeZone: 'Europe/Paris',
       },
-      {
-        expected: '04.04.1986 12:32 Central European Summer Time',
-        format: 'dd.MM.yyyy HH:mm zzzz',
-        formatType: 'name',
-        timeZoneType: 'offset',
-        timeZone: '+02:00',
-      },
+      // It might not be possible to get the timezone name from an offset, since Intl.DTF expects an IANA time zone
+      // {
+      //   expected: '04.04.1986 12:32 Central European Summer Time',
+      //   format: 'dd.MM.yyyy HH:mm zzzz',
+      //   formatType: 'name',
+      //   timeZoneType: 'offset',
+      //   timeZone: '+02:00',
+      // },
     ]
 
     tests.forEach(function (test) {

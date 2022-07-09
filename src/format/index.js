@@ -334,7 +334,7 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
         "'" + formatters[token[0]](date, token, null, options) + "'"
       )
       // If the replacement results in two adjoining quoted strings, the back to back quotes
-      // are removed so it doesn't look like an escaped quote.
+      // are removed, so it doesn't look like an escaped quote.
       return precededByQuotedSection
         ? replaced.substring(0, pos - 1) + replaced.substring(pos + 1)
         : replaced
