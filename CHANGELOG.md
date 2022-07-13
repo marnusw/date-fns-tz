@@ -1,3 +1,7 @@
+### v1.3.6 (13 July 2022)
+
+- [BUGFIX] Remove the use of `const` (#192)
+
 ### v1.3.5 (18 June 2022)
 
 - [BUGFIX] Fixed `utcToZonedTime` not working with year < 100; thanks @healqq (#185)
