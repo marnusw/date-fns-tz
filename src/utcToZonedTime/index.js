@@ -32,7 +32,7 @@ export default function utcToZonedTime(dirtyDate, timeZone, options) {
 
   var d = new Date(date.getTime() - offsetMilliseconds)
 
-  const resultDate = new Date(0)
+  var resultDate = new Date(0)
 
   resultDate.setFullYear(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate())
 
