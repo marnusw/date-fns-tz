@@ -58,4 +58,12 @@ describe('tzIntlTimeZoneName', function () {
     var timeZone = 'bad/timeZone'
     assert.throws(tzIntlTimeZoneName.bind(null, 'long', date, { timeZone, locale }), RangeError)
   })
+
+  it('returns the short time zone name in the vi locale', function () {
+    var locale = { code: 'vi' }
+    var date = new Date('2014-10-25T13:46:20Z')
+    var timeZone = 'Europe/Paris'
+    var result = tzIntlTimeZoneName('short', date, { timeZone, locale })
+    assert.equal(result, 'GMT+2')
+  })
 })
