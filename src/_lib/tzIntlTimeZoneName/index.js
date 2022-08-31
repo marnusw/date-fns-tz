@@ -10,7 +10,12 @@ export default function tzIntlTimeZoneName(length, date, options) {
 
 function partsTimeZone(dtf, date) {
   var formatted = dtf.formatToParts(date)
-  return formatted[formatted.length - 1].value
+
+  for (var i = 0; i < formatted.length; i++) {
+    if (formatted[i].type === 'timeZoneName') {
+      return formatted[i].value
+    }
+  }
 }
 
 function hackyTimeZone(dtf, date) {
