@@ -1,3 +1,8 @@
+### v1.3.7 (31 August 2022)
+
+- [BUGFIX] Fixed getting the time zone name in `partsTimeZone` out of `formatToParts` (#196)
+- [BUGFIX] `tzTokenizeDate` uses `month: numeric` as a possible fix for #190
+
 ### v1.3.6 (13 July 2022)
 
 - [BUGFIX] Remove the use of `const` (#192)
