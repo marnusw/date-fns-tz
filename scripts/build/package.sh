@@ -62,11 +62,4 @@ find "$dir" -type f -name "benchmark.js" -delete
 # Copy esm package.json
 cp ./src/esm/package.json "$dir/esm/package.json"
 
-# Rewrite import paths to use esm version of date-fns
-# todo Restore once date-fns supports ESM: https://github.com/date-fns/date-fns/issues/1781
-# for fnFile in $(find $dir/esm -maxdepth 3 -mindepth 2 -type f -name index.js)
-# do
-#   sed -i "s/from 'date-fns/from 'date-fns\/esm/" "$fnFile"
-# done
-
 ./scripts/build/packages.js
