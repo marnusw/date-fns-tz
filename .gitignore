@@ -6,6 +6,7 @@ tmp
 dist
 docs.json
 coverage
+scratch/webpack
 
 node_modules
 
