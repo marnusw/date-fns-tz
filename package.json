@@ -24,35 +24,77 @@
   "module": "esm/index.js",
   "types": "typings.d.ts",
   "exports": {
-    ".": "./index.js",
     "./package.json": "./package.json",
-    "./format": "./format/index.js",
-    "./formatInTimeZone": "./formatInTimeZone/index.js",
-    "./getTimezoneOffset": "./getTimezoneOffset/index.js",
-    "./toDate": "./toDate/index.js",
-    "./utcToZonedTime": "./utcToZonedTime/index.js",
-    "./zonedTimeToUtc": "./zonedTimeToUtc/index.js",
-    "./fp": "./fp/index.js",
-    "./fp/format": "./fp/format/index.js",
-    "./fp/formatInTimeZone": "./fp/formatInTimeZone/index.js",
-    "./fp/getTimezoneOffset": "./fp/getTimezoneOffset/index.js",
-    "./fp/toDate": "./fp/toDate/index.js",
-    "./fp/utcToZonedTime": "./fp/utcToZonedTime/index.js",
-    "./fp/zonedTimeToUtc": "./fp/zonedTimeToUtc/index.js",
-    "./esm": "./esm/index.js",
-    "./esm/format": "./esm/format/index.js",
-    "./esm/formatInTimeZone": "./esm/formatInTimeZone/index.js",
-    "./esm/getTimezoneOffset": "./esm/getTimezoneOffset/index.js",
-    "./esm/toDate": "./esm/toDate/index.js",
-    "./esm/utcToZonedTime": "./esm/utcToZonedTime/index.js",
-    "./esm/zonedTimeToUtc": "./esm/zonedTimeToUtc/index.js",
-    "./esm/fp": "./esm/fp/index.js",
-    "./esm/fp/format": "./esm/fp/format/index.js",
-    "./esm/fp/formatInTimeZone": "./esm/fp/formatInTimeZone/index.js",
-    "./esm/fp/getTimezoneOffset": "./esm/fp/getTimezoneOffset/index.js",
-    "./esm/fp/toDate": "./esm/fp/toDate/index.js",
-    "./esm/fp/utcToZonedTime": "./esm/fp/utcToZonedTime/index.js",
-    "./esm/fp/zonedTimeToUtc": "./esm/fp/zonedTimeToUtc/index.js"
+    ".": {
+      "require": "./index.js",
+      "import": "./esm/index.js",
+      "types": "./typings.d.ts"
+    },
+    "./format": {
+      "types": "./format/index.d.ts",
+      "require": "./format/index.js",
+      "import": "./esm/format/index.js"
+    },
+    "./formatInTimeZone": {
+      "types": "./formatInTimeZone/index.d.ts",
+      "require": "./formatInTimeZone/index.js",
+      "import": "./esm/formatInTimeZone/index.js"
+    },
+    "./getTimezoneOffset": {
+      "types": "./getTimezoneOffset/index.d.ts",
+      "require": "./getTimezoneOffset/index.js",
+      "import": "./esm/getTimezoneOffset/index.js"
+    },
+    "./toDate": {
+      "types": "./toDate/index.d.ts",
+      "require": "./toDate/index.js",
+      "import": "./esm/toDate/index.js"
+    },
+    "./utcToZonedTime": {
+      "types": "./utcToZonedTime/index.d.ts",
+      "require": "./utcToZonedTime/index.js",
+      "import": "./esm/utcToZonedTime/index.js"
+    },
+    "./zonedTimeToUtc": {
+      "types": "./zonedTimeToUtc/index.d.ts",
+      "require": "./zonedTimeToUtc/index.js",
+      "import": "./esm/zonedTimeToUtc/index.js"
+    },
+    "./fp": {
+      "types": "./fp/index.d.ts",
+      "require": "./fp/index.js",
+      "import": "./esm/fp/index.js"
+    },
+    "./fp/format": {
+      "types": "./fp/format/index.d.ts",
+      "require": "./fp/format/index.js",
+      "import": "./esm/fp/format/index.js"
+    },
+    "./fp/formatInTimeZone": {
+      "types": "./fp/formatInTimeZone/index.d.ts",
+      "require": "./fp/formatInTimeZone/index.js",
+      "import": "./esm/fp/formatInTimeZone/index.js"
+    },
+    "./fp/getTimezoneOffset": {
+      "types": "./fp/getTimezoneOffset/index.d.ts",
+      "require": "./fp/getTimezoneOffset/index.js",
+      "import": "./esm/fp/getTimezoneOffset/index.js"
+    },
+    "./fp/toDate": {
+      "types": "./fp/toDate/index.d.ts",
+      "require": "./fp/toDate/index.js",
+      "import": "./esm/fp/toDate/index.js"
+    },
+    "./fp/utcToZonedTime": {
+      "types": "./fp/utcToZonedTime/index.d.ts",
+      "require": "./fp/utcToZonedTime/index.js",
+      "import": "./esm/fp/utcToZonedTime/index.js"
+    },
+    "./fp/zonedTimeToUtc": {
+      "types": "./fp/zonedTimeToUtc/index.d.ts",
+      "require": "./fp/zonedTimeToUtc/index.js",
+      "import": "./esm/fp/zonedTimeToUtc/index.js"
+    }
   },
   "scripts": {
     "build": "./scripts/build/build.sh",

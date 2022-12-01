@@ -18,12 +18,9 @@ If you find this library useful, why not
 
 ## ESM and CommonJS
 
-As of `v1.3.0` this library supports native ESM imports in Node.js. It is important to
-use the proper import path for your use case. Set the `type` property in your project's
-`package.json` to either `module`, for ESM, or `commonjs` and
-
-- For **ESM** import from `date-fns-tz/esm` or its sub-paths
-- For **CommonJS** import from `date-fns-tz` or its sub-paths
+As of `v1.3.0` this library supports native ESM imports in Node.js. Since exports field in [package.json](./package.json)
+defines the correct entry point depending on project type (`commonjs` vs. `ESM`) the import path does not change.
+Make sure to set the `type` property in your project's `package.json` to either `module`, for ESM, or `commonjs` and
 
 Even when using ESM some CommonJS imports from `date-fns` will be used until they support
 ESM natively as well [date-fns#1781](https://github.com/date-fns/date-fns/issues/1781).
