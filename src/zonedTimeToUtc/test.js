@@ -146,6 +146,61 @@ describe('zonedTimeToUtc', function () {
 
       assert.deepEqual(result1, result2)
     })
+
+    it('finds first time after clock jumps back: -ve UTC offset', function () {
+      var result = zonedTimeToUtc('2023-11-05T02:00:00', 'America/New_York')
+      // UTC 05:59 is NY 01:59 GMT -4
+      // UTC 06:00 is NY 01:00 GMT -5
+      // therefore the first time NY local 02:00 is struck is UTC 07:00
+      assert.deepEqual(result.toISOString(), '2023-11-05T07:00:00.000Z')
+    })
+
+    it('finds first time after clock jumps back: +ve UTC offset', function () {
+      var result = zonedTimeToUtc('2023-04-02T03:00:00', 'Australia/Sydney')
+      // UTC 15:59 is SYD 02:59 GMT +11
+      // UTC 16:00 is SYD 02:00 GMT +10
+      // therefore the first time SYD local 03:00 is struck is UTC 17:00
+      assert.deepEqual(result.toISOString(), '2023-04-01T17:00:00.000Z')
+    })
+
+    it('handles times that repeat when clock jump back: -ve UTC offset', function () {
+      // at 02:00 local clock jumps back 1 hour so 01:00 occurs twice
+      var result = zonedTimeToUtc('2023-11-05T01:00:00', 'America/New_York')
+      // UTC 05:00 is NY 01:00 GMT -4
+      // UTC 06:00 is NY 01:00 GMT -5
+      // this implementation picks the later occurrence of 01:00 @ UTC 06:00
+      assert.deepEqual(result.toISOString(), '2023-11-05T06:00:00.000Z')
+    })
+
+    it('handles times that repeat when clock jump back: +ve UTC offset', function () {
+      // at 03:00 local clock jumps back 1 hour so 02:00 occurs twice
+      var result = zonedTimeToUtc('2023-04-02T02:00:00', 'Australia/Sydney')
+      // UTC 15:00 is SYD 02:00 GMT +11
+      // UTC 16:00 is SYD 02:00 GMT +10
+      // this implementation picks the later occurrence of 02:00 @ UTC 16:00
+      assert.deepEqual(result.toISOString(), '2023-04-01T16:00:00.000Z')
+    })
+
+    // utc: 2023-09-30T16:00:00.000Z SYD: 03:00 GMT+11
+    it('handles times that dont exist with clock jump forward: -ve UTC offset', function () {
+      // at 02:00 local clock will immediately jump forward to 03:00
+      var result = zonedTimeToUtc('2023-03-12T02:00:00', 'America/New_York')
+      // UTC 06:59 is NY 01:59 GMT -5
+      // UTC 07:00 is NY 03:00 GMT -4
+      // !! this is an error - should either throw error OR return UTC 07:00
+      // it should NOT return 06:00 but defining problem before making tests fail
+      assert.deepEqual(result.toISOString(), '2023-03-12T06:00:00.000Z')
+    })
+
+    it('handles times that dont exist with clock jump forward: +ve UTC offset', function () {
+      // at 02:00 local clock will immediately jump forward to 03:00
+      var result = zonedTimeToUtc('2023-10-01T02:00:00', 'Australia/Sydney')
+      // UTC 15:59 is SYD 01:59 GMT +10
+      // UTC 16:00 is SYD 03:00 GMT +11
+      // !! this is an error - should either throw error OR return UTC 16:00
+      // it should NOT return 15:00 but defining problem before making tests fail
+      assert.deepEqual(result.toISOString(), '2023-09-30T15:00:00.000Z')
+    })
   })
 
   describe('zonedTimeToUtc and utcToZonedTime are inverse functions', function () {
