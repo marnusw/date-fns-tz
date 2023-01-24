@@ -17,7 +17,7 @@ export default function tzParseTimezone(timezoneString, date, isUtcDate) {
   var absoluteOffset
 
   // Empty string
-  if (timezoneString === '') {
+  if (!timezoneString) {
     return 0
   }
 
