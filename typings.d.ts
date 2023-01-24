@@ -46,7 +46,7 @@ declare module 'date-fns-tz' {
 declare module 'date-fns-tz' {
   import { OptionsWithTZ } from 'date-fns-tz'
 
-  function format(date: Date | string | number, format: string, options?: OptionsWithTZ): string
+  function format(date: Date | number, format: string, options?: OptionsWithTZ): string
   namespace format {}
 
   function formatInTimeZone(
@@ -173,7 +173,7 @@ declare module 'date-fns-tz/zonedTimeToUtc/index.js' {
 declare module 'date-fns-tz/fp' {
   import { OptionsWithTZ } from 'date-fns-tz'
 
-  const format: CurriedFn2<string, Date | string | number, string>
+  const format: CurriedFn2<string, Date | number, string>
   namespace format {}
 
   const formatInTimeZone: CurriedFn3<string, string, Date | string | number, string>
@@ -188,7 +188,7 @@ declare module 'date-fns-tz/fp' {
   >
   namespace formatInTimeZoneWithOptions {}
 
-  const formatWithOptions: CurriedFn3<OptionsWithTZ, string, Date | string | number, string>
+  const formatWithOptions: CurriedFn3<OptionsWithTZ, string, Date | number, string>
   namespace formatWithOptions {}
 
   const getTimezoneOffset: CurriedFn2<Date | number, string, number>
@@ -383,7 +383,7 @@ declare module 'date-fns-tz/fp/zonedTimeToUtcWithOptions/index.js' {
 declare module 'date-fns-tz/esm' {
   import { OptionsWithTZ } from 'date-fns-tz'
 
-  function format(date: Date | string | number, format: string, options?: OptionsWithTZ): string
+  function format(date: Date | number, format: string, options?: OptionsWithTZ): string
   namespace format {}
 
   function formatInTimeZone(
@@ -510,7 +510,7 @@ declare module 'date-fns-tz/esm/zonedTimeToUtc/index.js' {
 declare module 'date-fns-tz/esm/fp' {
   import { OptionsWithTZ } from 'date-fns-tz'
 
-  const format: CurriedFn2<string, Date | string | number, string>
+  const format: CurriedFn2<string, Date | number, string>
   namespace format {}
 
   const formatInTimeZone: CurriedFn3<string, string, Date | string | number, string>
@@ -525,7 +525,7 @@ declare module 'date-fns-tz/esm/fp' {
   >
   namespace formatInTimeZoneWithOptions {}
 
-  const formatWithOptions: CurriedFn3<OptionsWithTZ, string, Date | string | number, string>
+  const formatWithOptions: CurriedFn3<OptionsWithTZ, string, Date | number, string>
   namespace formatWithOptions {}
 
   const getTimezoneOffset: CurriedFn2<Date | number, string, number>
