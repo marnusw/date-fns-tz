@@ -1,3 +1,9 @@
+### v1.3.8 (30 January 2023)
+
+- [TESTS] Tests documenting `zonedTimeToUtc` daylight saving jumps (#220)
+- [TYPES] Update `format` types to match date-fns (#199)
+- [BUGFIX] Fixed `undefined` timezone error (#214)
+
 ### v1.3.7 (31 August 2022)
 
 - [BUGFIX] Fixed getting the time zone name in `partsTimeZone` out of `formatToParts` (#196)
