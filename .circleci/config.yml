@@ -9,7 +9,7 @@ jobs:
       timeZone:
         type: string
     docker:
-      - image: cimg/node:16.8.0-browsers
+      - image: cimg/node:18.13.0-browsers
     steps:
       - browser-tools/install-chrome
       - checkout
