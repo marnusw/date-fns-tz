@@ -1,3 +1,24 @@
+### v2.0.0 (30 January 2023)
+
+- [BREAKING CHANGE] Optimize configuration for ESM exports (entry points for cjs / esm / typescript) (#212)
+
+**Upgrade guide:** Both CJS and ESM imports now use the default import paths. CJS will continue working unchanged;
+to fix EMS imports:
+
+Before:
+
+```js
+import { format } from 'date-fns-tz/esm'
+import utcToZonedTime from 'date-fns-tz/esm/utcToZonedTime'
+```
+
+After:
+
+```js
+import { format } from 'date-fns-tz'
+import utcToZonedTime from 'date-fns-tz/utcToZonedTime'
+```
+
 ### v1.3.8 (30 January 2023)
 
 - [TESTS] Tests documenting `zonedTimeToUtc` daylight saving jumps (#220)
