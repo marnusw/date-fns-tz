@@ -687,10 +687,10 @@ describe('format', function () {
 
     it('https://github.com/marnusw/date-fns-tz/issues/168', () => {
       const timeZone = 'Europe/Stockholm'
-      const dateInUTC = Date.UTC(1888, 11, 1)
+      const dateInUTC = Date.UTC(1888, 11, 1, 1, 0, 14, 0)
       const offsetDate = utcToZonedTime(dateInUTC, timeZone)
       const result = format(offsetDate, "yyyy-MM-dd'T'HH:mm:ss.SSSxxx", { timeZone })
-      assert.equal(result, '1888-12-01T01:00:14.000+01:00')
+      assert.equal(result, '1888-12-01T01:53:42.000+00:53')
     })
   })
 
