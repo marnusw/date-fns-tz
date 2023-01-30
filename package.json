@@ -58,8 +58,8 @@
     "build": "./scripts/build/build.sh",
     "package": "./scripts/build/package.sh",
     "clean": "rm -rf tmp/package && rm tmp/docs.json",
-    "test": "karma start config/karma.js",
-    "test:watch": "cross-env TEST_WATCH=true karma start config/karma.js",
+    "test": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" karma start config/karma.js",
+    "test:watch": "cross-env TEST_WATCH=true NODE_OPTIONS=\"--openssl-legacy-provider\" karma start config/karma.js",
     "prettier": "prettier . --write",
     "lint": "eslint .",
     "lint-types": "eslint --config=.ts-eslintrc.js typings.d.ts"
