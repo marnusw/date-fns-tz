@@ -3,7 +3,7 @@
 - [BREAKING CHANGE] Optimize configuration for ESM exports (entry points for cjs / esm / typescript) (#212)
 
 **Upgrade guide:** Both CJS and ESM imports now use the default import paths. CJS will continue working unchanged;
-to fix EMS imports:
+to fix ESM imports:
 
 Before:
 
