@@ -20,7 +20,9 @@ describe('tzParseTimezone', function () {
 
   it('±hhmm time zone format', function () {
     assert.equal(tzParseTimezone('-0430'), 270 * 60 * 1000)
+    assert.equal(tzParseTimezone('-0030'), 30 * 60 * 1000)
     assert.equal(tzParseTimezone('+0230'), -150 * 60 * 1000)
+    assert.equal(tzParseTimezone('+0030'), -30 * 60 * 1000)
   })
 
   it('±hh:mm time zone format', function () {
@@ -28,10 +30,12 @@ describe('tzParseTimezone', function () {
     assert.equal(tzParseTimezone('-12:00'), 720 * 60 * 1000)
     assert.equal(tzParseTimezone('-11:30'), 690 * 60 * 1000)
     assert.equal(tzParseTimezone('-05:00'), 300 * 60 * 1000)
+    assert.equal(tzParseTimezone('-00:30'), 30 * 60 * 1000)
     assert.equal(tzParseTimezone('+03:00'), -180 * 60 * 1000)
     assert.equal(tzParseTimezone('+11:30'), -690 * 60 * 1000)
     assert.equal(tzParseTimezone('+12:00'), -720 * 60 * 1000)
     assert.equal(tzParseTimezone('+23:59'), -1439 * 60 * 1000)
+    assert.equal(tzParseTimezone('+00:30'), -30 * 60 * 1000)
   })
 
   it('IANA time zone', function () {
