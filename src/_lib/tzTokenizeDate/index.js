@@ -63,6 +63,7 @@ function getDateTimeFormat(timeZone) {
     }).format(new Date('2014-06-25T04:00:00.123Z'))
     var hourCycleSupported =
       testDateFormatted === '06/25/2014, 00:00:00' ||
+      testDateFormatted === '6/25/2014, 00:00:00' || // Samsung Internet does not include leading zero for 'numeric' month format.
       testDateFormatted === '‎06‎/‎25‎/‎2014‎ ‎00‎:‎00‎:‎00'
 
     dtfCache[timeZone] = hourCycleSupported
