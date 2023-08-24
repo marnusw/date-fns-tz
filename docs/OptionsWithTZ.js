@@ -19,6 +19,8 @@
  *   See [toDate]{@link https://date-fns.org/docs/toDate}
  * @property {String} [timeZone=''] - used to specify the IANA time zone offset of a date String.
  *   Used by all functions that take String as Date-like argument.
+ * @property {Date|Number} [originalDate] - used to pick the correct IANA time zone of a date.
+ *   Used by `format` function.
  * @property {Locale} [locale=defaultLocale] - the locale object.
  *   Used by `formatDistance`, `formatDistanceStrict`, `format` and `parse`.
  *   See [Locale]{@link https://date-fns.org/docs/Locale}
