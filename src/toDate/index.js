@@ -1,5 +1,4 @@
-import toInteger from 'date-fns/_lib/toInteger/index.js'
-import getTimezoneOffsetInMilliseconds from 'date-fns/_lib/getTimezoneOffsetInMilliseconds/index.js'
+import getTimezoneOffsetInMilliseconds from 'date-fns/_lib/getTimezoneOffsetInMilliseconds.js'
 import tzParseTimezone from '../_lib/tzParseTimezone/index.js'
 import tzPattern from '../_lib/tzPattern/index.js'
 
@@ -94,9 +93,7 @@ export default function toDate(argument, dirtyOptions) {
   var options = dirtyOptions || {}
 
   var additionalDigits =
-    options.additionalDigits == null
-      ? DEFAULT_ADDITIONAL_DIGITS
-      : toInteger(options.additionalDigits)
+    options.additionalDigits == null ? DEFAULT_ADDITIONAL_DIGITS : Number(options.additionalDigits)
   if (additionalDigits !== 2 && additionalDigits !== 1 && additionalDigits !== 0) {
     throw new RangeError('additionalDigits must be 0, 1 or 2')
   }

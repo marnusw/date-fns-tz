@@ -1,4 +1,4 @@
-import dateFnsFormat from 'date-fns/format/index.js'
+import dateFnsFormat from 'date-fns/format.js'
 import formatters from './formatters/index.js'
 import toDate from '../toDate/index.js'
 

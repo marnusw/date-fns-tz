@@ -8,7 +8,13 @@ const config = {
   entry: getEntryConfig(),
   output: getOutputConfig(),
   module: {
-    rules: [{ test: /\.js$/, exclude: /node_modules/, use: 'babel-loader' }].concat(
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: { loader: 'babel-loader', options: { presets: ['@babel/preset-env'] } },
+      },
+    ].concat(
       process.env.COVERAGE_REPORT
         ? [
             {

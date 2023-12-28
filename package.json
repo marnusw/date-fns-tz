@@ -1,8 +1,8 @@
 {
   "name": "date-fns-tz",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "sideEffects": false,
-  "description": "Time zone support for date-fns v2 with the Intl API",
+  "description": "Time zone support for date-fns v3 with the Intl API",
   "author": "Marnus Weststrate <marnusw@gmail.com>",
   "license": "MIT",
   "keywords": [
@@ -120,7 +120,7 @@
     ]
   },
   "peerDependencies": {
-    "date-fns": ">=2.0.0"
+    "date-fns": ">=3.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.4",
@@ -132,14 +132,16 @@
     "@babel/plugin-transform-modules-commonjs": "^7.5.0",
     "@babel/plugin-transform-parameters": "^7.4.4",
     "@babel/plugin-transform-template-literals": "^7.4.4",
+    "@babel/preset-env": "^7.23.6",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-add-module-exports": "^1.0.4",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-power-assert": "^3.0.0",
     "cross-env": "^7.0.3",
-    "date-fns": "^2.23.0",
+    "date-fns": "^3.0.6",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^7.2.0",
     "flow-bin": "^0.143.1",

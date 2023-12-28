@@ -1,6 +1,6 @@
-import cloneObject from 'date-fns/_lib/cloneObject/index.js'
 import format from '../format/index.js'
 import utcToZonedTime from '../utcToZonedTime/index.js'
+import { cloneDeep } from 'lodash'
 
 /**
  * @name formatInTimeZone
@@ -25,7 +25,7 @@ import utcToZonedTime from '../utcToZonedTime/index.js'
  * @returns {String} the formatted date string
  */
 export default function formatInTimeZone(date, timeZone, formatStr, options) {
-  var extendedOptions = cloneObject(options)
+  var extendedOptions = cloneDeep(options)
   extendedOptions.timeZone = timeZone
   return format(utcToZonedTime(date, timeZone), formatStr, extendedOptions)
 }
