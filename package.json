@@ -119,6 +119,9 @@
       "prettier --write"
     ]
   },
+  "dependencies": {
+    "lodash.clonedeep": "^4.5.0"
+  },
   "peerDependencies": {
     "date-fns": "^3.0.0"
   },
@@ -163,7 +166,6 @@
     "karma-webpack": "^4.0.2",
     "lint-staged": "^10.4.0",
     "lodash": "^4.17.15",
-    "lodash.clonedeep": "^4.5.0",
     "mocha": "^10.1.0",
     "power-assert": "^1.6.1",
     "prettier": "^2.2.1",
