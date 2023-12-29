@@ -5,6 +5,8 @@ const plugins = [
   '@babel/plugin-transform-arrow-functions',
   '@babel/plugin-transform-parameters',
   '@babel/plugin-transform-destructuring',
+  '@babel/plugin-transform-optional-chaining',
+  '@babel/plugin-transform-logical-assignment-operators',
 ]
 
 if (process.env.NODE_ENV === 'test') {

@@ -11,8 +11,18 @@ const config = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        use: { loader: 'babel-loader', options: { presets: ['@babel/preset-env'] } },
+        exclude: /node_modules\/(?!date-fns)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [['@babel/preset-env', { targets: 'defaults' }]],
+            plugins: [
+              '@babel/plugin-transform-optional-chaining',
+              '@babel/plugin-transform-logical-assignment-operators',
+              '@babel/plugin-transform-nullish-coalescing-operator',
+            ],
+          },
+        },
       },
     ].concat(
       process.env.COVERAGE_REPORT

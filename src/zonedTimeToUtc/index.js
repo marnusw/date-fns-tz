@@ -2,7 +2,7 @@ import toDate from '../toDate/index.js'
 import tzPattern from '../_lib/tzPattern/index.js'
 import tzParseTimezone from '../_lib/tzParseTimezone/index.js'
 import newDateUTC from '../_lib/newDateUTC/index.js'
-import { cloneDeep } from 'lodash'
+import cloneDeep from 'lodash.clonedeep'
 
 /**
  * @name zonedTimeToUtc
@@ -30,7 +30,7 @@ import { cloneDeep } from 'lodash'
  */
 export default function zonedTimeToUtc(date, timeZone, options) {
   if (typeof date === 'string' && !date.match(tzPattern)) {
-    var extendedOptions = cloneDeep(options)
+    var extendedOptions = cloneDeep(options || {})
     extendedOptions.timeZone = timeZone
     return toDate(date, extendedOptions)
   }
