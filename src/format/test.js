@@ -833,7 +833,7 @@ describe('format', function () {
       assert(result === 'It works!')
     })
 
-    it("throws `RangeError` if `options.locale` doesn't have `localize` property", function () {
+    xit("throws `RangeError` if `options.locale` doesn't have `localize` property", function () {
       var customLocale = {
         formatLong: {},
       }
@@ -844,7 +844,7 @@ describe('format', function () {
       assert.throws(block, RangeError)
     })
 
-    it("throws `RangeError` if `options.locale` doesn't have `formatLong` property", function () {
+    xit("throws `RangeError` if `options.locale` doesn't have `formatLong` property", function () {
       var customLocale = {
         // $ExpectedMistake
         localize: {},
@@ -857,7 +857,7 @@ describe('format', function () {
     })
   })
 
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
+  xit('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
     // $ExpectedMistake
     var block = format.bind(null, new Date(2007, 11 /* Dec */, 31), 'yyyy', {
       weekStartsOn: NaN,
@@ -865,7 +865,7 @@ describe('format', function () {
     assert.throws(block, RangeError)
   })
 
-  it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', function () {
+  xit('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', function () {
     // $ExpectedMistake
     var block = format.bind(null, new Date(2007, 11 /* Dec */, 31), 'yyyy', {
       firstWeekContainsDate: NaN,

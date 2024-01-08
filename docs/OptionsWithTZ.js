@@ -6,11 +6,11 @@
  * An object passed as the last optional argument to all functions.
  *
  * @typedef {Object} OptionsWithTZ
- * @property {0|1|2|3|4|5|6} [weekStartsOn=0] - the index of the first day of the week (0 - Sunday).
+ * @property {Day} [weekStartsOn=0] - the index of the first day of the week (0 - Sunday).
  *   Used by `differenceInCalendarWeeks`, `endOfWeek`, `format`, `getWeek`, `getWeekOfMonth`,
  *   `getWeeksInMonth`, `isSameWeek`, `isSameWeek`, `lastDayOfWeek`, `parse`, `setDay`,
  *   `setWeek`, `startOfWeek` and `startOfWeekYear`.
- * @property {1|2|3|4|5|6|7} [firstWeekContainsDate=1] - the day of January,
+ * @property {FirstWeekContainsDate} [firstWeekContainsDate=1] - the day of January,
  *   which is always in the first week of the year.
  *   Used by `format`, `getWeek`, `getWeekYear`, `parse`, `setWeek`, `setWeekYear` and `startOfWeekYear`.
  * @property {0|1|2} [additionalDigits=2] - the additional number of digits in the extended year format.
@@ -26,9 +26,9 @@
  *   If true, distances less than a minute are more detailed
  * @property {Boolean} [addSuffix=false] - used by `formatDistance` and `formatDistanceStrict`.
  *   If true, the result will indicate if the second date is earlier or later than the first
- * @property {'second'|'minute'|'hour'|'day'|'month'|'year'} [unit] - used by `formatDistanceStrict`.
+ * @property {LocaleUnit} [unit] - used by `formatDistanceStrict`.
  *   If specified, will force a unit
- * @property {'floor'|'ceil'|'round'} [roundingMethod='floor'] - used by `formatDistanceStrict`.
+ * @property {RoundingMethod} [roundingMethod='floor'] - used by `formatDistanceStrict`.
  *   Specifies, which way to round partial units
  * @property {Boolean} [awareOfUnicodeTokens=false] - used by `format` and `parse`.
  *   If true, allows usage of Unicode tokens causes confusion:
