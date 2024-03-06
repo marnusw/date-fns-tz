@@ -2738,7 +2738,7 @@ __metadata:
     webpack: ^4.41.1
     webpack-cli: ^3.1.2
   peerDependencies:
-    date-fns: ">=2.0.0"
+    date-fns: 2.x
   languageName: unknown
   linkType: soft
 
