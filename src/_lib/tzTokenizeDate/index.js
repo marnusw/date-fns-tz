@@ -37,7 +37,7 @@ function partsOffset(dtf, date) {
 }
 
 function hackyOffset(dtf, date) {
-  var formatted = dtf.format(date).replace(/\u200E/g, '')
+  var formatted = dtf.format(date)
   var parsed = /(\d+)\/(\d+)\/(\d+),? (\d+):(\d+):(\d+)/.exec(formatted)
   // var [, fMonth, fDay, fYear, fHour, fMinute, fSecond] = parsed
   // return [fYear, fMonth, fDay, fHour, fMinute, fSecond]
