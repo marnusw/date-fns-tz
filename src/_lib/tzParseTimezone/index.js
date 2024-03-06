@@ -8,7 +8,7 @@ var patterns = {
   timezone: /([Z+-].*)$/,
   timezoneZ: /^(Z)$/,
   timezoneHH: /^([+-]\d{2})$/,
-  timezoneHHMM: /^([+-]\d{2}):?(\d{2})$/,
+  timezoneHHMM: /^([+-])(\d{2}):?(\d{2})$/,
 }
 
 // Parse various time zone offset formats to an offset in milliseconds
@@ -44,15 +44,15 @@ export default function tzParseTimezone(timezoneString, date, isUtcDate) {
   // ±hh:mm or ±hhmm
   token = patterns.timezoneHHMM.exec(timezoneString)
   if (token) {
-    hours = parseInt(token[1], 10)
-    var minutes = parseInt(token[2], 10)
+    hours = parseInt(token[2], 10)
+    var minutes = parseInt(token[3], 10)
 
     if (!validateTimezone(hours, minutes)) {
       return NaN
     }
 
     absoluteOffset = Math.abs(hours) * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
-    return hours > 0 ? -absoluteOffset : absoluteOffset
+    return token[1] === '+' ? -absoluteOffset : absoluteOffset
   }
 
   // IANA time zone
