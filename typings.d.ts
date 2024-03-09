@@ -32,6 +32,7 @@ declare module 'date-fns-tz' {
     firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     additionalDigits?: 0 | 1 | 2
     timeZone?: string
+    originalDate?: Date | number
     locale?: Locale
     includeSeconds?: boolean
     addSuffix?: boolean

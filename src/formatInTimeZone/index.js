@@ -27,5 +27,6 @@ import utcToZonedTime from '../utcToZonedTime/index.js'
 export default function formatInTimeZone(date, timeZone, formatStr, options) {
   var extendedOptions = cloneObject(options)
   extendedOptions.timeZone = timeZone
+  extendedOptions.originalDate = date
   return format(utcToZonedTime(date, timeZone), formatStr, extendedOptions)
 }
