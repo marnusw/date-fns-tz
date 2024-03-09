@@ -1,3 +1,12 @@
+### v2.0.1 (9 March 2024)
+
+- [DOCS] Fix incorrect output comment (#270)
+- [DEPS] Limit to date-fns 2.x (#262, #267)
+- [REFACTOR] `tzTokenizeDate`: Remove weird unneeded regex (#254)
+- [BUGFIX] Improving correctness of the `formatInTimeZone` close to the DST threshold (#247)
+- [ENHANCEMENT] Use hourCycle for browsers that support hour cycle formatting (#231)
+- [BUGFIX] Fix tzParseTimezone to parse 00:30 timezones properly (#229)
+
 ### v2.0.0 (30 January 2023)
 
 - [BREAKING CHANGE] Optimize configuration for ESM exports (entry points for cjs / esm / typescript) (#212)
