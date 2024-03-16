@@ -2,7 +2,7 @@
   "name": "date-fns-tz",
   "version": "2.0.1",
   "sideEffects": false,
-  "description": "Time zone support for date-fns v2 with the Intl API",
+  "description": "Time zone support for date-fns v3 with the Intl API",
   "author": "Marnus Weststrate <marnusw@gmail.com>",
   "license": "MIT",
   "keywords": [
@@ -119,19 +119,17 @@
       "prettier --write"
     ]
   },
+  "dependencies": {
+    "lodash.clonedeep": "^4.5.0"
+  },
   "peerDependencies": {
-    "date-fns": "2.x"
+    "date-fns": "^3.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.4",
     "@babel/core": "^7.15.5",
     "@babel/node": "^7.15.4",
-    "@babel/plugin-transform-arrow-functions": "^7.14.5",
-    "@babel/plugin-transform-block-scoping": "^7.15.3",
-    "@babel/plugin-transform-destructuring": "^7.14.7",
-    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
-    "@babel/plugin-transform-parameters": "^7.4.4",
-    "@babel/plugin-transform-template-literals": "^7.4.4",
+    "@babel/preset-env": "^7.23.6",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
     "babel-eslint": "^10.1.0",
@@ -139,7 +137,7 @@
     "babel-plugin-add-module-exports": "^1.0.4",
     "babel-preset-power-assert": "^3.0.0",
     "cross-env": "^7.0.3",
-    "date-fns": "^2.23.0",
+    "date-fns": "^3.0.6",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^7.2.0",
     "flow-bin": "^0.143.1",
@@ -147,7 +145,7 @@
     "husky": "^4.3.0",
     "jsdoc-to-markdown": "^7.0.1",
     "json-loader": "^0.5.7",
-    "karma": "^3.1.4",
+    "karma": "^6.3.16",
     "karma-benchmark": "^1.0.4",
     "karma-benchmark-reporter": "^0.1.1",
     "karma-chrome-launcher": "2.2",
@@ -159,8 +157,7 @@
     "karma-webpack": "^4.0.2",
     "lint-staged": "^10.4.0",
     "lodash": "^4.17.15",
-    "lodash.clonedeep": "^4.5.0",
-    "mocha": "^6.2.1",
+    "mocha": "^10.1.0",
     "power-assert": "^1.6.1",
     "prettier": "^2.2.1",
     "typescript": "^4.1.3",

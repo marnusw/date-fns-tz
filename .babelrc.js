@@ -1,10 +1,12 @@
-const presets = []
+const presets = ['@babel/preset-env']
 const plugins = [
   '@babel/plugin-transform-block-scoping',
   '@babel/plugin-transform-template-literals',
   '@babel/plugin-transform-arrow-functions',
   '@babel/plugin-transform-parameters',
   '@babel/plugin-transform-destructuring',
+  '@babel/plugin-transform-optional-chaining',
+  '@babel/plugin-transform-logical-assignment-operators',
 ]
 
 if (process.env.NODE_ENV === 'test') {

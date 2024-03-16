@@ -1,5 +1,5 @@
 import assert from 'power-assert'
-import enGB from 'date-fns/locale/en-GB'
+import enGB from 'date-fns/locale/en-GB.js'
 import formatInTimeZone from './index'
 
 describe('formatInTimeZone', function () {

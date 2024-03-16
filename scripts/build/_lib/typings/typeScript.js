@@ -293,7 +293,7 @@ function generateTypeScriptTypings(fns, aliases, locales) {
     ${addSeparator(getTypeScriptFPInterfaces(), '\n')}
 
     declare module 'date-fns-tz' {
-      import { Locale } from "date-fns"
+      import type { Day, FirstWeekContainsDate, Locale, LocaleUnit, RoundingMethod } from "date-fns"
 
       ${addSeparator(aliasDefinitions, '\n')}
     }

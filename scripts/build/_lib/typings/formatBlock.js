@@ -111,7 +111,7 @@ const formatFlowFile = (...args) =>
   '\n' +
   generatedAutomaticallyMessage +
   '\n\n' +
-  "import type {Locale} from 'date-fns'\n" +
+  "import type { Day, FirstWeekContainsDate, Locale, LocaleUnit, RoundingMethod } from 'date-fns'\n" +
   '\n\n' +
   formatBlock(...args) +
   '\n'

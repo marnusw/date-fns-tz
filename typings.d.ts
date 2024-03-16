@@ -25,19 +25,19 @@ interface CurriedFn4<A, B, C, D, R> {
 }
 
 declare module 'date-fns-tz' {
-  import { Locale } from 'date-fns'
+  import type { Day, FirstWeekContainsDate, Locale, LocaleUnit, RoundingMethod } from 'date-fns'
 
   export type OptionsWithTZ = {
-    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+    weekStartsOn?: Day
+    firstWeekContainsDate?: FirstWeekContainsDate
     additionalDigits?: 0 | 1 | 2
     timeZone?: string
     originalDate?: Date | number
     locale?: Locale
     includeSeconds?: boolean
     addSuffix?: boolean
-    unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
-    roundingMethod?: 'floor' | 'ceil' | 'round'
+    unit?: LocaleUnit
+    roundingMethod?: RoundingMethod
     awareOfUnicodeTokens?: boolean
   }
 }

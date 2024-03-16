@@ -1,5 +1,5 @@
 import assert from 'power-assert'
-import format from 'date-fns/format'
+import { format } from 'date-fns/format.js'
 import utcToZonedTime from '.'
 import newDateUTC from '../_lib/newDateUTC'
 
