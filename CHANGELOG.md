@@ -1,3 +1,7 @@
+### v3.0.0-beta.0 (9 March 2024)
+
+- [UPGRADE] Support date-fns v3 (#265) Thank you, @christopherklint97
+
 ### v2.0.1 (9 March 2024)
 
 - [DOCS] Fix incorrect output comment (#270)
