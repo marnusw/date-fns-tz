@@ -37,7 +37,7 @@ function partsOffset(dtf, date) {
 }
 
 function hackyOffset(dtf, date) {
-  var formatted = dtf.format(date).replace(/\u200E/g, '')
+  var formatted = dtf.format(date)
   var parsed = /(\d+)\/(\d+)\/(\d+),? (\d+):(\d+):(\d+)/.exec(formatted)
   // var [, fMonth, fDay, fYear, fHour, fMinute, fSecond] = parsed
   // return [fYear, fMonth, fDay, fHour, fMinute, fSecond]
@@ -52,10 +52,10 @@ function getDateTimeFormat(timeZone) {
   if (!dtfCache[timeZone]) {
     // New browsers use `hourCycle`, IE and Chrome <73 does not support it and uses `hour12`
     var testDateFormatted = new Intl.DateTimeFormat('en-US', {
-      hour12: false,
+      hourCycle: 'h23',
       timeZone: 'America/New_York',
       year: 'numeric',
-      month: 'numeric',
+      month: '2-digit',
       day: '2-digit',
       hour: '2-digit',
       minute: '2-digit',
@@ -67,7 +67,7 @@ function getDateTimeFormat(timeZone) {
 
     dtfCache[timeZone] = hourCycleSupported
       ? new Intl.DateTimeFormat('en-US', {
-          hour12: false,
+          hourCycle: 'h23',
           timeZone: timeZone,
           year: 'numeric',
           month: 'numeric',
@@ -77,7 +77,7 @@ function getDateTimeFormat(timeZone) {
           second: '2-digit',
         })
       : new Intl.DateTimeFormat('en-US', {
-          hourCycle: 'h23',
+          hour12: false,
           timeZone: timeZone,
           year: 'numeric',
           month: 'numeric',

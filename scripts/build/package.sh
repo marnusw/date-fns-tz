@@ -11,7 +11,7 @@ set -e
 root="$(pwd)/$(dirname "$0")/../.."
 cd "$root" || exit 1
 
-PATH="$(npm bin):$PATH"
+#PATH="$(npm bin):$PATH"
 # XXX: $PACKAGE_OUTPUT_PATH must be an absolute path!
 dir=${PACKAGE_OUTPUT_PATH:-"$root/tmp/package"}
 

@@ -1,4 +1,5 @@
 import assert from 'power-assert'
+import enGB from 'date-fns/locale/en-GB.js'
 import formatInTimeZone from './index'
 
 describe('formatInTimeZone', function () {
@@ -40,6 +41,62 @@ describe('formatInTimeZone', function () {
       it(`format type: ${test.formatType}, time zone type: ${test.timeZoneType}`, function () {
         assert(formatInTimeZone(date, test.timeZone, test.format) === test.expected)
       })
+    })
+  })
+
+  describe('populates the timezone name and offset correctly close to DST threshold', function () {
+    it('during summer time: CEST', function () {
+      var date = new Date('2021-08-01T00:30:00Z')
+      var timeZone = 'Europe/Paris'
+      var format = 'z XXX'
+      var expected = 'CEST +02:00'
+      var options = { locale: enGB }
+      assert(formatInTimeZone(date, timeZone, format, options) === expected)
+    })
+
+    it('during winter time: CET', function () {
+      var date = '2021-01-01T01:30:00Z'
+      var timeZone = 'Europe/Paris'
+      var format = 'z XXX'
+      var expected = 'CET +01:00'
+      var options = { locale: enGB }
+      assert(formatInTimeZone(date, timeZone, format, options) === expected)
+    })
+
+    it('before DST changeover: (CEST to CET)', function () {
+      var date = '2021-10-31T00:30:00Z'
+      var timeZone = 'Europe/Paris'
+      var format = 'z XXX'
+      var expected = 'CEST +02:00'
+      var options = { locale: enGB }
+      assert(formatInTimeZone(date, timeZone, format, options) === expected)
+    })
+
+    it('after DST changeover: (CEST to CET)', function () {
+      var date = '2021-10-31T01:30:00Z'
+      var timeZone = 'Europe/Paris'
+      var format = 'z XXX'
+      var expected = 'CET +01:00'
+      var options = { locale: enGB }
+      assert(formatInTimeZone(date, timeZone, format, options) === expected)
+    })
+
+    it('before DST changeover: (CET to CEST)', function () {
+      var date = '2021-03-28T00:30:00Z'
+      var timeZone = 'Europe/Paris'
+      var format = 'z XXX'
+      var expected = 'CET +01:00'
+      var options = { locale: enGB }
+      assert(formatInTimeZone(date, timeZone, format, options) === expected)
+    })
+
+    it('after DST changeover: (CET to CEST)', function () {
+      var date = '2021-03-28T01:30:00Z'
+      var timeZone = 'Europe/Paris'
+      var format = 'z XXX'
+      var expected = 'CEST +02:00'
+      var options = { locale: enGB }
+      assert(formatInTimeZone(date, timeZone, format, options) === expected)
     })
   })
 

@@ -6,7 +6,7 @@ var MILLISECONDS_IN_MINUTE = 60 * 1000
 var formatters = {
   // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
   X: function (date, token, localize, options) {
-    var timezoneOffset = getTimeZoneOffset(options.timeZone, options._originalDate || date)
+    var timezoneOffset = getTimeZoneOffset(options.timeZone, date)
 
     if (timezoneOffset === 0) {
       return 'Z'
@@ -36,7 +36,7 @@ var formatters = {
 
   // Timezone (ISO-8601. If offset is 0, output is `'+00:00'` or equivalent)
   x: function (date, token, localize, options) {
-    var timezoneOffset = getTimeZoneOffset(options.timeZone, options._originalDate || date)
+    var timezoneOffset = getTimeZoneOffset(options.timeZone, date)
 
     switch (token) {
       // Hours and optional minutes
@@ -62,7 +62,7 @@ var formatters = {
 
   // Timezone (GMT)
   O: function (date, token, localize, options) {
-    var timezoneOffset = getTimeZoneOffset(options.timeZone, options._originalDate || date)
+    var timezoneOffset = getTimeZoneOffset(options.timeZone, date)
 
     switch (token) {
       // Short
@@ -79,18 +79,16 @@ var formatters = {
 
   // Timezone (specific non-location)
   z: function (date, token, localize, options) {
-    var originalDate = options._originalDate || date
-
     switch (token) {
       // Short
       case 'z':
       case 'zz':
       case 'zzz':
-        return tzIntlTimeZoneName('short', originalDate, options)
+        return tzIntlTimeZoneName('short', date, options)
       // Long
       case 'zzzz':
       default:
-        return tzIntlTimeZoneName('long', originalDate, options)
+        return tzIntlTimeZoneName('long', date, options)
     }
   },
 }
@@ -131,7 +129,7 @@ function formatTimezoneWithOptionalMinutes(offset, dirtyDelimeter) {
   return formatTimezone(offset, dirtyDelimeter)
 }
 
-function formatTimezoneShort(offset, dirtyDelimeter) {
+function formatTimezoneShort(offset, dirtyDelimiter) {
   var sign = offset > 0 ? '-' : '+'
   var absOffset = Math.abs(offset)
   var hours = Math.floor(absOffset / 60)
@@ -139,8 +137,8 @@ function formatTimezoneShort(offset, dirtyDelimeter) {
   if (minutes === 0) {
     return sign + String(hours)
   }
-  var delimeter = dirtyDelimeter || ''
-  return sign + String(hours) + delimeter + addLeadingZeros(minutes, 2)
+  var delimiter = dirtyDelimiter || ''
+  return sign + String(hours) + delimiter + addLeadingZeros(minutes, 2)
 }
 
 export default formatters

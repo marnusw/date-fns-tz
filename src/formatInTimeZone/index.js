@@ -27,5 +27,6 @@ import cloneDeep from 'lodash.clonedeep'
 export default function formatInTimeZone(date, timeZone, formatStr, options) {
   var extendedOptions = cloneDeep(options || {})
   extendedOptions.timeZone = timeZone
+  extendedOptions.originalDate = date
   return format(utcToZonedTime(date, timeZone), formatStr, extendedOptions)
 }
