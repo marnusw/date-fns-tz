@@ -10,7 +10,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.m?js$/,
         exclude: /node_modules\/(?!date-fns)/,
         use: {
           loader: 'babel-loader',
