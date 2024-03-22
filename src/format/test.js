@@ -3,7 +3,7 @@
 
 import assert from 'power-assert'
 import format from '.'
-import enGB from 'date-fns/locale/en-GB.js'
+import { enGB } from 'date-fns/locale/en-GB'
 import utcToZonedTime from '../utcToZonedTime'
 
 describe('format', function () {

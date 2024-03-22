@@ -1,4 +1,4 @@
-import { getTimezoneOffsetInMilliseconds } from 'date-fns/_lib/getTimezoneOffsetInMilliseconds.js'
+import { getTimezoneOffsetInMilliseconds } from 'date-fns/_lib/getTimezoneOffsetInMilliseconds'
 import tzParseTimezone from '../_lib/tzParseTimezone/index.js'
 import tzPattern from '../_lib/tzPattern/index.js'
 
