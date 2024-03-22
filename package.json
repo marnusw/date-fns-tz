@@ -98,7 +98,6 @@
   },
   "scripts": {
     "build": "./scripts/build/build.sh",
-    "prepare": "./scripts/build/build.sh",
     "package": "./scripts/build/package.sh",
     "clean": "rm -rf tmp/package && rm tmp/docs.json",
     "test": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" karma start config/karma.js",
