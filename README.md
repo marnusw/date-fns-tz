@@ -160,7 +160,27 @@ const date = utcToZonedTime(isoDate, timeZone) // In June 10am UTC is 6am in New
 renderDatePicker(date) // 2014-06-25 06:00:00 (in the system time zone)
 renderTimeZoneSelect(timeZone) // America/New_York
 ```
+### `convertTimezone`
 
+Get the time and it's timezone as input and convert it to desired timezone. In other word it will convert an time to 
+the desired timezone. It uses utcToZonedTime and zonedTimeToUtc function to get the desired time. In addition an optional parameter
+used to format the time in specific pattern.
+
+```js
+convertTimezone(inputTime: Date|String, currentTimezone: String, convertTimezone: String, formatPattern:String): Date
+```
+
+Say you have a local timezone America/New_York you want to convert it to Asia/Dhaka.So the currentTimezone will be America/New_York
+and the convertTimezone will Asia/Dhaka. The output will be the equivalent Asia/Dhaka time of the input time.  
+
+```javascript
+import { convertTimezone } from 'date-fns-tz'
+
+const { isoDate, timeZone } = fetchInitialValues() // 2014-06-25T10:00:00.000Z, America/New_York
+
+const date = convertTimezone(isoDate, timeZone,'Asia/Dhaka','yyyy-MM-dd HH:mm') // In June 10am in New York is 8pm in Dhaka (+10:00)
+
+```
 ### `getTimezoneOffset`
 
 Returns the offset in milliseconds between the time zone and UTC time.
