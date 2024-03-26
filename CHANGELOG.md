@@ -1,7 +1,11 @@
+### v3.0.0-beta.2 (26 March 2024)
+
+- [BUGFIX] Fix `date-fns` imports by copying the `getTimezoneOffsetInMilliseconds` (#272)
+
 ### v3.0.0-beta.1 (22 March 2024)
 
-- [BUGFIX] Correct import of date-fns@v3 format and use Babel Webpack loader for mjs files (#271)
-- [BUGFIX] Correct various other date-fns@v3 imports
+- [BUGFIX] Correct import of `date-fns@v3` format and use Babel Webpack loader for mjs files (#271)
+- [BUGFIX] Correct various other `date-fns@v3` imports
 
 ### v3.0.0-beta.0 (9 March 2024)
 
