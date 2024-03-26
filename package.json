@@ -60,6 +60,11 @@
       "import": "./esm/zonedTimeToUtc/index.js",
       "require": "./zonedTimeToUtc/index.js"
     },
+    "./addInTimeZone": {
+      "types": "./addInTimeZone/index.d.ts",
+      "import": "./esm/addInTimeZone/index.js",
+      "require": "./addInTimeZone/index.js"
+    },
     "./fp": {
       "types": "./fp/index.d.ts",
       "import": "./esm/fp/index.js",
@@ -94,6 +99,11 @@
       "types": "./fp/zonedTimeToUtc/index.d.ts",
       "import": "./esm/fp/zonedTimeToUtc/index.js",
       "require": "./fp/zonedTimeToUtc/index.js"
+    },
+    "./fp/addInTimeZone": {
+      "types": "./fp/addInTimeZone/index.d.ts",
+      "import": "./esm/fp/addInTimeZone/index.js",
+      "require": "./fp/addInTimeZone/index.js"
     }
   },
   "scripts": {
