@@ -1,3 +1,7 @@
+### v3.0.0-beta.3 (28 March 2024)
+
+- [BUGFIX] Fix `date-fns` imports for `fp` by copying the `convertToFP` function
+
 ### v3.0.0-beta.2 (26 March 2024)
 
 - [BUGFIX] Fix `date-fns` imports by copying the `getTimezoneOffsetInMilliseconds` (#272)
