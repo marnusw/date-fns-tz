@@ -27,11 +27,11 @@ declare module.exports: {
     options?: OptionsWithTZ
   ) => string,
 
+  fromZonedTime: (date: Date | string | number, timeZone: string, options?: OptionsWithTZ) => Date,
+
   getTimezoneOffset: (timeZone: string, date?: Date | number) => number,
 
   toDate: (argument: Date | string | number, options?: OptionsWithTZ) => Date,
 
-  utcToZonedTime: (date: Date | string | number, timeZone: string, options?: OptionsWithTZ) => Date,
-
-  zonedTimeToUtc: (date: Date | string | number, timeZone: string, options?: OptionsWithTZ) => Date,
+  toZonedTime: (date: Date | string | number, timeZone: string, options?: OptionsWithTZ) => Date,
 }

@@ -1,4 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-import { utcToZonedTimeWithOptions } from 'date-fns-tz/fp'
-export = utcToZonedTimeWithOptions
+import { toZonedTime } from 'date-fns-tz'
+export = toZonedTime

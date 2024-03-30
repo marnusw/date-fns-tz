@@ -5,7 +5,7 @@ import newDateUTC from '../_lib/newDateUTC/index.js'
 import cloneDeep from 'lodash.clonedeep'
 
 /**
- * @name zonedTimeToUtc
+ * @name fromZonedTime
  * @category Time Zone Helpers
  * @summary Get the UTC date/time from a date representing local time in a given time zone
  *
@@ -25,10 +25,10 @@ import cloneDeep from 'lodash.clonedeep'
  *
  * @example
  * // In June 10am in Los Angeles is 5pm UTC
- * const result = zonedTimeToUtc(new Date(2014, 5, 25, 10, 0, 0), 'America/Los_Angeles')
+ * const result = fromZonedTime(new Date(2014, 5, 25, 10, 0, 0), 'America/Los_Angeles')
  * //=> 2014-06-25T17:00:00.000Z
  */
-export default function zonedTimeToUtc(date, timeZone, options) {
+export default function fromZonedTime(date, timeZone, options) {
   if (typeof date === 'string' && !date.match(tzPattern)) {
     var extendedOptions = cloneDeep(options || {})
     extendedOptions.timeZone = timeZone

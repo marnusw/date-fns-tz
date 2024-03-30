@@ -1,3 +1,8 @@
+### v3.0.0
+
+- [BREAKING CHANGE] Rename `utcToZonedTime` to `toZonedTime`
+- [BREAKING CHANGE] Rename `zonedTimeToUtc` to `fromZonedTime`
+
 ### v3.0.0-beta.3 (28 March 2024)
 
 - [BUGFIX] Fix `date-fns` imports for `fp` by copying the `convertToFP` function

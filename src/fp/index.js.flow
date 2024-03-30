@@ -53,11 +53,11 @@ declare module.exports: {
     string
   >,
   formatWithOptions: CurriedFn3<OptionsWithTZ, string, Date | number, string>,
+  fromZonedTime: CurriedFn2<string, Date | string | number, Date>,
+  fromZonedTimeWithOptions: CurriedFn3<OptionsWithTZ, string, Date | string | number, Date>,
   getTimezoneOffset: CurriedFn2<Date | number, string, number>,
   toDate: CurriedFn1<Date | string | number, Date>,
   toDateWithOptions: CurriedFn2<OptionsWithTZ, Date | string | number, Date>,
-  utcToZonedTime: CurriedFn2<string, Date | string | number, Date>,
-  utcToZonedTimeWithOptions: CurriedFn3<OptionsWithTZ, string, Date | string | number, Date>,
-  zonedTimeToUtc: CurriedFn2<string, Date | string | number, Date>,
-  zonedTimeToUtcWithOptions: CurriedFn3<OptionsWithTZ, string, Date | string | number, Date>,
+  toZonedTime: CurriedFn2<string, Date | string | number, Date>,
+  toZonedTimeWithOptions: CurriedFn3<OptionsWithTZ, string, Date | string | number, Date>,
 }
