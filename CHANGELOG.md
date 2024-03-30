@@ -2,6 +2,7 @@
 
 - [BREAKING CHANGE] Rename `utcToZonedTime` to `toZonedTime`
 - [BREAKING CHANGE] Rename `zonedTimeToUtc` to `fromZonedTime`
+- [BREAKING CHANGE] Remove `flow` support
 
 ### v3.0.0-beta.3 (28 March 2024)
 

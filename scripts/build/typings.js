@@ -2,7 +2,7 @@
 
 /**
  * @file
- * The script generates Flow and TypeScript typing files.
+ * The script generates TypeScript typing files.
  *
  * It's a part of the build process.
  */
@@ -11,7 +11,6 @@ const path = require('path')
 const jsDocs = require(path.resolve(process.cwd(), 'tmp/docs.json'))
 
 const { generateTypeScriptTypings } = require('./_lib/typings/typeScript')
-const { generateFlowTypings } = require('./_lib/typings/flow')
 
 const fns = Object.keys(jsDocs)
   .map((category) => jsDocs[category])
@@ -22,4 +21,3 @@ const fns = Object.keys(jsDocs)
 const aliases = jsDocs['Types']
 
 generateTypeScriptTypings(fns, aliases, [])
-generateFlowTypings(fns, aliases)

@@ -1,4 +1,3 @@
-const flowHeader = '// @flow'
 const generatedAutomaticallyMessage =
   "// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it."
 
@@ -101,22 +100,6 @@ const formatBlock = (rawStrings, ...substitutions) => {
 }
 
 /**
- * Tag function that formats a Flow file by putting the correct indentation, header and footer to it
- * @param {String[]} rawStrings
- * @param {...String} substitutions
- * @returns {String} formatted file content
- */
-const formatFlowFile = (...args) =>
-  flowHeader +
-  '\n' +
-  generatedAutomaticallyMessage +
-  '\n\n' +
-  "import type { Day, FirstWeekContainsDate, Locale, LocaleUnit, RoundingMethod } from 'date-fns'\n" +
-  '\n\n' +
-  formatBlock(...args) +
-  '\n'
-
-/**
  * Tag function that formats a TypeScript file by putting the correct indentation, header and footer to it
  * @param {String[]} rawStrings
  * @param {...String} substitutions
@@ -128,6 +111,5 @@ const formatTypeScriptFile = (...args) =>
 module.exports = {
   addSeparator,
   formatBlock,
-  formatFlowFile,
   formatTypeScriptFile,
 }

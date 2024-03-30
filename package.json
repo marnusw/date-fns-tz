@@ -165,7 +165,6 @@
     "date-fns": "^3.0.6",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^7.2.0",
-    "flow-bin": "^0.143.1",
     "fs-promise": "^2.0.3",
     "husky": "^4.3.0",
     "jsdoc-to-markdown": "^7.0.1",
