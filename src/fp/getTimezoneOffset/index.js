@@ -1,8 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.js`. Please, don't change it.
 
-import fn from '../../getTimezoneOffset/index.js'
+import { getTimezoneOffset as fn } from '../../getTimezoneOffset'
 import { convertToFP } from '../_lib/convertToFP'
 
-var getTimezoneOffset = convertToFP(fn, 2)
-
-export default getTimezoneOffset
+export const getTimezoneOffset = convertToFP(fn, 2)

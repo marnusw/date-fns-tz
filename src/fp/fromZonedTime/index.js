@@ -1,8 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.js`. Please, don't change it.
 
-import fn from '../../fromZonedTime/index.js'
+import { fromZonedTime as fn } from '../../fromZonedTime'
 import { convertToFP } from '../_lib/convertToFP'
 
-var fromZonedTime = convertToFP(fn, 2)
-
-export default fromZonedTime
+export const fromZonedTime = convertToFP(fn, 2)

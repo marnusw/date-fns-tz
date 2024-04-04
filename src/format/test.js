@@ -1,9 +1,9 @@
 /* eslint-env mocha */
 
 import assert from 'power-assert'
-import format from '.'
+import { format } from '.'
 import { enGB } from 'date-fns/locale/en-GB'
-import toZonedTime from '../toZonedTime'
+import { toZonedTime } from '../toZonedTime'
 
 describe('format', function () {
   var date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123)

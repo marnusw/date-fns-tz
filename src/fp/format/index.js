@@ -1,8 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.js`. Please, don't change it.
 
-import fn from '../../format/index.js'
+import { format as fn } from '../../format'
 import { convertToFP } from '../_lib/convertToFP'
 
-var format = convertToFP(fn, 2)
-
-export default format
+export const format = convertToFP(fn, 2)

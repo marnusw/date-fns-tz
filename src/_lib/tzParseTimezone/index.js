@@ -1,5 +1,5 @@
-import tzTokenizeDate from '../tzTokenizeDate/index.js'
-import newDateUTC from '../newDateUTC/index.js'
+import { tzTokenizeDate } from '../tzTokenizeDate'
+import { newDateUTC } from '../newDateUTC'
 
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
@@ -12,7 +12,7 @@ var patterns = {
 }
 
 // Parse various time zone offset formats to an offset in milliseconds
-export default function tzParseTimezone(timezoneString, date, isUtcDate) {
+export function tzParseTimezone(timezoneString, date, isUtcDate) {
   var token
   var absoluteOffset
 
@@ -78,7 +78,7 @@ function toUtcDate(date) {
     date.getHours(),
     date.getMinutes(),
     date.getSeconds(),
-    date.getMilliseconds()
+    date.getMilliseconds(),
   )
 }
 
@@ -93,7 +93,7 @@ function calcOffset(date, timezoneString) {
     tokens[3] % 24,
     tokens[4],
     tokens[5],
-    0
+    0,
   ).getTime()
 
   var asTS = date.getTime()
@@ -134,6 +134,7 @@ function validateTimezone(hours, minutes) {
 }
 
 var validIANATimezoneCache = {}
+
 function isValidTimezoneIANAString(timeZoneString) {
   if (validIANATimezoneCache[timeZoneString]) return true
   try {

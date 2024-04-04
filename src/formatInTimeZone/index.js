@@ -1,5 +1,5 @@
-import format from '../format/index.js'
-import toZonedTime from '../toZonedTime/index.js'
+import { format } from '../format'
+import { toZonedTime } from '../toZonedTime'
 import cloneDeep from 'lodash.clonedeep'
 
 /**
@@ -24,7 +24,7 @@ import cloneDeep from 'lodash.clonedeep'
  * @param {String} [options.timeZone=''] - used to specify the IANA time zone offset of a date String.
  * @returns {String} the formatted date string
  */
-export default function formatInTimeZone(date, timeZone, formatStr, options) {
+export function formatInTimeZone(date, timeZone, formatStr, options) {
   var extendedOptions = cloneDeep(options || {})
   extendedOptions.timeZone = timeZone
   extendedOptions.originalDate = date

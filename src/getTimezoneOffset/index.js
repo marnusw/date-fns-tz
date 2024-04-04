@@ -1,4 +1,4 @@
-import tzParseTimezone from '../_lib/tzParseTimezone/index.js'
+import { tzParseTimezone } from '../_lib/tzParseTimezone/index.js'
 
 /**
  * @name getTimezoneOffset
@@ -27,6 +27,6 @@ import tzParseTimezone from '../_lib/tzParseTimezone/index.js'
  * const result = getTimezoneOffset('America/New_York', new Date(2016, 6, 1))
  *   //=> -14400000 (-4 * 60 * 60 * 1000)
  */
-export default function getTimezoneOffset(timeZone, date) {
+export function getTimezoneOffset(timeZone, date) {
   return -tzParseTimezone(timeZone, date)
 }

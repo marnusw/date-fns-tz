@@ -1,5 +1,5 @@
-import tzIntlTimeZoneName from '../../_lib/tzIntlTimeZoneName/index.js'
-import tzParseTimezone from '../../_lib/tzParseTimezone/index.js'
+import { tzIntlTimeZoneName } from '../../_lib/tzIntlTimeZoneName'
+import { tzParseTimezone } from '../../_lib/tzParseTimezone'
 
 var MILLISECONDS_IN_MINUTE = 60 * 1000
 
@@ -141,4 +141,4 @@ function formatTimezoneShort(offset, dirtyDelimiter) {
   return sign + String(hours) + delimiter + addLeadingZeros(minutes, 2)
 }
 
-export default formatters
+export { formatters }

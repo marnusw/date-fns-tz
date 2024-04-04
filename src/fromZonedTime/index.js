@@ -1,7 +1,7 @@
-import toDate from '../toDate/index.js'
-import tzPattern from '../_lib/tzPattern/index.js'
-import tzParseTimezone from '../_lib/tzParseTimezone/index.js'
-import newDateUTC from '../_lib/newDateUTC/index.js'
+import { toDate } from '../toDate'
+import { tzPattern } from '../_lib/tzPattern'
+import { tzParseTimezone } from '../_lib/tzParseTimezone'
+import { newDateUTC } from '../_lib/newDateUTC'
 import cloneDeep from 'lodash.clonedeep'
 
 /**
@@ -28,7 +28,7 @@ import cloneDeep from 'lodash.clonedeep'
  * const result = fromZonedTime(new Date(2014, 5, 25, 10, 0, 0), 'America/Los_Angeles')
  * //=> 2014-06-25T17:00:00.000Z
  */
-export default function fromZonedTime(date, timeZone, options) {
+export function fromZonedTime(date, timeZone, options) {
   if (typeof date === 'string' && !date.match(tzPattern)) {
     var extendedOptions = cloneDeep(options || {})
     extendedOptions.timeZone = timeZone

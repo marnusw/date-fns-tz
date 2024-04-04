@@ -1,8 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.js`. Please, don't change it.
 
-import fn from '../../formatInTimeZone/index.js'
+import { formatInTimeZone as fn } from '../../formatInTimeZone'
 import { convertToFP } from '../_lib/convertToFP'
 
-var formatInTimeZoneWithOptions = convertToFP(fn, 4)
-
-export default formatInTimeZoneWithOptions
+export const formatInTimeZoneWithOptions = convertToFP(fn, 4)

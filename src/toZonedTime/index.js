@@ -1,5 +1,5 @@
-import tzParseTimezone from '../_lib/tzParseTimezone/index.js'
-import toDate from '../toDate/index.js'
+import { tzParseTimezone } from '../_lib/tzParseTimezone'
+import { toDate } from '../toDate'
 
 /**
  * @name toZonedTime
@@ -25,7 +25,7 @@ import toDate from '../toDate/index.js'
  * const result = toZonedTime('2014-06-25T10:00:00.000Z', 'America/New_York')
  * //=> Jun 25 2014 06:00:00
  */
-export default function toZonedTime(dirtyDate, timeZone, options) {
+export function toZonedTime(dirtyDate, timeZone, options) {
   var date = toDate(dirtyDate, options)
 
   var offsetMilliseconds = tzParseTimezone(timeZone, date, true)

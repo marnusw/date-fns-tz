@@ -1,8 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.js`. Please, don't change it.
 
-import fn from '../../toDate/index.js'
+import { toDate as fn } from '../../toDate'
 import { convertToFP } from '../_lib/convertToFP'
 
-var toDate = convertToFP(fn, 1)
-
-export default toDate
+export const toDate = convertToFP(fn, 1)

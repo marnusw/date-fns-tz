@@ -1,7 +1,7 @@
 import assert from 'power-assert'
 import { format } from 'date-fns/format'
-import toZonedTime from '.'
-import newDateUTC from '../_lib/newDateUTC'
+import { toZonedTime } from '.'
+import { newDateUTC } from '../_lib/newDateUTC'
 
 describe('toZonedTime', function () {
   it('returns the equivalent date at the time zone for a date string and IANA tz', function () {
