@@ -1,5 +1,5 @@
-import { format } from '../format'
-import { toZonedTime } from '../toZonedTime'
+import { format } from '../format/index.js'
+import { toZonedTime } from '../toZonedTime/index.js'
 import cloneDeep from 'lodash.clonedeep'
 
 /**

@@ -1,7 +1,7 @@
-import { toDate } from '../toDate'
-import { tzPattern } from '../_lib/tzPattern'
-import { tzParseTimezone } from '../_lib/tzParseTimezone'
-import { newDateUTC } from '../_lib/newDateUTC'
+import { toDate } from '../toDate/index.js'
+import { tzPattern } from '../_lib/tzPattern/index.js'
+import { tzParseTimezone } from '../_lib/tzParseTimezone/index.js'
+import { newDateUTC } from '../_lib/newDateUTC/index.js'
 import cloneDeep from 'lodash.clonedeep'
 
 /**

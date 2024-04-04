@@ -1,5 +1,5 @@
-import { tzParseTimezone } from '../_lib/tzParseTimezone'
-import { toDate } from '../toDate'
+import { tzParseTimezone } from '../_lib/tzParseTimezone/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
  * @name toZonedTime

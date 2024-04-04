@@ -1,5 +1,5 @@
-import { tzTokenizeDate } from '../tzTokenizeDate'
-import { newDateUTC } from '../newDateUTC'
+import { tzTokenizeDate } from '../tzTokenizeDate/index.js'
+import { newDateUTC } from '../newDateUTC/index.js'
 
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
@@ -78,7 +78,7 @@ function toUtcDate(date) {
     date.getHours(),
     date.getMinutes(),
     date.getSeconds(),
-    date.getMilliseconds(),
+    date.getMilliseconds()
   )
 }
 
@@ -93,7 +93,7 @@ function calcOffset(date, timezoneString) {
     tokens[3] % 24,
     tokens[4],
     tokens[5],
-    0,
+    0
   ).getTime()
 
   var asTS = date.getTime()

@@ -1,6 +1,6 @@
 import { format as dateFnsFormat } from 'date-fns/format'
-import { formatters } from './formatters'
-import { toDate } from '../toDate'
+import { formatters } from './formatters/index.js'
+import { toDate } from '../toDate/index.js'
 
 var tzFormattingTokensRegExp = /([xXOz]+)|''|'(''|[^'])+('|$)/g
 
@@ -326,14 +326,14 @@ export function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
     // Work through each match and replace the tz token in the format string with the quoted
     // formatted time zone so the remaining tokens can be filled in by date-fns#format.
     formatStr = matches.reduce(function (result, token) {
-      if (token[0] === '\'') {
+      if (token[0] === "'") {
         return result // This is a quoted portion, matched only to ensure we don't match inside it
       }
       var pos = result.indexOf(token)
-      var precededByQuotedSection = result[pos - 1] === '\''
+      var precededByQuotedSection = result[pos - 1] === "'"
       var replaced = result.replace(
         token,
-        '\'' + formatters[token[0]](date, token, null, options) + '\'',
+        "'" + formatters[token[0]](date, token, null, options) + "'"
       )
       // If the replacement results in two adjoining quoted strings, the back to back quotes
       // are removed, so it doesn't look like an escaped quote.
