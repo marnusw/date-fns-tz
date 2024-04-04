@@ -1,3 +1,7 @@
+### v3.0.0-beta.5 (4 April 2024)
+
+- [BUGFIX] Fix internal ESM import paths
+
 ### v3.0.0-beta.4 (4 April 2024)
 
 - [BREAKING CHANGE] Rename `utcToZonedTime` to `toZonedTime`
