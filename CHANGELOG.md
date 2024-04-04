@@ -1,4 +1,4 @@
-### v3.0.0-beta.5 (4 April 2024)
+### v3.0.0-beta.6 (4 April 2024)
 
 - [BUGFIX] Fix internal ESM import paths
 
