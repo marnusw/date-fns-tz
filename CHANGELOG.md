@@ -1,8 +1,9 @@
-### v3.0.0
+### v3.0.0-beta.4 (4 April 2024)
 
 - [BREAKING CHANGE] Rename `utcToZonedTime` to `toZonedTime`
 - [BREAKING CHANGE] Rename `zonedTimeToUtc` to `fromZonedTime`
 - [BREAKING CHANGE] Remove `flow` support
+- [BREAKING CHANGE] All functions are now exported as named exports
 
 ### v3.0.0-beta.3 (28 March 2024)
 
