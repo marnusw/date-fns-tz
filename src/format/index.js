@@ -1,6 +1,6 @@
 import { format as dateFnsFormat } from 'date-fns/format'
-import formatters from './formatters/index.js'
-import toDate from '../toDate/index.js'
+import { formatters } from './formatters/index.js'
+import { toDate } from '../toDate/index.js'
 
 var tzFormattingTokensRegExp = /([xXOz]+)|''|'(''|[^'])+('|$)/g
 
@@ -316,7 +316,7 @@ var tzFormattingTokensRegExp = /([xXOz]+)|''|'(''|[^'])+('|$)/g
  * var result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
  * //=> "3 o'clock"
  */
-export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
+export function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
   var formatStr = String(dirtyFormatStr)
   var options = dirtyOptions || {}
 

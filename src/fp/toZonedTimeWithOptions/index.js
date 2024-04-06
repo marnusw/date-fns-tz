@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build/fp.js`. Please, don't change it.
 
-import { getTimezoneOffset as fn } from '../../getTimezoneOffset/index.js'
+import { toZonedTime as fn } from '../../toZonedTime/index.js'
 import { convertToFP } from '../_lib/convertToFP/index.js'
 
-export const getTimezoneOffset = convertToFP(fn, 2)
+export const toZonedTimeWithOptions = convertToFP(fn, 3)

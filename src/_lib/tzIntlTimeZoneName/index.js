@@ -3,7 +3,7 @@
  * system time zone if omitted, accounting for DST according to the UTC value of
  * the date.
  */
-export default function tzIntlTimeZoneName(length, date, options) {
+export function tzIntlTimeZoneName(length, date, options) {
   var dtf = getDTF(length, options.timeZone, options.locale)
   return dtf.formatToParts ? partsTimeZone(dtf, date) : hackyTimeZone(dtf, date)
 }
@@ -29,7 +29,7 @@ function hackyTimeZone(dtf, date) {
 function getDTF(length, timeZone, locale) {
   if (locale && !locale.code) {
     throw new Error(
-      "date-fns-tz error: Please set a language code on the locale object imported from date-fns, e.g. `locale.code = 'en-US'`"
+      'date-fns-tz error: Please set a language code on the locale object imported from date-fns, e.g. `locale.code = \'en-US\'`',
     )
   }
   return new Intl.DateTimeFormat(locale ? [locale.code, 'en-US'] : undefined, {

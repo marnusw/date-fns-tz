@@ -1,6 +1,6 @@
 {
   "name": "date-fns-tz",
-  "version": "3.0.0-beta.3",
+  "version": "3.0.0-beta.6",
   "sideEffects": false,
   "description": "Time zone support for date-fns v3 with the Intl API",
   "author": "Marnus Weststrate <marnusw@gmail.com>",
@@ -50,15 +50,15 @@
       "import": "./esm/toDate/index.js",
       "require": "./toDate/index.js"
     },
-    "./utcToZonedTime": {
-      "types": "./utcToZonedTime/index.d.ts",
-      "import": "./esm/utcToZonedTime/index.js",
-      "require": "./utcToZonedTime/index.js"
+    "./toZonedTime": {
+      "types": "./toZonedTime/index.d.ts",
+      "import": "./esm/toZonedTime/index.js",
+      "require": "./toZonedTime/index.js"
     },
-    "./zonedTimeToUtc": {
-      "types": "./zonedTimeToUtc/index.d.ts",
-      "import": "./esm/zonedTimeToUtc/index.js",
-      "require": "./zonedTimeToUtc/index.js"
+    "./fromZonedTime": {
+      "types": "./fromZonedTime/index.d.ts",
+      "import": "./esm/fromZonedTime/index.js",
+      "require": "./fromZonedTime/index.js"
     },
     "./fp": {
       "types": "./fp/index.d.ts",
@@ -75,6 +75,26 @@
       "import": "./esm/fp/formatInTimeZone/index.js",
       "require": "./fp/formatInTimeZone/index.js"
     },
+    "./fp/formatInTimeZoneWithOptions": {
+      "types": "./fp/formatInTimeZoneWithOptions/index.d.ts",
+      "import": "./esm/fp/formatInTimeZoneWithOptions/index.js",
+      "require": "./fp/formatInTimeZoneWithOptions/index.js"
+    },
+    "./fp/formatWithOptions": {
+      "types": "./fp/formatWithOptions/index.d.ts",
+      "import": "./esm/fp/formatWithOptions/index.js",
+      "require": "./fp/formatWithOptions/index.js"
+    },
+    "./fp/fromZonedTime": {
+      "types": "./fp/fromZonedTime/index.d.ts",
+      "import": "./esm/fp/fromZonedTime/index.js",
+      "require": "./fp/fromZonedTime/index.js"
+    },
+    "./fp/fromZonedTimeWithOptions": {
+      "types": "./fp/fromZonedTimeWithOptions/index.d.ts",
+      "import": "./esm/fp/fromZonedTimeWithOptions/index.js",
+      "require": "./fp/fromZonedTimeWithOptions/index.js"
+    },
     "./fp/getTimezoneOffset": {
       "types": "./fp/getTimezoneOffset/index.d.ts",
       "import": "./esm/fp/getTimezoneOffset/index.js",
@@ -85,15 +105,20 @@
       "import": "./esm/fp/toDate/index.js",
       "require": "./fp/toDate/index.js"
     },
-    "./fp/utcToZonedTime": {
-      "types": "./fp/utcToZonedTime/index.d.ts",
-      "import": "./esm/fp/utcToZonedTime/index.js",
-      "require": "./fp/utcToZonedTime/index.js"
+    "./fp/toDateWithOptions": {
+      "types": "./fp/toDateWithOptions/index.d.ts",
+      "import": "./esm/fp/toDateWithOptions/index.js",
+      "require": "./fp/toDateWithOptions/index.js"
     },
-    "./fp/zonedTimeToUtc": {
-      "types": "./fp/zonedTimeToUtc/index.d.ts",
-      "import": "./esm/fp/zonedTimeToUtc/index.js",
-      "require": "./fp/zonedTimeToUtc/index.js"
+    "./fp/toZonedTime": {
+      "types": "./fp/toZonedTime/index.d.ts",
+      "import": "./esm/fp/toZonedTime/index.js",
+      "require": "./fp/toZonedTime/index.js"
+    },
+    "./fp/toZonedTimeWithOptions": {
+      "types": "./fp/toZonedTimeWithOptions/index.d.ts",
+      "import": "./esm/fp/toZonedTimeWithOptions/index.js",
+      "require": "./fp/toZonedTimeWithOptions/index.js"
     }
   },
   "scripts": {
@@ -140,7 +165,6 @@
     "date-fns": "^3.0.6",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^7.2.0",
-    "flow-bin": "^0.143.1",
     "fs-promise": "^2.0.3",
     "husky": "^4.3.0",
     "jsdoc-to-markdown": "^7.0.1",

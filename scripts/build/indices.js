@@ -30,7 +30,7 @@ function writeFile(relativePath, content) {
 
 function generateIndex(files) {
   const propertyRequireLines = files.map(
-    (fn) => `  ${fn.name}: require('${fn.path.replace(/\.js$/, '')}/index.js')`
+    (fn) => `  ${fn.name}: require('${fn.path.replace(/\.js$/, '')}/index.js').${fn.name}`
   )
 
   const indexLines = [generatedAutomaticallyMessage]
@@ -45,7 +45,7 @@ function generateIndex(files) {
 
 function generateESMIndex(files) {
   const fileLines = files.map(
-    (fn) => `export { default as ${fn.name} } from '${fn.path.replace(/\.js$/, '')}/index.js'`
+    (fn) => `export * from '${fn.path.replace(/\.js$/, '')}/index.js'`
   )
 
   const indexLines = [generatedAutomaticallyMessage].concat('').concat(fileLines).join('\n')

@@ -1,6 +1,6 @@
 import assert from 'power-assert'
 import { enGB } from 'date-fns/locale/en-GB'
-import formatInTimeZone from './index'
+import { formatInTimeZone } from './index'
 
 describe('formatInTimeZone', function () {
   describe('shifts the date to the zoned time and formats', function () {

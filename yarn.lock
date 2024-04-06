@@ -3603,7 +3603,6 @@ __metadata:
     date-fns: "npm:^3.0.6"
     eslint: "npm:^7.11.0"
     eslint-config-prettier: "npm:^7.2.0"
-    flow-bin: "npm:^0.143.1"
     fs-promise: "npm:^2.0.3"
     husky: "npm:^4.3.0"
     jsdoc-to-markdown: "npm:^7.0.1"
@@ -4808,15 +4807,6 @@ __metadata:
   version: 3.2.9
   resolution: "flatted@npm:3.2.9"
   checksum: 10/dc2b89e46a2ebde487199de5a4fcb79e8c46f984043fea5c41dbf4661eb881fefac1c939b5bdcd8a09d7f960ec364f516970c7ec44e58ff451239c07fd3d419b
-  languageName: node
-  linkType: hard
-
-"flow-bin@npm:^0.143.1":
-  version: 0.143.1
-  resolution: "flow-bin@npm:0.143.1"
-  bin:
-    flow: cli.js
-  checksum: 10/022d15541693f7bad3b4bf2c6a807c80333db22cb21621fe0e75aeba200ccbf06fc8fe87514b60561762476a7c8300d232d90ae76a87585bff2b63a633b378ee
   languageName: node
   linkType: hard
 

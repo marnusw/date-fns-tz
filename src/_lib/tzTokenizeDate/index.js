@@ -2,7 +2,7 @@
  * Returns the [year, month, day, hour, minute, seconds] tokens of the provided
  * `date` as it will be rendered in the `timeZone`.
  */
-export default function tzTokenizeDate(date, timeZone) {
+export function tzTokenizeDate(date, timeZone) {
   var dtf = getDateTimeFormat(timeZone)
   return dtf.formatToParts ? partsOffset(dtf, date) : hackyOffset(dtf, date)
 }

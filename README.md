@@ -34,8 +34,8 @@ This is because an ESM project cannot use ESM imports from a library that doesn'
   - [`formatInTimeZone`](#formatintimezone) - Formats a date in the provided time zone,
     regardless of the system time zone
 - [Time zone offset helpers](#time-zone-offset-helpers)
-  - [`zonedTimeToUtc`](#zonedtimetoutc) - Given a date and any time zone, returns a `Date` with the equivalent UTC time
-  - [`utcToZonedTime`](#utctozonedtime) - Get a date/time representing local time in a given time zone from the UTC date
+  - [`fromZonedTime`](#zonedtimetoutc) - Given a date and any time zone, returns a `Date` with the equivalent UTC time
+  - [`toZonedTime`](#utctozonedtime) - Get a date/time representing local time in a given time zone from the UTC date
   - [`getTimezoneOffset`](#gettimezoneoffset) - Gets the offset in milliseconds between the time zone and UTC time
 - [Low-level formatting helpers](#low-level-formatting-helpers)
   - [`format`](#format) - Extends `date-fns/format` with support for all time zone tokens,
@@ -111,13 +111,14 @@ To discuss the usage of the time zone helpers let's assume we're writing a syste
 administrators set up events which will start at a specific time in the venue's local time, and
 this local time should be shown when accessing the site from anywhere in the world.
 
-### `zonedTimeToUtc`
+### `fromZonedTime`
 
-Given a date and any time zone, returns a `Date` with the equivalent UTC time.
-An invalid date string or time zone will result in an `Invalid Date`.
+Given a date and any time zone, returns the equivalent `Date` in the current system time zone
+and the equivalent UTC time internally. An invalid date string or time zone will result in
+an `Invalid Date`.
 
 ```ts
-zonedTimeToUtc(date: Date|Number|String, timeZone: String): Date
+fromZonedTime(date: Date|Number|String, timeZone: String): Date
 ```
 
 Say a user is asked to input the date/time and time zone of an event. A date/time picker will
@@ -127,23 +128,24 @@ select input might provide the actual IANA time zone name.
 In order to work with this info effectively it is necessary to find the equivalent UTC time:
 
 ```javascript
-import { zonedTimeToUtc } from 'date-fns-tz'
+import { fromZonedTime } from 'date-fns-tz'
 
 const date = getDatePickerValue() // e.g. 2014-06-25 10:00:00 (picked in any time zone)
 const timeZone = getTimeZoneValue() // e.g. America/Los_Angeles
 
-const utcDate = zonedTimeToUtc(date, timeZone) // In June 10am in Los Angeles is 5pm UTC
+const utcDate = fromZonedTime(date, timeZone) // In June 10am in Los Angeles is 5pm UTC
 
 postToServer(utcDate.toISOString(), timeZone) // post 2014-06-25T17:00:00.000Z, America/Los_Angeles
 ```
 
-### `utcToZonedTime`
+### `toZonedTime`
 
-Returns a `Date` which will format as the local time of any time zone from a specific UTC time.
-An invalid date string or time zone will result in an `Invalid Date`.
+Returns a `Date` which will format as the local time of any time zone from a specific UTC time
+or date in the current system time zone. An invalid date string or time zone will result in
+an `Invalid Date`.
 
 ```js
-utcToZonedTime(date: Date|Number|String, timeZone: String): Date
+toZonedTime(date: Date|Number|String, timeZone: String): Date
 ```
 
 Say the server provided a UTC date/time and a time zone which should be used as initial values
@@ -151,11 +153,11 @@ for the above form. The date/time picker will take a Date input which will be in
 local time zone, but the date value must be that of the target time zone.
 
 ```javascript
-import { utcToZonedTime } from 'date-fns-tz'
+import { toZonedTime } from 'date-fns-tz'
 
 const { isoDate, timeZone } = fetchInitialValues() // 2014-06-25T10:00:00.000Z, America/New_York
 
-const date = utcToZonedTime(isoDate, timeZone) // In June 10am UTC is 6am in New York (-04:00)
+const date = toZonedTime(isoDate, timeZone) // In June 10am UTC is 6am in New York (-04:00)
 
 renderDatePicker(date) // 2014-06-25 06:00:00 (in the system time zone)
 renderTimeZoneSelect(timeZone) // America/New_York
@@ -216,21 +218,21 @@ time zone is provided _and included in the output_, i.e. with time zone tokens i
 string, it will also throw a `RangeError`.
 
 To format a date showing time for a specific time zone other than the system time zone, the
-`format` function can be combined with `utcToZonedTime`. This is what `formatInTimeZone` does
+`format` function can be combined with `toZonedTime`. This is what `formatInTimeZone` does
 internally. _To clarify, the `format` function will never change the underlying date, it must be
 changed to a zoned time before passing it to `format`._
 
 In most cases there is no need to use `format` rather than `formatInTimeZone`. The only time
-this makes sense is when `utcToZonedTime` has been applied to a date once, and you want to
+this makes sense is when `toZonedTime` has been applied to a date once, and you want to
 format it multiple times to different outputs.
 
 ```javascript
-import { format, utcToZonedTime } from 'date-fns-tz'
+import { format, toZonedTime } from 'date-fns-tz'
 
 const date = new Date('2014-10-25T10:46:20Z')
 
-const nyDate = utcToZonedTime(date, 'America/New_York')
-const parisDate = utcToZonedTime(date, 'Europe/Paris')
+const nyDate = toZonedTime(date, 'America/New_York')
+const parisDate = toZonedTime(date, 'Europe/Paris')
 
 format(nyDate, 'yyyy-MM-dd HH:mm:ssXXX', { timeZone: 'America/New_York' }) // 2014-10-25 06:46:20-04:00
 format(nyDate, 'yyyy-MM-dd HH:mm:ss zzz', { timeZone: 'America/New_York' }) // 2014-10-25 06:46:20 EST
@@ -263,7 +265,7 @@ import { toDate, format } from 'date-fns-tz'
 
 // Offsets in the date string work as usual and take precedence
 const parsedDate = toDate('2014-10-25T13:46:20+04:00')
-const parisDate = utcToZonedTime(parsedDate, 'Europe/Paris')
+const parisDate = toZonedTime(parsedDate, 'Europe/Paris')
 format(parisDate, 'yyyy-MM-dd HH:mm:ssxxx', { timeZone: 'Europe/Paris' }) // 2014-10-25 11:46:20+02:00
 
 // Since toDate simply clones a Date instance, the timeZone option is effectively ignored in this case
@@ -273,32 +275,26 @@ assert(date.valueOf() === clonedDate.valueOf())
 
 // When there is no offset in the date string the timeZone property is used
 const parsedDate = toDate('2014-10-25T13:46:20', { timeZone: 'Asia/Bangkok' })
-const bangkokDate = utcToZonedTime(parsedDate, 'Asia/Bangkok')
+const bangkokDate = toZonedTime(parsedDate, 'Asia/Bangkok')
 format(bangkokDate, 'yyyy-MM-dd HH:mm:ssxxx', { timeZone: 'Asia/Bangkok' }) // 2014-10-25 13:46:20+07:00
 ```
 
 ## Usage with Android
 
-This library works with React Native, however the `Intl` API is not available by default on Android.
+This library works with React Native on iOS, and on Android with Hermes which supports
+`Intl` by default.
 
-In projects that do not use Hermes, make this change to `android/app/build.gradle`:
+In Android projects that do not use Hermes, make this change in `android/app/build.gradle`:
 
 ```diff
 - def jscFlavor = 'org.webkit:android-jsc:+'
 + def jscFlavor = 'org.webkit:android-jsc-intl:+'
 ```
 
-React Native does not currently support `Intl` on Android with
-Hermes ([facebook/hermes#23](https://github.com/facebook/hermes/issues/23)). The best bet
-seems to be using the [polyfills by Format.JS](https://formatjs.io/docs/polyfills/intl-datetimeformat).
-
 ## Usage with Node.js
 
-Node.js supports the `Intl` API and ships with full ICU data included in the binary from v13,
-i.e. this library will just work.
-
-Node.js v12, which reaches end of life on 30 April 2022, requires running with
-[full ICU data provided at runtime](https://nodejs.org/docs/latest-v12.x/api/intl.html#intl_providing_icu_data_at_runtime).
+Node.js supports the `Intl` API and ships with full ICU data included in the binary since v13,
+so this library works by default.
 
 ## Credit
 

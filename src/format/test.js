@@ -1,10 +1,9 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'power-assert'
-import format from '.'
+import { format } from '.'
 import { enGB } from 'date-fns/locale/en-GB'
-import utcToZonedTime from '../utcToZonedTime'
+import { toZonedTime } from '../toZonedTime'
 
 describe('format', function () {
   var date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123)
@@ -672,7 +671,7 @@ describe('format', function () {
     it('handles quoted text next to a time zone token', function () {
       var date = '1986-04-04T10:32:55.123Z'
       var timeZone = 'Europe/Paris'
-      var result = format(utcToZonedTime(date, timeZone), "dd.MM.yyyy HH:mm 'UTC'xxx", { timeZone })
+      var result = format(toZonedTime(date, timeZone), "dd.MM.yyyy HH:mm 'UTC'xxx", { timeZone })
 
       assert(result === '04.04.1986 12:32 UTC+02:00')
     })
@@ -680,7 +679,7 @@ describe('format', function () {
     it('https://github.com/marnusw/date-fns-tz/issues/138', () => {
       const date = new Date('2020-10-31T21:37:02.233-05:00')
       const timeZone = 'America/Chicago'
-      const offsetDate = utcToZonedTime(date, timeZone)
+      const offsetDate = toZonedTime(date, timeZone)
       const result = format(offsetDate, "yyyy-MM-dd h:mmaaaaa'm' xxx XXX OOO zzz", { timeZone })
       assert.equal(result, '2020-10-31 9:37pm -05:00 -05:00 GMT-5 CDT')
     })
@@ -688,7 +687,7 @@ describe('format', function () {
     it('https://github.com/marnusw/date-fns-tz/issues/168', () => {
       const timeZone = 'Europe/Stockholm'
       const dateInUTC = Date.UTC(1888, 11, 1, 1, 0, 14, 0)
-      const offsetDate = utcToZonedTime(dateInUTC, timeZone)
+      const offsetDate = toZonedTime(dateInUTC, timeZone)
       const result = format(offsetDate, "yyyy-MM-dd'T'HH:mm:ss.SSSxxx", { timeZone })
       assert.equal(result, '1888-12-01T01:53:42.000+00:53')
     })

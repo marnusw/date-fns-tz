@@ -1,8 +1,8 @@
-import tzParseTimezone from '../_lib/tzParseTimezone/index.js'
-import toDate from '../toDate/index.js'
+import { tzParseTimezone } from '../_lib/tzParseTimezone/index.js'
+import { toDate } from '../toDate/index.js'
 
 /**
- * @name utcToZonedTime
+ * @name toZonedTime
  * @category Time Zone Helpers
  * @summary Get a date/time representing local time in a given time zone from the UTC date
  *
@@ -22,10 +22,10 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // In June 10am UTC is 6am in New York (-04:00)
- * const result = utcToZonedTime('2014-06-25T10:00:00.000Z', 'America/New_York')
+ * const result = toZonedTime('2014-06-25T10:00:00.000Z', 'America/New_York')
  * //=> Jun 25 2014 06:00:00
  */
-export default function utcToZonedTime(dirtyDate, timeZone, options) {
+export function toZonedTime(dirtyDate, timeZone, options) {
   var date = toDate(dirtyDate, options)
 
   var offsetMilliseconds = tzParseTimezone(timeZone, date, true)
