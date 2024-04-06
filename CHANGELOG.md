@@ -1,30 +1,20 @@
-### v3.0.0-beta.6 (4 April 2024)
+### v3.0.0 (6 April 2024)
 
-- [BUGFIX] Fix internal ESM import paths
-
-### v3.0.0-beta.4 (4 April 2024)
-
-- [BREAKING CHANGE] Rename `utcToZonedTime` to `toZonedTime`
-- [BREAKING CHANGE] Rename `zonedTimeToUtc` to `fromZonedTime`
-- [BREAKING CHANGE] Remove `flow` support
-- [BREAKING CHANGE] All functions are now exported as named exports
-
-### v3.0.0-beta.3 (28 March 2024)
-
-- [BUGFIX] Fix `date-fns` imports for `fp` by copying the `convertToFP` function
-
-### v3.0.0-beta.2 (26 March 2024)
-
-- [BUGFIX] Fix `date-fns` imports by copying the `getTimezoneOffsetInMilliseconds` (#272)
-
-### v3.0.0-beta.1 (22 March 2024)
-
+- [UPGRADE] Support `date-fns` v3 (#265) Thank you, @christopherklint97
 - [BUGFIX] Correct import of `date-fns@v3` format and use Babel Webpack loader for mjs files (#271)
-- [BUGFIX] Correct various other `date-fns@v3` imports
-
-### v3.0.0-beta.0 (9 March 2024)
-
-- [UPGRADE] Support date-fns v3 (#265) Thank you, @christopherklint97
+- [BREAKING CHANGE] `date-fns` v2 is no longer supported
+- [BREAKING CHANGE] Renamed `utcToZonedTime` to `toZonedTime` to make the name less confusing, just search & replace
+- [BREAKING CHANGE] Renamed `zonedTimeToUtc` to `fromZonedTime` to make the name less confusing, just search & replace
+- [BREAKING CHANGE] All functions are now exported using named exports, this requires changing direct
+  imports from `import formatInTimeZone from 'date-fns-tz/formatInTimeZone'` to
+  `import { formatInTimeZone } from 'date-fns-tz/formatInTimeZone'`
+- [BREAKING CHANGE] Functions now don’t check the number of passed arguments, delegating this task to type checkers
+  (This isn't fully implemented yet, but it should be the assumption moving forward, as it is in `date-fns`)
+- [BREAKING CHANGE] Arguments are not explicitly converted to the target types. Instead, they are passed as is,
+  delegating this task to type checkers (This isn't fully implemented yet, but it should be the assumption
+  moving forward, as it is in `date-fns`)
+- [BREAKING CHANGE] IE is no longer supported since `date-fns` no longer supports it
+- [BREAKING CHANGE] Removed `flow` support since `date-fns` also removed it
 
 ### v2.0.1 (9 March 2024)
 
