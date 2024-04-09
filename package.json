@@ -20,116 +20,96 @@
     "node": ">= 0.11"
   },
   "type": "commonjs",
-  "main": "index.js",
-  "module": "esm/index.js",
-  "types": "typings.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "types": "./typings.d.ts",
-      "import": "./esm/index.js",
-      "require": "./index.js"
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
     },
     "./format": {
-      "types": "./format/index.d.ts",
-      "import": "./esm/format/index.js",
-      "require": "./format/index.js"
+      "import": "./dist/esm/format/index.js",
+      "require": "./dist/cjs/format/index.js"
     },
     "./formatInTimeZone": {
-      "types": "./formatInTimeZone/index.d.ts",
-      "import": "./esm/formatInTimeZone/index.js",
-      "require": "./formatInTimeZone/index.js"
+      "import": "./dist/esm/formatInTimeZone/index.js",
+      "require": "./dist/cjs/formatInTimeZone/index.js"
     },
     "./getTimezoneOffset": {
-      "types": "./getTimezoneOffset/index.d.ts",
-      "import": "./esm/getTimezoneOffset/index.js",
-      "require": "./getTimezoneOffset/index.js"
+      "import": "./dist/esm/getTimezoneOffset/index.js",
+      "require": "./dist/cjs/getTimezoneOffset/index.js"
     },
     "./toDate": {
-      "types": "./toDate/index.d.ts",
-      "import": "./esm/toDate/index.js",
-      "require": "./toDate/index.js"
+      "import": "./dist/esm/toDate/index.js",
+      "require": "./dist/cjs/toDate/index.js"
     },
     "./toZonedTime": {
-      "types": "./toZonedTime/index.d.ts",
-      "import": "./esm/toZonedTime/index.js",
-      "require": "./toZonedTime/index.js"
+      "import": "./dist/esm/toZonedTime/index.js",
+      "require": "./dist/cjs/toZonedTime/index.js"
     },
     "./fromZonedTime": {
-      "types": "./fromZonedTime/index.d.ts",
-      "import": "./esm/fromZonedTime/index.js",
-      "require": "./fromZonedTime/index.js"
+      "import": "./dist/esm/fromZonedTime/index.js",
+      "require": "./dist/cjs/fromZonedTime/index.js"
     },
     "./fp": {
-      "types": "./fp/index.d.ts",
-      "import": "./esm/fp/index.js",
-      "require": "./fp/index.js"
+      "import": "./dist/esm/fp/index.js",
+      "require": "./dist/cjs/fp/index.js"
     },
     "./fp/format": {
-      "types": "./fp/format/index.d.ts",
-      "import": "./esm/fp/format/index.js",
-      "require": "./fp/format/index.js"
+      "import": "./dist/esm/fp/format/index.js",
+      "require": "./dist/cjs/fp/format/index.js"
     },
     "./fp/formatInTimeZone": {
-      "types": "./fp/formatInTimeZone/index.d.ts",
-      "import": "./esm/fp/formatInTimeZone/index.js",
-      "require": "./fp/formatInTimeZone/index.js"
+      "import": "./dist/esm/fp/formatInTimeZone/index.js",
+      "require": "./dist/cjs/fp/formatInTimeZone/index.js"
     },
     "./fp/formatInTimeZoneWithOptions": {
-      "types": "./fp/formatInTimeZoneWithOptions/index.d.ts",
-      "import": "./esm/fp/formatInTimeZoneWithOptions/index.js",
-      "require": "./fp/formatInTimeZoneWithOptions/index.js"
+      "import": "./dist/esm/fp/formatInTimeZoneWithOptions/index.js",
+      "require": "./dist/cjs/fp/formatInTimeZoneWithOptions/index.js"
     },
     "./fp/formatWithOptions": {
-      "types": "./fp/formatWithOptions/index.d.ts",
-      "import": "./esm/fp/formatWithOptions/index.js",
-      "require": "./fp/formatWithOptions/index.js"
+      "import": "./dist/esm/fp/formatWithOptions/index.js",
+      "require": "./dist/cjs/fp/formatWithOptions/index.js"
     },
     "./fp/fromZonedTime": {
-      "types": "./fp/fromZonedTime/index.d.ts",
-      "import": "./esm/fp/fromZonedTime/index.js",
-      "require": "./fp/fromZonedTime/index.js"
+      "import": "./dist/esm/fp/fromZonedTime/index.js",
+      "require": "./dist/cjs/fp/fromZonedTime/index.js"
     },
     "./fp/fromZonedTimeWithOptions": {
-      "types": "./fp/fromZonedTimeWithOptions/index.d.ts",
-      "import": "./esm/fp/fromZonedTimeWithOptions/index.js",
-      "require": "./fp/fromZonedTimeWithOptions/index.js"
+      "import": "./dist/esm/fp/fromZonedTimeWithOptions/index.js",
+      "require": "./dist/cjs/fp/fromZonedTimeWithOptions/index.js"
     },
     "./fp/getTimezoneOffset": {
-      "types": "./fp/getTimezoneOffset/index.d.ts",
-      "import": "./esm/fp/getTimezoneOffset/index.js",
-      "require": "./fp/getTimezoneOffset/index.js"
+      "import": "./dist/esm/fp/getTimezoneOffset/index.js",
+      "require": "./dist/cjs/fp/getTimezoneOffset/index.js"
     },
     "./fp/toDate": {
-      "types": "./fp/toDate/index.d.ts",
-      "import": "./esm/fp/toDate/index.js",
-      "require": "./fp/toDate/index.js"
+      "import": "./dist/esm/fp/toDate/index.js",
+      "require": "./dist/cjs/fp/toDate/index.js"
     },
     "./fp/toDateWithOptions": {
-      "types": "./fp/toDateWithOptions/index.d.ts",
-      "import": "./esm/fp/toDateWithOptions/index.js",
-      "require": "./fp/toDateWithOptions/index.js"
+      "import": "./dist/esm/fp/toDateWithOptions/index.js",
+      "require": "./dist/cjs/fp/toDateWithOptions/index.js"
     },
     "./fp/toZonedTime": {
-      "types": "./fp/toZonedTime/index.d.ts",
-      "import": "./esm/fp/toZonedTime/index.js",
-      "require": "./fp/toZonedTime/index.js"
+      "import": "./dist/esm/fp/toZonedTime/index.js",
+      "require": "./dist/cjs/fp/toZonedTime/index.js"
     },
     "./fp/toZonedTimeWithOptions": {
-      "types": "./fp/toZonedTimeWithOptions/index.d.ts",
-      "import": "./esm/fp/toZonedTimeWithOptions/index.js",
-      "require": "./fp/toZonedTimeWithOptions/index.js"
+      "import": "./dist/esm/fp/toZonedTimeWithOptions/index.js",
+      "require": "./dist/cjs/fp/toZonedTimeWithOptions/index.js"
     }
   },
   "scripts": {
-    "build": "./scripts/build/build.sh",
-    "package": "./scripts/build/package.sh",
-    "clean": "rm -rf tmp/package && rm tmp/docs.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build": "npm run clean && npm run build:cjs && npm run build:esm",
+    "clean": "rm -rf dist",
     "test": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" karma start config/karma.js",
     "test:watch": "cross-env TEST_WATCH=true NODE_OPTIONS=\"--openssl-legacy-provider\" karma start config/karma.js",
     "prettier": "prettier . --write",
-    "lint": "eslint .",
-    "lint-types": "eslint --config=.ts-eslintrc.js typings.d.ts"
+    "lint": "eslint ."
   },
   "husky": {
     "hooks": {
@@ -144,9 +124,6 @@
       "prettier --write"
     ]
   },
-  "dependencies": {
-    "lodash.clonedeep": "^4.5.0"
-  },
   "peerDependencies": {
     "date-fns": "^3.0.0"
   },
@@ -155,16 +132,16 @@
     "@babel/core": "^7.15.5",
     "@babel/node": "^7.15.4",
     "@babel/preset-env": "^7.23.6",
-    "@typescript-eslint/eslint-plugin": "^4.31.0",
-    "@typescript-eslint/parser": "^4.31.0",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-add-module-exports": "^1.0.4",
     "babel-preset-power-assert": "^3.0.0",
     "cross-env": "^7.0.3",
-    "date-fns": "^3.0.6",
-    "eslint": "^7.11.0",
-    "eslint-config-prettier": "^7.2.0",
+    "date-fns": "^3.6.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
     "fs-promise": "^2.0.3",
     "husky": "^4.3.0",
     "jsdoc-to-markdown": "^7.0.1",
@@ -183,8 +160,8 @@
     "lodash": "^4.17.15",
     "mocha": "^10.1.0",
     "power-assert": "^1.6.1",
-    "prettier": "^2.2.1",
-    "typescript": "^4.1.3",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.4",
     "webpack": "^4.41.1",
     "webpack-cli": "^3.1.2"
   }

@@ -3,6 +3,8 @@
     "target": "es6",
     "lib": ["dom", "es2017", "es2018.promise"],
     "strict": true,
+    "noEmit": true,
+    "declaration": true,
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -14,9 +16,7 @@
     "importHelpers": true,
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "paths": {}
+    "esModuleInterop": true
   },
-  "include": ["typings.d.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src"]
 }
