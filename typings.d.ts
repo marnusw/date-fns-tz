@@ -80,93 +80,75 @@ declare module 'date-fns-tz' {
 }
 
 declare module 'date-fns-tz/format' {
-  import { format } from 'date-fns-tz'
-  export = format
+  export { format } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/formatInTimeZone' {
-  import { formatInTimeZone } from 'date-fns-tz'
-  export = formatInTimeZone
+  export { formatInTimeZone } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/fromZonedTime' {
-  import { fromZonedTime } from 'date-fns-tz'
-  export = fromZonedTime
+  export { fromZonedTime } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/getTimezoneOffset' {
-  import { getTimezoneOffset } from 'date-fns-tz'
-  export = getTimezoneOffset
+  export { getTimezoneOffset } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/toDate' {
-  import { toDate } from 'date-fns-tz'
-  export = toDate
+  export { toDate } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/toZonedTime' {
-  import { toZonedTime } from 'date-fns-tz'
-  export = toZonedTime
+  export { toZonedTime } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/format/index' {
-  import { format } from 'date-fns-tz'
-  export = format
+  export { format } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/formatInTimeZone/index' {
-  import { formatInTimeZone } from 'date-fns-tz'
-  export = formatInTimeZone
+  export { formatInTimeZone } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/fromZonedTime/index' {
-  import { fromZonedTime } from 'date-fns-tz'
-  export = fromZonedTime
+  export { fromZonedTime } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/getTimezoneOffset/index' {
-  import { getTimezoneOffset } from 'date-fns-tz'
-  export = getTimezoneOffset
+  export { getTimezoneOffset } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/toDate/index' {
-  import { toDate } from 'date-fns-tz'
-  export = toDate
+  export { toDate } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/toZonedTime/index' {
-  import { toZonedTime } from 'date-fns-tz'
-  export = toZonedTime
+  export { toZonedTime } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/format/index.js' {
-  import { format } from 'date-fns-tz'
-  export = format
+  export { format } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/formatInTimeZone/index.js' {
-  import { formatInTimeZone } from 'date-fns-tz'
-  export = formatInTimeZone
+  export { formatInTimeZone } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/fromZonedTime/index.js' {
-  import { fromZonedTime } from 'date-fns-tz'
-  export = fromZonedTime
+  export { fromZonedTime } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/getTimezoneOffset/index.js' {
-  import { getTimezoneOffset } from 'date-fns-tz'
-  export = getTimezoneOffset
+  export { getTimezoneOffset } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/toDate/index.js' {
-  import { toDate } from 'date-fns-tz'
-  export = toDate
+  export { toDate } from 'date-fns-tz'
 }
 
 declare module 'date-fns-tz/toZonedTime/index.js' {
-  import { toZonedTime } from 'date-fns-tz'
-  export = toZonedTime
+  export { toZonedTime } from 'date-fns-tz'
 }
 
 // FP Functions
@@ -215,168 +197,135 @@ declare module 'date-fns-tz/fp' {
 }
 
 declare module 'date-fns-tz/fp/format' {
-  import { format } from 'date-fns-tz/fp'
-  export = format
+  export { format } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/formatInTimeZone' {
-  import { formatInTimeZone } from 'date-fns-tz/fp'
-  export = formatInTimeZone
+  export { formatInTimeZone } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/formatInTimeZoneWithOptions' {
-  import { formatInTimeZoneWithOptions } from 'date-fns-tz/fp'
-  export = formatInTimeZoneWithOptions
+  export { formatInTimeZoneWithOptions } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/formatWithOptions' {
-  import { formatWithOptions } from 'date-fns-tz/fp'
-  export = formatWithOptions
+  export { formatWithOptions } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/fromZonedTime' {
-  import { fromZonedTime } from 'date-fns-tz/fp'
-  export = fromZonedTime
+  export { fromZonedTime } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/fromZonedTimeWithOptions' {
-  import { fromZonedTimeWithOptions } from 'date-fns-tz/fp'
-  export = fromZonedTimeWithOptions
+  export { fromZonedTimeWithOptions } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/getTimezoneOffset' {
-  import { getTimezoneOffset } from 'date-fns-tz/fp'
-  export = getTimezoneOffset
+  export { getTimezoneOffset } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/toDate' {
-  import { toDate } from 'date-fns-tz/fp'
-  export = toDate
+  export { toDate } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/toDateWithOptions' {
-  import { toDateWithOptions } from 'date-fns-tz/fp'
-  export = toDateWithOptions
+  export { toDateWithOptions } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/toZonedTime' {
-  import { toZonedTime } from 'date-fns-tz/fp'
-  export = toZonedTime
+  export { toZonedTime } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/toZonedTimeWithOptions' {
-  import { toZonedTimeWithOptions } from 'date-fns-tz/fp'
-  export = toZonedTimeWithOptions
+  export { toZonedTimeWithOptions } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/format/index' {
-  import { format } from 'date-fns-tz/fp'
-  export = format
+  export { format } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/formatInTimeZone/index' {
-  import { formatInTimeZone } from 'date-fns-tz/fp'
-  export = formatInTimeZone
+  export { formatInTimeZone } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/formatInTimeZoneWithOptions/index' {
-  import { formatInTimeZoneWithOptions } from 'date-fns-tz/fp'
-  export = formatInTimeZoneWithOptions
+  export { formatInTimeZoneWithOptions } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/formatWithOptions/index' {
-  import { formatWithOptions } from 'date-fns-tz/fp'
-  export = formatWithOptions
+  export { formatWithOptions } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/fromZonedTime/index' {
-  import { fromZonedTime } from 'date-fns-tz/fp'
-  export = fromZonedTime
+  export { fromZonedTime } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/fromZonedTimeWithOptions/index' {
-  import { fromZonedTimeWithOptions } from 'date-fns-tz/fp'
-  export = fromZonedTimeWithOptions
+  export { fromZonedTimeWithOptions } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/getTimezoneOffset/index' {
-  import { getTimezoneOffset } from 'date-fns-tz/fp'
-  export = getTimezoneOffset
+  export { getTimezoneOffset } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/toDate/index' {
-  import { toDate } from 'date-fns-tz/fp'
-  export = toDate
+  export { toDate } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/toDateWithOptions/index' {
-  import { toDateWithOptions } from 'date-fns-tz/fp'
-  export = toDateWithOptions
+  export { toDateWithOptions } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/toZonedTime/index' {
-  import { toZonedTime } from 'date-fns-tz/fp'
-  export = toZonedTime
+  export { toZonedTime } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/toZonedTimeWithOptions/index' {
-  import { toZonedTimeWithOptions } from 'date-fns-tz/fp'
-  export = toZonedTimeWithOptions
+  export { toZonedTimeWithOptions } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/format/index.js' {
-  import { format } from 'date-fns-tz/fp'
-  export = format
+  export { format } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/formatInTimeZone/index.js' {
-  import { formatInTimeZone } from 'date-fns-tz/fp'
-  export = formatInTimeZone
+  export { formatInTimeZone } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/formatInTimeZoneWithOptions/index.js' {
-  import { formatInTimeZoneWithOptions } from 'date-fns-tz/fp'
-  export = formatInTimeZoneWithOptions
+  export { formatInTimeZoneWithOptions } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/formatWithOptions/index.js' {
-  import { formatWithOptions } from 'date-fns-tz/fp'
-  export = formatWithOptions
+  export { formatWithOptions } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/fromZonedTime/index.js' {
-  import { fromZonedTime } from 'date-fns-tz/fp'
-  export = fromZonedTime
+  export { fromZonedTime } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/fromZonedTimeWithOptions/index.js' {
-  import { fromZonedTimeWithOptions } from 'date-fns-tz/fp'
-  export = fromZonedTimeWithOptions
+  export { fromZonedTimeWithOptions } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/getTimezoneOffset/index.js' {
-  import { getTimezoneOffset } from 'date-fns-tz/fp'
-  export = getTimezoneOffset
+  export { getTimezoneOffset } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/toDate/index.js' {
-  import { toDate } from 'date-fns-tz/fp'
-  export = toDate
+  export { toDate } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/toDateWithOptions/index.js' {
-  import { toDateWithOptions } from 'date-fns-tz/fp'
-  export = toDateWithOptions
+  export { toDateWithOptions } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/toZonedTime/index.js' {
-  import { toZonedTime } from 'date-fns-tz/fp'
-  export = toZonedTime
+  export { toZonedTime } from 'date-fns-tz/fp'
 }
 
 declare module 'date-fns-tz/fp/toZonedTimeWithOptions/index.js' {
-  import { toZonedTimeWithOptions } from 'date-fns-tz/fp'
-  export = toZonedTimeWithOptions
+  export { toZonedTimeWithOptions } from 'date-fns-tz/fp'
 }
 
 // ECMAScript Module Functions
@@ -417,93 +366,75 @@ declare module 'date-fns-tz/esm' {
 }
 
 declare module 'date-fns-tz/esm/format' {
-  import { format } from 'date-fns-tz/esm'
-  export default format
+  export { format } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/formatInTimeZone' {
-  import { formatInTimeZone } from 'date-fns-tz/esm'
-  export default formatInTimeZone
+  export { formatInTimeZone } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/fromZonedTime' {
-  import { fromZonedTime } from 'date-fns-tz/esm'
-  export default fromZonedTime
+  export { fromZonedTime } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/getTimezoneOffset' {
-  import { getTimezoneOffset } from 'date-fns-tz/esm'
-  export default getTimezoneOffset
+  export { getTimezoneOffset } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/toDate' {
-  import { toDate } from 'date-fns-tz/esm'
-  export default toDate
+  export { toDate } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/toZonedTime' {
-  import { toZonedTime } from 'date-fns-tz/esm'
-  export default toZonedTime
+  export { toZonedTime } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/format/index' {
-  import { format } from 'date-fns-tz/esm'
-  export default format
+  export { format } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/formatInTimeZone/index' {
-  import { formatInTimeZone } from 'date-fns-tz/esm'
-  export default formatInTimeZone
+  export { formatInTimeZone } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/fromZonedTime/index' {
-  import { fromZonedTime } from 'date-fns-tz/esm'
-  export default fromZonedTime
+  export { fromZonedTime } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/getTimezoneOffset/index' {
-  import { getTimezoneOffset } from 'date-fns-tz/esm'
-  export default getTimezoneOffset
+  export { getTimezoneOffset } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/toDate/index' {
-  import { toDate } from 'date-fns-tz/esm'
-  export default toDate
+  export { toDate } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/toZonedTime/index' {
-  import { toZonedTime } from 'date-fns-tz/esm'
-  export default toZonedTime
+  export { toZonedTime } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/format/index.js' {
-  import { format } from 'date-fns-tz/esm'
-  export default format
+  export { format } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/formatInTimeZone/index.js' {
-  import { formatInTimeZone } from 'date-fns-tz/esm'
-  export default formatInTimeZone
+  export { formatInTimeZone } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/fromZonedTime/index.js' {
-  import { fromZonedTime } from 'date-fns-tz/esm'
-  export default fromZonedTime
+  export { fromZonedTime } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/getTimezoneOffset/index.js' {
-  import { getTimezoneOffset } from 'date-fns-tz/esm'
-  export default getTimezoneOffset
+  export { getTimezoneOffset } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/toDate/index.js' {
-  import { toDate } from 'date-fns-tz/esm'
-  export default toDate
+  export { toDate } from 'date-fns-tz/esm'
 }
 
 declare module 'date-fns-tz/esm/toZonedTime/index.js' {
-  import { toZonedTime } from 'date-fns-tz/esm'
-  export default toZonedTime
+  export { toZonedTime } from 'date-fns-tz/esm'
 }
 
 // ECMAScript Module FP Functions
@@ -552,166 +483,133 @@ declare module 'date-fns-tz/esm/fp' {
 }
 
 declare module 'date-fns-tz/esm/fp/format' {
-  import { format } from 'date-fns-tz/esm/fp'
-  export default format
+  export { format } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/formatInTimeZone' {
-  import { formatInTimeZone } from 'date-fns-tz/esm/fp'
-  export default formatInTimeZone
+  export { formatInTimeZone } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/formatInTimeZoneWithOptions' {
-  import { formatInTimeZoneWithOptions } from 'date-fns-tz/esm/fp'
-  export default formatInTimeZoneWithOptions
+  export { formatInTimeZoneWithOptions } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/formatWithOptions' {
-  import { formatWithOptions } from 'date-fns-tz/esm/fp'
-  export default formatWithOptions
+  export { formatWithOptions } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/fromZonedTime' {
-  import { fromZonedTime } from 'date-fns-tz/esm/fp'
-  export default fromZonedTime
+  export { fromZonedTime } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/fromZonedTimeWithOptions' {
-  import { fromZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
-  export default fromZonedTimeWithOptions
+  export { fromZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/getTimezoneOffset' {
-  import { getTimezoneOffset } from 'date-fns-tz/esm/fp'
-  export default getTimezoneOffset
+  export { getTimezoneOffset } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/toDate' {
-  import { toDate } from 'date-fns-tz/esm/fp'
-  export default toDate
+  export { toDate } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/toDateWithOptions' {
-  import { toDateWithOptions } from 'date-fns-tz/esm/fp'
-  export default toDateWithOptions
+  export { toDateWithOptions } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/toZonedTime' {
-  import { toZonedTime } from 'date-fns-tz/esm/fp'
-  export default toZonedTime
+  export { toZonedTime } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/toZonedTimeWithOptions' {
-  import { toZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
-  export default toZonedTimeWithOptions
+  export { toZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/format/index' {
-  import { format } from 'date-fns-tz/esm/fp'
-  export default format
+  export { format } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/formatInTimeZone/index' {
-  import { formatInTimeZone } from 'date-fns-tz/esm/fp'
-  export default formatInTimeZone
+  export { formatInTimeZone } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/formatInTimeZoneWithOptions/index' {
-  import { formatInTimeZoneWithOptions } from 'date-fns-tz/esm/fp'
-  export default formatInTimeZoneWithOptions
+  export { formatInTimeZoneWithOptions } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/formatWithOptions/index' {
-  import { formatWithOptions } from 'date-fns-tz/esm/fp'
-  export default formatWithOptions
+  export { formatWithOptions } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/fromZonedTime/index' {
-  import { fromZonedTime } from 'date-fns-tz/esm/fp'
-  export default fromZonedTime
+  export { fromZonedTime } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/fromZonedTimeWithOptions/index' {
-  import { fromZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
-  export default fromZonedTimeWithOptions
+  export { fromZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/getTimezoneOffset/index' {
-  import { getTimezoneOffset } from 'date-fns-tz/esm/fp'
-  export default getTimezoneOffset
+  export { getTimezoneOffset } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/toDate/index' {
-  import { toDate } from 'date-fns-tz/esm/fp'
-  export default toDate
+  export { toDate } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/toDateWithOptions/index' {
-  import { toDateWithOptions } from 'date-fns-tz/esm/fp'
-  export default toDateWithOptions
+  export { toDateWithOptions } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/toZonedTime/index' {
-  import { toZonedTime } from 'date-fns-tz/esm/fp'
-  export default toZonedTime
+  export { toZonedTime } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/toZonedTimeWithOptions/index' {
-  import { toZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
-  export default toZonedTimeWithOptions
+  export { toZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/format/index.js' {
-  import { format } from 'date-fns-tz/esm/fp'
-  export default format
+  export { format } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/formatInTimeZone/index.js' {
-  import { formatInTimeZone } from 'date-fns-tz/esm/fp'
-  export default formatInTimeZone
+  export { formatInTimeZone } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/formatInTimeZoneWithOptions/index.js' {
-  import { formatInTimeZoneWithOptions } from 'date-fns-tz/esm/fp'
-  export default formatInTimeZoneWithOptions
+  export { formatInTimeZoneWithOptions } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/formatWithOptions/index.js' {
-  import { formatWithOptions } from 'date-fns-tz/esm/fp'
-  export default formatWithOptions
+  export { formatWithOptions } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/fromZonedTime/index.js' {
-  import { fromZonedTime } from 'date-fns-tz/esm/fp'
-  export default fromZonedTime
+  export { fromZonedTime } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/fromZonedTimeWithOptions/index.js' {
-  import { fromZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
-  export default fromZonedTimeWithOptions
+  export { fromZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/getTimezoneOffset/index.js' {
-  import { getTimezoneOffset } from 'date-fns-tz/esm/fp'
-  export default getTimezoneOffset
+  export { getTimezoneOffset } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/toDate/index.js' {
-  import { toDate } from 'date-fns-tz/esm/fp'
-  export default toDate
+  export { toDate } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/toDateWithOptions/index.js' {
-  import { toDateWithOptions } from 'date-fns-tz/esm/fp'
-  export default toDateWithOptions
+  export { toDateWithOptions } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/toZonedTime/index.js' {
-  import { toZonedTime } from 'date-fns-tz/esm/fp'
-  export default toZonedTime
+  export { toZonedTime } from 'date-fns-tz/esm/fp'
 }
 
 declare module 'date-fns-tz/esm/fp/toZonedTimeWithOptions/index.js' {
-  import { toZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
-  export default toZonedTimeWithOptions
+  export { toZonedTimeWithOptions } from 'date-fns-tz/esm/fp'
 }
