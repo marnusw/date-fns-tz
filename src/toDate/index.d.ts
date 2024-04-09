@@ -1,4 +1,3 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-import { toDate } from 'date-fns-tz'
-export = toDate
+export { toDate } from 'date-fns-tz'
