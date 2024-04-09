@@ -1,3 +1,7 @@
+### v3.0.1-beta.0 (9 April 2024)
+
+- [BUGFIX] Fix named export typings (#277)
+
 ### v3.0.0 (6 April 2024)
 
 - [UPGRADE] Support `date-fns` v3 (#265) Thank you, @christopherklint97
