@@ -233,7 +233,7 @@ function parseDate(dateString: string | null | undefined, year: number | null) {
   let week: number
 
   // YYYY
-  if (!dateString?.length) {
+  if (!dateString || !dateString.length) {
     date = new Date(0)
     date.setUTCFullYear(year)
     return date
