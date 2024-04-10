@@ -14,9 +14,9 @@ export interface OptionsWithTZ {
   awareOfUnicodeTokens?: boolean
 }
 
-export * from './format/index'
-export * from './formatInTimeZone/index'
-export * from './fromZonedTime/index'
-export * from './toZonedTime/index'
-export * from './getTimezoneOffset/index'
-export * from './toDate/index'
+export { format } from './format/index'
+export { formatInTimeZone } from './formatInTimeZone/index'
+export { fromZonedTime } from './fromZonedTime/index'
+export { toZonedTime } from './toZonedTime/index'
+export { getTimezoneOffset } from './getTimezoneOffset/index'
+export { toDate } from './toDate/index'

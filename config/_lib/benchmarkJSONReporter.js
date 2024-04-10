@@ -1,4 +1,4 @@
-var fs = require('fs')
+var fs = require('fs-extra')
 
 var benchmarkResultFilename = './tmp/benchmark.json'
 
@@ -17,7 +17,7 @@ function benchmarkJSONReporter() {
     benchmarkResult[fnName][libraryName] = operationsPerSecond
   }
 
-  this.onRunComplete = function () {
+  this.onRunComplete = async function () {
     var benchmarkResultArray = []
     for (var fnName in benchmarkResult) {
       // eslint-disable-next-line no-prototype-builtins
@@ -36,18 +36,8 @@ function benchmarkJSONReporter() {
       }
     }
 
-    fs.writeFile(
-      benchmarkResultFilename,
-      JSON.stringify(benchmarkResultArray),
-      'utf-8',
-      function (err) {
-        if (err) {
-          throw err
-        }
-
-        console.log('See results at ' + benchmarkResultFilename)
-      }
-    )
+    await fs.outputFile(benchmarkResultFilename, JSON.stringify(benchmarkResultArray), 'utf-8')
+    console.log('See results at ' + benchmarkResultFilename)
   }
 }
 

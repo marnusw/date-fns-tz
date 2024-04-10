@@ -1,24 +1,21 @@
-var fs = require('fs')
+var fs = require('fs-extra')
 
 var countFilename = './tmp/tests_count.txt'
 
 function countReporter() {
-  this.onRunComplete = function (_, result) {
-    var runCount = result.success
-
-    fs.readFile(countFilename, { encoding: 'utf-8', flag: 'a+' }, function (err, data) {
-      if (err) {
+  this.onRunComplete = async function (_, result) {
+    let prevCount = 0
+    try {
+      const data = await fs.readFile(countFilename, { encoding: 'utf-8', flag: 'a+' })
+      prevCount = (parseInt(data, 10) || 0) + runCount
+    } catch (err) {
+      if (err.code !== 'ENOENT') {
         throw err
       }
+    }
 
-      var totalCount = (parseInt(data, 10) || 0) + runCount
-
-      fs.writeFile(countFilename, totalCount.toString(), 'utf-8', function (err) {
-        if (err) {
-          throw err
-        }
-      })
-    })
+    const totalCount = prevCount + result.success
+    await fs.outputFile(countFilename, totalCount.toString(), 'utf-8')
   }
 }
 

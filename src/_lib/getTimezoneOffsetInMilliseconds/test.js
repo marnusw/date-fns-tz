@@ -1,5 +1,5 @@
 import assert from 'power-assert'
-import { getTimezoneOffsetInMilliseconds } from './index.js'
+import { getTimezoneOffsetInMilliseconds } from '.'
 
 describe('getTimezoneOffsetInMilliseconds', () => {
   it('works for a modern date', () => {

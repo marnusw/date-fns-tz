@@ -1,4 +1,5 @@
 const path = require('path')
+const { DefinePlugin } = require('webpack')
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -10,20 +11,20 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.m?js$/,
-        exclude: /node_modules\/(?!date-fns)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [['@babel/preset-env', { targets: 'defaults' }]],
-            plugins: [
-              '@babel/plugin-transform-optional-chaining',
-              '@babel/plugin-transform-logical-assignment-operators',
-              '@babel/plugin-transform-nullish-coalescing-operator',
-            ],
-          },
-        },
+        test: /\.m?ts$/,
+        exclude: /node_modules/,
+        use: 'ts-loader',
       },
+      {
+        test: /\.m?js$/,
+        // include: /node_modules/,
+        type: 'javascript/auto',
+      },
+      // {
+      //   test: /\.m?js$/,
+      //   include: /test\.js$/,
+      //   type: 'javascript/esm',
+      // }
     ].concat(
       process.env.COVERAGE_REPORT
         ? [
@@ -40,6 +41,19 @@ const config = {
         : []
     ),
   },
+  resolve: {
+    extensions: ['.ts', '.js'],
+    fallback: {
+      assert: require.resolve('assert'),
+      buffer: require.resolve('buffer'),
+      util: require.resolve('util'),
+    },
+  },
+  plugins: [
+    new DefinePlugin({
+      'process.env.NODE_DEBUG': JSON.stringify(process.env.NODE_DEBUG),
+    }),
+  ],
 }
 
 module.exports = config
