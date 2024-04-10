@@ -7,7 +7,7 @@ function countReporter() {
     let prevCount = 0
     try {
       const data = await fs.readFile(countFilename, { encoding: 'utf-8', flag: 'a+' })
-      prevCount = (parseInt(data, 10) || 0) + runCount
+      prevCount = parseInt(data, 10) || 0
     } catch (err) {
       if (err.code !== 'ENOENT') {
         throw err
