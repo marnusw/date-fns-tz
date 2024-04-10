@@ -1,5 +1,5 @@
-import { tzTokenizeDate } from '../tzTokenizeDate/index'
-import { newDateUTC } from '../newDateUTC/index'
+import { tzTokenizeDate } from '../tzTokenizeDate/index.js'
+import { newDateUTC } from '../newDateUTC/index.js'
 
 const MILLISECONDS_IN_HOUR = 3600000
 const MILLISECONDS_IN_MINUTE = 60000

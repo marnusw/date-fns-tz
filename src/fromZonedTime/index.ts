@@ -1,8 +1,8 @@
-import { toDate } from '../toDate/index'
-import { tzPattern } from '../_lib/tzPattern/index'
-import { tzParseTimezone } from '../_lib/tzParseTimezone/index'
-import { newDateUTC } from '../_lib/newDateUTC/index'
-import type { OptionsWithTZ } from '../index'
+import { toDate } from '../toDate/index.js'
+import { tzPattern } from '../_lib/tzPattern/index.js'
+import { tzParseTimezone } from '../_lib/tzParseTimezone/index.js'
+import { newDateUTC } from '../_lib/newDateUTC/index.js'
+import type { OptionsWithTZ } from '../index.js'
 
 /**
  * @name fromZonedTime

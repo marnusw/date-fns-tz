@@ -1,6 +1,6 @@
-import { format } from '../format/index'
-import { toZonedTime } from '../toZonedTime/index'
-import type { OptionsWithTZ } from '../index'
+import { format } from '../format/index.js'
+import { toZonedTime } from '../toZonedTime/index.js'
+import type { OptionsWithTZ } from '../index.js'
 
 /**
  * @name formatInTimeZone

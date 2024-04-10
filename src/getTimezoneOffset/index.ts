@@ -1,4 +1,4 @@
-import { tzParseTimezone } from '../_lib/tzParseTimezone/index'
+import { tzParseTimezone } from '../_lib/tzParseTimezone/index.js'
 
 /**
  * @name getTimezoneOffset

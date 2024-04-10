@@ -1,6 +1,6 @@
-import { tzIntlTimeZoneName } from '../../_lib/tzIntlTimeZoneName/index'
-import { tzParseTimezone } from '../../_lib/tzParseTimezone/index'
-import type { OptionsWithTZ } from '../../index'
+import { tzIntlTimeZoneName } from '../../_lib/tzIntlTimeZoneName/index.js'
+import { tzParseTimezone } from '../../_lib/tzParseTimezone/index.js'
+import type { OptionsWithTZ } from '../../index.js'
 
 const MILLISECONDS_IN_MINUTE = 60 * 1000
 

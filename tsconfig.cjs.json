@@ -1,10 +1,11 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "noEmit": false,
+    "allowJs": false,
     "declaration": true,
     "outDir": "dist/cjs",
     "module": "CommonJS",
+    "moduleResolution": "Node",
     "target": "ES6"
   }
 }

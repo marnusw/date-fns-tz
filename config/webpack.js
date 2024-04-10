@@ -1,5 +1,4 @@
 const path = require('path')
-const { DefinePlugin } = require('webpack')
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -11,20 +10,15 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.m?ts$/,
+        test: /\.m?(ts|js)$/,
         exclude: /node_modules/,
         use: 'ts-loader',
       },
       {
         test: /\.m?js$/,
-        // include: /node_modules/,
-        type: 'javascript/auto',
+        include: /src(\/.*)?\/test\.js$/,
+        type: 'javascript/esm',
       },
-      // {
-      //   test: /\.m?js$/,
-      //   include: /test\.js$/,
-      //   type: 'javascript/esm',
-      // }
     ].concat(
       process.env.COVERAGE_REPORT
         ? [
@@ -42,18 +36,17 @@ const config = {
     ),
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '...'],
+    extensionAlias: {
+      '.js': ['.ts', '.js'],
+    },
     fallback: {
+      // NodeJS polyfills mainly for karma
       assert: require.resolve('assert'),
       buffer: require.resolve('buffer'),
       util: require.resolve('util'),
     },
   },
-  plugins: [
-    new DefinePlugin({
-      'process.env.NODE_DEBUG': JSON.stringify(process.env.NODE_DEBUG),
-    }),
-  ],
 }
 
 module.exports = config

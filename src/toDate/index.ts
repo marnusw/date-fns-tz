@@ -1,7 +1,7 @@
-import { getTimezoneOffsetInMilliseconds } from '../_lib/getTimezoneOffsetInMilliseconds/index'
-import { tzParseTimezone } from '../_lib/tzParseTimezone/index'
-import { tzPattern } from '../_lib/tzPattern/index'
-import type { OptionsWithTZ } from '../index'
+import { getTimezoneOffsetInMilliseconds } from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import { tzParseTimezone } from '../_lib/tzParseTimezone/index.js'
+import { tzPattern } from '../_lib/tzPattern/index.js'
+import type { OptionsWithTZ } from '../index.js'
 
 const MILLISECONDS_IN_HOUR = 3600000
 const MILLISECONDS_IN_MINUTE = 60000

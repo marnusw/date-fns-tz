@@ -1,5 +1,5 @@
 import type { Locale } from 'date-fns'
-import type { OptionsWithTZ } from '../../index'
+import type { OptionsWithTZ } from '../../index.js'
 
 /**
  * Returns the formatted time zone name of the provided `timeZone` or the current

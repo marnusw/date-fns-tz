@@ -294,7 +294,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/fs-extra@npm:^11":
+"@types/fs-extra@npm:^11.0.4":
   version: 11.0.4
   resolution: "@types/fs-extra@npm:11.0.4"
   dependencies:
@@ -1528,7 +1528,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "date-fns-tz@workspace:."
   dependencies:
-    "@types/fs-extra": "npm:^11"
+    "@types/fs-extra": "npm:^11.0.4"
     "@typescript-eslint/eslint-plugin": "npm:^7.6.0"
     "@typescript-eslint/parser": "npm:^7.6.0"
     assert: "npm:^2.1.0"
@@ -1553,7 +1553,6 @@ __metadata:
     mocha: "npm:^10.4.0"
     power-assert: "npm:^1.6.1"
     prettier: "npm:^3.2.5"
-    process: "npm:^0.11.10"
     ts-loader: "npm:^9.5.1"
     typescript: "npm:^5.4.4"
     util: "npm:^0.12.5"
@@ -4688,13 +4687,6 @@ __metadata:
   version: 2.0.1
   resolution: "process-nextick-args@npm:2.0.1"
   checksum: 10/1d38588e520dab7cea67cbbe2efdd86a10cc7a074c09657635e34f035277b59fbb57d09d8638346bf7090f8e8ebc070c96fa5fd183b777fff4f5edff5e9466cf
-  languageName: node
-  linkType: hard
-
-"process@npm:^0.11.10":
-  version: 0.11.10
-  resolution: "process@npm:0.11.10"
-  checksum: 10/dbaa7e8d1d5cf375c36963ff43116772a989ef2bb47c9bdee20f38fd8fc061119cf38140631cf90c781aca4d3f0f0d2c834711952b728953f04fd7d238f59f5b
   languageName: node
   linkType: hard
 
