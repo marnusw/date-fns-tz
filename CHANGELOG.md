@@ -1,4 +1,4 @@
-### v3.0.1-beta.0 (9 April 2024)
+### v3.0.1 (10 April 2024)
 
 - [BUGFIX] Fix named export typings (#277)
 
