@@ -1,5 +1,5 @@
 import assert from 'power-assert'
-import { getTimezoneOffset } from '.'
+import { getTimezoneOffset } from './index.js'
 
 const hours = 60 * 60 * 1000
 

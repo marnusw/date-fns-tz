@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 import assert from 'power-assert'
-import { convertToFP } from '.'
+import { convertToFP } from './index.js'
 
 describe('convertToFP', function () {
   function fn(a, b, c) {

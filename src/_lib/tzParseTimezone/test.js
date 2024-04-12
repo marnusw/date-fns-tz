@@ -1,5 +1,5 @@
 import assert from 'power-assert'
-import { tzParseTimezone } from '.'
+import { tzParseTimezone } from './index.js'
 
 describe('tzParseTimezone', function () {
   it('Empty time zone', function () {
