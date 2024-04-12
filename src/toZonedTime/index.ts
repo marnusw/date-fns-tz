@@ -1,6 +1,6 @@
 import { tzParseTimezone } from '../_lib/tzParseTimezone/index.js'
 import { toDate } from '../toDate/index.js'
-import type { OptionsWithTZ } from '../index.js'
+import { ToDateOptionsWithTZ } from '../index.js'
 
 /**
  * @name toZonedTime
@@ -29,7 +29,7 @@ import type { OptionsWithTZ } from '../index.js'
 export function toZonedTime(
   date: Date | string | number,
   timeZone: string,
-  options?: OptionsWithTZ
+  options?: ToDateOptionsWithTZ
 ): Date {
   date = toDate(date, options)
 

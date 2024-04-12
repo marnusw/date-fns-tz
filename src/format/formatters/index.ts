@@ -1,12 +1,12 @@
 import { tzIntlTimeZoneName } from '../../_lib/tzIntlTimeZoneName/index.js'
 import { tzParseTimezone } from '../../_lib/tzParseTimezone/index.js'
-import type { OptionsWithTZ } from '../../index.js'
+import type { FormatOptionsWithTZ } from '../../index.js'
 
 const MILLISECONDS_IN_MINUTE = 60 * 1000
 
 export const formatters: Record<
   string,
-  (date: Date, token: string, options: OptionsWithTZ) => string | undefined
+  (date: Date, token: string, options: FormatOptionsWithTZ) => string | undefined
 > = {
   // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
   X: function (date, token, options) {

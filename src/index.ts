@@ -1,8 +1,13 @@
-import type { FormatOptions, ParseISOOptions } from 'date-fns'
+import type { FormatOptions, ParseISOOptions, Locale } from 'date-fns'
 
-export interface OptionsWithTZ extends FormatOptions, ParseISOOptions {
+export interface FormatOptionsWithTZ extends Omit<FormatOptions, 'locale'> {
+  locale?: FormatOptions['locale'] & Pick<Locale, 'code'>
   timeZone?: string
   originalDate?: Date | string | number
+}
+
+export interface ToDateOptionsWithTZ extends ParseISOOptions {
+  timeZone?: string
 }
 
 export { format } from './format/index.js'

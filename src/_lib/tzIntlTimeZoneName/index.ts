@@ -1,5 +1,5 @@
 import type { Locale } from 'date-fns'
-import type { OptionsWithTZ } from '../../index.js'
+import type { FormatOptionsWithTZ } from '../../index.js'
 
 /**
  * Returns the formatted time zone name of the provided `timeZone` or the current
@@ -9,7 +9,7 @@ import type { OptionsWithTZ } from '../../index.js'
 export function tzIntlTimeZoneName(
   length: Intl.DateTimeFormatOptions['timeZoneName'],
   date: Date,
-  options: OptionsWithTZ
+  options: FormatOptionsWithTZ
 ): string | undefined {
   const dtf = getDTF(length, options.timeZone, options.locale)
   return 'formatToParts' in dtf ? partsTimeZone(dtf, date) : hackyTimeZone(dtf, date)

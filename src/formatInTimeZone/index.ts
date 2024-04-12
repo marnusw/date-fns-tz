@@ -1,6 +1,6 @@
 import { format } from '../format/index.js'
 import { toZonedTime } from '../toZonedTime/index.js'
-import type { OptionsWithTZ } from '../index.js'
+import type { FormatOptionsWithTZ } from '../index.js'
 
 /**
  * @name formatInTimeZone
@@ -27,7 +27,7 @@ export function formatInTimeZone(
   date: Date | string | number,
   timeZone: string,
   formatStr: string,
-  options?: OptionsWithTZ
+  options?: FormatOptionsWithTZ
 ): string {
   options = {
     ...options,

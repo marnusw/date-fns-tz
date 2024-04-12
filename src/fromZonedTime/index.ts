@@ -2,7 +2,7 @@ import { toDate } from '../toDate/index.js'
 import { tzPattern } from '../_lib/tzPattern/index.js'
 import { tzParseTimezone } from '../_lib/tzParseTimezone/index.js'
 import { newDateUTC } from '../_lib/newDateUTC/index.js'
-import type { OptionsWithTZ } from '../index.js'
+import { ToDateOptionsWithTZ } from '../index.js'
 
 /**
  * @name fromZonedTime
@@ -30,7 +30,7 @@ import type { OptionsWithTZ } from '../index.js'
 export function fromZonedTime(
   date: Date | string | number,
   timeZone: string,
-  options?: OptionsWithTZ
+  options?: ToDateOptionsWithTZ
 ): Date {
   if (typeof date === 'string' && !date.match(tzPattern)) {
     return toDate(date, { ...options, timeZone })

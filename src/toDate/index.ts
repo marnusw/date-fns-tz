@@ -1,7 +1,7 @@
 import { getTimezoneOffsetInMilliseconds } from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import { tzParseTimezone } from '../_lib/tzParseTimezone/index.js'
 import { tzPattern } from '../_lib/tzPattern/index.js'
-import type { OptionsWithTZ } from '../index.js'
+import { ToDateOptionsWithTZ } from '../index.js'
 
 const MILLISECONDS_IN_HOUR = 3600000
 const MILLISECONDS_IN_MINUTE = 60000
@@ -83,7 +83,7 @@ const patterns = {
  * const result = toDate('+02014101', {additionalDigits: 1})
  * //=> Fri Apr 11 2014 00:00:00
  */
-export function toDate(argument: Date | string | number, options: OptionsWithTZ = {}): Date {
+export function toDate(argument: Date | string | number, options: ToDateOptionsWithTZ = {}): Date {
   if (arguments.length < 1) {
     throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
   }
