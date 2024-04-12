@@ -1,17 +1,8 @@
-import type { Day, FirstWeekContainsDate, Locale, LocaleUnit, RoundingMethod } from 'date-fns'
+import type { FormatOptions, ParseISOOptions } from 'date-fns'
 
-export interface OptionsWithTZ {
-  weekStartsOn?: Day
-  firstWeekContainsDate?: FirstWeekContainsDate
-  additionalDigits?: 0 | 1 | 2
+export interface OptionsWithTZ extends FormatOptions, ParseISOOptions {
   timeZone?: string
   originalDate?: Date | string | number
-  locale?: Locale
-  includeSeconds?: boolean
-  addSuffix?: boolean
-  unit?: LocaleUnit
-  roundingMethod?: RoundingMethod
-  awareOfUnicodeTokens?: boolean
 }
 
 export { format } from './format/index.js'

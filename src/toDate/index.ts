@@ -110,11 +110,7 @@ export function toDate(argument: Date | string | number, options: OptionsWithTZ 
     Object.prototype.toString.call(argument) === '[object Number]'
   ) {
     return new Date(argument)
-  } else if (
-    !(
-      typeof argument === 'string' || Object.prototype.toString.call(argument) === '[object String]'
-    )
-  ) {
+  } else if (!(Object.prototype.toString.call(argument) === '[object String]')) {
     return new Date(NaN)
   }
 
@@ -287,7 +283,7 @@ function parseDate(dateString: string | null | undefined, year: number | null) {
   if (token) {
     week = parseInt(token[1], 10) - 1
 
-    if (!validateWeekDate(year, week)) {
+    if (!validateWeekDate(week)) {
       return new Date(NaN)
     }
 
@@ -300,7 +296,7 @@ function parseDate(dateString: string | null | undefined, year: number | null) {
     week = parseInt(token[1], 10) - 1
     const dayOfWeek = parseInt(token[2], 10) - 1
 
-    if (!validateWeekDate(year, week, dayOfWeek)) {
+    if (!validateWeekDate(week, dayOfWeek)) {
       return new Date(NaN)
     }
 
@@ -416,7 +412,7 @@ function validateDayOfYearDate(year: number, dayOfYear: number) {
   return true
 }
 
-function validateWeekDate(_year: number, week: number, day?: number | null) {
+function validateWeekDate(week: number, day?: number | null) {
   if (week < 0 || week > 52) {
     return false
   }
@@ -429,7 +425,7 @@ function validateWeekDate(_year: number, week: number, day?: number | null) {
 }
 
 function validateTime(hours: number, minutes?: number | null, seconds?: number | null) {
-  if (hours != null && (hours < 0 || hours >= 25)) {
+  if (hours < 0 || hours >= 25) {
     return false
   }
 

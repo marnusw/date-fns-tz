@@ -12,7 +12,7 @@ import type { OptionsWithTZ } from '../index.js'
  * @description
  * Returns a date instance with the UTC time of the provided date of which the values
  * represented the local time in the time zone specified. In other words, if the input
- * date represented local time in time time zone, the timestamp of the output date will
+ * date represented local time in time zone, the timestamp of the output date will
  * give the equivalent UTC of that local time regardless of the current system time zone.
  *
  * @param date the date with values representing the local time
@@ -33,11 +33,7 @@ export function fromZonedTime(
   options?: OptionsWithTZ
 ): Date {
   if (typeof date === 'string' && !date.match(tzPattern)) {
-    options = {
-      ...options,
-      timeZone,
-    }
-    return toDate(date, options)
+    return toDate(date, { ...options, timeZone })
   }
 
   date = toDate(date, options)

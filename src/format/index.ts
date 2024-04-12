@@ -334,10 +334,7 @@ export function format(
       }
       const pos = result.indexOf(token)
       const precededByQuotedSection = result[pos - 1] === "'"
-      const replaced = result.replace(
-        token,
-        "'" + formatters[token[0]](d, token, null, options) + "'"
-      )
+      const replaced = result.replace(token, "'" + formatters[token[0]](d, token, options) + "'")
       // If the replacement results in two adjoining quoted strings, the back to back quotes
       // are removed, so it doesn't look like an escaped quote.
       return precededByQuotedSection

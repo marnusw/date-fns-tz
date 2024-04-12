@@ -6,10 +6,10 @@ const MILLISECONDS_IN_MINUTE = 60 * 1000
 
 export const formatters: Record<
   string,
-  (date: Date, token: string, localize: null, options: OptionsWithTZ) => string | undefined
+  (date: Date, token: string, options: OptionsWithTZ) => string | undefined
 > = {
   // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
-  X: function (date, token, _localize, options) {
+  X: function (date, token, options) {
     const timezoneOffset = getTimeZoneOffset(options.timeZone, date)
 
     if (timezoneOffset === 0) {
@@ -39,7 +39,7 @@ export const formatters: Record<
   },
 
   // Timezone (ISO-8601. If offset is 0, output is `'+00:00'` or equivalent)
-  x: function (date, token, _localize, options) {
+  x: function (date, token, options) {
     const timezoneOffset = getTimeZoneOffset(options.timeZone, date)
 
     switch (token) {
@@ -65,7 +65,7 @@ export const formatters: Record<
   },
 
   // Timezone (GMT)
-  O: function (date, token, _localize, options) {
+  O: function (date, token, options) {
     const timezoneOffset = getTimeZoneOffset(options.timeZone, date)
 
     switch (token) {
@@ -82,7 +82,7 @@ export const formatters: Record<
   },
 
   // Timezone (specific non-location)
-  z: function (date, token, _localize, options) {
+  z: function (date, token, options) {
     switch (token) {
       // Short
       case 'z':
@@ -116,8 +116,7 @@ function addLeadingZeros(number: number, targetLength: number) {
   return sign + output
 }
 
-function formatTimezone(offset: number, delimiter?: string) {
-  delimiter = delimiter || ''
+function formatTimezone(offset: number, delimiter = '') {
   const sign = offset > 0 ? '-' : '+'
   const absOffset = Math.abs(offset)
   const hours = addLeadingZeros(Math.floor(absOffset / 60), 2)
@@ -133,7 +132,7 @@ function formatTimezoneWithOptionalMinutes(offset: number, delimiter?: string) {
   return formatTimezone(offset, delimiter)
 }
 
-function formatTimezoneShort(offset: number, delimiter?: string) {
+function formatTimezoneShort(offset: number, delimiter = '') {
   const sign = offset > 0 ? '-' : '+'
   const absOffset = Math.abs(offset)
   const hours = Math.floor(absOffset / 60)
@@ -141,6 +140,5 @@ function formatTimezoneShort(offset: number, delimiter?: string) {
   if (minutes === 0) {
     return sign + String(hours)
   }
-  delimiter = delimiter || ''
   return sign + String(hours) + delimiter + addLeadingZeros(minutes, 2)
 }
