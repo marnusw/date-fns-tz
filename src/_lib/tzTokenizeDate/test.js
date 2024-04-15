@@ -1,5 +1,5 @@
 import assert from 'power-assert'
-import { tzTokenizeDate } from '.'
+import { tzTokenizeDate } from './index.js'
 
 describe('tzTokenizeDate', function () {
   it('returns year through second tokens of the local date in the time zone', function () {

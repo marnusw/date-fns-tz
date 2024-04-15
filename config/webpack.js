@@ -10,19 +10,14 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.m?(ts|js)$/,
+        exclude: /node_modules/,
+        use: 'ts-loader',
+      },
+      {
         test: /\.m?js$/,
-        exclude: /node_modules\/(?!date-fns)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [['@babel/preset-env', { targets: 'defaults' }]],
-            plugins: [
-              '@babel/plugin-transform-optional-chaining',
-              '@babel/plugin-transform-logical-assignment-operators',
-              '@babel/plugin-transform-nullish-coalescing-operator',
-            ],
-          },
-        },
+        include: /src(\/.*)?\/test\.js$/,
+        type: 'javascript/esm',
       },
     ].concat(
       process.env.COVERAGE_REPORT
@@ -39,6 +34,18 @@ const config = {
           ]
         : []
     ),
+  },
+  resolve: {
+    extensions: ['.ts', '...'],
+    extensionAlias: {
+      '.js': ['.ts', '.js'],
+    },
+    fallback: {
+      // NodeJS polyfills mainly for karma
+      assert: require.resolve('assert'),
+      buffer: require.resolve('buffer'),
+      util: require.resolve('util'),
+    },
   },
 }
 

@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "declaration": true,
+    "outDir": "dist/esm",
+    "module": "ES6",
+    "moduleResolution": "Node",
+    "target": "ES2022"
+  }
+}

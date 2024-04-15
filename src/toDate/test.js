@@ -1,5 +1,5 @@
 import assert from 'power-assert'
-import { toDate } from '.'
+import { toDate } from './index.js'
 
 describe('toDate', function () {
   describe('date argument', function () {

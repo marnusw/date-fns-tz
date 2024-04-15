@@ -1,6 +1,6 @@
 import assert from 'power-assert'
 import { enGB } from 'date-fns/locale/en-GB'
-import { formatInTimeZone } from './index'
+import { formatInTimeZone } from './index.js'
 
 describe('formatInTimeZone', function () {
   describe('shifts the date to the zoned time and formats', function () {
@@ -39,7 +39,7 @@ describe('formatInTimeZone', function () {
 
     tests.forEach(function (test) {
       it(`format type: ${test.formatType}, time zone type: ${test.timeZoneType}`, function () {
-        assert(formatInTimeZone(date, test.timeZone, test.format) === test.expected)
+        assert.equal(formatInTimeZone(date, test.timeZone, test.format), test.expected)
       })
     })
   })
@@ -51,7 +51,7 @@ describe('formatInTimeZone', function () {
       var format = 'z XXX'
       var expected = 'CEST +02:00'
       var options = { locale: enGB }
-      assert(formatInTimeZone(date, timeZone, format, options) === expected)
+      assert.equal(formatInTimeZone(date, timeZone, format, options), expected)
     })
 
     it('during winter time: CET', function () {
@@ -60,7 +60,7 @@ describe('formatInTimeZone', function () {
       var format = 'z XXX'
       var expected = 'CET +01:00'
       var options = { locale: enGB }
-      assert(formatInTimeZone(date, timeZone, format, options) === expected)
+      assert.equal(formatInTimeZone(date, timeZone, format, options), expected)
     })
 
     it('before DST changeover: (CEST to CET)', function () {
@@ -69,7 +69,7 @@ describe('formatInTimeZone', function () {
       var format = 'z XXX'
       var expected = 'CEST +02:00'
       var options = { locale: enGB }
-      assert(formatInTimeZone(date, timeZone, format, options) === expected)
+      assert.equal(formatInTimeZone(date, timeZone, format, options), expected)
     })
 
     it('after DST changeover: (CEST to CET)', function () {
@@ -78,7 +78,7 @@ describe('formatInTimeZone', function () {
       var format = 'z XXX'
       var expected = 'CET +01:00'
       var options = { locale: enGB }
-      assert(formatInTimeZone(date, timeZone, format, options) === expected)
+      assert.equal(formatInTimeZone(date, timeZone, format, options), expected)
     })
 
     it('before DST changeover: (CET to CEST)', function () {
@@ -87,7 +87,7 @@ describe('formatInTimeZone', function () {
       var format = 'z XXX'
       var expected = 'CET +01:00'
       var options = { locale: enGB }
-      assert(formatInTimeZone(date, timeZone, format, options) === expected)
+      assert.equal(formatInTimeZone(date, timeZone, format, options), expected)
     })
 
     it('after DST changeover: (CET to CEST)', function () {
@@ -96,7 +96,7 @@ describe('formatInTimeZone', function () {
       var format = 'z XXX'
       var expected = 'CEST +02:00'
       var options = { locale: enGB }
-      assert(formatInTimeZone(date, timeZone, format, options) === expected)
+      assert.equal(formatInTimeZone(date, timeZone, format, options), expected)
     })
   })
 

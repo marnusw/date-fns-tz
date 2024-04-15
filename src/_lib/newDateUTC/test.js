@@ -1,5 +1,5 @@
 import assert from 'power-assert'
-import { newDateUTC } from '.'
+import { newDateUTC } from './index.js'
 
 describe('newDateUTC', function () {
   it('Equivalent to Date.UTC', function () {

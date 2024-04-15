@@ -1,7 +1,7 @@
 import assert from 'power-assert'
-import { format } from '../format'
-import { toZonedTime } from '../toZonedTime'
-import { fromZonedTime } from '.'
+import { format } from '../format/index.js'
+import { toZonedTime } from '../toZonedTime/index.js'
+import { fromZonedTime } from './index.js'
 
 describe('fromZonedTime', function () {
   it('returns the UTC time of the date in the time zone for a date input and IANA tz', function () {
