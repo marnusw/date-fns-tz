@@ -1,3 +1,8 @@
+### v3.1.0 (15 April 2024)
+
+- [REFACTOR] Full rewrite in TypeScript (#278) Thank you, @brettwillis
+- [BREAKING CHANGE] `OptionsWithTZ` is now either `FormatOptionsWithTZ` or `ToDateOptionsWithTZ`, matching `date-fns`
+
 ### v3.0.1 (10 April 2024)
 
 - [BUGFIX] Fix named export typings (#277)

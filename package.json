@@ -1,6 +1,6 @@
 {
   "name": "date-fns-tz",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "sideEffects": false,
   "description": "Time zone support for date-fns v3 with the Intl API",
   "author": "Marnus Weststrate <marnusw@gmail.com>",
@@ -16,6 +16,20 @@
     "immutable"
   ],
   "repository": "https://github.com/marnusw/date-fns-tz",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "npm run build",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json && echo {\"type\":\"module\"} > dist/esm/package.json",
+    "build": "npm run clean && npm run build:cjs && npm run build:esm",
+    "clean": "rm -rf dist",
+    "test": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" karma start config/karma.js",
+    "test:watch": "cross-env TEST_WATCH=true NODE_OPTIONS=\"--openssl-legacy-provider\" karma start config/karma.js",
+    "prettier": "prettier . --write",
+    "lint": "eslint ."
+  },
   "engine": {
     "node": ">= 0.11"
   },
@@ -100,20 +114,6 @@
       "import": "./dist/esm/fp/toZonedTimeWithOptions/index.js",
       "require": "./dist/cjs/fp/toZonedTimeWithOptions/index.js"
     }
-  },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "prepack": "npm run build",
-    "build:cjs": "tsc -p tsconfig.cjs.json",
-    "build:esm": "tsc -p tsconfig.esm.json && echo '{\"type\":\"module\"}' > dist/esm/package.json",
-    "build": "npm run clean && npm run build:cjs && npm run build:esm",
-    "clean": "rm -rf dist",
-    "test": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" karma start config/karma.js",
-    "test:watch": "cross-env TEST_WATCH=true NODE_OPTIONS=\"--openssl-legacy-provider\" karma start config/karma.js",
-    "prettier": "prettier . --write",
-    "lint": "eslint ."
   },
   "husky": {
     "hooks": {
