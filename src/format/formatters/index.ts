@@ -97,10 +97,10 @@ export const formatters: Record<
   },
 }
 
-function getTimeZoneOffset(timeZone: string | undefined, originalDate: Date) {
+function getTimeZoneOffset(timeZone: string | undefined, originalDate?: Date) {
   const timeZoneOffset = timeZone
     ? tzParseTimezone(timeZone, originalDate, true) / MILLISECONDS_IN_MINUTE
-    : originalDate.getTimezoneOffset()
+    : (originalDate?.getTimezoneOffset() ?? 0)
   if (Number.isNaN(timeZoneOffset)) {
     throw new RangeError('Invalid time zone specified: ' + timeZone)
   }
