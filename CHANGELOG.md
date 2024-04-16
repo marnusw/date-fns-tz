@@ -1,3 +1,7 @@
+### v3.1.1 (16 April 2024)
+
+- [BUGFIX] `getTimeZoneOffset`'s 2nd arg should be optional (#281)
+
 ### v3.1.0 (15 April 2024)
 
 - [REFACTOR] Full rewrite in TypeScript (#278) Thank you, @brettwillis
