@@ -3,6 +3,10 @@ import { enGB } from 'date-fns/locale/en-GB'
 import { formatInTimeZone } from './index.js'
 
 describe('formatInTimeZone', function () {
+  it('treat date only string in the timezone specified in the options', function () {
+    assert.equal(formatInTimeZone('2023-04-16', 'GMT', 'MMM dd', { timeZone: 'GMT' }), 'Apr 16')
+  })
+
   describe('shifts the date to the zoned time and formats', function () {
     var date = '1986-04-04T10:32:55.123Z'
     var tests = [
