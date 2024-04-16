@@ -97,7 +97,7 @@ export const formatters: Record<
   },
 }
 
-function getTimeZoneOffset(timeZone: string | undefined, originalDate?: Date) {
+function getTimeZoneOffset(timeZone: string | undefined, originalDate: Date|undefined = undefined) {
   const timeZoneOffset = timeZone
     ? tzParseTimezone(timeZone, originalDate, true) / MILLISECONDS_IN_MINUTE
     : (originalDate?.getTimezoneOffset() ?? 0)
