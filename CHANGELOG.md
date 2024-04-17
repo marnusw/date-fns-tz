@@ -1,3 +1,7 @@
+### v3.1.3 (17 April 2024)
+
+- [BUGFIX] Make `getTimeZoneOffset`'s 2nd arg optional
+
 ### v3.1.2 (16 April 2024)
 
 - [BUGFIX] Fix `formatInTimeZone` use of `timeZone` string (#280)
