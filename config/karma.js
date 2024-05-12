@@ -160,6 +160,10 @@ function config(config) {
     reporters: getReportersConfig(),
     singleRun: !process.env.TEST_WATCH,
   })
+
+  // Run tests in specific timezone
+  // process.env.TZ = 'America/New_York';
+  // process.env.TZ = 'Asia/Shanghai';
 }
 
 function getFrameworksConfig() {

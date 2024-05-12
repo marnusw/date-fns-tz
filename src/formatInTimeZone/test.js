@@ -1,6 +1,7 @@
 import assert from 'power-assert'
 import { enGB } from 'date-fns/locale/en-GB'
 import { formatInTimeZone } from './index.js'
+import { toZonedTime } from '../toZonedTime/index.js'
 
 describe('formatInTimeZone', function () {
   it('treat date only string in the timezone specified in the options', function () {
@@ -114,5 +115,44 @@ describe('formatInTimeZone', function () {
       formatInTimeZone.bind(null, date, 'bad/timezone', "dd.MM.yyyy HH:mm 'UTC'xxx"),
       RangeError
     )
+  })
+
+  describe('format of utc time that crosses dst', function () {
+    it('UTC before DST changeover - hour only', function () {
+      var date = '2024-03-09T02:00:00.000Z'
+      var timeZone = 'UTC'
+      var format = 'h:mm aaaa'
+      var expected = '2:00 a.m.'
+      assert.equal(formatInTimeZone(date, timeZone, format), expected)
+    })
+
+    // https://github.com/marnusw/date-fns-tz/issues/252
+    // https://github.com/marnusw/date-fns-tz/issues/178
+    it('UTC on DST changeover - hour only', function () {
+      var date = '2024-03-10T02:00:00.000Z'
+      var timeZone = 'UTC'
+      var format = 'h:mm aaaa'
+      var expected = '2:00 a.m.'
+      assert.equal(formatInTimeZone(date, timeZone, format), expected)
+    })
+
+    // test cases from: https://github.com/marnusw/date-fns-tz/issues/258#issue-2000115019
+    it('UTC before DST changeover', function () {
+      var result = formatInTimeZone(new Date('2023-03-12T01:05Z'), 'UTC', 'Pp z')
+      var expected = '03/12/2023, 1:05 AM UTC'
+      assert.equal(result, expected)
+    })
+
+    it('UTC on DST changeover', function () {
+      var result = formatInTimeZone(new Date('2023-03-12T02:05Z'), 'UTC', 'Pp z')
+      var expected = '03/12/2023, 2:05 AM UTC'
+      assert.equal(result, expected)
+    })
+
+    it('UTC after DST changeover', function () {
+      var result = formatInTimeZone(new Date('2023-03-12T03:05Z'), 'UTC', 'Pp z')
+      var expected = '03/12/2023, 3:05 AM UTC'
+      assert.equal(result, expected)
+    })
   })
 })

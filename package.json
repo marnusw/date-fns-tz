@@ -129,7 +129,8 @@
     ]
   },
   "peerDependencies": {
-    "date-fns": "^3.0.0"
+    "date-fns": "^3.0.0",
+    "@date-fns/utc": "^1.2.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
