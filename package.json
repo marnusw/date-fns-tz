@@ -133,6 +133,7 @@
     "date-fns": "^3.0.0"
   },
   "devDependencies": {
+    "@date-fns/utc": "^1.2.0",
     "@types/fs-extra": "^11.0.4",
     "@typescript-eslint/eslint-plugin": "^7.6.0",
     "@typescript-eslint/parser": "^7.6.0",

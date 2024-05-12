@@ -41,6 +41,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@date-fns/utc@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@date-fns/utc@npm:1.2.0"
+  checksum: 10/0ea6180ce11692133802116a617ea9f087aead35243752ef8804c9b164fd5c6fb48541ccdd653ef1a002512c2b1d36c743c300b4dae45ce88c02b9249aa27165
+  languageName: node
+  linkType: hard
+
 "@discoveryjs/json-ext@npm:^0.5.0":
   version: 0.5.7
   resolution: "@discoveryjs/json-ext@npm:0.5.7"
@@ -1521,6 +1528,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "date-fns-tz@workspace:."
   dependencies:
+    "@date-fns/utc": "npm:^1.2.0"
     "@types/fs-extra": "npm:^11.0.4"
     "@typescript-eslint/eslint-plugin": "npm:^7.6.0"
     "@typescript-eslint/parser": "npm:^7.6.0"
