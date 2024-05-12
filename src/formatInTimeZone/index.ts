@@ -1,6 +1,8 @@
 import { format } from '../format/index.js'
 import { toZonedTime } from '../toZonedTime/index.js'
-import type { FormatOptionsWithTZ } from '../index.js'
+import { toDate, type FormatOptionsWithTZ } from '../index.js'
+import { tzParseTimezone } from '../_lib/tzParseTimezone/index.js'
+import { UTCDate } from '@date-fns/utc'
 
 /**
  * @name formatInTimeZone
@@ -23,7 +25,7 @@ import type { FormatOptionsWithTZ } from '../index.js'
  *   (`yy`, `yyyy`). See: https://git.io/fxCyr
  * @param {String} [options.timeZone=''] - used to specify the IANA time zone offset of a date String.
  */
-export function formatInTimeZone(
+export function formatInTimeZone0(
   date: Date | string | number,
   timeZone: string,
   formatStr: string,
@@ -36,3 +38,25 @@ export function formatInTimeZone(
   }
   return format(toZonedTime(date, timeZone, { timeZone: options.timeZone }), formatStr, options)
 }
+
+export function formatInTimeZoneDSTFriendly(
+  date: Date | string | number,
+  timeZone: string,
+  formatStr: string,
+  options?: FormatOptionsWithTZ
+): string {
+  options = {
+    ...options,
+    timeZone,
+    originalDate: date,
+  }
+  date = toDate(date, options)
+
+  const offsetMilliseconds = tzParseTimezone(timeZone, date, true)
+
+  // replaces toZonedTime with UTCDate
+  const d = new UTCDate(date.getTime() - offsetMilliseconds)
+
+  return format(d, formatStr, options)
+}
+export const formatInTimeZone = formatInTimeZoneDSTFriendly
