@@ -1,6 +1,7 @@
 import assert from 'power-assert'
-import { enGB } from 'date-fns/locale/en-GB'
 import { formatInTimeZone } from './index.js'
+import { setDefaultOptions } from 'date-fns'
+import { vi, enGB, de } from 'date-fns/locale'
 
 describe('formatInTimeZone', function () {
   it('treat date only string in the timezone specified in the options', function () {
@@ -114,5 +115,59 @@ describe('formatInTimeZone', function () {
       formatInTimeZone.bind(null, date, 'bad/timezone', "dd.MM.yyyy HH:mm 'UTC'xxx"),
       RangeError
     )
+  })
+
+  describe('setDefaultOptions for locale', function () {
+    var date = '1986-04-04T10:32:55.123Z'
+    var timeZone = 'Europe/Paris'
+    var format = "PPPP 'UTC'xxx"
+    var tests = [
+      {
+        expected: 'Freitag, 4. April 1986 UTC+02:00',
+        locale: de,
+      },
+      {
+        expected: 'Thứ Sáu, ngày 4 tháng 04 năm 1986 UTC+02:00',
+        locale: vi,
+      },
+    ]
+
+    tests.forEach(function (test) {
+      it(`locale: ${test.locale.code}`, function () {
+        setDefaultOptions({ locale: test.locale })
+        assert.equal(formatInTimeZone(date, timeZone, format), test.expected)
+      })
+    })
+
+    afterEach(() => {
+      setDefaultOptions({ locale: undefined })
+    })
+  })
+
+  describe('setDefaultOptions for locale using tzIntlTimeZoneName', function () {
+    var date = '1986-04-04T10:32:55.123Z'
+    var timeZone = 'Europe/Paris'
+    var format = 'dd.MM.yyyy HH:mm zzzz'
+    var tests = [
+      {
+        expected: '04.04.1986 12:32 Mitteleuropäische Sommerzeit',
+        locale: de,
+      },
+      {
+        expected: '04.04.1986 12:32 Giờ mùa hè Trung Âu',
+        locale: vi,
+      },
+    ]
+
+    tests.forEach(function (test) {
+      it(`locale: ${test.locale.code}`, function () {
+        setDefaultOptions({ locale: test.locale })
+        assert.equal(formatInTimeZone(date, timeZone, format), test.expected)
+      })
+    })
+
+    afterEach(() => {
+      setDefaultOptions({ locale: undefined })
+    })
   })
 })

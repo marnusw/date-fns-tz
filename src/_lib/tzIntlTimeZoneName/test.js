@@ -1,5 +1,7 @@
 import assert from 'power-assert'
 import { tzIntlTimeZoneName } from './index.js'
+import { setDefaultOptions } from 'date-fns'
+import { enGB } from 'date-fns/locale'
 
 describe('tzIntlTimeZoneName', function () {
   it('returns the short time zone name', function () {
@@ -65,5 +67,19 @@ describe('tzIntlTimeZoneName', function () {
     var timeZone = 'Europe/Paris'
     var result = tzIntlTimeZoneName('short', date, { timeZone, locale })
     assert.equal(result, 'GMT+2')
+  })
+
+  describe('setDefaultOptions for locale', function () {
+    it('returns the short time zone name in the specified locale', function () {
+      setDefaultOptions({ locale: enGB })
+      var date = new Date('2014-10-25T13:46:20Z')
+      var timeZone = 'Europe/Paris'
+      var result = tzIntlTimeZoneName('short', date, { timeZone })
+      assert.equal(result, 'CEST')
+    })
+
+    afterEach(() => {
+      setDefaultOptions({ locale: undefined })
+    })
   })
 })
