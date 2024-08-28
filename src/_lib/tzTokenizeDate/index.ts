@@ -56,23 +56,23 @@ function hackyOffset(dtf: Intl.DateTimeFormat, date: Date) {
 // to get deterministic local date/time output according to the `en-US` locale which
 // can be used to extract local time parts as necessary.
 const dtfCache: Record<string, Intl.DateTimeFormat> = {}
+// New browsers use `hourCycle`, IE and Chrome <73 does not support it and uses `hour12`
+const testDateFormatted = new Intl.DateTimeFormat('en-US', {
+  hourCycle: 'h23',
+  timeZone: 'America/New_York',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+}).format(new Date('2014-06-25T04:00:00.123Z'))
+const hourCycleSupported =
+  testDateFormatted === '06/25/2014, 00:00:00' ||
+  testDateFormatted === '‎06‎/‎25‎/‎2014‎ ‎00‎:‎00‎:‎00'
+
 function getDateTimeFormat(timeZone: string) {
   if (!dtfCache[timeZone]) {
-    // New browsers use `hourCycle`, IE and Chrome <73 does not support it and uses `hour12`
-    const testDateFormatted = new Intl.DateTimeFormat('en-US', {
-      hourCycle: 'h23',
-      timeZone: 'America/New_York',
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-    }).format(new Date('2014-06-25T04:00:00.123Z'))
-    const hourCycleSupported =
-      testDateFormatted === '06/25/2014, 00:00:00' ||
-      testDateFormatted === '‎06‎/‎25‎/‎2014‎ ‎00‎:‎00‎:‎00'
-
     dtfCache[timeZone] = hourCycleSupported
       ? new Intl.DateTimeFormat('en-US', {
           hourCycle: 'h23',
