@@ -129,7 +129,7 @@
     ]
   },
   "peerDependencies": {
-    "date-fns": "^3.0.0"
+    "date-fns": "^4.0.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
@@ -138,7 +138,7 @@
     "assert": "^2.1.0",
     "buffer": "^6.0.3",
     "cross-env": "^7.0.3",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.1.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "fs-extra": "^11.2.0",
