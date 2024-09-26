@@ -34,8 +34,8 @@ This is because an ESM project cannot use ESM imports from a library that doesn'
   - [`formatInTimeZone`](#formatintimezone) - Formats a date in the provided time zone,
     regardless of the system time zone
 - [Time zone offset helpers](#time-zone-offset-helpers)
-  - [`fromZonedTime`](#zonedtimetoutc) - Given a date and any time zone, returns a `Date` with the equivalent UTC time
-  - [`toZonedTime`](#utctozonedtime) - Get a date/time representing local time in a given time zone from the UTC date
+  - [`fromZonedTime`](#fromzonedtime) - Given a date and any time zone, returns a `Date` with the equivalent UTC time
+  - [`toZonedTime`](#tozonedtime) - Get a date/time representing local time in a given time zone from the UTC date
   - [`getTimezoneOffset`](#gettimezoneoffset) - Gets the offset in milliseconds between the time zone and UTC time
 - [Low-level formatting helpers](#low-level-formatting-helpers)
   - [`format`](#format) - Extends `date-fns/format` with support for all time zone tokens,
