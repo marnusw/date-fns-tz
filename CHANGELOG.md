@@ -1,3 +1,10 @@
+### v3.2.0 (27 September 2024)
+
+- [DEPS] `date-fns@4.0.0` supported (#301)
+- [PERFORMANCE] Make testDateFormatted static to avoid re-initialising it on every call (#297) @hurali97
+- [ENHANCEMENT] Compatibility with `date-fns` `setDefaultOptions` (#286) @yangchristina
+- [DOCS] Fixed table of contents links (#284)
+
 ### v3.1.3 (17 April 2024)
 
 - [BUGFIX] Make `getTimeZoneOffset`'s 2nd arg optional
