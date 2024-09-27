@@ -1,4 +1,4 @@
-import type { Locale } from 'date-fns'
+import { getDefaultOptions, type Locale } from 'date-fns'
 import type { FormatOptionsWithTZ } from '../../index.js'
 
 /**
@@ -11,7 +11,8 @@ export function tzIntlTimeZoneName(
   date: Date,
   options: FormatOptionsWithTZ
 ): string | undefined {
-  const dtf = getDTF(length, options.timeZone, options.locale)
+  const defaultOptions = getDefaultOptions()
+  const dtf = getDTF(length, options.timeZone, options.locale ?? defaultOptions.locale)
   return 'formatToParts' in dtf ? partsTimeZone(dtf, date) : hackyTimeZone(dtf, date)
 }
 
