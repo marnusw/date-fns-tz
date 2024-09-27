@@ -1559,7 +1559,7 @@ __metadata:
     webpack: "npm:^5.91.0"
     webpack-cli: "npm:^5.1.4"
   peerDependencies:
-    date-fns: ^4.0.0
+    date-fns: ^3.0.0 || ^4.0.0
   languageName: unknown
   linkType: soft
 
