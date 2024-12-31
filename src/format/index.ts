@@ -11,7 +11,7 @@ const tzFormattingTokensRegExp = /([xXOz]+)|''|'(''|[^'])+('|$)/g
  * @summary Format the date.
  *
  * @description
- * Return the formatted date string in the given format. The result may consty by locale.
+ * Return the formatted date string in the given format. The result may vary by locale.
  *
  * > ⚠️ Please note that the `format` tokens differ from Moment.js and other libraries.
  * > See: https://git.io/fxCyr
