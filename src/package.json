@@ -1,3 +1,5 @@
 {
+  "name": "date-fns-tz",
+  "version": "3.2.0",
   "type": "module"
 }
