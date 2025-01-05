@@ -1,4 +1,5 @@
-import { getDefaultOptions, type Locale } from 'date-fns'
+import { getDefaultOptions } from 'date-fns/getDefaultOptions'
+import type { Locale } from 'date-fns'
 import type { FormatOptionsWithTZ } from '../../index.js'
 
 /**
