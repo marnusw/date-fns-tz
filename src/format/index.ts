@@ -1,4 +1,4 @@
-import { format as dateFnsFormat } from 'date-fns/format'
+import { format as dateFnsFormat } from 'date-fns'
 import { formatters } from './formatters/index.js'
 import { toDate } from '../toDate/index.js'
 import type { FormatOptionsWithTZ } from '../index.js'
