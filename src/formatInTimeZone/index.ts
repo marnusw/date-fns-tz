@@ -1,5 +1,7 @@
 import { format } from '../format/index.js'
-import { toZonedTime } from '../toZonedTime/index.js'
+import { toDate } from '../toDate/index.js'
+import { tzParseTimezone } from '../_lib/tzParseTimezone/index.js'
+import { WallClockDate } from '../_lib/WallClockDate/index.js'
 import type { FormatOptionsWithTZ } from '../index.js'
 
 /**
@@ -34,5 +36,8 @@ export function formatInTimeZone(
     timeZone,
     originalDate: date,
   }
-  return format(toZonedTime(date, timeZone, { timeZone: options.timeZone }), formatStr, options)
+  const utcDate = toDate(date, { timeZone: options.timeZone })
+  const offsetMilliseconds = tzParseTimezone(timeZone, utcDate, true)
+  const zonedDate = new WallClockDate(utcDate.getTime() - offsetMilliseconds)
+  return format(zonedDate, formatStr, options)
 }

@@ -105,6 +105,41 @@ describe('formatInTimeZone', function () {
     })
   })
 
+  describe('is not affected by DST changes in the system time zone', function () {
+    it('formats every hour of a year in UTC', function () {
+      var start = Date.UTC(2023, 0, 1)
+      var end = Date.UTC(2024, 0, 1)
+      for (var time = start; time < end; time += 60 * 60 * 1000) {
+        var date = new Date(time)
+        var expected = date.toISOString().slice(0, 16).replace('T', ' ')
+        assert.equal(formatInTimeZone(date, 'UTC', 'yyyy-MM-dd HH:mm'), expected)
+      }
+    })
+
+    it('formats every hour of a year in a fixed offset time zone', function () {
+      var start = Date.UTC(2023, 0, 1)
+      var end = Date.UTC(2024, 0, 1)
+      for (var time = start; time < end; time += 60 * 60 * 1000) {
+        var date = new Date(time)
+        var expected = new Date(time + 9 * 60 * 60 * 1000)
+          .toISOString()
+          .slice(0, 16)
+          .replace('T', ' ')
+        assert.equal(formatInTimeZone(date, '+09:00', 'yyyy-MM-dd HH:mm'), expected)
+      }
+    })
+
+    it('formats week, day of year and day period tokens', function () {
+      var date = new Date('2023-03-12T02:05:00Z')
+      var format = 'I R w Y D EEEE do a h'
+      var options = { useAdditionalWeekYearTokens: true, useAdditionalDayOfYearTokens: true }
+      assert.equal(
+        formatInTimeZone(date, 'UTC', format, options),
+        '10 2023 11 2023 71 Sunday 12th AM 2'
+      )
+    })
+  })
+
   it('throws a RangeError on invalid time zones', function () {
     var date = '1986-04-04T10:32:55.123Z'
     assert.throws(
