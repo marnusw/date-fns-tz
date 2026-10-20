@@ -49,6 +49,30 @@ describe('formatInTimeZone', function () {
     })
   })
 
+  // https://github.com/marnusw/date-fns-tz/issues/210
+  describe('long localized time tokens use the offset of the given time zone', function () {
+    var date = '2022-10-25T10:46:20.000Z'
+
+    it('PPppp in UTC', function () {
+      assert.equal(formatInTimeZone(date, 'UTC', 'PPppp'), 'Oct 25, 2022, 10:46:20 AM GMT+0')
+    })
+
+    it('pppp in UTC', function () {
+      assert.equal(formatInTimeZone(date, 'UTC', 'pppp'), '10:46:20 AM GMT+00:00')
+    })
+
+    it('pppp in a time zone with DST', function () {
+      assert.equal(formatInTimeZone(date, 'America/New_York', 'pppp'), '6:46:20 AM GMT-04:00')
+    })
+
+    it('ppp and xxx agree', function () {
+      assert.equal(
+        formatInTimeZone(date, 'Asia/Kolkata', 'ppp | xxx'),
+        '4:16:20 PM GMT+5:30 | +05:30'
+      )
+    })
+  })
+
   describe('populates the timezone name and offset correctly close to DST threshold', function () {
     it('during summer time: CEST', function () {
       var date = new Date('2021-08-01T00:30:00Z')

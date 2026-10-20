@@ -770,6 +770,43 @@ describe('format', function () {
       var result = format(date, 'Ppppp')
       assert.equal(result, '04/04/1986, 10:32:55 AM ' + timezoneGMT)
     })
+
+    describe('with the timeZone option', function () {
+      // https://github.com/marnusw/date-fns-tz/issues/210
+      var utcDate = new Date('2022-10-25T10:46:20.000Z')
+      var zonedDate = toZonedTime(utcDate, 'Asia/Kolkata')
+
+      it('long time uses the offset of the time zone', function () {
+        var result = format(zonedDate, 'ppp', { timeZone: 'Asia/Kolkata' })
+        assert.equal(result, '4:16:20 PM GMT+5:30')
+      })
+
+      it('full time uses the offset of the time zone', function () {
+        var result = format(zonedDate, 'pppp', { timeZone: 'Asia/Kolkata' })
+        assert.equal(result, '4:16:20 PM GMT+05:30')
+      })
+
+      it('long date + time uses the offset of the time zone', function () {
+        var result = format(zonedDate, 'PPPppp', { timeZone: 'Asia/Kolkata' })
+        assert.equal(result, 'October 25th, 2022 at 4:16:20 PM GMT+5:30')
+      })
+
+      it('full date + time uses the offset of the time zone', function () {
+        var newYorkDate = toZonedTime(utcDate, 'America/New_York')
+        var result = format(newYorkDate, 'PPPPpppp', { timeZone: 'America/New_York' })
+        assert.equal(result, 'Tuesday, October 25th, 2022 at 6:46:20 AM GMT-04:00')
+      })
+
+      it('uses the formats of the locale', function () {
+        var result = format(zonedDate, 'Ppppp', { timeZone: 'Asia/Kolkata', locale: enGB })
+        assert.equal(result, '25/10/2022, 16:16:20 GMT+05:30')
+      })
+
+      it('does not expand quoted tokens', function () {
+        var result = format(zonedDate, "'ppp' ppp", { timeZone: 'Asia/Kolkata' })
+        assert.equal(result, 'ppp 4:16:20 PM GMT+5:30')
+      })
+    })
   })
 
   describe('edge cases', function () {

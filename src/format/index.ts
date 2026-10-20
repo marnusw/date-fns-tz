@@ -1,6 +1,7 @@
 import { format as dateFnsFormat } from 'date-fns/format'
 import { formatters } from './formatters/index.js'
 import { toDate } from '../toDate/index.js'
+import { tzExpandLongFormatters } from '../_lib/tzExpandLongFormatters/index.js'
 import type { FormatOptionsWithTZ } from '../index.js'
 
 const tzFormattingTokensRegExp = /([xXOz]+)|''|'(''|[^'])+('|$)/g
@@ -321,7 +322,7 @@ export function format(
   formatStr: string,
   options: FormatOptionsWithTZ = {}
 ): string {
-  formatStr = String(formatStr)
+  formatStr = tzExpandLongFormatters(String(formatStr), options.locale)
 
   const matches = formatStr.match(tzFormattingTokensRegExp)
   if (matches) {
